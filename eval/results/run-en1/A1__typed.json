@@ -1,0 +1,37 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirming Thursday’s Meeting — ⟦PROJECT_1⟧\n\nDear Mr. ⟦PERSON_1⟧,\n\nI hope you’re well. I’m writing to confirm our meeting on Thursday regarding ⟦PROJECT_1⟧. Please let me know if the timing still works on your side or if you’d like to adjust the agenda.\n\nI look forward to speaking with you.\n\nBest regards,  \n[Your Name]",
+      "rawReasoning": "The user wants a short polite email to Mr. ⟦PERSON_1⟧ from Acme confirming Thursday meeting about ⟦PROJECT_1⟧. Need answer with email. Need treat placeholders exactly. We can write generic confirmation, avoid inventing exact time? We can say \"our scheduled Thursday meeting about ⟦PROJECT_1⟧\" and ask to confirm timing if needed. Need concise. No need tools. Ensure placeholders exactly as given. Since user didn't give date/time, don't fabricate specific time. Could include subject. Need sign off perhaps [Your Name]. That's okay. Use Acme? \"Mr. ⟦PERSON_1⟧\" from Acme—phrase \"you and the Acme team\" maybe. Email should be polite. Final only.",
+      "restored": "Subject: Confirming Thursday’s Meeting — Project Orion\n\nDear Mr. Smith,\n\nI hope you’re well. I’m writing to confirm our meeting on Thursday regarding Project Orion. Please let me know if the timing still works on your side or if you’d like to adjust the agenda.\n\nI look forward to speaking with you.\n\nBest regards,  \n[Your Name]",
+      "leaks": [
+        "STEM?:Project Orion (project)"
+      ],
+      "ms": 5148,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Write a short, polite email to Mr. ⟦PERSON_1⟧ from Acme confirming our Thursday meeting about ⟦PROJECT_1⟧.",
+      "restoreReport": {
+        "restored": 7,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

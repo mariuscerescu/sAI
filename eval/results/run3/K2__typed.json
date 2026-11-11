@@ -1,0 +1,45 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "Floare ⟦PERSON_1⟧ a cules floarea, din grădina lui ⟦PERSON_2⟧.",
+      "rawReasoning": "The user is asking in Romanian: \"Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧. Cine a cules floarea și din grădina cui?\" Need answer with placeholders exactly. Need parse sentence. Romanian: \"Floare ⟦PERSON_1⟧\" could be a person named Floare? Actually \"Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧.\" It asks who picked the flower and from whose garden. Subject is \"Floare ⟦PERSON_1⟧\"? In Romanian, \"Floare\" can be a feminine first name (Floare). The phrase \"Floare ⟦PERSON_1⟧\" likely a full name: Floare [placeholder]. The verb \"a cules\" singular. It says from garden of ⟦PERSON_2⟧. Need answer: ⟦PERSON_1⟧ (Floare ⟦PERSON_1⟧?) a cules floarea din grădina lui ⟦PERSON_2⟧. Need be careful: Who picked? The subject is \"Floare ⟦PERSON_1⟧\". If ⟦PERSON_1⟧ is placeholder for a name/surname? They instruct treat placeholder as real value; whenever refer write placeholder exactly. Could answer: \"Floare ⟦PERSON_1⟧ a cules floarea, din grădina lui ⟦PERSON_2⟧.\" But question: \"Cine a cules floarea\" maybe answer should be \"⟦PERSON_1⟧\"? Let's inspect: Sentence has \"Floare ⟦PERSON_1⟧\" — maybe \"Floare\" is common noun with adjective? Actually Romanian sentence: \"Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧.\" Without comma, \"Floare\" as first name and ⟦PERSON_1⟧ as surname? Placeholder ⟦PERSON_1⟧ stands for a person (maybe surname). They ask \"Cine a cules floarea și din grădina cui?\" We should not guess placeholder content. We can say \"A cules-o Floare ⟦PERSON_1⟧, din grădina lui ⟦PERSON_2⟧.\" That uses exact placeholders. Need concise. Ensure not translate placeholder. Final in Romanian.",
+      "restored": "Floare Munteanu a cules floarea, din grădina lui Radu Mare.",
+      "leaks": [],
+      "ms": 5953,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧. Cine a cules floarea și din grădina cui?",
+      "restoreReport": {
+        "restored": 25,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "case": "H5",
+  "category": "H. Identificatori",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Facturi: Acme 12.450,50 lei, Nordic Agro 8.300 lei, Banca Verde 1.249,50 lei. Care este totalul și ce procent revine firmei Acme?",
+      "raw": "Total: 12.450,50 + 8.300 + 1.249,50 = **22.000,00 lei**.\n\nCota firmei **ο**: 12.450,50 / 22.000 ≈ **56,59%**.",
+      "rawReasoning": "The user is asking a simple Romanian math word problem with Greek letters as stand-ins for confidential terms. Need treat Greek letters exactly as given when refer. Need answer concise in Romanian. Need compute total = 12,450.50 + 8,300 + 1,249.50 = 22,000? Let's calculate: 12,450.50 + 8,300 = 20,750.50; +1,249.50 = 22,000.00. Percent for firm ο = 12,450.50 / 22,000 =? 22,000*0.566 = 12,452; slightly less. Compute precisely: 12450.5/22000 = 0.565931818... (since 22000*0.566=12452; difference -1.5 => -0.00006818, so 0.5659318). Percent = 56.59318% ≈ 56.59%. Need mention letters exactly. Avoid spelling out. Need maybe say total = 22.000,00 lei; ο revine ≈56,59%. Ensure Romanian decimal comma maybe. Use Greek letters exact: ο, π, σ. Final concise.",
+      "restored": "Total: 12.450,50 + 8.300 + 1.249,50 = **22.000,00 lei**.\n\nCota firmei **Acme**: 12.450,50 / 22.000 ≈ **56,59%**.",
+      "leaks": [],
+      "ms": 3322,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 4
+        },
+        "tokensUsed": [
+          "ο",
+          "π",
+          "σ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Facturi: ο 12.450,50 lei, π 8.300 lei, σ 1.249,50 lei. Care este totalul și ce procent revine firmei ο?",
+      "restoreReport": {
+        "restored": 6,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ο",
+          "ο"
+        ]
+      }
+    }
+  ]
+}

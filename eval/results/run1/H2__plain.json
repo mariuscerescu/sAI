@@ -1,0 +1,16 @@
+{
+  "case": "H2",
+  "category": "H. Identificatori",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Am două numere de telefon: +373 79 555 123 și 079555123. Sunt același număr? Explică.",
+      "raw": "Da, în mod normal reprezintă același număr.\n\n- `+373 79 555 123` este format internațional: `+373` este codul Republicii Moldova.\n- `079555123` este format național: `0` este prefixul național de apelare și se elimină când folosești codul țării.\n\nDeci: `079 555 123` → `+373 79 555 123`.  \nDin Moldova poți apela `079555123`; din afara țării folosește `+37379555123`.",
+      "rawReasoning": "The user asks in Romanian. Need answer concise. Need explain +373 is Moldova country code, trunk prefix 0 dropped in international format. Numbers: +373 79 555 123 and 079555123. Assuming both are Moldovan mobile (79 is mobile prefix after country code? Moldova mobile prefixes 06/07? Actually +373 79... yes). National format 079555123 includes leading 0 trunk prefix; international +373 79555123 (no 0) same. Need mention if dialing from outside Moldova use +37379555123; within Moldova 079555123. Also note country code 373. Need be careful about exact formatting: +373 79 555 123 equals +37379555123; national 079555123 -> remove 0 add +373 = +37379555123. Yes. Respond Romanian.",
+      "restored": "Da, în mod normal reprezintă același număr.\n\n- `+373 79 555 123` este format internațional: `+373` este codul Republicii Moldova.\n- `079555123` este format național: `0` este prefixul național de apelare și se elimină când folosești codul țării.\n\nDeci: `079 555 123` → `+373 79 555 123`.  \nDin Moldova poți apela `079555123`; din afara țării folosește `+37379555123`.",
+      "leaks": [],
+      "ms": 4408
+    }
+  ]
+}

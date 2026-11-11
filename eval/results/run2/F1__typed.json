@@ -1,0 +1,36 @@
+{
+  "case": "F1",
+  "category": "F. Imposibil",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Care sunt inițialele lui Ion Popescu, ale Mariei Ceban și ale firmei Nordic Agro?",
+      "raw": "Nu pot determina inițialele doar din placeholder-ele `⟦PERSON_1⟧`, `⟦PERSON_2⟧` și `⟦COMPANY_1⟧`, fără numele reale pe care le înlocuiesc. Ar fi `⟦PERSON_1⟧` → inițialele numelui real, `⟦PERSON_2⟧` → inițialele numelui real, iar `⟦COMPANY_1⟧` → inițialele firmei reale. Trimite-mi denumirile sau contextul și ți le calculez.",
+      "rawReasoning": "The user asks in Romanian: initials of ⟦PERSON_1⟧, ⟦PERSON_2⟧ and company ⟦COMPANY_1⟧. We don't have actual values, placeholders only. Need not guess placeholder stands for. Initials cannot be derived because placeholders reveal no underlying words. Need answer concise. But maybe initials of placeholders? They ask \"Care sunt inițialele lui ⟦PERSON_1⟧, ale ⟦PERSON_2⟧ și ale firmei ⟦COMPANY_1⟧?\" Since values replaced, we only see placeholders. Treat placeholder as real value it stands for, but we don't know real value. We must not guess. Could compute initials of labels? That would be wrong (P P C). Need say cannot determine from placeholders alone; need underlying names. Could perhaps format placeholder exactly. Answer in Romanian. Need be helpful: dacă vrei, pot da regulile: inițiale = prima literă a fiecărei componente (ex. Andrei Popescu -> A.P.), but actual unknown. Keep concise.",
+      "restored": "Nu pot determina inițialele doar din placeholder-ele `Ion Popescu`, `Maria Ceban` și `Nordic Agro`, fără numele reale pe care le înlocuiesc. Ar fi `Ion Popescu` → inițialele numelui real, `Maria Ceban` → inițialele numelui real, iar `Nordic Agro` → inițialele firmei reale. Trimite-mi denumirile sau contextul și ți le calculez.",
+      "leaks": [],
+      "ms": 12800,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Care sunt inițialele lui ⟦PERSON_1⟧, ale ⟦PERSON_2⟧ și ale firmei ⟦COMPANY_1⟧?",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

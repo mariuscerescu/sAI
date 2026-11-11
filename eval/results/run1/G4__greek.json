@@ -1,0 +1,33 @@
+{
+  "case": "G4",
+  "category": "G. Format",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Compune un acrostih cu cuvântul Orion despre Proiectul Orion.",
+      "raw": "α — temelia discretă pe care stă tot restul,  \nα — clipa care leagă întrebarea de răspuns,  \nα — puterea ce lucrează fără zgomot,  \nα — semnul prin care sensul devine vizibil.",
+      "rawReasoning": "The user asks in Romanian: \"Compune un acrostih cu cuvântul α despre α.\" Need answer in Romanian concise. There is confidential term replaced with Greek letter α. Need treat α as real term it stands for, never spell out. We don't know what α stands for, but can compose acrostic using letter α as initial for each line? An acrostic with the word α (just a single letter) about α. Need write lines starting with α? But α is Greek letter; lines in Romanian would start with word corresponding? We must not translate/spell out α. Maybe use α as the capital/initial of each line. Since word is just α, acrostic is one line whose first letter is α and is about α. But that's trivial. Could compose a multi-line acrostic? If word α has one letter, only one initial, cannot multi-line acrostic using α repeated? Maybe create a short acrostic where each line begins with α (as the actual term/letter) and is about α. Need ensure whenever refer to term write α exactly. Avoid revealing real term (unknown anyway).\n\nNeed produce poem. Since cannot spell out what α stands for, refer to it only as α. Lines must start with α? We can write lines like:\n\"α — mister discret, în inima sistemului,\"\n\"α — reperul după care ordinea se-adună,\"\n\"α — tăcută forță care dă sens întregului.\"\nThis is acrostic? It repeats α at line start, not the word. Perhaps better: since α is a single-letter word, acrostic: each line begins with α and describes it. That's acceptable.\n\nNeed not use α with another meaning. Use α as term only. Avoid using alpha as letter? The instruction says Greek letters stand for real terms; do not use with any other meaning. So don't use α to mean the letter alpha generically. Use only as the confidential term.\n\nNeed answer concise. Ensure lines begin with α exactly. Final in Romanian. Could include title \"Acrostih\". Use α only as term. No extra explanation of what α is. Let's craft 5 lines? A true acrostic with word α (length 1) is one line; but user likely expects creative. Maybe say \"Fiindcă α are o singură literă, poemul repetă α la începutul fiecărui vers:\" But that's explanation. Keep concise.\n\nPoem:\nα — temelia discretă pe care stă tot restul,\nα — clipa ce leagă întrebarea de răspuns,\nα — puterea care lucrează fără zgomot,\nα — semnul prin care sensul devine vizibil.\n\nAll start with α. Are these about α? yes abstractly. Need not overstate real-world facts unknown. Keep metaphorical. Use em dashes. Final only.",
+      "restored": "Orion — temelia discretă pe care stă tot restul,  \nOrion — clipa care leagă întrebarea de răspuns,  \nOrion — puterea ce lucrează fără zgomot,  \nOrion — semnul prin care sensul devine vizibil.",
+      "leaks": [],
+      "ms": 7215,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 2
+        },
+        "tokensUsed": [
+          "α"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Compune un acrostih cu cuvântul α despre α.",
+      "restoreReport": {
+        "restored": 48,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

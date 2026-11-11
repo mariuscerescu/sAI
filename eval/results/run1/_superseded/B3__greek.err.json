@@ -1,0 +1,36 @@
+{
+  "case": "B3",
+  "category": "B. Raționament",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Popescu i-a împrumutat Cebanei 5.000 lei, Ceban i-a dat lui Lungu 2.000 lei, iar Lungu i-a returnat lui Popescu 1.500 lei. Cine cui și cât mai datorează la final? Fă un tabel.",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 6,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5
+        },
+        "tokensUsed": [
+          "ψ",
+          "θ",
+          "ζ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "ψ i-a împrumutat Cebanei 5.000 lei, θ i-a dat lui ζ 2.000 lei, iar ζ i-a returnat lui ψ 1.500 lei. Cine cui și cât mai datorează la final? Fă un tabel.",
+      "error": "TRANSPORT: Connection error.",
+      "restoreReport": {
+        "restored": 0,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

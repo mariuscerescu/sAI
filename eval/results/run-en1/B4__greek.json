@@ -1,0 +1,95 @@
+{
+  "case": "B4",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Remember: Emily Clark is Nordic Farms' lawyer, and David Walker is Greenfield Bank's auditor.",
+      "raw": "Got it: κ is ζ's lawyer, and ρ is δ's auditor.",
+      "rawReasoning": "We need answer to user. They say remember confidential terms replaced Greek letters. They gave: κ is ζ' lawyer, and ρ is δ's auditor. Need acknowledge/remember. Need be careful use exact letters. Need not spell out. We can say Got it — κ is ζ's lawyer, and ρ is δ's auditor. Need concise. Ensure Greek letters exact: κ, ζ, ρ, δ. Apostrophes? User wrote ζ' lawyer and δ's auditor (maybe missing possessive after ζ). We can mirror: κ is ζ's lawyer, ρ is δ's auditor. Use exact letters.",
+      "restored": "Got it: Emily Clark is Nordic Farms's lawyer, and David Walker is Greenfield Bank's auditor.",
+      "leaks": [],
+      "ms": 2336,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Remember: κ is ζ' lawyer, and ρ is δ's auditor.",
+      "restoreReport": {
+        "restored": 23,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Who is Nordic Farms' lawyer?",
+      "raw": "ζ's lawyer is κ.",
+      "rawReasoning": "The user is testing memory of confidential terms replaced by Greek letters. They earlier said: κ is ζ' lawyer, ρ is δ's auditor. Asked: Who is ζ' lawyer? Answer exactly with letter: κ. Need refer with letter exactly as given. Concise.",
+      "restored": "Nordic Farms's lawyer is Emily Clark.",
+      "leaks": [],
+      "ms": 1941,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Who is ζ' lawyer?",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "And who audits Greenfield Bank? Answer with the full name.",
+      "raw": "ρ audits δ.",
+      "rawReasoning": "The user is asking who audits δ. We have memory: ρ is δ's auditor. They ask answer with full name. The confidential terms replaced with isolated Greek letters; treat each letter as real term it stands for. But we don't know the real terms, only letters. They want full name perhaps the letter stands for real term, but we must write letter exactly as given, not spell out. Conflict: \"Answer with the full name\" and \"Whenever you refer to it, write the letter exactly as given\". Need answer using letter exactly? Could say ρ. But \"full name\" might imply not pronoun. Since terms are anonymized, the full name available is ρ (maybe with subscript? Here ρ no subscript). We should answer \"ρ\" only perhaps. Need concise. Ensure not invent real name. Final: ρ audits δ.",
+      "restored": "David Walker audits Greenfield Bank.",
+      "leaks": [],
+      "ms": 3535,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5,
+          "COMPANY": 7
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "And who audits δ? Answer with the full name.",
+      "restoreReport": {
+        "restored": 11,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

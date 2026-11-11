@@ -1,0 +1,41 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "Step by step:\n\n1. ψ owns 30% of ε.\n2. ε owns 60% of ζ.\n3. Indirect share through the chain = 30% × 60% = 0.30 × 0.60 = 0.18.\n\nSo ψ has an 18% indirect interest in ζ.\n\nCaveat: this is the indirect ownership/economic interest. Actual “control” of ζ would depend on voting rights, board rights, agreements, and other facts—not only the multiplication.",
+      "rawReasoning": "We need answer user. Need be careful: conversation includes Greek letters as placeholders for confidential terms. Need treat each letter as real term it stands for, but when referring write letter exactly. Need compute share of ζ ψ controls indirectly. Need interpret ownership chain: ψ bought 30% of ε. ε owns 60% of ζ. Indirect control/economic share? They ask \"What share of ζ does ψ control indirectly?\" Likely multiply 30% * 60% = 18%. Need explain step by step but concise. Need mention if asking control not just ownership, indirect control depends on governance rights/control agreements; assuming proportional ownership equals control and no other arrangements, ψ's indirect economic interest in ζ is 18%. Since they use \"control\" maybe in corporate ownership context, \"controls indirectly\" could mean percentage influence. Need answer stepwise:\n1 ψ owns 30% of ε.\n2 ε owns 60% of ζ.\n3 Indirect stake = 0.30 × 0.60 = 0.18 = 18%.\nThis is economic exposure; control requires majority/board/legal control context, not merely multiplication. But in simplified ownership-chain terms, answer 18%.\nNeed ensure use Greek letters exactly, not spell out. Use ψ, ε, ζ. No extra real terms. Fine.",
+      "restored": "Step by step:\n\n1. Acme Logistics owns 30% of Nordic Farms.\n2. Nordic Farms owns 60% of Greenfield Bank.\n3. Indirect share through the chain = 30% × 60% = 0.30 × 0.60 = 0.18.\n\nSo Acme Logistics has an 18% indirect interest in Greenfield Bank.\n\nCaveat: this is the indirect ownership/economic interest. Actual “control” of Greenfield Bank would depend on voting rights, board rights, agreements, and other facts—not only the multiplication.",
+      "leaks": [],
+      "ms": 3618,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 6
+        },
+        "tokensUsed": [
+          "ψ",
+          "ε",
+          "ζ"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "ψ bought 30% of ε. ε owns 60% of ζ. What share of ζ does ψ control indirectly? Explain step by step.",
+      "restoreReport": {
+        "restored": 24,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

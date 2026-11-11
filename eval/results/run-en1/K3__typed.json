@@ -1,0 +1,36 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Yesterday I went to the Orion cinema, but I was only thinking about Project Orion. Where did I go, and what was I thinking about?",
+      "raw": "You went to the Orion cinema, and you were thinking about ⟦PROJECT_1⟧.",
+      "rawReasoning": "The user references ⟦PROJECT_1⟧ placeholder and asks where they went and what thinking about. Need answer based solely on prompt: went to Orion cinema, thinking about ⟦PROJECT_1⟧. Need preserve placeholder exactly. Concise. No need tools. Ensure don't expand placeholder.",
+      "restored": "You went to the Orion cinema, and you were thinking about Project Orion.",
+      "leaks": [
+        "STEM?:Project Orion (project)",
+        "STEM?:Project Orion (orion)"
+      ],
+      "ms": 1909,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Yesterday I went to the Orion cinema, but I was only thinking about ⟦PROJECT_1⟧. Where did I go, and what was I thinking about?",
+      "restoreReport": {
+        "restored": 3,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

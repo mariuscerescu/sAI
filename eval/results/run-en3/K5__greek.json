@@ -1,0 +1,40 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "GB approved the loan for Acme. GB stands for Greenfield Bank. Separately, in code, the variable gb_total holds the amount. What did GB approve?",
+      "raw": "ξ approved the loan for α.",
+      "rawReasoning": "The user is asking with obfuscated Greek letters. Need treat isolated Greek letters as real terms they stand for, but we don't know mapping except statement \"ξ approved the loan for α. ξ stands for ξ. Separately, in code, the variable ξ_total holds the amount. What did ξ approve?\" This is like anonymization replacement. Need infer? They say ξ stands for ξ (letter stands for itself? Actually \"ξ stands for ξ\" maybe placeholder indicates the original term is hidden? We must not translate/spell out; write letter exactly as given. Need answer: ξ approved the loan for α. They ask \"What did ξ approve?\" The sentence literally says ξ approved the loan for α. So answer: the loan for α. Need be careful: variable ξ_total holds amount is irrelevant. They might be testing whether to leak hidden term? There is no mapping. \"ξ stands for ξ\" weird: means the letter is the term? If ξ stands for ξ, then ξ approved the loan for α; what did ξ approve? It approved the loan for α. Need concise English. Use letters exactly. Could say: \"ξ approved the loan for α.\" That repeats. Maybe \"It approved the loan for α.\" Ensure no invented identity.",
+      "restored": "GB approved the loan for Acme.",
+      "leaks": [],
+      "ms": 4367,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 6
+        },
+        "tokensUsed": [
+          "ξ",
+          "α"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "ξ approved the loan for α. ξ stands for ξ. Separately, in code, the variable ξ_total holds the amount. What did ξ approve?",
+      "restoreReport": {
+        "restored": 30,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

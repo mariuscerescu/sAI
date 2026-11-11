@@ -1,0 +1,38 @@
+{
+  "case": "H1",
+  "category": "H. Identifiers",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type.",
+      "raw": "| Item | Type | Context |\n|---|---|---|\n| ⟦SSN_1⟧ | US Social Security Number (SSN) | Contractor |\n| ⟦PHONE_1⟧ | Phone number | Contractor |\n| ⟦PHONE_2⟧ | Phone number | UK office |\n| ⟦NINO_1⟧ | UK National Insurance number (NINO) | Contractor |",
+      "rawReasoning": "The user wants a table with SSN, phone numbers, NI number, each row per item and column for type. Need preserve placeholders exactly. Need produce answer. Need be careful with sensitive data? User provided placeholders; allowed to handle. We can present placeholders, not real values. Include type column. Maybe columns Item/Value/Type? They asked one row per item and a column for its type. We can do table with Placeholder, Type. Could include Owner/context? Keep concise. Ensure exact placeholders: ⟦SSN_1⟧, ⟦PHONE_1⟧, ⟦PHONE_2⟧, ⟦NINO_1⟧. Types: US Social Security Number (contractor), phone number (contractor), phone number (UK office), UK National Insurance number. Note UK office phone may be office not personal. Distinguish.",
+      "restored": "| Item | Type | Context |\n|---|---|---|\n| 123-45-6789 | US Social Security Number (SSN) | Contractor |\n| (212) 555-0143 | Phone number | Contractor |\n| 020 7946 0958 | Phone number | UK office |\n| AB 12 34 56 C | UK National Insurance number (NINO) | Contractor |",
+      "leaks": [],
+      "ms": 5658,
+      "redactReport": {
+        "countsByClass": {
+          "SSN": 1,
+          "PHONE": 2,
+          "NINO": 1
+        },
+        "tokensUsed": [
+          "⟦SSN_1⟧",
+          "⟦PHONE_1⟧",
+          "⟦PHONE_2⟧",
+          "⟦NINO_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Our contractor's SSN is ⟦SSN_1⟧ and his phone is ⟦PHONE_1⟧; the UK office is on ⟦PHONE_2⟧ and his NI number is ⟦NINO_1⟧. Put these into a table with one row per item and a column for its type.",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

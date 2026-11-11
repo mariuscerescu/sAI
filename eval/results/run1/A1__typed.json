@@ -1,0 +1,37 @@
+{
+  "case": "A1",
+  "category": "A. Bază",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un e-mail scurt și politicos către dl. Popescu de la Acme, în care îi confirmi întâlnirea de joi pentru Proiectul Orion.",
+      "raw": "Subiect: Confirmare întâlnire – ⟦PROJECT_1⟧\n\nBună ziua, ⟦PERSON_1⟧,\n\nVă confirm întâlnirea de joi pentru ⟦PROJECT_1⟧. Mă bucur că vom putea discuta detaliile și următorii pași.\n\nDacă apar modificări de program sau aveți subiecte pe care doriți să le adăugăm pe agendă, vă rog să-mi spuneți.\n\nCu stimă,  \n[Numele tău]",
+      "rawReasoning": "The user asks in Romanian: write a short polite email to ⟦PERSON_1⟧ from ⟦COMPANY_1⟧ confirming Thursday meeting for ⟦PROJECT_1⟧. Need treat placeholders exactly. Need produce email in Romanian likely. Need concise. Need not invent details like time? Can say \"întâlnirea de joi pentru ⟦PROJECT_1⟧\". Maybe include subject, greeting, body, sign-off. Since sender unknown, sign with placeholder? User didn't give sender name; can use \"[Numele tău]\" or just \"Cu stimă,\" maybe. Need avoid guessing placeholder meanings. Use exact placeholders. Write short polite email. Need mention from ⟦COMPANY_1⟧? Recipient is de la ⟦COMPANY_1⟧ (from that company). We can address ⟦PERSON_1⟧. Good.\n\nNeed final only, in Romanian. Keep concise.",
+      "restored": "Subiect: Confirmare întâlnire – Proiectul Orion\n\nBună ziua, Ion Popescu,\n\nVă confirm întâlnirea de joi pentru Proiectul Orion. Mă bucur că vom putea discuta detaliile și următorii pași.\n\nDacă apar modificări de program sau aveți subiecte pe care doriți să le adăugăm pe agendă, vă rog să-mi spuneți.\n\nCu stimă,  \n[Numele tău]",
+      "leaks": [],
+      "ms": 4126,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Scrie un e-mail scurt și politicos către ⟦PERSON_1⟧ de la ⟦COMPANY_1⟧, în care îi confirmi întâlnirea de joi pentru ⟦PROJECT_1⟧.",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

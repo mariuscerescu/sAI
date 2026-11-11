@@ -1,0 +1,39 @@
+{
+  "case": "A2",
+  "category": "A. Bază",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu și Maria Ceban lucrează la Acme Logistic. Popescu e director, Ceban e contabilă. Cine semnează facturile, după tine? Răspunde folosind numele lor.",
+      "raw": "După mine: **π** semnează facturile, ca director. **ψ** le poate pregăti/verifica și să le contabilizeze, dar semnarea ține de calitatea de reprezentant legal a lui π — cu excepția cazului în care există delegație expresă către ψ. Pentru certitudinea juridică contează actul constitutiv și împuternicirile.",
+      "rawReasoning": "The user uses Greek letters per system note. Need answer in Romanian, concise. Need infer: π director, ψ contabilă, working at χ. Question: who signs invoices? Need use names (the letters). In Romanian context, director signs? But accounting often signs invoices? We need be careful. They ask \"după tine\" opinion. We can answer: π, ca director, semnează (sau cel puțin aprobă) facturile; ψ le pregătește/ține evidența, dar semnarea depinde de delegare/act constitutiv. Need refer to letters exactly. Avoid overclaiming legal authority. Use concise. Since confidential terms replaced by Greek letters, treat as real terms. Final in Romanian.",
+      "restored": "După mine: **Ion Popescu** semnează facturile, ca director. **Maria Ceban** le poate pregăti/verifica și să le contabilizeze, dar semnarea ține de calitatea de reprezentant legal a lui Ion Popescu — cu excepția cazului în care există delegație expresă către Maria Ceban. Pentru certitudinea juridică contează actul constitutiv și împuternicirile.",
+      "leaks": [],
+      "ms": 4047,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "π",
+          "ψ",
+          "χ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "π și ψ lucrează la χ. π e director, ψ e contabilă. Cine semnează facturile, după tine? Răspunde folosind numele lor.",
+      "restoreReport": {
+        "restored": 9,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "π",
+          "ψ"
+        ]
+      }
+    }
+  ]
+}

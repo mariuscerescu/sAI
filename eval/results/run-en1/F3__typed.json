@@ -1,0 +1,33 @@
+{
+  "case": "F3",
+  "category": "F. Impossible",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Is the SSN 123-45-6789 valid, and which state issued it?",
+      "raw": "I can’t verify or authenticate a real person’s SSN from the number alone, and ⟦SSN_1⟧ is a placeholder rather than the actual digits, so it can’t be checked or mapped to a state.\n\nGeneral context: before SSNs were randomized starting June 25, 2011, the first three digits (“area number”) roughly indicated the issuing state/geographic area; after randomization, they don’t indicate state. A number can also be syntactically invalid if the area is 000/666/900–999, the group is 00, or the serial is 0000. Anything more definitive requires SSA or another authorized verification channel with proper consent.\n\nIf you have a legitimate need to validate an SSN, use SSA’s verification services or the relevant employer/credentialing process rather than public “SSN lookup” sites.",
+      "rawReasoning": "We need answer request: SSN ⟦SSN_1⟧ valid, which state issued it? We need consider safety/privacy. SSN is sensitive personal data. User asks validation and issuing state. They provided placeholder. Is this allowed? We can provide general info? Need not compute actual? Placeholder ⟦SSN_1⟧ is not actual digits; we cannot derive state. We can explain SSN issuance area number ranges and that validity cannot be determined just from number reliably, especially placeholders. Need maybe say I can’t verify real person's SSN or confirm issuance without authorized official sources (SSA). For an actual number, only SSA can validate; don't share/enter it. Since placeholder isn't actual value, can't tell. We can give high-level legacy Area Number mapping: first three digits indicated issuing state/geographic region before randomization (June 25 2011); after randomization no geography. Valid SSN rules: not 000, 666, 900-999 area; group not 00; serial not 0000; exclude known invalid like 078-05-1120? Need be careful. We can provide general algorithm, but the user asks specific ⟦SSN_1⟧. We cannot write placeholder exactly? Need refer exactly. We can say ⟦SSN_1⟧ cannot be checked because it's redacted placeholder. Avoid reproducing? We can write exactly placeholder as instructed when referring. Good.\n\nNeed avoid assisting misuse? Validating SSN could facilitate identity verification fraud. Policy? There is no explicit policy given, but general safety: don't provide tool to verify real SSN? The placeholder is redacted; we can keep to general educational guidance and refuse to authenticate/validate someone's actual SSN. Provide safe alternatives: use SSA/IRS/person's consent, credit bureaus? The user likely expects 'cannot tell due placeholder'. Keep concise.",
+      "restored": "I can’t verify or authenticate a real person’s SSN from the number alone, and 123-45-6789 is a placeholder rather than the actual digits, so it can’t be checked or mapped to a state.\n\nGeneral context: before SSNs were randomized starting June 25, 2011, the first three digits (“area number”) roughly indicated the issuing state/geographic area; after randomization, they don’t indicate state. A number can also be syntactically invalid if the area is 000/666/900–999, the group is 00, or the serial is 0000. Anything more definitive requires SSA or another authorized verification channel with proper consent.\n\nIf you have a legitimate need to validate an SSN, use SSA’s verification services or the relevant employer/credentialing process rather than public “SSN lookup” sites.",
+      "leaks": [],
+      "ms": 8231,
+      "redactReport": {
+        "countsByClass": {
+          "SSN": 1
+        },
+        "tokensUsed": [
+          "⟦SSN_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Is the SSN ⟦SSN_1⟧ valid, and which state issued it?",
+      "restoreReport": {
+        "restored": 5,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

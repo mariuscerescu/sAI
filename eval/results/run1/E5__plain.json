@@ -1,0 +1,16 @@
+{
+  "case": "E5",
+  "category": "E. Cod",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie o expresie regulată care găsește într-un text numele «Ion Popescu», inclusiv variantele «I. Popescu» și «Popescu Ion».",
+      "raw": "```regex\n\\b(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)\\b\n```\n\nCu flagul `i` dacă vrei să ignore majuscule/minuscule. Pentru motorare Unicode, mai robust:\n\n```regex\n(?<![\\p{L}])(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)(?![\\p{L}])\n```",
+      "rawReasoning": "The user asks in Romanian to write a regex that finds in a text the name \"Ion Popescu\", including variants \"I. Popescu\" and \"Popescu Ion\". Need answer concise in Romanian. Need craft regex. Need be careful with Romanian diacritics? \"Ion Popescu\" exact. Variants: \"I. Popescu\" and \"Popescu Ion\". Also maybe optional dot, spaces. Need provide pattern. Could include word boundaries and flexible whitespace. Need not match \"Ion Popescu\" inside other words. Regex can use \\b, \\s+. Pattern alternative: \\b(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu,?\\s+Ion)\\b but user only variants three. Include \"I. Popescu\" with optional space after dot: I\\.\\s*Popescu. \"Popescu Ion\". Maybe include case-insensitive and optional diacritics? Keep simple. Need mention flag i if needed. Provide escaped version. Could use: (?<![\\p{L}])(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)(?![\\p{L}]) with Unicode. Or simpler: \\b(Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)\\b. Note \\b doesn't handle accented? Romanian diacritics are letters in Unicode-aware engines. If not, okay.\n\nNeed answer in Romanian. Maybe include regex: `(?<![\\p{L}])(?:Ion|I\\.)\\s+Popescu|Popescu\\s+Ion(?![\\p{L}])` needs parentheses. Correct grouping: `(?<![\\p{L}])(?:(?:Ion|I\\.)\\s+Popescu|Popescu\\s+Ion)(?![\\p{L}])`. But `I\\.` with `\\s+` requires at least one space; \"I.Popescu\" maybe variant? Use `I\\.\\s*`. `Ion\\s+`. Combine: `(?<![\\p{L}])(?:(?:Ion|I\\.)\\s+Popescu|Popescu,?\\s+Ion)(?![\\p{L}])` allows \"I.Popescu\" if Ion? no because Ion requires space. Fine.\n\nSimpler: `\\b(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)\\b` plus flag `i`. Note hyphen between lookarounds not issues.\n\nNeed final concise with note.",
+      "restored": "```regex\n\\b(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)\\b\n```\n\nCu flagul `i` dacă vrei să ignore majuscule/minuscule. Pentru motorare Unicode, mai robust:\n\n```regex\n(?<![\\p{L}])(?:Ion\\s+Popescu|I\\.\\s*Popescu|Popescu\\s+Ion)(?![\\p{L}])\n```",
+      "leaks": [],
+      "ms": 5833
+    }
+  ]
+}

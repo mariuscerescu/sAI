@@ -1,0 +1,37 @@
+{
+  "case": "E1",
+  "category": "E. Cod",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie o funcție Python `send_invoice(amount)` care trimite o factură firmei Acme Logistic pe adresa ion.popescu@acme.md, cu subiectul «Factură Proiectul Orion».",
+      "raw": "Desigur. Exemplu sigur, cu credențiale din variabile de mediu:\n\n```python\nimport os\nimport smtplib\nfrom email.message import EmailMessage\n\ndef send_invoice(amount):\n    if amount <= 0:\n        raise ValueError(\"amount trebuie să fie pozitiv\")\n\n    smtp_host = os.getenv(\"SMTP_HOST\", \"smtp.gmail.com\")\n    smtp_port = int(os.getenv(\"SMTP_PORT\", \"465\"))\n    smtp_user = os.getenv(\"SMTP_USER\")\n    smtp_password = os.getenv(\"SMTP_PASSWORD\")\n    from_email = os.getenv(\"FROM_EMAIL\", smtp_user)\n\n    if not smtp_user or not smtp_password:\n        raise RuntimeError(\"Setează SMTP_USER și SMTP_PASSWORD în environment\")\n\n    msg = EmailMessage()\n    msg[\"From\"] = from_email\n    msg[\"To\"] = \"ion.⟦PERSON_1⟧@⟦COMPANY_1⟧.md\"\n    msg[\"Subject\"] = \"Factură ⟦PROJECT_1⟧\"\n    msg.set_content(\n        f\"Bună ziua,\\n\\n\"\n        f\"Vă transmitem factura pentru ⟦PROJECT_1⟧ \"\n        f\"în valoare de {amount}.\\n\\n\"\n        f\"Mulțumim,\\n\"\n        f\"Echipa ⟦COMPANY_1⟧\\n\"\n    )\n\n    with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=30) as server:\n        server.login(smtp_user, smtp_password)\n        server.send_message(msg)\n```\n\nNu pune parola direct în cod; folosește variabile de mediu sau un secret manager. Pentru Gmail/Google Workspace, de obicei e nevoie de App Password sau SMTP relay/OAuth, în funcție de politica organizației.",
+      "rawReasoning": "The user asks to write a Python function sending invoice to company email. This is a coding request, involving placeholders. Is it problematic? Could be dual use / sending email externally, but just writing function with placeholders is benign. Need not actually send. Need provide code concise in Romanian. Need be careful with placeholder exact. We can give example using smtplib and env vars, not hardcoding credentials. Include optional dry-run? Need answer in Romanian.\n\nNeed ensure placeholders exactly as given: ⟦COMPANY_1⟧, ion.⟦PERSON_1⟧@⟦COMPANY_1⟧.md, «Factură ⟦PROJECT_1⟧». Function send_invoice(amount). Use email.message.EmailMessage, smtplib.SMTP_SSL, SMTP_SERVER etc. Mention configure credentials via environment variables; don't hardcode. Since no SMTP details given, parameterize host/port/user with env defaults. Need code.\n\nNeed note that actually sending requires valid SMTP account and consent; not executing here. Provide concise. Ensure placeholder inside code exact. Use subject f\"Factură ⟦PROJECT_1⟧\" exactly? The requested subject uses «Factură ⟦PROJECT_1⟧» with guillemets? They said cu subiectul «Factură ⟦PROJECT_1⟧» where «» likely quoting not part of subject. Use subject = f\"Factură ⟦PROJECT_1⟧\". Body includes amount. Address exactly ion.⟦PERSON_1⟧@⟦COMPANY_1⟧.md.\n\nNeed produce code maybe with attachment optional? They asked sends invoice; amount only. We can create simple email with amount, maybe attach invoice PDF if path optional? Keep signature send_invoice(amount) only. Include validation amount positive. Use env SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, FROM_EMAIL. Use SMTP_SSL default port 465. If your provider uses STARTTLS, adjust. Code:\n\nimport os, smtplib\nfrom email.message import EmailMessage\n\ndef send_invoice(amount):\n    if amount <=0: raise ValueError\n    recipient = \"ion.⟦PERSON_1⟧@⟦COMPANY_1⟧.md\"\n    msg = EmailMessage()\n    msg[\"From\"] = os.getenv(\"FROM_EMAIL\", os.getenv(\"SMTP_USER\", \"no-reply@example.com\"))\n    msg[\"To\"] = recipient\n    msg[\"Subject\"] = \"Factură ⟦PROJECT_1⟧\"\n    msg.set_content(f\"Bună ziua,\\n\\nVă transmitem factura pentru ⟦PROJECT_1⟧ în valoare de {amount}.\\n\\nMulțumim,\\nEchipa ⟦COMPANY_1⟧\\n\")\n    host = os.getenv(\"SMTP_HOST\", \"smtp.gmail.com\") ...\n    with smtplib.SMTP_SSL(host, port, timeout=30) as s:\n        s.login(user, password)\n        s.send_message(msg)\n\nNeed maybe if missing password raise RuntimeError. Good. Mention replace SMTP host/provider and use app password; avoid committing secrets. Final concise.",
+      "restored": "Desigur. Exemplu sigur, cu credențiale din variabile de mediu:\n\n```python\nimport os\nimport smtplib\nfrom email.message import EmailMessage\n\ndef send_invoice(amount):\n    if amount <= 0:\n        raise ValueError(\"amount trebuie să fie pozitiv\")\n\n    smtp_host = os.getenv(\"SMTP_HOST\", \"smtp.gmail.com\")\n    smtp_port = int(os.getenv(\"SMTP_PORT\", \"465\"))\n    smtp_user = os.getenv(\"SMTP_USER\")\n    smtp_password = os.getenv(\"SMTP_PASSWORD\")\n    from_email = os.getenv(\"FROM_EMAIL\", smtp_user)\n\n    if not smtp_user or not smtp_password:\n        raise RuntimeError(\"Setează SMTP_USER și SMTP_PASSWORD în environment\")\n\n    msg = EmailMessage()\n    msg[\"From\"] = from_email\n    msg[\"To\"] = \"ion.Ion Popescu@Acme Logistic.md\"\n    msg[\"Subject\"] = \"Factură Proiectul Orion\"\n    msg.set_content(\n        f\"Bună ziua,\\n\\n\"\n        f\"Vă transmitem factura pentru Proiectul Orion \"\n        f\"în valoare de {amount}.\\n\\n\"\n        f\"Mulțumim,\\n\"\n        f\"Echipa Acme Logistic\\n\"\n    )\n\n    with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=30) as server:\n        server.login(smtp_user, smtp_password)\n        server.send_message(msg)\n```\n\nNu pune parola direct în cod; folosește variabile de mediu sau un secret manager. Pentru Gmail/Google Workspace, de obicei e nevoie de App Password sau SMTP relay/OAuth, în funcție de politica organizației.",
+      "leaks": [],
+      "ms": 9567,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 2,
+          "PERSON": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Scrie o funcție Python `send_invoice(amount)` care trimite o factură firmei ⟦COMPANY_1⟧ pe adresa ion.⟦PERSON_1⟧@⟦COMPANY_1⟧.md, cu subiectul «Factură ⟦PROJECT_1⟧».",
+      "restoreReport": {
+        "restored": 20,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

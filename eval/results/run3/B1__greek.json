@@ -1,0 +1,44 @@
+{
+  "case": "B1",
+  "category": "B. Raționament",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Organigrama: Ion Popescu conduce Acme. Maria Ceban raportează lui Popescu. Andrei Lungu și Elena Vrabie raportează Cebanei. Victor Ciobanu raportează lui Lungu. Cine e la exact două niveluri sub Popescu? Desenează organigrama în text.",
+      "raw": "La exact două niveluri sub τ sunt: **θ și χ**.\n\n```text\nτ\n├─ ρ\n└─ ε\n   ├─ θ\n   │  └─ ω\n   └─ χ\n```\n\nρ și ε sunt la 1 nivel sub τ; ω este la 3 niveluri sub τ.",
+      "rawReasoning": "We need answer Romanian. Need parse org chart with substituted Greek letters. Need treat letters as real terms stand for; refer exact letters. Need infer hierarchy.\n\nGiven: τ conduce ρ. ε raportează lui τ. θ și χ raportează ε. ω raportează lui θ. Who is exactly two levels under τ? Draw org chart in text.\n\nNeed careful: \"τ conduce ρ\" means τ leads ρ? Could mean τ is manager of ρ (ρ reports to τ?) Romanian \"conduce\" = leads/manages. So τ leads ρ => ρ is direct report of τ? Also ε raportează lui τ => ε direct report of τ. θ and χ report to ε. ω reports to θ. If τ leads ρ and ε reports to τ, both ρ and ε are one level under τ? Need question exact two levels under τ: direct children's children excluding? Let's construct.\n\nLevels relative to τ:\nLevel 0 τ\nLevel 1: ρ (if τ conduce ρ) and ε (reports to τ)\nLevel 2: θ and χ (report to ε). What about children of ρ? none specified.\nLevel 3: ω (report to θ)\nExactly two levels under τ = level 2 = θ and χ. But is ρ perhaps τ's superior? \"τ conduce ρ\" unambiguously τ leads ρ, so ρ below τ. If it meant τ manages ρ, yes.\n\nNeed draw org chart in text. Use exact Greek letters. Need mention if \"τ conduce ρ\" means ρ is direct subordinat al lui τ. concise. Ensure letters exact. Use ρ not p etc. final in Romanian. Need not explain confidential. Use same letters.\n\nNeed answer: Exact două niveluri sub τ: θ și χ. If τ at top. Org chart:\nτ\n├─ ρ\n└─ ε\n   ├─ θ\n   │  └─ ω\n   └─ χ\nBut edge order maybe ρ then ε. Exactly two levels under τ are θ and χ (level 2), while ω is three. Note ρ and ε are one level. final concise.",
+      "restored": "La exact două niveluri sub Ion Popescu sunt: **Andrei Lungu și Elena Vrabie**.\n\n```text\nIon Popescu\n├─ Acme\n└─ Maria Ceban\n   ├─ Andrei Lungu\n   │  └─ Victor Ciobanu\n   └─ Elena Vrabie\n```\n\nAcme și Maria Ceban sunt la 1 nivel sub Ion Popescu; Victor Ciobanu este la 3 niveluri sub Ion Popescu.",
+      "leaks": [],
+      "ms": 6257,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 9,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "τ",
+          "ρ",
+          "ε",
+          "θ",
+          "χ",
+          "ω"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Organigrama: τ conduce ρ. ε raportează lui τ. θ și χ raportează ε. ω raportează lui θ. Cine e la exact două niveluri sub τ? Desenează organigrama în text.",
+      "restoreReport": {
+        "restored": 102,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ρ",
+          "τ",
+          "τ",
+          "χ"
+        ]
+      }
+    }
+  ]
+}

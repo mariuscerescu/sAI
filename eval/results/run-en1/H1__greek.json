@@ -1,0 +1,38 @@
+{
+  "case": "H1",
+  "category": "H. Identifiers",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type.",
+      "raw": "| Value | Type |\n|---|---|\n| β | SSN |\n| θ | Phone number |\n| ρ | UK office address/location |\n| σ | NI number |",
+      "rawReasoning": "The user asks to put confidential terms into table. They provided values already in prompt; can we output them? Need be careful? These are PII/confidential. They ask to transform their data. Allowed? We can help organize user-provided sensitive data locally in answer. Need not refuse, but avoid adding invented info. Need use Greek letters exactly as given when referring. Need table one row per item and column for type. Items: contractor's SSN is β; phone is θ; UK office is on ρ; NI number is σ. Types: SSN, phone number, office address/location? NI number. Need maybe ρ is address? Wording \"UK office is on ρ\" means ρ is a street/location, not necessarily full address. Type column can say address/location, phone, SSN, National Insurance number. We should not translate letters. Table with Item/Value/Type maybe. Keep concise. Need ensure use β etc exactly. Final only.",
+      "restored": "| Value | Type |\n|---|---|\n| 123-45-6789 | SSN |\n| (212) 555-0143 | Phone number |\n| 020 7946 0958 | UK office address/location |\n| AB 12 34 56 C | NI number |",
+      "leaks": [],
+      "ms": 4657,
+      "redactReport": {
+        "countsByClass": {
+          "SSN": 1,
+          "PHONE": 2,
+          "NINO": 1
+        },
+        "tokensUsed": [
+          "β",
+          "θ",
+          "ρ",
+          "σ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Our contractor's SSN is β and his phone is θ; the UK office is on ρ and his NI number is σ. Put these into a table with one row per item and a column for its type.",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

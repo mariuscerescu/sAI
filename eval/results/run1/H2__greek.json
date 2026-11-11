@@ -1,0 +1,33 @@
+{
+  "case": "H2",
+  "category": "H. Identificatori",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Am două numere de telefon: +373 79 555 123 și 079555123. Sunt același număr? Explică.",
+      "raw": "Da — în forma în care mi le-ai dat, ambele sunt notate cu același simbol: ρ. Asta înseamnă că ele reprezintă același termen real redactat, deci nu pot fi distinse ca numere diferite din textul acesta.\n\nNu pot confirma cifrele reale ale numărului; pot spune doar că redactorul a folosit aceeași mască pentru ambele. Dacă unul dintre simboluri ar fi fost altceva (de exemplu ϱ sau ρ cu indice diferit), situația ar putea fi alta.",
+      "rawReasoning": "The user asks in Romanian: \"Am două numere de telefon: ρ și ρ. Sunt același număr? Explică.\" There are confidential terms replaced with isolated Greek letters. Here both are ρ? It says two phone numbers: ρ and ρ. They look identical letter rho. Need answer likely yes? But need be careful: The prompt says some confidential terms replaced with isolated Greek letters such as β or κ (possibly with subscript, such as α₂). Treat each such letter as real term it stands for. Whenever refer to it, write letter exactly as given. Here user wrote ρ and ρ — same glyph? Maybe there is subtle difference? Need inspect text: \"ρ și ρ\" both appear same Greek rho? Could be one is actually ρ (U+03C1) and other maybe \"ρ\" identical? The question likely tests that same placeholder means same real term? But phone numbers replaced by same Greek letter means same confidential term? Need explain: If both are denoted by same symbol ρ, in this redacted context they stand for same value/term, so as far as shown, yes they are identical representations; but cannot verify real-world phone digits from redaction. Need mention if subtle variants (ρ vs ϱ?) Let's examine: user shows \"ρ și ρ\" in prompt. Both look like rho. The system says Greek letters stand for real terms; same letter same term. So answer concise Romanian: Da, în acest text ambele sunt scrise cu același simbol ρ, deci trimit la același termen real redactat; nu pot vedea cifrele. Dacă unul ar fi diferit (de ex. ϱ), atunci nu neapărat. Need be cautious: \"Sunt același număr?\" Since identical symbols, yes within given information. Explain redaction. Need not reveal. Ensure write ρ exactly. Final in Romanian concise.",
+      "restored": "Da — în forma în care mi le-ai dat, ambele sunt notate cu același simbol: +373 79 555 123. Asta înseamnă că ele reprezintă același termen real redactat, deci nu pot fi distinse ca numere diferite din textul acesta.\n\nNu pot confirma cifrele reale ale numărului; pot spune doar că redactorul a folosit aceeași mască pentru ambele. Dacă unul dintre simboluri ar fi fost altceva (de exemplu ϱ sau +373 79 555 123 cu indice diferit), situația ar putea fi alta.",
+      "leaks": [],
+      "ms": 6805,
+      "redactReport": {
+        "countsByClass": {
+          "PHONE": 2
+        },
+        "tokensUsed": [
+          "ρ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Am două numere de telefon: ρ și ρ. Sunt același număr? Explică.",
+      "restoreReport": {
+        "restored": 19,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "case": "A3",
+  "category": "A. Bază",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reformulează corect gramatical: «Contractul Popescului cu Acme-ului a fost semnat de Cebanei la Proiectul Orion.»",
+      "raw": "«Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.»\n\nDacă ⟦PROJECT_1⟧ nu e loc, ci proiectul propriu-zis: «... în cadrul ⟦PROJECT_1⟧.»",
+      "rawReasoning": "The user wants a grammatically corrected reformulation in Romanian. Need understand sentence: «Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.» Placeholders are confidential, must keep exact. Need fix Romanian grammar.\n\nOriginal has \"Contractul ⟦PERSON_1⟧\" maybe should be \"Contractul lui ⟦PERSON_1⟧\"? Or \"Contractul cu ⟦COMPANY_1⟧ al ⟦PERSON_1⟧\"? Let's parse.\n\nRomanian: \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.\" Issues: \"⟦COMPANY_1⟧-ului\" with hyphen is wrong; if COMPANY_1 is a company name, genitive/dative depends. \"la ⟦PROJECT_1⟧\" maybe project isn't place, but can be \"în cadrul ⟦PROJECT_1⟧\" or \"la ⟦PROJECT_1⟧\" if project name as event? But user asks rephrase grammatically, minimal. Need preserve placeholders exactly, including brackets. Need produce corrected sentence.\n\nNeed decide most faithful correction. Romanian possessive: \"Contractul ⟦PERSON_1⟧\" missing genitive article: if PERSON_1 is masculine name, \"Contractul lui ⟦PERSON_1⟧\" or \"Contractul ⟦PERSON_1⟧\" if noun with article? For names, use \"lui\": \"Contractul lui ⟦PERSON_1⟧\". With company: \"cu ⟦COMPANY_1⟧\" normally no \"-ului\" attached. If want genitive: \"Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧\". \"a fost semnat de ⟦PERSON_2⟧\" OK passive agent. \"la ⟦PROJECT_1⟧\" maybe OK if location. Corrected: «Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.»\n\nBut maybe intended: \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧\" where PERSON_1 is adjective? no.\n\nAlternative if original means \"The contract of PERSON_1 with COMPANY_1's ...\" Hmm \"⟦COMPANY_1⟧-ului\" maybe placeholder for company with enclitic article incorrectly applied; should be \"⟦COMPANY_1⟧ului\"? Romanian enclitic article attaches directly: \"companiei\"? If COMPANY_1 is feminine noun common? Placeholder e.g. \"⟦COMPANY_1⟧\" stands for a company name like \"Alpha\"; genitive would be \"al ⟦COMPANY_1⟧-ului\"? In Romanian, proper names don't take enclitic article usually; use \"al ⟦COMPANY_1⟧\". \n\nCould answer with one corrected variant and note if PROJECT_1 is not a location use \"în cadrul\". Need concise. Final in Romanian. Include placeholder exactly. Ensure not alter placeholders. Sentence: «Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.» This is minimal grammatical. Maybe include variant: dacă ⟦PROJECT_1⟧ desemnează proiectul, nu locul: «... în cadrul ⟦PROJECT_1⟧.» Good concise.",
+      "restored": "«Contractul lui Ion Popescu cu Acme a fost semnat de Ceban la Proiectul Orion.»\n\nDacă Proiectul Orion nu e loc, ci proiectul propriu-zis: «... în cadrul Proiectul Orion.»",
+      "leaks": [],
+      "ms": 13789,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Reformulează corect gramatical: «Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.»",
+      "restoreReport": {
+        "restored": 48,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

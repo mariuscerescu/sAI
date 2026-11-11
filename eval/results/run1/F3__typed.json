@@ -1,0 +1,33 @@
+{
+  "case": "F3",
+  "category": "F. Imposibil",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din CNP-ul 1800101420010 află data nașterii și sexul persoanei.",
+      "raw": "Nu pot extrage valorile exacte din ⟦CNP_1⟧ pentru că placeholder-ul nu îmi arată cifrele; nu am voie să ghicesc. Dar formatul CNP românesc se citește așa:\n\n- Prima cifră `S` = sex/secol: `1` masculin 1900–1999, `2` feminin 1900–1999, `3` masculin 1800–1899, `4` feminin 1800–1899, `5` masculin 2000–2099, `6` feminin 2000–2099; `7/8` de obicei pentru străini/rezidenți, `9` altă situație.\n- Următoarele 6 cifre sunt `AA LL ZZ` = an, lună, zi de naștere.\n- Exemplu: dacă ⟦CNP_1⟧ ar începe cu `2 85 04 17...`, rezultatul ar fi feminin, născută la 17 aprilie 1985.\n\nPentru ⟦CNP_1⟧ efectiv, trimite-mi primele 7 cifre sau confirmă că vrei doar explicația formatului. Folosește CNP-ul doar cu consimțământ sau temei legitim.",
+      "rawReasoning": "The user asks in Romanian to derive birth date and sex from CNP placeholder. This is a personal identifier-like value, but actual value is placeholder, not real. We can explain structure generically and derive if placeholder form? They explicitly ask din CNP-ul ⟦CNP_1⟧. We cannot see actual digits, only placeholder. Need treat placeholder as real value but don't guess. We can say I can't extract without the digits; if you provide first 7 digits etc. But perhaps Romanian CNP format: S AA LL ZZ ... Sex/century encoded by first digit S: 1 male 1900-1999, 2 female 1900-1999, 3 male 1800-1899, 4 female 1800-1899, 5 male 2000-2099, 6 female 2000-2099, 7 male resident? 8 female resident? 9 other. Date from digits 2-7 (AALLZZ), century from first. Need answer maybe using placeholder impossible. Since placeholder stands for CNP but we don't know digits, cannot compute exact date/sex. Provide method and ask for digits or first 7. Also note privacy: CNP is personal data; use only with consent/legitimate purpose. But user likely expects parsing. Since actual value hidden, safe to give general algorithm. Avoid claiming specific. Final in Romanian concise.",
+      "restored": "Nu pot extrage valorile exacte din 1800101420010 pentru că placeholder-ul nu îmi arată cifrele; nu am voie să ghicesc. Dar formatul CNP românesc se citește așa:\n\n- Prima cifră `S` = sex/secol: `1` masculin 1900–1999, `2` feminin 1900–1999, `3` masculin 1800–1899, `4` feminin 1800–1899, `5` masculin 2000–2099, `6` feminin 2000–2099; `7/8` de obicei pentru străini/rezidenți, `9` altă situație.\n- Următoarele 6 cifre sunt `AA LL ZZ` = an, lună, zi de naștere.\n- Exemplu: dacă 1800101420010 ar începe cu `2 85 04 17...`, rezultatul ar fi feminin, născută la 17 aprilie 1985.\n\nPentru 1800101420010 efectiv, trimite-mi primele 7 cifre sau confirmă că vrei doar explicația formatului. Folosește CNP-ul doar cu consimțământ sau temei legitim.",
+      "leaks": [],
+      "ms": 7725,
+      "redactReport": {
+        "countsByClass": {
+          "CNP": 1
+        },
+        "tokensUsed": [
+          "⟦CNP_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Din CNP-ul ⟦CNP_1⟧ află data nașterii și sexul persoanei.",
+      "restoreReport": {
+        "restored": 4,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

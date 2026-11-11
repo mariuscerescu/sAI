@@ -1,0 +1,16 @@
+{
+  "case": "D3",
+  "category": "D. Greek",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Tradu în limba greacă: «Ion Popescu lucrează la Acme Logistic și conduce Proiectul Orion.»",
+      "raw": "«Ο Ιόν Ποπέσκου εργάζεται στην Acme Logistic και διευθύνει το Έργο Orion.»",
+      "rawReasoning": "The user asks translate into Greek. Need produce translation. Need be careful proper nouns unchanged: Ion Popescu, Acme Logistic, Proiectul Orion -> Greek: Ιόν Ποπέσκου; Acme Logistic maybe \"Acme Logistic\" transliterated/ kept? \"εργάζεται στην Acme Logistic και διευθύνει/ηγείται το Έργο Orion\". Romanian \"conduce Proiectul Orion\" = leads the Orion Project. Greek natural: «Ο Ιον Ποπέσκου εργάζεται στην Acme Logistic και διευθύνει το Έργο Orion.» Need include article? Romanian lacks article but Greek needs. Accent/transliteration: Romanian Ion -> Greek «Ιόν» (Ion). Popescu -> «Ποπέσκου». Acme Logistic remains Latin as brand; or transliterate? Keep brand in Latin. \"Proiectul Orion\" -> «το έργο Orion» or «το Project Orion»? In Greek, project = έργο. If name is proper noun \"Proiectul Orion\" maybe translation: «το Έργο Orion». Sentence: «Ο Ιόν Ποπέσκου εργάζεται στην Acme Logistic και διευθύνει το Έργο Orion.» Or use \"προΐσταται του\"? Conduce = manages/leads. \"διευθύνει\" good. Concise answer only. Ensure Greek correct: \"στην Acme\" with brand starting vowel? Greek preposition σε + την = στην; for foreign company maybe \"στην Acme Logistic\" ok. Final just translation.",
+      "restored": "«Ο Ιόν Ποπέσκου εργάζεται στην Acme Logistic και διευθύνει το Έργο Orion.»",
+      "leaks": [],
+      "ms": 4250
+    }
+  ]
+}

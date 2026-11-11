@@ -1,0 +1,93 @@
+{
+  "case": "B4",
+  "category": "B. Raționament",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reține: Elena Vrabie e avocata firmei Nordic Agro, iar Andrei Lungu e auditorul Băncii Verde.",
+      "raw": "Am reținut: ⟦PERSON_1⟧ este avocata firmei ⟦COMPANY_1⟧, iar ⟦PERSON_2⟧ este auditorul Băncii Verde.",
+      "rawReasoning": "The user says in Romanian: Remember: ⟦PERSON_1⟧ is the lawyer of company ⟦COMPANY_1⟧, and ⟦PERSON_2⟧ is the auditor of Banca Verde. Need answer in Romanian concise, acknowledge. This is stored? No actual memory tool. Just acknowledge in conversation. Need maybe note placeholders preserved exactly. Final in Romanian.",
+      "restored": "Am reținut: Elena Vrabie este avocata firmei Nordic Agro, iar Andrei Lungu este auditorul Băncii Verde.",
+      "leaks": [],
+      "ms": 1462,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Reține: ⟦PERSON_1⟧ e avocata firmei ⟦COMPANY_1⟧, iar ⟦PERSON_2⟧ e auditorul Băncii Verde.",
+      "restoreReport": {
+        "restored": 6,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Cine e avocata firmei Nordic Agro?",
+      "raw": "Avocata firmei ⟦COMPANY_1⟧ este ⟦PERSON_1⟧.",
+      "rawReasoning": "The user asks simple recall from prior statement. Need answer using placeholder exactly. Need be concise in Romanian. We can say ⟦PERSON_1⟧. Ensure exact placeholder.",
+      "restored": "Avocata firmei Nordic Agro este Elena Vrabie.",
+      "leaks": [],
+      "ms": 1380,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 3
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Cine e avocata firmei ⟦COMPANY_1⟧?",
+      "restoreReport": {
+        "restored": 3,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Și cine verifică Banca Verde? Răspunde cu numele complet.",
+      "raw": "Nu pot determina din informațiile date. Știu doar că ⟦PERSON_2⟧ este auditorul Băncii Verde; nu am confirmat că ⟦COMPANY_2⟧ este Banca Verde și nici alt auditor pentru ⟦COMPANY_2⟧.",
+      "rawReasoning": "The user asks who verifies ⟦COMPANY_2⟧. I know PERSON_2 is auditor of Banca Verde. Is ⟦COMPANY_2⟧ Banca Verde? Not necessarily; placeholders distinct. Cannot guess. Need answer unknown / cannot determine from given info. We should not equate placeholders unless known. Need concise Romanian.",
+      "restored": "Nu pot determina din informațiile date. Știu doar că Andrei Lungu este auditorul Băncii Verde; nu am confirmat că Banca Verde este Banca Verde și nici alt auditor pentru Banca Verde.",
+      "leaks": [],
+      "ms": 2154,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5,
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Și cine verifică ⟦COMPANY_2⟧? Răspunde cu numele complet.",
+      "restoreReport": {
+        "restored": 5,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

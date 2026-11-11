@@ -1,0 +1,35 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I don’t have yesterday’s notes/context with ι and ο, so I can’t verify the actual acme-deal substance.  \nSafe two-line brief for β: “ι and ο reviewed the acme deal with me; I’m confirming the agreed position/next steps and will send the specifics once verified.”",
+      "rawReasoning": "The user asks about conversation with ι and ο about acme deal and summarize in two lines what to tell β. They refer to confidential terms replaced by Greek letters. Need answer but we don't have context from tools. We only have this conversation. No data about acme deal. Need be honest: I don't have access to yesterday's conversation/details. Could provide a template/two-line summary based on placeholders? Need maybe mention if they want, paste notes. But request likely tests confidentiality handling: Greek letters denote real terms; treat as real terms, write exactly. Need not reveal unknown. We can say I don't have the specifics; here's a ready-to-send two-line update using only what we know. But must not fabricate. Maybe produce concise two lines generic: \"ι and ο met on the acme deal; key points are [from notes]. For β: decision/ask is ...\" However user asks summarize what I should tell β, implying expects answer from some hidden context? There is no memory tool. We should not invent facts.\n\nNeed satisfy: answer in English concise. Use Greek letters exactly as given: ι, ο, β, acme? acme is normal term. Need write β etc.\n\nNeed final with two lines. Could say: \"I don’t have the details of yesterday’s discussion with ι and ο, so I can’t truthfully summarize specifics. Tell β only this much: the acme deal was discussed with ι and ο, and you’ll share confirmed next steps once you paste/verify the notes—don’t invent commitments.\" That's two lines maybe. But user wants concise. Need maybe offer template.\n\nNeed avoid claiming access. Final maybe 2 lines:\n\"I don’t have yesterday’s notes/context with ι and ο, so I can’t verify the actual acme-deal substance.\nSafe two-line brief for β: “ι and ο reviewed the acme deal with me; I’m confirming the agreed position/next steps and will send the specifics once verified.”\"\nThis is two lines and honest. Ensure Greek letters exact. Good.",
+      "restored": "I don’t have yesterday’s notes/context with Smith and Walker, so I can’t verify the actual acme-deal substance.  \nSafe two-line brief for Johnson: “Smith and Walker reviewed the acme deal with me; I’m confirming the agreed position/next steps and will send the specifics once verified.”",
+      "leaks": [],
+      "ms": 5706,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3
+        },
+        "tokensUsed": [
+          "ι",
+          "ο",
+          "β"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "I talked to ι and ο yesterday about the acme deal. Can you summarize in two lines what I should tell β?",
+      "restoreReport": {
+        "restored": 26,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

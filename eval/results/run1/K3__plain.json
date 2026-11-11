@@ -1,0 +1,16 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguitate",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ieri am fost la cinematograful Orion, dar mă gândeam doar la Proiectul Orion. Unde am fost și la ce mă gândeam?",
+      "raw": "Ai fost la **cinematograful Orion**, dar te gândeai la **Proiectul Orion** — conceptul de navă spațială cu propulsie prin explozii nucleare, nu la cinema.",
+      "rawReasoning": "The user asks in Romanian: Yesterday I was at cinema Orion, but thinking only of Project Orion. Where was I and what was I thinking? Need answer concise. Need understand likely ambiguity: cinematograful Orion vs Proiectul Orion (nuclear propulsion project?) They ask where and what thinking. Need answer: ai fost la cinematograf (Orion), dar te gândeai la Proiectul Orion, probabil proiectul științific/istoric de propulsie nucleară / sau proiectul spațial? Need infer.\n\nLet's parse Romanian wording: \"Ieri am fost la cinematograful Orion, dar mă gândeam doar la Proiectul Orion. Unde am fost și la ce mă gândeam?\" This seems a trick to distinguish omonime: cinema named Orion vs Project Orion. Need answer in Romanian. Project Orion could refer to:\n- Project Orion (nuclear propulsion) proposed 1950s/60s spacecraft propelled by nuclear bombs.\n- Operation Orion? The \"Proiectul Orion\" in Romanian often refers to \"Project Orion\" nuclear-pulse propulsion concept. Also there is \"Proiectul Orion\" maybe a NASA? Let's recall: \"Proiectul Orion\" in Romanian likely \"Project Orion\", an interplanetary spacecraft project using nuclear explosions. There is also \"Orion project\" in the context of Romanian? Hmm.\n\nNeed answer where and what thinking. Could be: \"Ai fost la cinematograful Orion (un loc real), dar te gândeai la Proiectul Orion — conceptul de navă spațială cu propulsie nucleară/explozii nucleare, nu la film.\" Need maybe mention constellation? Project Orion might be associated with \"proiectul de colonizare a spațiului\". Let's be concise.\n\nNeed ensure not overclaim if ambiguous: \"Dacă te referi la celebrul Proiectul Orion, era vorba de proiectul de propulsie nucleară a navelor spațiale (detonări nucleare), nu de sala de cinema.\" Since user likely expects that. Answer: fost la cinema Orion; gândeai la Proiectul Orion, conceptul/studia navelor spațiale propulsate prin explozii nucleare. If by Proiectul Orion you mean something else, clarify. Need concise. Use Romanian diacritics correctly. No need tools.",
+      "restored": "Ai fost la **cinematograful Orion**, dar te gândeai la **Proiectul Orion** — conceptul de navă spațială cu propulsie prin explozii nucleare, nu la cinema.",
+      "leaks": [],
+      "ms": 6809
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "case": "B1",
+  "category": "B. Raționament",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Organigrama: Ion Popescu conduce Acme. Maria Ceban raportează lui Popescu. Andrei Lungu și Elena Vrabie raportează Cebanei. Victor Ciobanu raportează lui Lungu. Cine e la exact două niveluri sub Popescu? Desenează organigrama în text.",
+      "raw": "La exact două niveluri sub ⟦PERSON_1⟧ sunt: ⟦PERSON_3⟧ și ⟦PERSON_4⟧.\n\nOrganigramă:\n\n```text\n⟦PERSON_1⟧\n└── ⟦PERSON_2⟧\n    ├── ⟦PERSON_3⟧\n    │   └── ⟦PERSON_5⟧\n    └── ⟦PERSON_4⟧\n```",
+      "rawReasoning": "We need answer Romanian. Need parse hierarchy:\nP1 leads company. P2 reports to P1 (level1 under P1). P3 and P4 report P2 (level2 under P1). P5 reports to P3 (level3 under P1). Exactly two levels below P1: P3 and P4. Need draw org chart in text. Need concise. Ensure placeholders exact. Maybe levels: ⟦PERSON_1⟧ -> ⟦PERSON_2⟧ -> (⟦PERSON_3⟧, ⟦PERSON_4⟧); ⟦PERSON_3⟧ -> ⟦PERSON_5⟧. Note wording \"⟦PERSON_3⟧ și ⟦PERSON_4⟧ raportează ⟦PERSON_2⟧\" missing \"lui\" but means report to P2. Answer.",
+      "restored": "La exact două niveluri sub Ion Popescu sunt: Andrei Lungu și Elena Vrabie.\n\nOrganigramă:\n\n```text\nIon Popescu\n└── Maria Ceban\n    ├── Andrei Lungu\n    │   └── Victor Ciobanu\n    └── Elena Vrabie\n```",
+      "leaks": [],
+      "ms": 3314,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 9,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦PERSON_4⟧",
+          "⟦PERSON_5⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Organigrama: ⟦PERSON_1⟧ conduce ⟦COMPANY_1⟧. ⟦PERSON_2⟧ raportează lui ⟦PERSON_1⟧. ⟦PERSON_3⟧ și ⟦PERSON_4⟧ raportează ⟦PERSON_2⟧. ⟦PERSON_5⟧ raportează lui ⟦PERSON_3⟧. Cine e la exact două niveluri sub ⟦PERSON_1⟧? Desenează organigrama în text.",
+      "restoreReport": {
+        "restored": 17,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

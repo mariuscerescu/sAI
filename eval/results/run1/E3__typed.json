@@ -1,0 +1,35 @@
+{
+  "case": "E3",
+  "category": "E. Cod",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un query SQL care selectează facturile clientului 'Nordic Agro SA' plătite în contul cu IBAN-ul MD24AG000225100013104168 după 1 ianuarie 2026.",
+      "raw": "Presupunând o schemă tipică `clienti` → `facturi` → `plati` → `conturi`, de exemplu:\n\n```sql\nSELECT f.*\nFROM facturi f\nJOIN clienti c ON c.id = f.client_id\nJOIN plati p ON p.factura_id = f.id\nJOIN conturi co ON co.id = p.cont_id\nWHERE c.nume = '⟦COMPANY_1⟧'\n  AND co.iban = '⟦IBAN_1⟧'\n  AND p.data_platii > DATE '2026-01-01';\n```\n\nAdaptează numele tabelelor/coloanelor la schema ta; pentru SQL Server folosește `'2026-01-02'` sau `p.data_platii > '20260101'`.",
+      "rawReasoning": "The user asks simple SQL query. Need infer schema? No schema given. Need write generic query with tables likely facturi, clienti, plati. We can provide example and note adapt columns. Must preserve placeholders exactly. Need answer in Romanian concise. Need maybe use date literal. Query selects invoices of customer '⟦COMPANY_1⟧' paid into account IBAN ⟦IBAN_1⟧ after Jan 1 2026. Need include joins: clients -> invoices -> payments -> bank_accounts. If schema unknown, state example for typical schema. Need ensure placeholders in strings exactly. IBAN likely numeric? Placeholder stands for value; in SQL string literal should be '⟦IBAN_1⟧' unless placeholder includes quotes? Use quoted string. Date > '2026-01-01' or >=? \"după 1 ianuarie 2026\" means after Jan 1, so > '2026-01-01' (strictly after). Or >= '2026-01-02'. Use >.\n\nNeed maybe no tool mention. Final only. Keep concise.",
+      "restored": "Presupunând o schemă tipică `clienti` → `facturi` → `plati` → `conturi`, de exemplu:\n\n```sql\nSELECT f.*\nFROM facturi f\nJOIN clienti c ON c.id = f.client_id\nJOIN plati p ON p.factura_id = f.id\nJOIN conturi co ON co.id = p.cont_id\nWHERE c.nume = 'Nordic Agro SA'\n  AND co.iban = 'MD24AG000225100013104168'\n  AND p.data_platii > DATE '2026-01-01';\n```\n\nAdaptează numele tabelelor/coloanelor la schema ta; pentru SQL Server folosește `'2026-01-02'` sau `p.data_platii > '20260101'`.",
+      "leaks": [],
+      "ms": 6620,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1,
+          "IBAN": 1
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦IBAN_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Scrie un query SQL care selectează facturile clientului '⟦COMPANY_1⟧' plătite în contul cu IBAN-ul ⟦IBAN_1⟧ după 1 ianuarie 2026.",
+      "restoreReport": {
+        "restored": 5,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

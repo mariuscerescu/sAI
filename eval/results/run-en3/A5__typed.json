@@ -1,0 +1,43 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "Tell ⟦PERSON_3⟧ you spoke with ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal and aligned on its current status and next steps.  \nNote that specific commitments or terms shouldn’t be treated as final until ⟦PERSON_3⟧ confirms the open points.",
+      "rawReasoning": "The user asks for summary in two lines. Need not know placeholders meaning. Need produce concise two lines. We have no actual content of talk. We can only provide template based on placeholders? Need not invent specifics. We should avoid fabricating details. We can summarize generic: told them about ⟦COMPANY_1⟧ deal; key points discussed and next steps/confirmation needed. Since no details provided, mention cannot invent specifics? But request likely expects use placeholders, answer with two lines. Need be helpful: \"Tell ⟦PERSON_3⟧ that you spoke with ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal and aligned on the current status/next steps. Ask ⟦PERSON_3⟧ to confirm any open items/decisions before proceeding.\" That's two lines. Ensure not claim unknown specifics. Use placeholders exactly.",
+      "restored": "Tell Johnson you spoke with Smith and Walker yesterday about the Acme deal and aligned on its current status and next steps.  \nNote that specific commitments or terms shouldn’t be treated as final until Johnson confirms the open points.",
+      "leaks": [],
+      "ms": 3590,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_3⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "I talked to ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal. Can you summarize in two lines what I should tell ⟦PERSON_3⟧?",
+      "restoreReport": {
+        "restored": 11,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

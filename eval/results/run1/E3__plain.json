@@ -1,0 +1,16 @@
+{
+  "case": "E3",
+  "category": "E. Cod",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un query SQL care selectează facturile clientului 'Nordic Agro SA' plătite în contul cu IBAN-ul MD24AG000225100013104168 după 1 ianuarie 2026.",
+      "raw": "Schema nu e dat, deci numele tabelelor/coloanelor sunt presupuneri; adaptează-le la DDL-ul real.\n\n```sql\nSELECT DISTINCT f.*\nFROM facturi f\nJOIN clienti c      ON c.id = f.client_id\nJOIN plati p        ON p.factura_id = f.id\nJOIN conturi_bancare co ON co.id = p.cont_id\nWHERE c.denumire = 'Nordic Agro SA'\n  AND co.iban = 'MD24AG000225100013104168'\n  AND p.data_plata > DATE '2026-01-01';\n```\n\nDacă „după 1 ianuarie 2026” include ziua de 1 ianuarie, folosește `p.data_plata >= DATE '2026-01-01'`.",
+      "rawReasoning": "The user asks in Romanian for SQL selecting invoices of client 'Nordic Agro SA' paid into account IBAN MD... after 2026-01-01. Need infer schema? No schema provided. Need write plausible query, note assumption. Respond in Romanian concise. Need be helpful. We can provide generic tables: clienti, facturi, plati, conturi. Select invoice fields join payments etc. Since exact schema unknown, state adapting names. Avoid fabricating too much? Provide template with common names. Include parameter maybe. Ensure date filter after Jan 1 2026. IBAN exact. Client name exact.\n\nNeed final only Romanian. Concise. Provide query and mention ajustează numele coloanelor. Use >= '2026-01-02' or > DATE '2026-01-01' depending semantics \"după 1 ianuarie\" means strictly after, so > '2026-01-01 00:00?' Better: p.data_plata > DATE '2026-01-01' or >= 2026-01-02. Use standard. Join: facturi f JOIN clienti c ON c.id=f.client_id JOIN plati p ON p.factura_id=f.id JOIN conturi co ON co.id=p.cont_id. WHERE c.denumire='Nordic Agro SA' AND co.iban='MD24AG000225100013104168' AND p.data_plata > DATE '2026-01-01'. Select distinct facturile. If payments can have multiple rows, select distinct f. from. Use SELECT DISTINCT f.*. Good.",
+      "restored": "Schema nu e dat, deci numele tabelelor/coloanelor sunt presupuneri; adaptează-le la DDL-ul real.\n\n```sql\nSELECT DISTINCT f.*\nFROM facturi f\nJOIN clienti c      ON c.id = f.client_id\nJOIN plati p        ON p.factura_id = f.id\nJOIN conturi_bancare co ON co.id = p.cont_id\nWHERE c.denumire = 'Nordic Agro SA'\n  AND co.iban = 'MD24AG000225100013104168'\n  AND p.data_plata > DATE '2026-01-01';\n```\n\nDacă „după 1 ianuarie 2026” include ziua de 1 ianuarie, folosește `p.data_plata >= DATE '2026-01-01'`.",
+      "leaks": [],
+      "ms": 5264
+    }
+  ]
+}

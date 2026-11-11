@@ -1,0 +1,62 @@
+{
+  "case": "C1",
+  "category": "C. Volum",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Mai jos este lista angajaților. Pentru fiecare departament, spune cine câștigă cel mai mult și cât.\n\n1. Adrian Bostan — Vânzări — 18.000 lei\n2. Lilia Caraman — IT — 21.779 lei\n3. Sergiu Rotaru — Contabilitate — 25.558 lei\n4. Natalia Banari — Logistică — 29.337 lei\n5. Vadim Enache — Juridic — 33.116 lei\n6. Corina Paduraru — Vânzări — 36.895 lei\n7. Dorin Diaconu — IT — 19.674 lei\n8. Tatiana Popovici — Contabilitate — 23.453 lei\n9. Grigore Bejan — Logistică — 27.232 lei\n10. Ludmila Postica — Juridic — 31.011 lei\n11. Pavel Balan — Vânzări — 34.790 lei\n12. Olga Creanga — IT — 38.569 lei\n13. Igor Oprea — Contabilitate — 21.348 lei\n14. Svetlana Toma — Logistică — 25.127 lei\n15. Marin Petrescu — Juridic — 28.906 lei\n16. Doina Spinu — Vânzări — 32.685 lei\n17. Viorel Nistor — IT — 36.464 lei\n18. Rodica Arnaut — Contabilitate — 19.243 lei\n19. Eugen Ciorba — Logistică — 23.022 lei\n20. Nadejda Nedelcu — Juridic — 26.801 lei\n21. Oleg Tanase — Vânzări — 30.580 lei\n22. Larisa Neagu — IT — 34.359 lei\n23. Tudor Jardan — Contabilitate — 38.138 lei\n24. Stela Mocanu — Logistică — 20.917 lei\n25. Valeriu Andronic — Juridic — 24.696 lei\n26. Mihaela Cimpoi — Vânzări — 28.475 lei\n27. Iurie Manole — IT — 32.254 lei\n28. Veronica Stanciu — Contabilitate — 36.033 lei\n29. Artur Lupascu — Logistică — 18.812 lei\n30. Cristina Turcanu — Juridic — 22.591 lei",
+      "raw": "Pe departamente, cei mai mari câștigători sunt:\n\n- Vânzări — γ — 36.895 lei\n- IT — π — 38.569 lei\n- Contabilitate — ζ — 38.138 lei\n- Logistică — ο — 29.337 lei\n- Juridic — δ — 33.116 lei",
+      "rawReasoning": "We need answer Romanian. Need compute max salary by department from list. Need be careful parsing. Confidential terms replaced by Greek letters; must write letter exactly as given. We can refer to employees by letters. Need compute max per department and amount.\n\nLet's list entries by department:\nVânzări: 1 σ 18.000; 6 γ 36.895; 11 ξ 34.790; 16 χ 32.685; 21 ψ 30.580; 26 υ₂ 28.475. Max = γ 36.895? Compare ξ 34.790, χ 32.685, ψ 30.580, υ₂ 28.475, σ 18.000. yes γ 36.895.\nIT: 2 υ 21.779; 7 ε 19.674; 12 π 38.569; 17 ω 36.464; 22 φ 34.359; 27 ν₂ 32.254. Max = π 38.569 (vs ω 36.464). yes.\nContabilitate: 3 ν 25.558; 8 τ 23.453; 13 κ 21.348; 18 ρ 19.243; 23 ζ 38.138; 28 ο₂ 36.033. Max = ζ 38.138 (vs ο₂ 36.033). yes.\nLogistică: 4 ο 29.337; 9 λ 27.232; 14 ι 25.127; 19 μ 23.022; 24 η 20.917; 29 δ₂ 18.812. Max = ο 29.337. yes.\nJuridic: 5 δ 33.116; 10 β 31.011; 15 θ 28.906; 20 α 26.801; 25 σ₂ 24.696; 30 γ₂ 22.591. Max = δ 33.116. yes.\nNeed answer concise in Romanian. Mention maybe \"Pe departamente:\". Ensure use Greek letters exactly: σ, υ, ν, ο, δ, γ, ε, τ, λ, β, ξ, π, κ, ι, θ, χ, ω, ρ, μ, α, ψ, φ, ζ, η, σ₂, υ₂, ν₂, ο₂, δ₂, γ₂. Use subscript unicode ₂ as given. Amount formatting with dot thousands as given. No extra unrelated.",
+      "restored": "Pe departamente, cei mai mari câștigători sunt:\n\n- Vânzări — Corina Paduraru — 36.895 lei\n- IT — Olga Creanga — 38.569 lei\n- Contabilitate — Tudor Jardan — 38.138 lei\n- Logistică — Natalia Banari — 29.337 lei\n- Juridic — Vadim Enache — 33.116 lei",
+      "leaks": [],
+      "ms": 4012,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 30
+        },
+        "tokensUsed": [
+          "σ",
+          "υ",
+          "ν",
+          "ο",
+          "δ",
+          "γ",
+          "ε",
+          "τ",
+          "λ",
+          "β",
+          "ξ",
+          "π",
+          "κ",
+          "ι",
+          "θ",
+          "χ",
+          "ω",
+          "ρ",
+          "μ",
+          "α",
+          "ψ",
+          "φ",
+          "ζ",
+          "η",
+          "σ₂",
+          "υ₂",
+          "ν₂",
+          "ο₂",
+          "δ₂",
+          "γ₂"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Mai jos este lista angajaților. Pentru fiecare departament, spune cine câștigă cel mai mult și cât.\n\n1. σ — Vânzări — 18.000 lei\n2. υ — IT — 21.779 lei\n3. ν — Contabilitate — 25.558 lei\n4. ο — Logistică — 29.337 lei\n5. δ — Juridic — 33.116 lei\n6. γ — Vânzări — 36.895 lei\n7. ε — IT — 19.674 lei\n8. τ — Contabilitate — 23.453 lei\n9. λ — Logistică — 27.232 lei\n10. β — Juridic — 31.011 lei\n11. ξ — Vânzări — 34.790 lei\n12. π — IT — 38.569 lei\n13. κ — Contabilitate — 21.348 lei\n14. ι — Logistică — 25.127 lei\n15. θ — Juridic — 28.906 lei\n16. χ — Vânzări — 32.685 lei\n17. ω — IT — 36.464 lei\n18. ρ — Contabilitate — 19.243 lei\n19. μ — Logistică — 23.022 lei\n20. α — Juridic — 26.801 lei\n21. ψ — Vânzări — 30.580 lei\n22. φ — IT — 34.359 lei\n23. ζ — Contabilitate — 38.138 lei\n24. η — Logistică — 20.917 lei\n25. σ₂ — Juridic — 24.696 lei\n26. υ₂ — Vânzări — 28.475 lei\n27. ν₂ — IT — 32.254 lei\n28. ο₂ — Contabilitate — 36.033 lei\n29. δ₂ — Logistică — 18.812 lei\n30. γ₂ — Juridic — 22.591 lei",
+      "restoreReport": {
+        "restored": 78,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

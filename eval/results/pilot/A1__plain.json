@@ -1,0 +1,16 @@
+{
+  "case": "A1",
+  "category": "A. Bază",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un e-mail scurt și politicos către dl. Popescu de la Acme, în care îi confirmi întâlnirea de joi pentru Proiectul Orion.",
+      "raw": "Subiect: Confirmare întâlnire – Proiectul Orion\n\nStimate domnule Popescu,\n\nVă confirm întâlnirea de joi privind Proiectul Orion. Sunt disponibil(ă) conform celor stabilite și vă rog să-mi semnalați dacă mai sunt detalii de actualizat înainte de întâlnire.\n\nVă mulțumesc și vă aștept cu interes.\n\nCu stimă,  \n[Numele tău]",
+      "rawReasoning": "The user asks in Romanian for a short, polite email to Mr. Popescu at Acme confirming Thursday meeting for Project Orion. Need answer in Romanian. Need draft email. No need extra details? Use placeholders for time/date maybe. Since request: \"Scrie un e-mail scurt și politicos către dl. Popescu de la Acme, în care îi confirmi întâlnirea de joi pentru Proiectul Orion.\" Need produce concise email. Ensure polite. Could include subject and body. Avoid inventing exact time/location; use placeholders or generic. Maybe: \"Stimate domnule Popescu, Confirmare... Vă mulțumesc... Cu stimă,\". Need concise. Include optional [ora], [loc]. Since they may want ready-to-send, use generic \"joi\" and placeholders minimally. Better: \"Vă confirm întâlnirea de joi, [data], ora [ora], privind Proiectul Orion.\" This is usable with fill-ins. Or if no date known, keep \"întâlnirea de joi\". Short email: subject, greeting, confirm, ask if needed adjustments, sign-off. Need in Romanian. final only email.",
+      "restored": "Subiect: Confirmare întâlnire – Proiectul Orion\n\nStimate domnule Popescu,\n\nVă confirm întâlnirea de joi privind Proiectul Orion. Sunt disponibil(ă) conform celor stabilite și vă rog să-mi semnalați dacă mai sunt detalii de actualizat înainte de întâlnire.\n\nVă mulțumesc și vă aștept cu interes.\n\nCu stimă,  \n[Numele tău]",
+      "leaks": [],
+      "ms": 4936
+    }
+  ]
+}

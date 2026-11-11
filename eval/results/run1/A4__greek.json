@@ -1,0 +1,53 @@
+{
+  "case": "A4",
+  "category": "A. Bază",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Pune la genitiv și la dativ numele: Ion Popescu, Maria Ceban, Acme Logistic. Dă exemple de propoziții.",
+      "raw": "Cum numele reale sunt înlocuite cu litere, forma sigură este neschimbată + **lui**:\n\n- **Genitiv:** al/a/ai/ale **lui λ**, **lui κ**, **lui ζ**  \n  Ex.: „Lucrările **lui λ** au fost acceptate.” / „Importanța **lui κ** e evidentă.” / „Rolul **lui ζ** rămâne central.”\n\n- **Dativ:** **lui λ**, **lui κ**, **lui ζ**  \n  Ex.: „I-am predat raportul **lui λ**.” / „Spune-i **lui κ** rezultatul.” / „Dă-i **lui ζ** documentul.”\n\nDacă le tratezi ca nume comune românești feminine („litera lambda/kappa/zeta”), gen./dat. sg. articulat ar fi aproximativ: **lambdei**, **kappei**, **zetei** — ex.: „forma **lambdei**”, „pronunția **zetei**”.",
+      "rawReasoning": "The user asks in Romanian: Put at genitive and dative the names λ, κ, ζ. Need answer in Romanian concise. Need infer these are confidential terms replaced by Greek letters. Need treat each letter as real term it stands for, but we don't know. Need decline? Actually asks grammar inflection of names λ, κ, ζ. We can treat letters as proper names? Need provide genitive/dative forms. In Romanian, Greek letters used as names? Names ending in consonant? Let's think.\n\nRomanian nouns/names: λ (lambda), κ (kappa), ζ (zeta) are names of Greek letters. As proper nouns? User likely wants declension of the names (the letter names?) \"numele: λ, κ, ζ\" means put genitive/dative the names: lambda, kappa, zeta. Need decline Romanianized names? Could be \"lambda\", \"kappa\", \"zeta\" masculine? Romanian grammar: proper names of letters? \n\nNeed produce forms. In Romanian, common nouns ending in -a (feminine) have genitive/dative singular -ei (lambda -> lambdei? kappa -> kappei? zeta -> zetei?) But spelling? If written as Greek letters λ, κ, ζ indeclinable? Proper names foreign? Let's reason.\n\nRomanian declining feminine nouns ending -a: norma -> normei; planeta -> planetei (eta?); \"zeta\" -> \"zetei\" (zeta is feminine? Litera zeta). \"lambda\" -> \"lambdei\"? Romanian phonetics: lambda (final a preceded by d? actually \"lambda\" ends with \"da\": lam-bda? Pronounced lambda [ˈlambda], genitive \"lambdei\"? For nouns ending in -da (e.g., \"roada\" -> roadei, \"carte?\" no), feminine -a preceded by consonant becomes -ei: \"strada\" -> străzii (exceptions), \"lampa\" -> lampei, \"kappa\"? There is no Romanian common noun.\n\nIf names are single Greek glyphs, genitive/dative article attached? Romanian proper names indeclinable if foreign and not adapted? For masculine surnames ending consonant: \"lui λ\", \"lui κ\", \"lui ζ\"? For names denoting letters, common noun \"litera\" feminine; use \"al lambdei\"? \n\nNeed be careful: Since letters stand for confidential terms, cannot reveal; but can still use letters. Maybe answer: dacă sunt nume proprii străine/neadaptate, rămân neschimbate: genitiv/dativ \"lui λ\", \"lui κ\", \"lui ζ\". If articulated as common nouns adapted in Romanian: feminine \"litera λ\": genitiv/dativ \"literii λ\"? Hmm not the name itself.\n\nNeed answer likely in Romanian school grammar. They ask \"Pune la genitiv și la dativ numele: λ, κ, ζ. Dă exemple de propoziții.\" Could mean names are Greek letters? Romanian: \"numele\" can mean proper names. Names represented by Greek letters due redaction. Need decline them. We can say since the actual names are withheld and replaced by symbols, treat them as indeclinable/foreign? But we can provide with \"lui\" for genitive/dative (proper names masculine?) \n\nNeed not invent grammar of hidden terms. Safest: In Romanian, foreign proper names not adapted are unchanged and take \"lui\" (genitive/dative) when articled: \"lui λ\", \"lui κ\", \"lui ζ\" (for masculine nuclei; for feminine maybe \"alʹ?\"). But if the redacted terms are not masculine? Not known.\n\nCould present general rule and examples that avoid gender assumption by using constructions with \"lui\"? Examples: \"Îi aparține lui λ ...\" Hmm.\n\nNeed answer useful. Romanian genitive/dative can be expressed with prepositions: \"a\" for genitive relation and \"la/către\" for dative, avoiding declension. For unknown proper names, use \"lui\" + name (common for male names and many foreign names) regardless? Romanian uses \"lui\" before masculine names, \"lui\" also for feminine foreign? Actually genitive/dative of proper names: \"lui Ion\", \"lui Maria\" (masculine); feminine native \"Mariei\". Foreign feminine names often \"lui Carmen\" or \"lui Vanessa\". So \"lui λ\" etc viable.\n\nNeed mention if treated as litera names (lambda/kappa/zeta, feminine common nouns): genitive/dative singular articulated: \"(al/a/ai/ale) lambdei/kappei/zetei\", \"lambdei/kappei/zetei\". But \"kappa\" genitive? Romanian ending -a after pp? \"lampa\" -> lampei, \"kappa\" -> kappei? \"zeta\" -> zetei. \"lambda\": stem? nominative lambda, genitive \"lambdei\"? In Romanian, final -a drops to -e- and add -i: lambda + ei = lambdei (one i? nouns ending -da: \"roada\" -> \"roadei\"; lambda ends -bda, pronounce [b-da], should be \"lambdei\"). But kappa ends -pa -> \"kappei\" (with double pp?) \"ropa\"? Let's use simplified: \"lambdei\", \"kappei\", \"zetei\". Need not overcommit? Maybe say \"Dacă le tratezi ca nume comune românești (femin.): gen./dat. sg. articulat: lambdei, kappei, zetei\".\n\nExamples with hidden terms: Need include letters exactly. Examples:\n- \"Am comparat rezultatele lui λ cu cele ale lui κ.\" (genitiv-ish with lui)\n- \"I-am trimis lui λ documentul.\" \nBut user asks genitive and dative for the names themselves. If use \"lui λ\" maybe too broad.\n\nNeed formulate: \"Cum termenii reali sunt înlocuiți cu litere, forma normală e neschimbată, cu articolul genitival/datival «lui» în față: Gen.: «al/a/ai/ale lui λ/κ/ζ»; Dat.: «lui λ/κ/ζ». Ex.: «Lucrările lui λ au fost acceptate.» / «I-am predat raportul lui κ.» / «Alegerea lui ζ depinde de context.» \n\nDacă trebuiau declinate ca nume comune românești (litera lambda/kappa/zeta, feminine): Gen./Dat. sg.: «lambdei», «kappei», «zetei»; pl.: «lambdelor», «kappelor», «zetelor» (?)\" Need plural genitive ending -lor: lambda plural lambde? Romanian plural of lambda as letter name: \"lambda\" plural \"lambda\" maybe \"lambde\"? Common noun \"litera\" rarely plural. \"zetelor\" sounds odd. Avoid plural.\n\nBut capitalization? Use λ etc.\n\nNeed concise. Final in Romanian. Also note not translate letters. Good.",
+      "restored": "Cum numele reale sunt înlocuite cu litere, forma sigură este neschimbată + **lui**:\n\n- **Genitiv:** al/a/ai/ale **lui Ion Popescu**, **lui Maria Ceban**, **lui Acme Logistic**  \n  Ex.: „Lucrările **lui Ion Popescu** au fost acceptate.” / „Importanța **lui Maria Ceban** e evidentă.” / „Rolul **lui Acme Logistic** rămâne central.”\n\n- **Dativ:** **lui Ion Popescu**, **lui Maria Ceban**, **lui Acme Logistic**  \n  Ex.: „I-am predat raportul **lui Ion Popescu**.” / „Spune-i **lui Maria Ceban** rezultatul.” / „Dă-i **lui Acme Logistic** documentul.”\n\nDacă le tratezi ca nume comune românești feminine („litera lambda/kappa/zeta”), gen./dat. sg. articulat ar fi aproximativ: **lambdei**, **kappei**, **zetei** — ex.: „forma **lambdei**”, „pronunția **zetei**”.",
+      "leaks": [],
+      "ms": 19507,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "λ",
+          "κ",
+          "ζ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Pune la genitiv și la dativ numele: λ, κ, ζ. Dă exemple de propoziții.",
+      "restoreReport": {
+        "restored": 57,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "λ",
+          "κ",
+          "λ",
+          "κ",
+          "λ",
+          "κ",
+          "ζ",
+          "λ",
+          "κ",
+          "ζ",
+          "λ",
+          "κ",
+          "ζ",
+          "λ",
+          "κ",
+          "ζ"
+        ]
+      }
+    }
+  ]
+}

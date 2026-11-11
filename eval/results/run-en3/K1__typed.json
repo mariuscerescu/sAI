@@ -1,0 +1,43 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "Assuming “her brother” refers to ⟦PERSON_2⟧: ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧, and ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧.",
+      "rawReasoning": "The user is asking a question containing placeholders. We need answer based solely on text. Need parse: \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Where does each sibling work?\"\nWe need identify siblings: ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister. \"her brother\"—which brother? Could refer to ⟦PERSON_1⟧'s brother. Need infer maybe ⟦PERSON_2⟧? Let's parse carefully.\n\nSentence: \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Where does each sibling work?\"\nIt says ⟦PERSON_1⟧, who is ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. \"her brother\" likely refers to ⟦PERSON_2⟧? Wait if ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, then ⟦PERSON_2⟧ could be male or female; \"her brother\" = ⟦PERSON_1⟧'s brother. Is ⟦PERSON_2⟧ the brother? Not necessarily: ⟦PERSON_1⟧'s brother could be ⟦PERSON_2⟧ if ⟦PERSON_2⟧ is male, but ⟦PERSON_2⟧'s gender unknown. The phrasing apposition: \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧.\" If ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, then ⟦PERSON_2⟧ is sibling of ⟦PERSON_1⟧. \"her brother\" probably refers to ⟦PERSON_2⟧ (i.e., ⟦PERSON_2⟧ is brother of ⟦PERSON_1⟧). But the question asks \"Where does each sibling work?\" It might expect: ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧; ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧. Need mention if \"her brother\" refers to ⟦PERSON_2⟧. However is there ambiguity? Let's examine pronouns.\n\n\"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧.\" Subject: ⟦PERSON_1⟧. Appositive: ⟦PERSON_2⟧'s sister. Predicate: works at COMPANY_1, and her brother works at COMPANY_2. \"her\" = ⟦PERSON_1⟧. \"her brother\" = ⟦PERSON_1⟧'s brother. We know ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, i.e., ⟦PERSON_2⟧ shares parents with ⟦PERSON_1⟧. If ⟦PERSON_2⟧ is male, he could be the brother. But gender not specified; name placeholder doesn't reveal. The question wording: \"Where does each sibling work?\" It implies two siblings mentioned: ⟦PERSON_1⟧ and ⟦PERSON_2⟧? It asks each sibling. likely expects mapping from given: ⟦PERSON_1⟧ -> ⟦COMPANY_1⟧, her brother (⟦PERSON_2⟧?) -> ⟦COMPANY_2⟧.\n\nBut let's not over-assume. We can answer with minimal inference and note assumption: ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧; the brother referred to works at ⟦COMPANY_2⟧. If \"her brother\" is ⟦PERSON_2⟧ (as the question suggests), then ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧. But logically, the text doesn't explicitly name the brother; it only says ⟦PERSON_2⟧ is sibling. Since ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, ⟦PERSON_2⟧ is a sibling. Is ⟦PERSON_2⟧ necessarily the brother? If there are exactly two siblings in context, yes. But the sentence doesn't explicitly say ⟦PERSON_2⟧ is her brother; could be another sibling, and ⟦PERSON_2⟧ could be a sister too. Wait: \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister\" means ⟦PERSON_1⟧ is the sister of ⟦PERSON_2⟧. That makes ⟦PERSON_2⟧ the sibling of ⟦PERSON_1⟧. The phrase \"her brother\" in second clause must refer to a brother of ⟦PERSON_1⟧. The most salient male sibling is ⟦PERSON_2⟧ if ⟦PERSON_2⟧ is male. Is ⟦PERSON_2⟧ male? Not given. But question likely constructed to test coreference: \"her brother\" refers to ⟦PERSON_2⟧? Let's infer from phrase structure: It introduces ⟦PERSON_1⟧ as ⟦PERSON_2⟧'s sister. It asks where each sibling works. There are two siblings: ⟦PERSON_1⟧ and ⟦PERSON_2⟧. It states ⟦PERSON_1⟧ works at COMPANY_1 and her brother works at COMPANY_2. Therefore ⟦PERSON_2⟧ (the brother) works at COMPANY_2. However, strictly, \"her brother\" could be someone else not named, and then ⟦PERSON_2⟧'s workplace unknown unless ⟦PERSON_2⟧ is that brother. The question phrasing \"each sibling\" indicates they want that link.\n\nNeed answer concise. Use placeholders exactly. Avoid saying cannot determine? Let's include a caveat in one sentence: \"Assuming 'her brother' refers to ⟦PERSON_2⟧: ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧ and ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧.\" That is robust and notes ambiguity. The user asks directly; concise. Final with placeholders exactly. Ensure brackets exactly ⟦PERSON_1⟧ etc.",
+      "restored": "Assuming “her brother” refers to John Smith: Mary Smith works at Nordic Farms, and John Smith works at Acme.",
+      "leaks": [],
+      "ms": 9635,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Where does each sibling work?",
+      "restoreReport": {
+        "restored": 104,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

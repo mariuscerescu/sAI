@@ -1,0 +1,37 @@
+{
+  "system": "You are a helpful assistant. Answer in English, concisely, unless asked otherwise.",
+  "vocabulary": [
+    { "id": "p_john", "class": "PERSON", "terms": ["John Smith"] },
+    { "id": "p_mary", "class": "PERSON", "terms": ["Mary Johnson"] },
+    { "id": "p_emily", "class": "PERSON", "terms": ["Emily Clark"] },
+    { "id": "p_david", "class": "PERSON", "terms": ["David Walker"] },
+    { "id": "c_acme", "class": "COMPANY", "terms": ["Acme Logistics Inc."] },
+    { "id": "c_nordic", "class": "COMPANY", "terms": ["Nordic Farms Ltd"] },
+    { "id": "c_bank", "class": "COMPANY", "terms": ["Greenfield Bank plc", "GB"] },
+    { "id": "prj_orion", "class": "PROJECT", "terms": ["Project Orion"] },
+    { "id": "addr_flower", "class": "ADDRESS", "terms": ["12 Flower Street"] },
+    { "id": "prod_x9", "class": "PRODUCT", "terms": ["ThermoGuard X9"] }
+  ],
+  "cases": [
+    { "id": "A1", "category": "A. Basics", "turns": ["Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion."] },
+    { "id": "A2", "category": "A. Basics", "turns": ["John Smith and Mary Johnson work at Acme Logistics. Smith is the director, Johnson is the accountant. Who signs the invoices, in your opinion? Answer using their names."] },
+    { "id": "A3", "category": "A. Basics", "turns": ["Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»"] },
+    { "id": "A4", "category": "A. Basics", "turns": ["Write the possessive and the plural forms of: John Smith, Mary Johnson, Acme Logistics. Give an example sentence for each."] },
+    { "id": "A5", "category": "A. Basics", "turns": ["I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?"] },
+    { "id": "B1", "category": "B. Reasoning", "turns": ["Org chart: John Smith runs Acme. Mary Johnson reports to Smith. David Walker and Emily Clark report to Johnson. Victor Hale reports to Walker. Who is exactly two levels below Smith? Draw the org chart as text."] },
+    { "id": "B2", "category": "B. Reasoning", "turns": ["Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step."] },
+    { "id": "B3", "category": "B. Reasoning", "turns": ["Smith lent Johnson $5,000, Johnson gave Walker $2,000, and Walker paid Smith back $1,500. Who owes whom, and how much, at the end? Make a table."] },
+    { "id": "B4", "category": "B. Reasoning", "turns": ["Remember: Emily Clark is Nordic Farms' lawyer, and David Walker is Greenfield Bank's auditor.", "Who is Nordic Farms' lawyer?", "And who audits Greenfield Bank? Answer with the full name."] },
+    { "id": "F1", "category": "F. Impossible", "turns": ["What are the initials of John Smith, Mary Johnson and Nordic Farms?"] },
+    { "id": "F2", "category": "F. Impossible", "turns": ["How many letters are in the name Acme Logistics Inc., without spaces and punctuation?"] },
+    { "id": "F3", "category": "F. Impossible", "turns": ["Is the SSN 123-45-6789 valid, and which state issued it?"] },
+    { "id": "F4", "category": "F. Impossible", "turns": ["Create a corporate email address for Emily Clark at Nordic Farms, in the format firstname.lastname@company.com, all lowercase."] },
+    { "id": "F5", "category": "F. Impossible", "turns": ["John Smith and Mary Johnson are coming to the meeting tomorrow. Write one sentence about each, using the correct pronouns (he/she)."] },
+    { "id": "F6", "category": "F. Impossible", "turns": ["Is the IBAN GB82 WEST 1234 5698 7654 32 valid? Check the check digits."] },
+    { "id": "H1", "category": "H. Identifiers", "turns": ["Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type."] },
+    { "id": "K1", "category": "K. Ambiguity", "turns": ["Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?"] },
+    { "id": "K2", "category": "K. Ambiguity", "turns": ["Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?"] },
+    { "id": "K3", "category": "K. Ambiguity", "turns": ["Yesterday I went to the Orion cinema, but I was only thinking about Project Orion. Where did I go, and what was I thinking about?"] },
+    { "id": "K5", "category": "K. Ambiguity", "turns": ["GB approved the loan for Acme. GB stands for Greenfield Bank. Separately, in code, the variable gb_total holds the amount. What did GB approve?"] }
+  ]
+}

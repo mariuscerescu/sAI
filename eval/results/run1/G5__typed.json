@@ -1,0 +1,37 @@
+{
+  "case": "G5",
+  "category": "G. Format",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rescrie propoziția punând fiecare nume de persoană între ghilimele și cu bold în Markdown: «Ion Popescu, Maria Ceban și Elena Vrabie au semnat contractul cu Acme.»",
+      "raw": "**\"⟦PERSON_1⟧\"**, **\"⟦PERSON_2⟧\"** și **\"⟦PERSON_3⟧\"** au semnat contractul cu ⟦COMPANY_1⟧.",
+      "rawReasoning": "The user wants rewrite sentence, each person name in quotes and bold markdown. Need preserve placeholders exactly. Persons: ⟦PERSON_1⟧, ⟦PERSON_2⟧, ⟦PERSON_3⟧. Company not person, no bold. Need output Romanian concise. Format: \"**⟦PERSON_1⟧**\"? They asked putting each name between quotes and bold in Markdown. Could be **\"⟦PERSON_1⟧\"** or \"**⟦PERSON_1⟧**\". \"între ghilimele și cu bold\" likely names appear as **\"⟦PERSON_1⟧\"**. Need ensure quotes and bold. Sentence: **\"⟦PERSON_1⟧\"**, **\"⟦PERSON_2⟧\"** și **\"⟦PERSON_3⟧\"** au semnat contractul cu ⟦COMPANY_1⟧. That puts quotes inside bold. Alternative **\"** no. Better: **\"⟦PERSON_1⟧\"** etc. Final only sentence.",
+      "restored": "**\"Ion Popescu\"**, **\"Maria Ceban\"** și **\"Elena Vrabie\"** au semnat contractul cu Acme.",
+      "leaks": [],
+      "ms": 3026,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Rescrie propoziția punând fiecare nume de persoană între ghilimele și cu bold în Markdown: «⟦PERSON_1⟧, ⟦PERSON_2⟧ și ⟦PERSON_3⟧ au semnat contractul cu ⟦COMPANY_1⟧.»",
+      "restoreReport": {
+        "restored": 16,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

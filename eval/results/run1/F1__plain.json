@@ -1,0 +1,16 @@
+{
+  "case": "F1",
+  "category": "F. Imposibil",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Care sunt inițialele lui Ion Popescu, ale Mariei Ceban și ale firmei Nordic Agro?",
+      "raw": "Ion Popescu — **I.P.**  \nMaria Ceban — **M.C.**  \nNordic Agro — **N.A.**",
+      "rawReasoning": "The user asks in Romanian: \"Care sunt inițialele lui Ion Popescu, ale Mariei Ceban și ale firmei Nordic Agro?\" Need answer based on what? Likely initials: Ion Popescu = IP, Maria Ceban = MC, Nordic Agro = NA? Need consider whether firm initials use \"Nordic Agro\" initials N.A., perhaps \"NA\". Need be concise. But maybe this is a visual/contextual question? No image provided. Need answer logically.\n\nNeed ensure if asking initials of names: Ion Popescu -> I. P. (IP); Maria Ceban -> M. C. (MC); firma Nordic Agro -> N. A. (NA). Could mention if using capitals from first letters of the two words. Need answer in Romanian. Concise.",
+      "restored": "Ion Popescu — **I.P.**  \nMaria Ceban — **M.C.**  \nNordic Agro — **N.A.**",
+      "leaks": [],
+      "ms": 3117
+    }
+  ]
+}

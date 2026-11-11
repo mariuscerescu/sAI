@@ -1,0 +1,39 @@
+{
+  "case": "B1",
+  "category": "B. Raționament",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Organigrama: Ion Popescu conduce Acme. Maria Ceban raportează lui Popescu. Andrei Lungu și Elena Vrabie raportează Cebanei. Victor Ciobanu raportează lui Lungu. Cine e la exact două niveluri sub Popescu? Desenează organigrama în text.",
+      "raw": "La exact două niveluri sub ⟦PERSON_1⟧ sunt: ⟦PERSON_3⟧ și ⟦PERSON_4⟧.\n\n```text\n⟦COMPANY_1⟧\n└── ⟦PERSON_1⟧\n    └── ⟦PERSON_2⟧\n        ├── ⟦PERSON_3⟧\n        │   └── ⟦PERSON_5⟧\n        └── ⟦PERSON_4⟧\n```",
+      "rawReasoning": "We need answer in Romanian concise. Need solve. Org: PERSON_1 leads COMPANY_1. PERSON_2 reports to PERSON_1. PERSON_3 and PERSON_4 report PERSON_2 (probably lui PERSON_2). PERSON_5 reports to PERSON_3. Need who exactly two levels below PERSON_1. Levels: PERSON_1 level0. PERSON_2 level1. PERSON_3, PERSON_4 level2. PERSON_5 level3. So answer: ⟦PERSON_3⟧ și ⟦PERSON_4⟧. Draw org chart text. Need write placeholders exactly. Ensure use ⟦PERSON_3⟧ etc. No extra guessing. Provide simple indentation chart. Maybe mention COMPANY_1 top? Organigrama text:\n⟦COMPANY_1⟧\n└── ⟦PERSON_1⟧\n    └── ⟦PERSON_2⟧\n        ├── ⟦PERSON_3⟧\n        │   └── ⟦PERSON_5⟧\n        └── ⟦PERSON_4⟧\nNeed note exactly two levels below = ⟦PERSON_3⟧, ⟦PERSON_4⟧. Concise.",
+      "restored": "La exact două niveluri sub Ion Popescu sunt: Andrei Lungu și Elena Vrabie.\n\n```text\nAcme\n└── Ion Popescu\n    └── Maria Ceban\n        ├── Andrei Lungu\n        │   └── Victor Ciobanu\n        └── Elena Vrabie\n```",
+      "leaks": [],
+      "ms": 3099,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 9,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦PERSON_4⟧",
+          "⟦PERSON_5⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Organigrama: ⟦PERSON_1⟧ conduce ⟦COMPANY_1⟧. ⟦PERSON_2⟧ raportează lui ⟦PERSON_1⟧. ⟦PERSON_3⟧ și ⟦PERSON_4⟧ raportează ⟦PERSON_2⟧. ⟦PERSON_5⟧ raportează lui ⟦PERSON_3⟧. Cine e la exact două niveluri sub ⟦PERSON_1⟧? Desenează organigrama în text.",
+      "restoreReport": {
+        "restored": 20,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

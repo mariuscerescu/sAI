@@ -1,0 +1,41 @@
+{
+  "case": "E4",
+  "category": "E. Cod",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Generează un fișier YAML de configurare pentru Proiectul Orion, cu responsabil Elena Vrabie, telefon +373 79 555 123, sediu la str. Florilor 12 și produsul TermoGuard X9.",
+      "raw": "```yaml\n# Configurație pentru π\nservice: \"π\"\nresponsible: \"ρ\"\nphone: \"ψ\"\nheadquarters: \"υ\"\nproduct: \"κ\"\n```",
+      "rawReasoning": "The user is asking in Romanian: \"Generate a YAML configuration file for π, with responsible person ρ, phone ψ, headquarters at υ and product κ.\" Need answer concise in Romanian. They used isolated Greek letters as placeholders for confidential terms. Instruction: treat each letter as real term; whenever refer to it, write letter exactly as given, also inside code, file paths, and tool-call arguments. Do not translate/spell out letters, and do not use them with any other meaning.\n\nNeed produce YAML config file. We can use Greek letters as keys/values? Need be careful: \"pentru π\" likely service/project named π. Responsibility ρ, phone ψ, headquarters υ, product κ. We can generate YAML with placeholders values as the Greek letters exactly. Need not invent real values. Could make a generic config:\n\n# π configuration\nπ:\n  responsible: ρ\n  phone: ψ\n  headquarters: υ\n  product: κ\n\nBut YAML keys with Greek letters okay (unicode). Better maybe:\nproject: π\nowner: ρ\ncontact:\n  phone: ψ\nheadquarters: υ\nproduct: κ\n\nNeed mention save as e.g. π.yaml? They asked \"Generează un fișier YAML de configurare\". We can output code block only maybe with filename. If include code block file path e.g. `π.yaml`, must write letter exactly. Fine.\n\nNeed not add actual confidential data. Use letters exactly. Ensure not accidentally translate. Romanian concise. Final in Romanian. Could say: \"```yaml ... ```\". Need include valid YAML. Use quotes? Greek letters unquoted are valid plain scalars mostly. Key \"π\" is valid unicode plain scalar? YAML plain scalars can include unicode letters; colon separation okay. Use simple ASCII keys to avoid ambiguity, values Greek letters quoted to be safe. But instruction says write letter exactly as given; quotes don't alter. Do not use letters with other meaning. Fine.\n\nNeed answer concise.",
+      "restored": "```yaml\n# Configurație pentru Proiectul Orion\nservice: \"Proiectul Orion\"\nresponsible: \"Elena Vrabie\"\nphone: \"+373 79 555 123\"\nheadquarters: \"str. Florilor 12\"\nproduct: \"TermoGuard X9\"\n```",
+      "leaks": [],
+      "ms": 6003,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 1,
+          "PHONE": 1,
+          "ADDRESS": 1,
+          "PRODUCT": 1
+        },
+        "tokensUsed": [
+          "π",
+          "ρ",
+          "ψ",
+          "υ",
+          "κ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Generează un fișier YAML de configurare pentru π, cu responsabil ρ, telefon ψ, sediu la υ și produsul κ.",
+      "restoreReport": {
+        "restored": 31,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

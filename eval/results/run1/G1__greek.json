@@ -1,0 +1,39 @@
+{
+  "case": "G1",
+  "category": "G. Format",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Tradu în engleză, franceză și rusă: «Dl. Popescu de la Acme vă invită la prezentarea TermoGuard X9.»",
+      "raw": "- English: ζ from ω invites you to the presentation of π.\n- French: ζ de ω vous invite à la présentation de π.\n- Russian: ζ от ω приглашает вас на презентацию π.",
+      "rawReasoning": "We need answer user's translation. Need handle confidential terms replaced with Greek letters: ζ, ω, π. Instruction: treat each letter as real term it stands for. Whenever refer to it, write letter exactly as given, also inside code, file paths, tool-call args. Do not translate or spell out these letters, and do not use them with any other meaning.\n\nNeed translate Romanian sentence into English, French, Russian: «ζ de la ω vă invită la prezentarea π.» Need keep ζ, ω, π unchanged. Need infer grammatical agreement maybe. Romanian: ζ de la ω vă invită la prezentarea π. Means \"The ζ from ω invites you to the presentation of π\" maybe ζ is organization? Actually \"ζ de la ω\" = zeta from omega. \"vă invită la prezentarea π\" = invites you to presentation of pi. Need output translations preserving letters exactly.\n\nNeed be careful no translation of Greek letters. Use exact letters ζ, ω, π.\n\nEnglish: \"The ζ from ω invites you to the presentation of π.\" If ζ plural? Romanian \"ζ de la ω\" singular? \"vă invită\" could be plural/formal. Keep \"invites you\" okay. Could be \"ζ from ω invites you to the presentation of π.\" If no article? Romanian lacks article. Maybe \"ζ of ω invites you to the π presentation.\" Better literal: \"ζ from ω invites you to the presentation of π.\"\n\nFrench: \"ζ de ω vous invite à la présentation de π.\" Original uses \"de la ω\" (de la before feminine? ω maybe feminine? In Romanian de la ω = from ω). French could be \"ζ de ω vous invite à la présentation de π.\" If omega used as name maybe no article. Keep \"de la ω\"? French doesn't combine de la with Greek maybe \"ζ de la ω vous invite à la présentation de π.\" That's literal though odd. Since ω maybe a place/company? Romanian \"de la\" indicates provenance; French \"de\" suffices, but to preserve structure maybe \"ζ de ω vous invite...\" Hmm.\n\nRussian: \"ζ от ω приглашает вас на презентацию π.\" Need keep letters. \"от ω\" means from omega; \"на презентацию π\". Russian lacks articles. Good.\n\nNeed maybe include labels. Concise. Ensure exact Greek letters. final in Romanian? User asked translate. Provide just translations. No extra explanation. Use Greek letters exactly. Need not translate π as pi. Use π.\n\nPotential issue: Greek letter ζ etc might represent confidential terms; must not spell out. Good.\n\nNeed final answer with three lines. Use guillemets? fine.\n\nCheck French: \"ζ de ω vous invite à la présentation de π.\" If ζ is feminine singular? No gender. Romanian \"vă\" plural/formal; French vous. Good. English \"you\" ambiguous.\n\nMaybe English article: \"ζ from ω invites you to the presentation of π.\" French: \"ζ de ω vous invite à la présentation de π.\" Russian: \"ζ от ω приглашает вас на презентацию π.\" Good.\n\nNeed preserve iota subscripts? none. final only.",
+      "restored": "- English: Ion Popescu from Acme invites you to the presentation of TermoGuard X9.\n- French: Ion Popescu de Acme vous invite à la présentation de TermoGuard X9.\n- Russian: Ion Popescu от Acme приглашает вас на презентацию TermoGuard X9.",
+      "leaks": [],
+      "ms": 7682,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PRODUCT": 1
+        },
+        "tokensUsed": [
+          "ζ",
+          "ω",
+          "π"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Tradu în engleză, franceză și rusă: «ζ de la ω vă invită la prezentarea π.»",
+      "restoreReport": {
+        "restored": 84,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ω"
+        ]
+      }
+    }
+  ]
+}

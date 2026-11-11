@@ -1,0 +1,37 @@
+{
+  "case": "H1",
+  "category": "H. Identificatori",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Clientul are IDNP 2001234567891 și telefonul 069123456. Formatează-le pentru un formular oficial, pe câte o linie.",
+      "raw": "IDNP: β  \nTelefon: θ",
+      "rawReasoning": "The user asks in Romanian: Client has IDNP β and phone θ. Format them for official form, one per line. They mention confidential terms replaced by Greek letters, treat as real terms. Need answer using β and θ exactly? They ask format them. We don't have actual values, only placeholders β and θ. Need produce lines like IDNP: β / Telefon: θ perhaps. Need not invent formats? \"Formatează-le pentru un formular oficial\" could mean label and value. Need ensure not alter Greek letters. Could format IDNP and phone according to Moldova? IDNP is 13 digits; phone maybe +373. But β and θ are stand-ins for confidential terms, not necessarily values? They are isolated Greek letters standing for real term; we don't know actual digits. We shouldn't fabricate values. Need output exactly with letters.\n\nNeed consider privacy: They provided placeholders not actual PII, so okay. We can produce template:\nIDNP: β\nTelefon: θ\nMaybe \"Pentru formular oficial:\" with one per line. Concise. Use Romanian. If official form expects labels, maybe \"IDNP: β\\nTelefon: θ\". No extra confidential exposure. Final only.",
+      "restored": "IDNP: 2001234567891  \nTelefon: 069123456",
+      "leaks": [],
+      "ms": 3711,
+      "redactReport": {
+        "countsByClass": {
+          "IDNP": 1,
+          "PHONE": 1
+        },
+        "tokensUsed": [
+          "β",
+          "θ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Clientul are IDNP β și telefonul θ. Formatează-le pentru un formular oficial, pe câte o linie.",
+      "restoreReport": {
+        "restored": 16,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "β"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "case": "B4",
+  "category": "B. Raționament",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reține: Elena Vrabie e avocata firmei Nordic Agro, iar Andrei Lungu e auditorul Băncii Verde.",
+      "raw": "Am notat: κ este avocata firmei ζ, iar ρ este auditorul Băncii Verde.",
+      "rawReasoning": "The user states a fact in Romanian: remember κ is the lawyer of firm ζ, ρ is auditor of Green Bank. Need just acknowledge perhaps. Need not use tools beyond thinking already used. Must keep Greek letters exact when referring. Need respond in Romanian concise. Ensure letters exact: κ, ζ, ρ. No need spell out. We can say \"Am notat: κ este avocata firmei ζ, iar ρ este auditorul Băncii Verde.\" That's fine. No expansion.",
+      "restored": "Am notat: Elena Vrabie este avocata firmei Nordic Agro, iar Andrei Lungu este auditorul Băncii Verde.",
+      "leaks": [],
+      "ms": 2088,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Reține: κ e avocata firmei ζ, iar ρ e auditorul Băncii Verde.",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Cine e avocata firmei Nordic Agro?",
+      "raw": "Avocata firmei ζ este κ.",
+      "rawReasoning": "The user is testing instruction following. Need answer who is κ. They said Greek letters stand for real terms but don't know terms; just use letters. Question: \"Cine e avocata firmei ζ?\" We can answer based on given: κ. Need not spell out. Keep concise Romanian. Ensure letter exact κ.",
+      "restored": "Avocata firmei Nordic Agro este Elena Vrabie.",
+      "leaks": [],
+      "ms": 2071,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 3
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Cine e avocata firmei ζ?",
+      "restoreReport": {
+        "restored": 6,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Și cine verifică Banca Verde? Răspunde cu numele complet.",
+      "raw": "Nu am destule informații ca să spun cine verifică δ. Știu doar că ρ este auditorul Băncii Verde.",
+      "rawReasoning": "The user has established confidential terms replaced by Greek letters. They recall κ = avocata firmei ζ, ρ = auditorul Băncii Verde. Asked: \"Și cine verifică δ? Răspunde cu numele complet.\" Need infer δ? They haven't defined δ. Need not invent. Need answer in Romanian. We know ρ auditor Băncii Verde; maybe \"cine verifică δ\" refers to δ maybe Băncii Verde? But δ not defined. Need treat Greek letters as real terms but we don't have mapping. The prompt gives κ and ρ only. δ appears undefined; maybe in original scenario δ is something like \"contabilitatea\"? We cannot know. Need be honest: nu am suficiente informații; am reținut doar că κ e avocata firmei ζ și ρ auditorul Băncii Verde. If δ refers to Banca Verde's audit? Hmm \"cine verifică δ\" maybe asks who checks δ (some entity). They demand \"numele complet\" but names are replaced with Greek letters; cannot spell out. Need answer with letter if known. We only know auditor of Banca Verde is ρ. The question \"cine verifică δ?\" Could δ be Banca Verde? No, bank name not replaced? It says Banca Verde in clear. δ unknown. Perhaps they expect ρ verifies δ? Need parse conversation: \"Reține: κ e avocata firmei ζ, iar ρ e auditorul Băncii Verde.\" Then \"Cine e avocata firmei ζ?\" answer κ. \"Și cine verifică δ? Răspunde cu numele complet.\" Maybe δ is a confidential term for the thing Banca Verde's auditor verifies? Actually auditor verifies bank? Romanian: \"cine verifică δ?\" Means who audits/checks delta. Given only mapping, ρ audits Banca Verde, not δ. Could δ be \"Băncii Verde\"? No Greek letter δ replaces term, perhaps δ = Banca Verde? But user wrote Băncii Verde clear earlier, so δ distinct.\n\nNeed not hallucinate. Could say: \"Nu știu ce reprezintă δ din informațiile date. Știu doar că ρ este auditorul Băncii Verde.\" But they ask name complete; maybe cannot provide because δ undefined. Need concise. Ensure Greek letters exact if used. Use δ exactly.",
+      "restored": "Nu am destule informații ca să spun cine verifică Banca Verde. Știu doar că Andrei Lungu este auditorul Băncii Verde.",
+      "leaks": [],
+      "ms": 6948,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5,
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Și cine verifică δ? Răspunde cu numele complet.",
+      "restoreReport": {
+        "restored": 46,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "κ",
+          "ρ",
+          "δ"
+        ]
+      }
+    }
+  ]
+}

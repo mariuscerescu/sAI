@@ -1,0 +1,39 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirming Thursday’s meeting — ⟦PROJECT_1⟧\n\nDear Mr. ⟦PERSON_1⟧,\n\nI hope you’re well. I’m writing from ⟦COMPANY_1⟧ to confirm our Thursday meeting about ⟦PROJECT_1⟧.\n\nPlease let me know if the scheduled time still works for you or if any details need to be adjusted. I look forward to speaking with you.\n\nBest regards,  \n[Your Name]  \n⟦COMPANY_1⟧",
+      "rawReasoning": "The user wants a short polite email to ⟦PERSON_1⟧ from ⟦COMPANY_1⟧ confirming Thursday meeting about ⟦PROJECT_1⟧. Need treat placeholders exactly. We can write draft. Need maybe mention \"from ⟦COMPANY_1⟧\" means sender at company, not signed ⟦COMPANY_1⟧ necessarily. Since placeholders confidential, don't invent names/dates. Keep generic. Provide email only maybe. Need concise. Ensure placeholders exact. No need tool. Final answer in English. Avoid guessing values like time/location; can use placeholders or generic \"Thursday\". Could use [time]? Better not invent; use placeholders? We only have given placeholders; can use \"on Thursday\" no specific time. Could include \"at the scheduled time\" to avoid inventing. Need short polite email.",
+      "restored": "Subject: Confirming Thursday’s meeting — Project Orion\n\nDear Mr. Smith,\n\nI hope you’re well. I’m writing from Acme to confirm our Thursday meeting about Project Orion.\n\nPlease let me know if the scheduled time still works for you or if any details need to be adjusted. I look forward to speaking with you.\n\nBest regards,  \n[Your Name]  \nAcme",
+      "leaks": [
+        "STEM?:Project Orion (project)"
+      ],
+      "ms": 4033,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Write a short, polite email to Mr. ⟦PERSON_1⟧ from ⟦COMPANY_1⟧ confirming our Thursday meeting about ⟦PROJECT_1⟧.",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

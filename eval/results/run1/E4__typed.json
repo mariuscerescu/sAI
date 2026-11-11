@@ -1,0 +1,41 @@
+{
+  "case": "E4",
+  "category": "E. Cod",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Generează un fișier YAML de configurare pentru Proiectul Orion, cu responsabil Elena Vrabie, telefon +373 79 555 123, sediu la str. Florilor 12 și produsul TermoGuard X9.",
+      "raw": "```yaml\nproject:\n  name: \"⟦PROJECT_1⟧\"\n  owner: \"⟦PERSON_1⟧\"\n  product: \"⟦PRODUCT_1⟧\"\n\ncontact:\n  responsible: \"⟦PERSON_1⟧\"\n  phone: \"⟦PHONE_1⟧\"\n  headquarters: \"⟦ADDRESS_1⟧\"\n\nsettings:\n  environment: \"development\"\n  logging:\n    level: \"info\"\n    format: \"json\"\n  features:\n    metrics: true\n    audit_log: true\n```",
+      "rawReasoning": "The user wants a YAML config file in Romanian. We need include placeholders exactly as given. Need generate likely generic project config. Need be concise. Need not ask clarifying? We can create sensible YAML with metadata. Ensure placeholders exact: ⟦PROJECT_1⟧, ⟦PERSON_1⟧, ⟦PHONE_1⟧, ⟦ADDRESS_1⟧, ⟦PRODUCT_1⟧. Need output code block yaml. Since placeholders are values, quoting maybe needed because contain brackets but YAML plain scalars with unicode ⟦ ⟧ are okay? Colon? no. Use quotes to be safe. Need maybe include name, owner, contact, headquarters, product, environment etc. Don't invent confidential data beyond placeholders; can use generic defaults marked example. Avoid adding real-looking values? Use placeholders and generic defaults like environment: development is fine. Need answer in Romanian. Concise. Ensure placeholders exact inside code. Use YAML valid. Need maybe include schema-ish. Final only.",
+      "restored": "```yaml\nproject:\n  name: \"Proiectul Orion\"\n  owner: \"Elena Vrabie\"\n  product: \"TermoGuard X9\"\n\ncontact:\n  responsible: \"Elena Vrabie\"\n  phone: \"+373 79 555 123\"\n  headquarters: \"str. Florilor 12\"\n\nsettings:\n  environment: \"development\"\n  logging:\n    level: \"info\"\n    format: \"json\"\n  features:\n    metrics: true\n    audit_log: true\n```",
+      "leaks": [],
+      "ms": 4033,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 1,
+          "PHONE": 1,
+          "ADDRESS": 1,
+          "PRODUCT": 1
+        },
+        "tokensUsed": [
+          "⟦PROJECT_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦PHONE_1⟧",
+          "⟦ADDRESS_1⟧",
+          "⟦PRODUCT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Generează un fișier YAML de configurare pentru ⟦PROJECT_1⟧, cu responsabil ⟦PERSON_1⟧, telefon ⟦PHONE_1⟧, sediu la ⟦ADDRESS_1⟧ și produsul ⟦PRODUCT_1⟧.",
+      "restoreReport": {
+        "restored": 11,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

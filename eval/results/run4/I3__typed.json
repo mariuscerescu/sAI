@@ -1,0 +1,69 @@
+{
+  "case": "I3",
+  "category": "I. Document lung",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, Proiectul Orion, 12 mai 2026\n\nParticipanți: Ion Popescu (Acme), Maria Ceban (Nordic Agro), Elena Vrabie (consilier juridic), Andrei Lungu (manager proiect), Sergiu Railean (IT), Natalia Cozma (achiziții), Victor Ciobanu (logistică), Rodica Sandu (contabilitate), Floare Munteanu (stagiară), Radu Mare (furnizor), Lilia Bostan (HR), Dorin Jardan (calitate).\n\n1. Andrei Lungu prezintă stadiul. Se decide ca Sergiu Railean să configureze senzorii TermoGuard X9 până la 20 mai.\n2. Maria Ceban cere raport financiar. Rodica Sandu va pregăti raportul pentru Banca Verde până la 25 mai.\n3. Elena Vrabie revizuiește contractul cu Acme Logistic și trimite observații lui Ion Popescu.\n4. Natalia Cozma comandă 40 de unități TermoGuard X9 de la Radu Mare.\n5. Victor Ciobanu planifică rutele pentru depozitul de pe str. Florilor 12.\n6. Floare Munteanu asistă la inventar. Lilia Bostan organizează instruirea. Dorin Jardan nu a primit sarcini.",
+      "raw": "Participanți cu sarcini:\n\n- ⟦PERSON_5⟧ — să configureze senzorii ⟦PRODUCT_1⟧ până la 20 mai.\n- ⟦PERSON_8⟧ — pregătește raportul financiar pentru ⟦COMPANY_3⟧ până la 25 mai.\n- ⟦PERSON_3⟧ — revizuiește contractul cu ⟦COMPANY_1⟧ și trimite observații lui ⟦PERSON_1⟧.\n- ⟦PERSON_6⟧ — comandă 40 de unități ⟦PRODUCT_1⟧ de la ⟦PERSON_10⟧.\n- ⟦PERSON_7⟧ — planifică rutele pentru depozitul de pe ⟦ADDRESS_1⟧.\n- ⟦PERSON_9⟧ — asistă la inventar.\n- ⟦PERSON_11⟧ — organizează instruirea.\n\n⟦PERSON_12⟧ este menționat explicit fără sarcini.",
+      "rawReasoning": "The user wants list in Romanian. Need extract participants who got tasks and tasks. Need be careful: not every mention is assignee? Let's parse.\n\nText:\nParticipants: P1 company1, P2 company2, P3 legal advisor, P4 project manager, P5 IT, P6 procurement, P7 logistics, P8 accounting, P9 intern, P10 supplier, P11 HR, P12 quality.\n\n1. P4 presents status. Decide that P5 configure sensors PRODUCT1 by May 20. -> P5 task. P4? \"prezintă stadiul\" is action in meeting, likely task? User asks \"fiecare participant care a primit sarcini\" tasks assigned. Does presenting status count as task? Usually action at meeting maybe not a task. Need include only assigned tasks? \n2. P2 requests financial report. P8 will prepare report for COMPANY3 by May 25. -> P8 task. P2 made request, not task.\n3. P3 reviews contract with COMPANY1 and sends observations to P1. -> P3 task. P1? \"sends observations to P1\" P1 is recipient, not assigned. P1 company1 maybe no task.\n4. P6 orders 40 units PRODUCT1 from P10. -> P6 task. P10 supplier recipient, not assigned.\n5. P7 plans routes for warehouse at ADDRESS1. -> P7 task.\n6. P9 assists inventory. P11 organizes training. P12 no tasks.\nNeed include P4 presents? \"prezintă stadiul\" could be a task/role but in process verbal it's an activity. The phrase \"a primit sarcini\" suggests action items explicitly assigned/decided. P4 presents stage maybe not assigned in future. I'd exclude P4 or note if counting mentions of actions, P4 presented status but no future task. Need answer concise with list and exclusions perhaps. Include placeholders exactly.\n\nNeed final in Romanian. Mention P12 explicitly no tasks? Could list \"nu au sarcini: ...\" but user asks list with each participant who received tasks. Keep concise. Need maybe include deadlines.\n\nEnsure placeholders exactly: ⟦PERSON_5⟧ etc. Use exact. 20/25 mai no year maybe as given. \"până la 20 mai\".",
+      "restored": "Participanți cu sarcini:\n\n- Sergiu Railean — să configureze senzorii TermoGuard X9 până la 20 mai.\n- Rodica Sandu — pregătește raportul financiar pentru Banca Verde până la 25 mai.\n- Elena Vrabie — revizuiește contractul cu Acme și trimite observații lui Ion Popescu.\n- Natalia Cozma — comandă 40 de unități TermoGuard X9 de la Radu Mare.\n- Victor Ciobanu — planifică rutele pentru depozitul de pe str. Florilor 12.\n- Floare Munteanu — asistă la inventar.\n- Lilia Bostan — organizează instruirea.\n\nDorin Jardan este menționat explicit fără sarcini.",
+      "leaks": [
+        "STEM?:Acme Logistic SRL (logistica)",
+        "STEM?:Acme Logistic (logistica)",
+        "STEM?:Proiectul Orion (proiect)"
+      ],
+      "ms": 7645,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 24,
+          "COMPANY": 4,
+          "PRODUCT": 2,
+          "ADDRESS": 1
+        },
+        "tokensUsed": [
+          "⟦PROJECT_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦PERSON_4⟧",
+          "⟦PERSON_5⟧",
+          "⟦PERSON_6⟧",
+          "⟦PERSON_7⟧",
+          "⟦PERSON_8⟧",
+          "⟦PERSON_9⟧",
+          "⟦PERSON_10⟧",
+          "⟦PERSON_11⟧",
+          "⟦PERSON_12⟧",
+          "⟦PRODUCT_1⟧",
+          "⟦COMPANY_3⟧",
+          "⟦ADDRESS_1⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, ⟦PROJECT_1⟧, 12 mai 2026\n\nParticipanți: ⟦PERSON_1⟧ (⟦COMPANY_1⟧), ⟦PERSON_2⟧ (⟦COMPANY_2⟧), ⟦PERSON_3⟧ (consilier juridic), ⟦PERSON_4⟧ (manager proiect), ⟦PERSON_5⟧ (IT), ⟦PERSON_6⟧ (achiziții), ⟦PERSON_7⟧ (logistică), ⟦PERSON_8⟧ (contabilitate), ⟦PERSON_9⟧ (stagiară), ⟦PERSON_10⟧ (furnizor), ⟦PERSON_11⟧ (HR), ⟦PERSON_12⟧ (calitate).\n\n1. ⟦PERSON_4⟧ prezintă stadiul. Se decide ca ⟦PERSON_5⟧ să configureze senzorii ⟦PRODUCT_1⟧ până la 20 mai.\n2. ⟦PERSON_2⟧ cere raport financiar. ⟦PERSON_8⟧ va pregăti raportul pentru ⟦COMPANY_3⟧ până la 25 mai.\n3. ⟦PERSON_3⟧ revizuiește contractul cu ⟦COMPANY_1⟧ și trimite observații lui ⟦PERSON_1⟧.\n4. ⟦PERSON_6⟧ comandă 40 de unități ⟦PRODUCT_1⟧ de la ⟦PERSON_10⟧.\n5. ⟦PERSON_7⟧ planifică rutele pentru depozitul de pe ⟦ADDRESS_1⟧.\n6. ⟦PERSON_9⟧ asistă la inventar. ⟦PERSON_11⟧ organizează instruirea. ⟦PERSON_12⟧ nu a primit sarcini.",
+      "restoreReport": {
+        "restored": 16,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

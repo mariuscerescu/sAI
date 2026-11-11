@@ -1,0 +1,34 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "ω picked the rose, from ξ’s garden.",
+      "rawReasoning": "The user has a riddle-like substitution: confidential terms replaced with Greek letters. They ask: ω picked a red rose from ξ's garden. Who picked the rose, and from whose garden?\n\nWe need answer in English concisely. Need interpret Greek letters as real terms they stand for, but we don't know mapping. Treat letters as real terms. The question asks who picked the rose and from whose garden. In the sentence, subject is ω, possessor of garden is ξ. So answer: ω picked the rose, from ξ's garden. Need maybe not translate letters. We can say: ω picked it, from ξ's garden.\n\nNeed ensure no extra. This is straightforward. We shouldn't invent names. Final concise.",
+      "restored": "Rose Walker picked the rose, from Will Baker’s garden.",
+      "leaks": [],
+      "ms": 2185,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "ω",
+          "ξ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "ω picked a red rose from ξ's garden. Who picked the rose, and from whose garden?",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

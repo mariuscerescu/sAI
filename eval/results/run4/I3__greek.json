@@ -1,0 +1,69 @@
+{
+  "case": "I3",
+  "category": "I. Document lung",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, Proiectul Orion, 12 mai 2026\n\nParticipanți: Ion Popescu (Acme), Maria Ceban (Nordic Agro), Elena Vrabie (consilier juridic), Andrei Lungu (manager proiect), Sergiu Railean (IT), Natalia Cozma (achiziții), Victor Ciobanu (logistică), Rodica Sandu (contabilitate), Floare Munteanu (stagiară), Radu Mare (furnizor), Lilia Bostan (HR), Dorin Jardan (calitate).\n\n1. Andrei Lungu prezintă stadiul. Se decide ca Sergiu Railean să configureze senzorii TermoGuard X9 până la 20 mai.\n2. Maria Ceban cere raport financiar. Rodica Sandu va pregăti raportul pentru Banca Verde până la 25 mai.\n3. Elena Vrabie revizuiește contractul cu Acme Logistic și trimite observații lui Ion Popescu.\n4. Natalia Cozma comandă 40 de unități TermoGuard X9 de la Radu Mare.\n5. Victor Ciobanu planifică rutele pentru depozitul de pe str. Florilor 12.\n6. Floare Munteanu asistă la inventar. Lilia Bostan organizează instruirea. Dorin Jardan nu a primit sarcini.",
+      "raw": "Participanți cu sarcini:\n\n- ω — configurează senzorii ρ până la 20 mai.\n- ι — pregătește raportul pentru λ până la 25 mai.\n- ο — revizuiește contractul cu χ și trimite observații lui μ.\n- α — comandă 40 de unități ρ de la β.\n- γ — planifică rutele pentru depozitul de pe θ.\n- η — asistă la inventar.\n- τ — organizează instruirea.\n\nNu au primit sarcini: σ, ξ, μ, β, ζ.",
+      "rawReasoning": "We need answer in Romanian. Need identify each participant who received tasks and what task. Need be careful with Greek letters as placeholders exactly. Let's parse process-verbal.\n\nConfidential terms replaced with isolated Greek letters e.g., β or κ possibly subscripts. Treat each as real term. Whenever refer to it, write letter exactly as given. We cannot translate. Need list participants who received tasks and tasks.\n\nParticipants: μ (χ), ξ (ε), ο (consilier juridic), σ (manager proiect), ω (IT), α (achiziții), γ (logistică), ι (contabilitate), η (stagiară), β (furnizor), τ (HR), ζ (calitate).\n\nItems:\n1. σ prezintă stadiul. Se decide ca ω să configureze senzorii ρ până la 20 mai.\n- σ presents status; is that a task? It says σ prezintă stadiul (he presents) maybe at meeting, not assigned? Question: list participants who received tasks and what task. Need determine assignments from PV. \"Se decide ca ω să configureze...\" definitely ω gets task. σ presenting may be action in meeting but not assigned? Could include σ? Let's parse all.\n2. ξ cere raport financiar. ι va pregăti raportul pentru λ până la 25 mai.\n- ξ requests financial report (not assigned task? maybe just request). ι will prepare report for λ by May 25: ι task.\n3. ο revizuiește contractul cu χ și trimite observații lui μ.\n- ο reviews contract with χ and sends observations to μ: ο task(s). μ receives observations? Does μ receive task? No, just recipient. The phrase doesn't assign μ a task.\n4. α comandă 40 de unități ρ de la β.\n- α orders 40 units ρ from β: α task. β is supplier, receives order but not assigned task? Not a task, just counterparty.\n5. γ planifică rutele pentru depozitul de pe θ.\n- γ plans routes for warehouse on θ: γ task.\n6. η asistă la inventar. τ organizează instruirea. ζ nu a primit sarcini.\n- η assists at inventory: η task. τ organizes training: τ task. ζ explicitly no tasks.\n\nAlso β? \"α comandă ... de la β\" no task for β. \"ο revizuiește contractul cu χ\" χ not participant? χ maybe organization? Actually μ (χ) maybe μ from χ? Participants list μ (χ), ξ (ε), ο (consilier juridic)... It seems letters are redacted terms for companies/projects? Need treat as terms. \"revizuiește contractul cu χ\" — χ is real term, not participant? Participants include μ (χ) perhaps μ is person at χ. The contract with χ might involve μ? But task remains ο.\n\nNeed include ξ? Cere raport financiar - request, not assignment? In a task list, maybe not a task; no deadline. The question says \"care a primit sarcini\" (received assignments). Actions explicitly decided/will/planned etc. Items 1-6 describe activities in meeting, some assigned. We should list only received tasks: ω configure sensors ρ by May 20; ι prepare report for λ by May 25; ο review contract with χ and send observations to μ; α order 40 units ρ from β; γ plan routes for depot on θ; η assist at inventory; τ organize training. Possibly σ presents status—did σ receive task to present? It happened at meeting; not a task assigned. ξ asked for report; not a task. ζ none. β? no. μ? receives observations, no task. \n\nNeed concise. Ensure exact Greek letters: ψ? The header mentions ψ as meeting? Not refer unless necessary. Use ρ, λ, χ, θ, β. Avoid spelling out. Use diacritics Romanian. \n\nNeed maybe mention excluding σ, ξ, μ, β, ζ because no assigned task? Could add brief note. But user wants list. Keep concise. Include deadline details. Use exact letters. Final in Romanian.",
+      "restored": "Participanți cu sarcini:\n\n- Sergiu Railean — configurează senzorii TermoGuard X9 până la 20 mai.\n- Rodica Sandu — pregătește raportul pentru Banca Verde până la 25 mai.\n- Elena Vrabie — revizuiește contractul cu Acme și trimite observații lui Ion Popescu.\n- Natalia Cozma — comandă 40 de unități TermoGuard X9 de la Radu Mare.\n- Victor Ciobanu — planifică rutele pentru depozitul de pe str. Florilor 12.\n- Floare Munteanu — asistă la inventar.\n- Lilia Bostan — organizează instruirea.\n\nNu au primit sarcini: Andrei Lungu, Maria Ceban, Ion Popescu, Radu Mare, Dorin Jardan.",
+      "leaks": [
+        "STEM?:Acme Logistic SRL (logistica)",
+        "STEM?:Acme Logistic (logistica)",
+        "STEM?:Proiectul Orion (proiect)"
+      ],
+      "ms": 8723,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 24,
+          "COMPANY": 4,
+          "PRODUCT": 2,
+          "ADDRESS": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "μ",
+          "χ",
+          "ξ",
+          "ε",
+          "ο",
+          "σ",
+          "ω",
+          "α",
+          "γ",
+          "ι",
+          "η",
+          "β",
+          "τ",
+          "ζ",
+          "ρ",
+          "λ",
+          "θ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, ψ, 12 mai 2026\n\nParticipanți: μ (χ), ξ (ε), ο (consilier juridic), σ (manager proiect), ω (IT), α (achiziții), γ (logistică), ι (contabilitate), η (stagiară), β (furnizor), τ (HR), ζ (calitate).\n\n1. σ prezintă stadiul. Se decide ca ω să configureze senzorii ρ până la 20 mai.\n2. ξ cere raport financiar. ι va pregăti raportul pentru λ până la 25 mai.\n3. ο revizuiește contractul cu χ și trimite observații lui μ.\n4. α comandă 40 de unități ρ de la β.\n5. γ planifică rutele pentru depozitul de pe θ.\n6. η asistă la inventar. τ organizează instruirea. ζ nu a primit sarcini.",
+      "restoreReport": {
+        "restored": 140,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

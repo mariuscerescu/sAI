@@ -1,0 +1,45 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirming Thursday Meeting – ⟦PROJECT_1⟧\n\nDear Mr. ⟦PERSON_1⟧,\n\nI hope you’re doing well. I’m writing to confirm our meeting on Thursday regarding ⟦PROJECT_1⟧.\n\nPlease let me know if the scheduled time still works for you, or if you would like to adjust anything ahead of the discussion.\n\nBest regards,  \nThe ⟦COMPANY_1⟧ Team",
+      "rawReasoning": "The user wants a short polite email to placeholder person from placeholder company confirming Thursday meeting about project. Need write email, concise. Need not use other tools. Need ensure placeholders exactly as given. We can draft generic email. Need be careful not to invent too many details? We can use placeholders and bracketed optional? They asked write email. We can include subject, greeting, body, sign-off. Avoid guessing specific time/location. Say \"I am writing to confirm our meeting scheduled for Thursday regarding ⟦PROJECT_1⟧.\" Maybe mention \"Please let me know if the time no longer works.\" Sign from? User didn't provide sender name. Use placeholder? Could sign \"Best regards, ⟦COMPANY_1⟧\"? But email from company? Better from user; unknown name. Could sign with placeholder ⟦COMPANY_1⟧? The email is from our company? \"from ⟦COMPANY_1⟧\" ambiguous. Use \"Best regards,<br>⟦COMPANY_1⟧ Team\" maybe. Need not create placeholders not given? It says placeholders were replaced; can use only given ones. Avoid inventing signature name. Use \"Best regards,<br>[Your Name]\"? Brackets not placeholder form? Better use \"Best regards,<br>⟦COMPANY_1⟧\" though signatory as company is odd but acceptable if from ⟦COMPANY_1⟧. Could use \"Best regards,<br>The ⟦COMPANY_1⟧ Team\". That doesn't guess. Good.\n\nNeed answer only email. Keep concise.",
+      "restored": "Subject: Confirming Thursday Meeting – Project Orion\n\nDear Mr. Smith,\n\nI hope you’re doing well. I’m writing to confirm our meeting on Thursday regarding Project Orion.\n\nPlease let me know if the scheduled time still works for you, or if you would like to adjust anything ahead of the discussion.\n\nBest regards,  \nThe Acme Team",
+      "leaks": [
+        "STEM?:Project Orion (project)"
+      ],
+      "ms": 6131,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Write a short, polite email to Mr. ⟦PERSON_1⟧ from ⟦COMPANY_1⟧ confirming our Thursday meeting about ⟦PROJECT_1⟧.",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

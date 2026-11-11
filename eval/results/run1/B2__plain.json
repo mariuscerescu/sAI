@@ -1,0 +1,16 @@
+{
+  "case": "B2",
+  "category": "B. Raționament",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Acme Logistic a cumpărat 30% din Nordic Agro. Nordic Agro deține 60% din Banca Verde. Ce procent din Banca Verde controlează indirect Acme? Explică pas cu pas.",
+      "raw": "Pas cu pas:\n\n1. Acme deține 30% din Nordic Agro.\n2. Nordic Agro deține 60% din Banca Verde.\n3. Participația economică indirectă = 30% × 60% = 18%.\n\nDeci, Acme are o expunere/participație indirectă de **18%** din Banca Verde.\n\nNu automat „control”: cu doar 30% din Nordic Agro, Acme nu controlează neapărat Nordic Agro, deci nu controlează automat Banca Verde. Controlul indirect apare doar dacă Acme controlează efectiv Nordic Agro prin majoritate, acorduri sau drepturi de conducere; altfel vorbim strict de **18% participație indirectă**.",
+      "rawReasoning": "The user asks in Romanian: Acme Logistic bought 30% of Nordic Agro. Nordic Agro owns 60% of Banca Verde. What percent of Banca Verde does Acme control indirectly? Explain step by step.\n\nNeed answer in Romanian, concise. Need be careful: indirect economic ownership is 30% * 60% = 18%. But \"controlează\" (control) is not the same as ownership percentage. Acme owns 30% of Nordic, minority, likely doesn't control Nordic unless other agreements; Nordic controls Banca Verde with 60%. Indirect control? In corporate terms, control is not multiplicative exactly; Acme doesn't control Nordic with only 30% absent other rights, so Acme does not necessarily control Banca Verde. However if question asks percentage stake indirectly held: 18%. Need explain distinction: indirect participation = 18%; effective control only if Acme controls Nordic (e.g., majority/agreements), not just 30%. Phrase: economic interest 18%, control cannot be inferred solely; if assuming Nordic is controlled by Acme or via board/agreements, then Banca Verde would be indirectly controlled, but ownership interest is 18%.\n\nNeed provide step-by-step. Ensure not overlong.",
+      "restored": "Pas cu pas:\n\n1. Acme deține 30% din Nordic Agro.\n2. Nordic Agro deține 60% din Banca Verde.\n3. Participația economică indirectă = 30% × 60% = 18%.\n\nDeci, Acme are o expunere/participație indirectă de **18%** din Banca Verde.\n\nNu automat „control”: cu doar 30% din Nordic Agro, Acme nu controlează neapărat Nordic Agro, deci nu controlează automat Banca Verde. Controlul indirect apare doar dacă Acme controlează efectiv Nordic Agro prin majoritate, acorduri sau drepturi de conducere; altfel vorbim strict de **18% participație indirectă**.",
+      "leaks": [],
+      "ms": 4353
+    }
+  ]
+}

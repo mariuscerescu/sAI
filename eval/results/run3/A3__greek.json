@@ -1,0 +1,40 @@
+{
+  "case": "A3",
+  "category": "A. Bază",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reformulează corect gramatical: «Contractul Popescului cu Acme-ului a fost semnat de Cebanei la Proiectul Orion.»",
+      "raw": "Varianta corectă: **«Contractul μ cu γ a fost semnat de ι la θ.»**\n\nNotă: după **„cu”** nu se pune genitivul **„γ-ului”**. Dacă γ este un nume comun masculin/neutru articulat, atunci: **«…cu γ-ul…»**.",
+      "rawReasoning": "The user asks in Romanian to reformulate grammatically correctly: «Contractul μ cu γ-ului a fost semnat de ι la θ.» Need treat Greek letters as real terms, write exactly as given. Need infer correct Romanian grammar. We have terms μ, γ, ι, θ. Sentence: \"Contractul μ cu γ-ului a fost semnat de ι la θ.\" Issues: \"γ-ului\" likely genitive/dative article with β? Let's parse.\n\nRomanian: \"Contractul μ cu γ-ului\" ungrammatical. Maybe intended \"Contractul μ cu γ a fost semnat de ι la θ.\" Need handle case endings? Greek letters are placeholders for real terms; cannot translate. Need preserve letters exactly. Need produce grammatically correct Romanian.\n\nOriginal tokens:\n- Contractul μ = the contract μ (μ as apposition? maybe \"Contractul μ\" fine if μ is name).\n- cu γ-ului = with the γ's? \"cu\" takes accusative, so should be \"cu γ\" not genitive \"γ-ului\". If γ is a masculine noun requiring article? Romanian articulated noun after cu: \"cu γ-ul\" if γ masculine? But cannot know gender. The \"-ului\" indicates genitive/dative singular masculine/neuter: \"γ-ului\". After \"cu\" accusative definite should be \"γ-ul\" (or γa if feminine). But instructions: terms replaced with isolated Greek letters; treat each as real term it stands for; whenever refer to it, write letter exactly as given, also inside code/file paths/tool-call args. Do not translate/spell out. Can we add Romanian suffixes to Greek letters? Original has \"γ-ului\" with hyphen, so they expect inflections can attach to letter. We need choose correct inflection.\n\nSentence meaning likely: \"Contractul μ cu γ a fost semnat de ι la θ.\" Maybe \"Contractul μ al γ-ului a fost semnat de ι la θ\"? Romanian genitive construction: \"contractul μ al γ-ului\"? Hmm.\n\n\"Contractul μ cu γ-ului\" maybe contains two noun phrases linked incorrectly. Correct could be \"Contractul μ cu γ a fost semnat de ι la θ.\" because preposition cu + accusative, no genitive -ului. \"de ι\" by agent fine. \"la θ\" at θ fine if θ is a place/time? \"la\" can mean at/to. If θ is organization? okay.\n\nNeed answer concise. Could provide one corrected sentence and brief note. Need ensure letters exactly: μ, γ, ι, θ. Do not change γ-ului to? We can write \"cu γ\" (dropping -ului) or \"cu γ-ul\"? Which is grammatically correct depends on whether γ is articulated. \"cu γ-ului\" is definitely wrong. If γ is a proper name (placeholder term), no article: \"cu γ\". If common masculine/neuter with definite article: \"cu γ-ul\". The original term is just γ (isolated Greek letter) as stand-in for real term; instructions say treat letter as real term it stands for. Real term could be multiword with gender unknown. In these tasks, likely expect using Greek letter with Romanian suffix as in original but fix agreement: e.g. \"Contractul μ cu γ a fost semnat...\" The safest: preserve bare letters when unsure; Romanian prepositions take bare proper nouns. \"Contractul lui μ cu γ...\"? \n\nNeed maybe say: «Contractul μ cu γ a fost semnat de ι la θ.» Note: după „cu” se folosește acuzativul, nu genitivul „γ-ului”; dacă γ este nume comun masculin articulat, atunci „cu γ-ul”. This handles ambiguity. Concise. Ensure not translate letters. Final in Romanian. Also mention alternative if θ is temporal/locative? \"la θ\" ok.\n\nNeed be careful not to use Greek letters with other meanings. Fine.",
+      "restored": "Varianta corectă: **«Contractul Ion Popescu cu Acme a fost semnat de Ceban la Proiectul Orion.»**\n\nNotă: după **„cu”** nu se pune genitivul **„Acme-ului”**. Dacă Acme este un nume comun masculin/neutru articulat, atunci: **«…cu Acme-ul…»**.",
+      "leaks": [],
+      "ms": 15274,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "μ",
+          "γ",
+          "ι",
+          "θ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Reformulează corect gramatical: «Contractul μ cu γ-ului a fost semnat de ι la θ.»",
+      "restoreReport": {
+        "restored": 88,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "μ"
+        ]
+      }
+    }
+  ]
+}

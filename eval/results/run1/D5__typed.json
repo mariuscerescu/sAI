@@ -1,0 +1,29 @@
+{
+  "case": "D5",
+  "category": "D. Greek",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ce înseamnă litera ψ în psihologie și litera Ω în fizică? Răspunde în două propoziții.",
+      "raw": "ψ (psi) este litera asociată psihologiei, folosită ca simbol pentru studiul minții sau al sufletului. Ω (omega) în fizică reprezintă de obicei ohm-ul, unitatea de măsură a rezistenței electrice.",
+      "rawReasoning": "The user asks in Romanian: What does ψ in psychology and Ω in physics mean? Answer in two sentences. Need concise. But need careful: ψ is used as symbol for psychology (psi), and ohm? Ω in physics is ohm, unit of electrical resistance; also angular frequency/solid angle, but likely capital omega denotes ohm. They ask \"litera Ω în fizică\" singular; likely psi psychology and ohm. Need exactly two sentences. Use Romanian. Mention ψ (psi) este adesea folosit ca simbol al psihologiei/sufletului, iar Ω (omega) reprezintă... Need be accurate: ψ is Greek letter psi, commonly symbol for psychology and psychic/psychological processes; in physics ψ denotes wavefunction. The question juxtaposes: letter ψ in psychology and letter Ω in physics. Answer in two sentences. Maybe: \"ψ (psi) este litera asociată psihologiei, folosită ca simbol pentru studiul minții/sufletului (și, în fizică, al funcției de undă). Ω (omega) în fizică este simbolul ohm-ului, unitatea de măsură a rezistenței electrice.\" That's two sentences. Ensure concise.",
+      "restored": "ψ (psi) este litera asociată psihologiei, folosită ca simbol pentru studiul minții sau al sufletului. Ω (omega) în fizică reprezintă de obicei ohm-ul, unitatea de măsură a rezistenței electrice.",
+      "leaks": [],
+      "ms": 3706,
+      "redactReport": {
+        "countsByClass": {},
+        "tokensUsed": [],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Ce înseamnă litera ψ în psihologie și litera Ω în fizică? Răspunde în două propoziții.",
+      "restoreReport": {
+        "restored": 0,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

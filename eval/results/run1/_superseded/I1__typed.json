@@ -1,0 +1,31 @@
+{
+  "case": "I1",
+  "category": "I. Document lung",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rezumă contractul de mai jos în 5 puncte, apoi extrage într-un tabel toate părțile, reprezentanții și obligațiile lor.\n\nCONTRACT DE PRESTĂRI SERVICII LOGISTICE nr. 47/2026\n\nÎncheiat astăzi, 3 martie 2026, între:\n\n1. Acme Logistic SRL, cu sediul la str. Florilor 12, Chișinău, IDNO 1003600012345, cont IBAN MD24AG000225100013104168 deschis la Banca Verde, reprezentată de directorul general Ion Popescu, IDNP 2001234567891, denumită în continuare „Prestator”;\n\n2. Nordic Agro SA, cu sediul în or. Bălți, str. Independenței 5, reprezentată de Maria Ceban, director financiar, tel. +373 79 555 123, denumită în continuare „Beneficiar”.\n\nArt. 1. Obiectul contractului. Prestatorul se obligă să asigure transportul, depozitarea și distribuția produselor agricole ale Beneficiarului, inclusiv a echipamentelor TermoGuard X9 utilizate pentru monitorizarea temperaturii, în cadrul Proiectului Orion.\n\nArt. 2. Prețul. Beneficiarul achită lunar suma de 145.000 lei, fără TVA. Prețul poate fi indexat unilateral de Prestator cu până la 15% pe trimestru, cu notificare prealabilă de 5 zile.\n\nArt. 3. Termene de plată. Plata se efectuează în termen de 10 zile de la emiterea facturii. Pentru fiecare zi de întârziere, Beneficiarul datorează penalități de 1% din suma restantă, fără plafon.\n\nArt. 4. Răspunderea. Prestatorul răspunde pentru pierderea mărfii doar în limita a 5.000 lei per incident, indiferent de valoarea reală a mărfii. Deteriorarea cauzată de defectarea echipamentelor TermoGuard X9 nu este considerată pierdere.\n\nArt. 5. Exclusivitate. Pe durata contractului și 24 de luni după încetare, Beneficiarul nu poate contracta servicii logistice de la alți prestatori.\n\nArt. 6. Reziliere. Prestatorul poate rezilia contractul oricând, cu notificare de 7 zile. Beneficiarul poate rezilia contractul doar cu notificare de 6 luni și plata unei compensații egale cu prețul pe 12 luni.\n\nArt. 7. Persoane de contact. Pentru Prestator: Andrei Lungu, manager de proiect, tel. 069123456. Pentru Beneficiar: Elena Vrabie, consilier juridic.\n\nArt. 8. Litigii. Litigiile se soluționează exclusiv de instanța de la sediul Prestatorului.\n\nSemnături:\nPrestator — Ion Popescu, Acme Logistic SRL\nBeneficiar — Maria Ceban, Nordic Agro SA",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 0,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 5,
+          "ADDRESS": 1,
+          "PERSON": 6,
+          "IDNP": 1,
+          "PHONE": 2,
+          "PRODUCT": 2,
+          "PROJECT": 1
+        },
+        "tokensUsed": [],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "blocked": "POLICY_BLOCKED (CARD)"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "Rose ⟦PERSON_1⟧ picked the rose, from Will Baker's garden.",
+      "rawReasoning": "We need answer based on placeholders. Need parse: \"Rose ⟦PERSON_1⟧ picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?\" We must treat placeholder as real value, write exactly. Need answer: ⟦PERSON_1⟧? Wait sentence: \"Rose ⟦PERSON_1⟧\" likely first name Rose placeholder person? It says Rose ⟦PERSON_1⟧ picked... Could mean full name is \"Rose ⟦PERSON_1⟧\" where Rose is given name and placeholder is surname? But placeholders are classes like PERSON_N, replacing confidential data. Need not guess. User asks \"Who picked the rose\". The subject is \"Rose ⟦PERSON_1⟧\"? Let's inspect: Some values replaced with placeholders form ⟦CLASS_N⟧. Treat each placeholder as real value. Whenever refer, write placeholder exactly. Never guess. In sentence, \"Rose ⟦PERSON_1⟧\" contains literal Rose plus placeholder. Could be a person whose first name literal Rose and surname placeholder. If asked who picked the rose, answer should be \"Rose ⟦PERSON_1⟧\" not just ⟦PERSON_1⟧? Need include exact placeholder. The phrase also has \"Will Baker's garden\" literal, no placeholder. So answer: Rose ⟦PERSON_1⟧ picked it, from Will Baker's garden. Need be concise. Ensure exact brackets. Could say \"Rose ⟦PERSON_1⟧ picked the rose, from Will Baker’s garden.\" Use apostrophe maybe. Keep Will Baker exactly? Yes.",
+      "restored": "Rose Walker picked the rose, from Will Baker's garden.",
+      "leaks": [],
+      "ms": 3741,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Rose ⟦PERSON_1⟧ picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

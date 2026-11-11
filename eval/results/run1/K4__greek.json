@@ -1,0 +1,37 @@
+{
+  "case": "K4",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Иван Попеску (adică Ion Popescu) a sunat de la Acme. Cum se scrie numele lui în alfabetul latin?",
+      "raw": "„Иван Попеску” se scrie în alfabetul latin: **Ivan Popescu**.",
+      "rawReasoning": "We need answer in Romanian likely. User asks: \"Иван Попеску (adică η) a sunat de la τ. Cum se scrie numele lui în alfabetul latin?\" Need treat Greek letters as real terms they stand for, not translate/spell out. We need infer? There are confidential terms replaced with Greek letters. We need know what η and τ stand for? We don't have mapping. Need answer based on context? The question in Romanian: \"Иван Попеску (adică η) a sunat de la τ. Cum se scrie numele lui în alfabetul latin?\" Translation: Ivan Popescu (i.e. η) called from τ. How is his name written in Latin alphabet? They want transliteration of Иван Попеску into Latin alphabet: \"Ivan Popescu\"? But note η stands for maybe \"Bulgaria\"? τ stands for maybe \"Chișinău\"? Need be careful with instruction: Greek letters are real terms; whenever refer to it write letter exactly. User asks how to write his name in Latin alphabet. The name \"Иван Попеску\" is Cyrillic for Romanian \"Ivan Popescu\". Need maybe answer concise: Ivan Popescu. We can mention η and τ? Maybe \"Иван Попеску se scrie în latină „Ivan Popescu”.\" That avoids spelling letters. But maybe there is a trick: η and τ are placeholders for confidential terms; we shouldn't infer them. The question doesn't require revealing η/τ meaning, only transliteration. Need answer in Romanian. Keep concise.",
+      "restored": "„Иван Попеску” se scrie în alfabetul latin: **Ivan Popescu**.",
+      "leaks": [],
+      "ms": 7142,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "η",
+          "τ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Иван Попеску (adică η) a sunat de la τ. Cum se scrie numele lui în alfabetul latin?",
+      "restoreReport": {
+        "restored": 16,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "η"
+        ]
+      }
+    }
+  ]
+}

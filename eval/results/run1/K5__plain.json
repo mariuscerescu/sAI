@@ -1,0 +1,16 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguitate",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "BV a aprobat creditul pentru Acme. BV înseamnă Banca Verde. Separat, în cod, variabila bv_total ține suma. Ce a aprobat BV?",
+      "raw": "BV — adică Banca Verde — a aprobat creditul pentru Acme. Variabila `bv_total` din cod este doar un distractor; ea ține suma, nu aprobă creditul.",
+      "rawReasoning": "The user is asking a language ambiguity question in Romanian. Need answer in Romanian concise. Need parse: \"BV a aprobat creditul pentru Acme. BV înseamnă Banca Verde. Separat, în cod, variabila bv_total ține suma. Ce a aprobat BV?\" They define BV = Banca Verde, and separately code variable bv_total holds sum. The question: What did BV approve? Since BV means Banca Verde, BV a aprobat creditul pentru Acme = Banca Verde approved the credit for Acme. The code variable bv_total is irrelevant/distractor; bv in variable name doesn't necessarily mean BV? Need answer: BV (Banca Verde) a aprobat creditul pentru Acme. Nu variabila bv_total; variabila ține suma și nu aprobă nimic. Need be careful: Could be asking from some context about acronym collision? We only have given. Answer concise.",
+      "restored": "BV — adică Banca Verde — a aprobat creditul pentru Acme. Variabila `bv_total` din cod este doar un distractor; ea ține suma, nu aprobă creditul.",
+      "leaks": [],
+      "ms": 2748
+    }
+  ]
+}

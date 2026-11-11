@@ -1,0 +1,16 @@
+{
+  "case": "H5",
+  "category": "H. Identificatori",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Facturi: Acme 12.450,50 lei, Nordic Agro 8.300 lei, Banca Verde 1.249,50 lei. Care este totalul și ce procent revine firmei Acme?",
+      "raw": "Total: **22.000,00 lei**.  \nAcme: **12.450,50 / 22.000,00 = 56,59%** din total.",
+      "rawReasoning": "The user asks in Romanian to compute total of invoices and percentage for Acme. Need calculate accurately.\nValues: Acme 12,450.50 lei; Nordic Agro 8,300 lei; Banca Verde 1,249.50 lei.\nTotal = 12,450.50 + 8,300 + 1,249.50 = 21, ... 12,450.50+1,249.50=13,700.00; +8,300=22,000.00 lei. Nice.\nAcme percentage = 12,450.50 / 22,000 * 100. Compute: 22,000*0.566 = 12,452? 0.566*22000=12,452 (actually 0.566*22000=12,452). Slight high by 1.5. Difference 12,450.50/22000 = 0.565931818...? Let's compute precisely.\n12450.5 / 22000 = divide both by? 12450.5/22000 = 0.56593181818 (since 22000*0.566=12452; minus 1.5/22000=0.00006818; 0.566-0.00006818=0.56593182). Percent = 56.5931818% ≈ 56.59%.\nNeed answer in Romanian concise. Mention formulas maybe. Ensure formatting with Romanian decimal comma. Total 22.000,00 lei; Acme 56,59% (aprox). Could include exact 56,5932%. Final concise.",
+      "restored": "Total: **22.000,00 lei**.  \nAcme: **12.450,50 / 22.000,00 = 56,59%** din total.",
+      "leaks": [],
+      "ms": 3100
+    }
+  ]
+}

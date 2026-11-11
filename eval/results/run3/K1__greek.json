@@ -1,0 +1,37 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Maria Popescu, sora lui Ion Popescu, lucrează la Nordic Agro, iar fratele ei lucrează la Acme. Unde lucrează fiecare dintre frați?",
+      "raw": "η lucrează la ψ, iar fratele ei, ε, lucrează la β.",
+      "rawReasoning": "We need answer Romanian. Need parse riddle with Greek placeholders confidential terms. We must treat Greek letters as real terms, not translate. Need infer likely classic puzzle? \"η, sora lui ε, lucrează la ψ, iar fratele ei lucrează la β. Unde lucrează fiecare dintre frați?\" We need answer where each of siblings works. We have η sister of ε. η works at ψ, her brother works at β. Asking where each of siblings works? Maybe it's a logic puzzle with entities? Need infer from sentence only: η is sister of ε. η works at ψ. Her brother (ε? since sibling) works at β. So ε works at β, η at ψ. But question phrasing \"Unde lucrează fiecare dintre frați?\" In Romanian frați can mean siblings. Maybe η and ε are siblings; one's workplace known? Let's inspect.\n\nSentence: \"η, sora lui ε, lucrează la ψ, iar fratele ei lucrează la β. Unde lucrează fiecare dintre frați?\" Literally: η, sister of ε, works at ψ, and her brother works at β. Where does each of siblings work? If η is sister of ε, her brother is ε (assuming only brother mentioned?) So ε works at β; η works at ψ. But maybe trick: \"fratele ei\" could be ε, yes. Need answer concise: η lucrează la ψ, iar fratele ei ε lucrează la β. Need maybe mention if by \"frați\" means siblings. Ensure Greek letters exact. Use same notation. No extra. \n\nNeed be careful: There are placeholders: β may be real term replaced; cannot translate. Fine.\n\nFinal concise in Romanian.",
+      "restored": "Maria Popescu lucrează la Nordic Agro, iar fratele ei, Ion Popescu, lucrează la Acme.",
+      "leaks": [],
+      "ms": 6569,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "η",
+          "ε",
+          "ψ",
+          "β"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "η, sora lui ε, lucrează la ψ, iar fratele ei lucrează la β. Unde lucrează fiecare dintre frați?",
+      "restoreReport": {
+        "restored": 46,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

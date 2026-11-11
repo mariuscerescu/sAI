@@ -1,0 +1,16 @@
+{
+  "case": "D2",
+  "category": "D. Greek",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "În fizică, Δv = a·Δt. Dacă Maria Ceban accelerează cu 2 m/s² timp de 3 s, cât este Δv? Apoi calculează aria unui cerc de rază 2 m folosind π.",
+      "raw": "Δv = a·Δt = 2 m/s² · 3 s = 6 m/s.\n\nAria cercului: A = πr² = π·2² = 4π m² ≈ 12,57 m².",
+      "rawReasoning": "The user asks in Romanian: In physics, Δv = a·Δt. If Maria Ceban accelerates at 2 m/s² for 3 s, how much is Δv? Then calculate area of circle radius 2 m using π.\nNeed answer concise in Romanian. Need compute: Δv = 2*3=6 m/s. Area = π r^2 = π*4 = 4π m^2 ≈ 12.566 m^2 (about 12.57). Need be mindful: \"Maria Ceban\" maybe irrelevant random person; use in answer maybe. No safety issues. Respond in Romanian concise. Ensure formula.",
+      "restored": "Δv = a·Δt = 2 m/s² · 3 s = 6 m/s.\n\nAria cercului: A = πr² = π·2² = 4π m² ≈ 12,57 m².",
+      "leaks": [],
+      "ms": 2799
+    }
+  ]
+}

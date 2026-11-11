@@ -1,0 +1,25 @@
+{
+  "case": "E3",
+  "category": "E. Cod",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un query SQL care selectează facturile clientului 'Nordic Agro SA' plătite în contul cu IBAN-ul MD24AG000225100013104168 după 1 ianuarie 2026.",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 0,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1
+        },
+        "tokensUsed": [],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "blocked": "POLICY_BLOCKED (CARD)"
+    }
+  ]
+}

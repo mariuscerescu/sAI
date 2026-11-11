@@ -1,0 +1,35 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirming Thursday’s meeting\n\nDear Mr. ψ,\n\nI hope you’re well. This confirms our meeting on Thursday to discuss ο, at the time already agreed. Please let me know if anything has changed on your side.\n\nBest regards,  \n[Your Name]",
+      "rawReasoning": "The user wants a short polite email to Mr. ψ from Acme confirming Thursday meeting about ο. Need treat Greek letters as real terms; write letters exactly as given. Need produce email only probably. Need ensure use ψ and ο exactly. No need extra explanation. Need maybe include placeholder time? We can make concise. Avoid spelling out. Email: Subject: Thursday meeting about ο. Dear Mr. ψ, I hope you're well. This confirms our meeting on Thursday to discuss ο. Please let me know if the timing ... Best. Since no specific time given, avoid inventing? Could say \"at the agreed time\". Short polite. Ensure exactly ψ and ο.",
+      "restored": "Subject: Confirming Thursday’s meeting\n\nDear Mr. Smith,\n\nI hope you’re well. This confirms our meeting on Thursday to discuss Project Orion, at the time already agreed. Please let me know if anything has changed on your side.\n\nBest regards,  \n[Your Name]",
+      "leaks": [],
+      "ms": 5056,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "ο"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Write a short, polite email to Mr. ψ from Acme confirming our Thursday meeting about ο.",
+      "restoreReport": {
+        "restored": 11,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

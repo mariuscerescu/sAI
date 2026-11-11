@@ -1,0 +1,16 @@
+{
+  "case": "G1",
+  "category": "G. Format",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Tradu în engleză, franceză și rusă: «Dl. Popescu de la Acme vă invită la prezentarea TermoGuard X9.»",
+      "raw": "- Engleză: **Mr. Popescu from Acme invites you to the TermoGuard X9 presentation.**\n- Franceză: **M. Popescu d’Acme vous invite à la présentation du TermoGuard X9.**\n- Rusă: **Г-н Попеску из компании Acme приглашает вас на презентацию TermoGuard X9.**",
+      "rawReasoning": "The user asks in Romanian for translation into English, French, Russian of a sentence. Need provide translations. Need be mindful of honorifics and product name. Sentence: «Dl. Popescu de la Acme vă invită la prezentarea TermoGuard X9.» Means: Mr. Popescu from Acme invites you to the presentation of the TermoGuard X9.\n\nNeed translate accurately:\nEnglish: \"Mr. Popescu from Acme invites you to the TermoGuard X9 presentation.\" Or \"Mr. Popescu of Acme invites you to the unveiling/presentation of the TermoGuard X9.\" prezentarea = presentation.\nFrench: \"M. Popescu d'Acme vous invite à la présentation du TermoGuard X9.\" Note Acme in French could be \"d’Acme\" or \"de chez Acme\". Use \"M. Popescu d’Acme\" acceptable. If Acme preceded by vowel? \"Acme\" starts vowel, use d'Acme.\nRussian: \"Г-н Попеску из компании Acme приглашает вас на презентацию TermoGuard X9.\" Popescu romanian pronunciation? Transliterate Popescu -> Попеску. Romanian Dl. -> г-н. \"из Acme\" maybe \"из компании Acme\". Sentence: «Господин Попеску из Acme приглашает вас на презентацию TermoGuard X9.» Formal: «Г-н Попеску из компании Acme приглашает вас на презентацию TermoGuard X9.»\n\nNeed answer concise in Romanian likely. Provide list. Ensure French honorific \"M.\" not \"Monsieur\"? Fine. Russian uses Cyrillic. Could preserve Acme and product. Final only. No extra.",
+      "restored": "- Engleză: **Mr. Popescu from Acme invites you to the TermoGuard X9 presentation.**\n- Franceză: **M. Popescu d’Acme vous invite à la présentation du TermoGuard X9.**\n- Rusă: **Г-н Попеску из компании Acme приглашает вас на презентацию TermoGuard X9.**",
+      "leaks": [],
+      "ms": 4640
+    }
+  ]
+}

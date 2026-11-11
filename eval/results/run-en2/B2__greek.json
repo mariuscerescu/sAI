@@ -1,0 +1,37 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "Step by step:\n\n1. ψ owns 30% of ε.\n2. ε owns 60% of ζ.\n3. ψ’s indirect economic exposure to ζ is: 30% × 60% = 18%.\n\nSo, if by “control” you mean indirect ownership/economic share, ψ indirectly has 18% of ζ.\n\nBut strictly speaking, “control” usually means the power to direct decisions, not just an 18% stake. A 30% holding in ε does not by itself prove control of ε; without control of ε, ψ does not control ζ either. It only gives ψ an 18% indirect economic interest, unless other facts give ψ decisive influence over ε.",
+      "rawReasoning": "We need answer puzzle with Greek terms. Need interpret. User asks: ψ bought 30% of ε. ε owns 60% of ζ. What share of ζ does ψ control indirectly? Explain step by step.\n\nWe need treat letters as terms but we don't know meanings; just compute share. Need be careful: indirect control via chain multiplication? ψ owns 30% of ε, ε owns 60% of ζ. Indirect economic interest in ζ = 0.30*0.60 = 0.18 = 18%. But wording \"control\" may be tricky: owning 30% may not confer control; indirect control usually requires control at each link. If ψ bought 30% of ε, likely not controlling epsilon (unless control threshold met by other terms?), so ψ controls 0% of ζ, regardless of 18% economic exposure. User specifically says \"share of ζ does ψ control indirectly\" and \"Explain step by step.\" Need infer intended distinction between ownership/economic interest and control. Confidential terms replaced by Greek letters; maybe this is legal/accounting concept. Need answer: If \"control\" is used strictly (ability to direct/govern), 30% stake in ε is not automatically control; absent control of ε, ψ does not control ζ indirectly. The indirect ownership/economic interest is 18%. We should explain both and state assumption.\n\nNeed concise but step-by-step. Avoid spelling letters. Use exactly ψ ε ζ. Mention 30% × 60% = 18% interest; control not same as percentage ownership. If question uses \"control\" loosely as \"indirect stake,\" answer 18%. If strict corporate control, need majority/decisive influence over ε; 30% alone doesn't establish control, so cannot say controls ζ; at most 18% economic exposure.\n\nNeed be careful: \"What share of ζ does ψ control indirectly?\" Could expect multiplication. The prompt maybe tests transitive ownership. But word control hints nuance. We can answer with caveat.\n\nFinal with steps.",
+      "restored": "Step by step:\n\n1. Acme Logistics owns 30% of Nordic Farms.\n2. Nordic Farms owns 60% of Greenfield Bank.\n3. Acme Logistics’s indirect economic exposure to Greenfield Bank is: 30% × 60% = 18%.\n\nSo, if by “control” you mean indirect ownership/economic share, Acme Logistics indirectly has 18% of Greenfield Bank.\n\nBut strictly speaking, “control” usually means the power to direct decisions, not just an 18% stake. A 30% holding in Nordic Farms does not by itself prove control of Nordic Farms; without control of Nordic Farms, Acme Logistics does not control Greenfield Bank either. It only gives Acme Logistics an 18% indirect economic interest, unless other facts give Acme Logistics decisive influence over Nordic Farms.",
+      "leaks": [],
+      "ms": 8114,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 6
+        },
+        "tokensUsed": [
+          "ψ",
+          "ε",
+          "ζ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "ψ bought 30% of ε. ε owns 60% of ζ. What share of ζ does ψ control indirectly? Explain step by step.",
+      "restoreReport": {
+        "restored": 44,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ζ"
+        ]
+      }
+    }
+  ]
+}

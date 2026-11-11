@@ -1,0 +1,35 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "Assuming “Acme” means ⟦COMPANY_1⟧:\n\n1. ⟦COMPANY_1⟧ owns 30% of ⟦COMPANY_2⟧.\n2. ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧.\n3. Indirect economic ownership in ⟦COMPANY_3⟧ = 30% × 60% = 18%.\n\nSo Acme/⟦COMPANY_1⟧ has an 18% indirect economic interest in ⟦COMPANY_3⟧.\n\nImportant distinction: “control” is not the same as multiplying percentages. Acme controls ⟦COMPANY_3⟧ only if its 30% stake in ⟦COMPANY_2⟧ actually gives it control of ⟦COMPANY_2⟧—e.g. board control, voting agreement, veto/de facto control—and ⟦COMPANY_2⟧’s 60% gives control of ⟦COMPANY_3⟧. If 30% does not confer control of ⟦COMPANY_2⟧, Acme likely controls 0% of ⟦COMPANY_3⟧, though it is exposed to 18% economically. If 30% does confer control of ⟦COMPANY_2⟧, then Acme indirectly controls ⟦COMPANY_3⟧ through the chain, while its indirect ownership economics remain 18%.",
+      "rawReasoning": "The user says \"Acme\" but no Acme placeholder exists. Need decide whether Acme is ⟦COMPANY_1⟧? They ask what share of ⟦COMPANY_3⟧ does Acme control indirectly. Perhaps Acme is the real name represented? But placeholders replaced confidential names; user used Acme maybe generic? Need not invent. We can explain assuming \"Acme\" refers to ⟦COMPANY_1⟧, the buyer. Need compute indirect ownership: 30% * 60% = 18% economic interest. But control is not ownership percentage exactly. If COMPANY_2 owns 60% of COMPANY_3, COMPANY_2 likely controls COMPANY_3. If COMPANY_1's 30% stake gives control of COMPANY_2? Generally 30% does not automatically confer control; control depends on voting rights/agreements. The question phrasing: \"What share of COMPANY_3 does Acme control indirectly?\" They might expect multiplying 30% and 60% = 18%. But ask \"control indirectly\" maybe distinction between ownership and control. Need answer step-by-step, concise. Mention placeholders: ⟦COMPANY_1⟧ bought 30% of ⟦COMPANY_2⟧; ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧. Treating Acme as ⟦COMPANY_1⟧. Economic indirect interest = 0.30×0.60=0.18=18%. However \"control\" isn't necessarily 18%; control requires power to govern financial/operating policies. If 30% does not confer control over ⟦COMPANY_2⟧ (via board, veto rights, shareholders agreement, de facto control), Acme controls 0% of ⟦COMPANY_3⟧ legally despite 18% economic exposure. If 30% gives control over ⟦COMPANY_2⟧ and 60% gives ⟦COMPANY_2⟧ control over ⟦COMPANY_3⟧, Acme indirectly controls ⟦COMPANY_3⟧ (100% of voting power in effect? Not owns 100; controls through chain) while its indirect economic ownership is 18%. Need phrase carefully.\n\nNeed answer maybe: Step 1 ownership chain. Step 2 multiply for economic share. Step 3 distinguish control. Conclude: indirectly controls only if first stake conveys control; otherwise no control, just 18% indirect economic/voting attributable interest? Actually voting interest attributable? If no control, can't consolidate but economic exposure 18%. If controls C2, then through C2 can control C3 (because C2 has 60% majority). So \"what share does Acme control indirectly\" as a percentage: commonly 18% of economics, not 60? We can state: The indirect ownership stake is 18%; control cannot be expressed solely by that multiplication. \n\nNeed not use tools. Final concise but step-by-step. Ensure placeholders exactly as given. Use Acme carefully: \"Assuming Acme = ⟦COMPANY_1⟧\". If Acme is a different entity, insufficient info.",
+      "restored": "Assuming “Acme” means Acme Logistics:\n\n1. Acme Logistics owns 30% of Nordic Farms.\n2. Nordic Farms owns 60% of Greenfield Bank.\n3. Indirect economic ownership in Greenfield Bank = 30% × 60% = 18%.\n\nSo Acme/Acme Logistics has an 18% indirect economic interest in Greenfield Bank.\n\nImportant distinction: “control” is not the same as multiplying percentages. Acme controls Greenfield Bank only if its 30% stake in Nordic Farms actually gives it control of Nordic Farms—e.g. board control, voting agreement, veto/de facto control—and Nordic Farms’s 60% gives control of Greenfield Bank. If 30% does not confer control of Nordic Farms, Acme likely controls 0% of Greenfield Bank, though it is exposed to 18% economically. If 30% does confer control of Nordic Farms, then Acme indirectly controls Greenfield Bank through the chain, while its indirect ownership economics remain 18%.",
+      "leaks": [],
+      "ms": 11057,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧",
+          "⟦COMPANY_3⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦COMPANY_1⟧ bought 30% of ⟦COMPANY_2⟧. ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧. What share of ⟦COMPANY_3⟧ does Acme control indirectly? Explain step by step.",
+      "restoreReport": {
+        "restored": 32,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "case": "H2",
+  "category": "H. Identificatori",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Am două numere de telefon: +373 79 555 123 și 079555123. Sunt același număr? Explică.",
+      "raw": "Da — așa cum apar în conversație, ⟦PHONE_1⟧ și ⟦PHONE_1⟧ sunt același număr: este același placeholder, repetat.\n\nNu pot vedea cifrele reale, deci nu pot confirma independent dacă maparea către un număr concret este corectă. Dar, ținând cont de regulile de anonimare, aparițiile aceluiași placeholder reprezintă aceeași valoare; dacă ar fi fost numere diferite, ar fi trebuit să apară placeholder-e diferite, de exemplu ⟦PHONE_1⟧ și ⟦PHONE_2⟧.",
+      "rawReasoning": "The user asks in Romanian: has two phone numbers ⟦PHONE_1⟧ and ⟦PHONE_1⟧. Same number? Explain. Placeholders replaced identically? Both shown as ⟦PHONE_1⟧, so they are identical placeholders; per instruction treat each placeholder as real value, write placeholder exactly, never guess. Need answer based only on visible placeholders: since both are the same placeholder ⟦PHONE_1⟧, they denote the same underlying value within this conversation, so yes, as represented they are the same. But cannot verify real-world digits because masked. Need concise Romanian. Avoid saying actual number. Explain that placeholders stand for same real value only if mapping consistent; two occurrences of same token are same entity by convention. Also mention if intended different numbers, anonymizer would use different placeholders (⟦PHONE_1⟧ vs ⟦PHONE_2⟧), but both are ⟦PHONE_1⟧. Ensure exact placeholder format.",
+      "restored": "Da — așa cum apar în conversație, +373 79 555 123 și +373 79 555 123 sunt același număr: este același placeholder, repetat.\n\nNu pot vedea cifrele reale, deci nu pot confirma independent dacă maparea către un număr concret este corectă. Dar, ținând cont de regulile de anonimare, aparițiile aceluiași placeholder reprezintă aceeași valoare; dacă ar fi fost numere diferite, ar fi trebuit să apară placeholder-e diferite, de exemplu +373 79 555 123 și ⟦PHONE_2⟧.",
+      "leaks": [],
+      "ms": 2921,
+      "redactReport": {
+        "countsByClass": {
+          "PHONE": 2
+        },
+        "tokensUsed": [
+          "⟦PHONE_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Am două numere de telefon: ⟦PHONE_1⟧ și ⟦PHONE_1⟧. Sunt același număr? Explică.",
+      "restoreReport": {
+        "restored": 9,
+        "tolerantMatches": [],
+        "unknownTokens": [
+          "⟦PHONE_2⟧",
+          "⟦PHONE_2⟧"
+        ],
+        "suspicious": []
+      }
+    }
+  ]
+}

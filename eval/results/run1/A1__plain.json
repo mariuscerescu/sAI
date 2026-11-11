@@ -1,0 +1,16 @@
+{
+  "case": "A1",
+  "category": "A. Bază",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un e-mail scurt și politicos către dl. Popescu de la Acme, în care îi confirmi întâlnirea de joi pentru Proiectul Orion.",
+      "raw": "Subiect: Confirmare întâlnire — Proiectul Orion\n\nStimate domnule Popescu,\n\nSper că vă sunt bine. Vă confirm prin prezenta întâlnirea de joi privind Proiectul Orion.\n\nDacă ora sau detaliile stabilite necesită ajustări, vă rog să-mi spuneți. În rest, ne vedem joi.\n\nCu respect,  \n[Numele tău]",
+      "rawReasoning": "The user wants a short polite email to Mr. Popescu from Acme confirming Thursday meeting for Project Orion. Need respond in Romanian likely. Need produce email only maybe. Need be careful: no specifics like time/location, so use placeholders or keep generic. Short and polite. Include subject, greeting, confirmation, ask to confirm if details ok maybe. Since user asks write email; final should contain email. Keep concise.",
+      "restored": "Subiect: Confirmare întâlnire — Proiectul Orion\n\nStimate domnule Popescu,\n\nSper că vă sunt bine. Vă confirm prin prezenta întâlnirea de joi privind Proiectul Orion.\n\nDacă ora sau detaliile stabilite necesită ajustări, vă rog să-mi spuneți. În rest, ne vedem joi.\n\nCu respect,  \n[Numele tău]",
+      "leaks": [],
+      "ms": 5778
+    }
+  ]
+}

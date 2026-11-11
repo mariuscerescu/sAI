@@ -1,0 +1,41 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I don’t have the substance of the β conversation, so don’t invent specifics. Tell κ: “I met with ι and ο on β; the key discussion covered status, open points, and decisions needed.”  \nAdd: “Before committing, κ should confirm the agreed next steps, owners, timeline, and any unresolved risks from that ι/ο discussion.”",
+      "rawReasoning": "The user asks: \"I talked to ι and ο yesterday about the β deal. Can you summarize in two lines what I should tell κ?\" They reference opaque labels. We need answer. Need infer perhaps there is missing context? We don't have prior conversation. We should not fabricate specifics. Need maybe explain can't know because ι, ο, β are placeholders and no details provided. But task likely tests confidential replacement: treat Greek letters as real terms, refer exactly. Need answer concise two lines. We can provide a template/summary of what to tell κ without inventing: tell κ that discussion with ι and ο covered β, key points/agreements/open items, next steps/owners/timeline. But user wants \"Can you summarize in two lines what I should tell κ?\" We lack content of talk. Maybe should ask for details. But asks direct; perhaps expected answer: \"Tell κ that you and ι/ο reviewed the β deal and aligned on the main terms; flag any unresolved points and next steps before κ commits.\" Need be honest: I don't have the substance from yesterday, so I can only give a safe two-line brief. Need include exact letters. Two lines. Avoid spelling out letters. Could say: \"Tell κ that ι and ο discussed β with you and that the main open points/next steps are...\" Hmm \"summarize\" implies content, but not in prompt. Need not hallucinate. Best: \"I don’t have the substance of your ι/ο conversation, so don’t relay invented terms. Tell κ: ...\" That's more than two lines? Need two lines. Make two lines exactly maybe.\n\nNeed ensure not use Greek letters other meaning. Use exact β, ι, ο, κ. Final two lines.",
+      "restored": "I don’t have the substance of the acme conversation, so don’t invent specifics. Tell Johnson: “I met with Smith and Walker on acme; the key discussion covered status, open points, and decisions needed.”  \nAdd: “Before committing, Johnson should confirm the agreed next steps, owners, timeline, and any unresolved risks from that Smith/Walker discussion.”",
+      "leaks": [],
+      "ms": 7684,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "ι",
+          "ο",
+          "β",
+          "κ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "I talked to ι and ο yesterday about the β deal. Can you summarize in two lines what I should tell κ?",
+      "restoreReport": {
+        "restored": 37,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ι",
+          "ι",
+          "ι"
+        ]
+      }
+    }
+  ]
+}

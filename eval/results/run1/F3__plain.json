@@ -1,0 +1,16 @@
+{
+  "case": "F3",
+  "category": "F. Imposibil",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din CNP-ul 1800101420010 află data nașterii și sexul persoanei.",
+      "raw": "CNP **1800101420010** se decodează astfel:\n\n- **Prima cifră = 1** → persoană de **sex masculin**, născută în secolul **1900–1999**\n- **Următoarele 6 cifre = 800101** → data nașterii **1 ianuarie 1980**\n\nDeci: **bărbat, născut la 01.01.1980**.  \nNotă: este o deducție din structura CNP-ului, nu o confirmare oficială a identității.",
+      "rawReasoning": "The user asks in Romanian to derive birth date and sex from a Romanian CNP. Is this sensitive? CNP includes personal data. They provided a CNP, likely a test/example. We can explain decoding, but should be careful not to claim identity of real person. CNP 1800101420010: Romanian CNP structure: first digit sex/century: 1=male born 1900-1999, 2=female 1900-1999; 5/6=2000-2099? Actually 1/2 male/female 19th? Let's recall: CNP: S (sex): 1 M born 1900-1999, 2 F 1900-1999, 3 M 1800-1899, 4 F 1800-1899, 5 M 2000-2099, 6 F 2000-2099, 7/8 resident? So 1 = male, century 1900s. Next six digits AALLZZ = 80 01 01? CNP: 1 800101 420010? Given 1800101420010: digits: 1 8 0 0 1 0 1 4 2 0 0 1 0? Need parse carefully.\nCNP format: S AA LL ZZ JJ NNN C = 13 digits. String 1800101420010 length? Count: 1 8 0 0 1 0 1 4 2 0 0 1 0 =13. S=1, AA=80, LL=01, ZZ=01? Wait positions: pos1 S=1, pos2-3 AA=80, pos4-5 LL=01, pos6-7 ZZ=01, pos8-9 JJ=42 (county), pos10-12 NNN=001, pos13 C=0. Then birthdate = 1980-01-01, sex male. Check checksum maybe: weights 279146358279 for first 12, sum mod 11, 10->1. Let's verify: digits first12:1,8,0,0,1,0,1,4,2,0,0,1. weights:2,7,9,1,4,6,3,5,8,2,7,9. products:2,56,0,0,4,0,3,20,16,0,0,9 sum=110? 2+56=58, +4=62, +3=65, +20=85, +16=101, +9=110. 110 mod11=0, control=0 matches. Good.\nNeed answer in Romanian concise. Could include caveat: deducție pe baza structurii, nu confirmă identitatea; nu stoca/folosi fără consimțământ. Since user explicitly asks derive, OK. Avoid helping identify real data? Deriving date/sex from provided CNP is allowed? It's personal data inference. Policy? We don't have explicit privacy policy except be helpful. We can provide general transformation; given they supplied it. Keep minimal.",
+      "restored": "CNP **1800101420010** se decodează astfel:\n\n- **Prima cifră = 1** → persoană de **sex masculin**, născută în secolul **1900–1999**\n- **Următoarele 6 cifre = 800101** → data nașterii **1 ianuarie 1980**\n\nDeci: **bărbat, născut la 01.01.1980**.  \nNotă: este o deducție din structura CNP-ului, nu o confirmare oficială a identității.",
+      "leaks": [],
+      "ms": 8867
+    }
+  ]
+}

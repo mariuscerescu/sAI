@@ -1,0 +1,43 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "η works at ψ; η's/ε's brother works at β. ε's workplace isn't stated.",
+      "rawReasoning": "We need answer a riddle? User: \"η, ε's sister, works at ψ, and her brother works at β. Where does each sibling work?\" Need interpret Greek letters as placeholders? The system says confidential terms replaced with isolated Greek letters such as β or κ. Treat each letter as real term it stands for. Whenever refer to it, write letter exactly as given. Do not translate/spell out. We don't know actual mappings. Need answer based on given info? It literally says η, ε's sister, works at ψ, and her brother works at β. Ask: Where does each sibling work? Need infer siblings are η, ε, and brother? Let's parse: \"η, ε's sister, works at ψ, and her brother works at β.\" η is ε's sister; η works at ψ. \"her brother\"—whose brother? Could be ε's brother or η's brother. Since η is ε's sister, they are siblings. \"her brother works at β\" likely η's brother (also ε's brother) works at β. So there are three siblings: η (sister of ε), ε (whose sister is η), and the brother. But question: \"Where does each sibling work?\" We know η works at ψ, brother works at β, ε's workplace not explicitly stated? Maybe ε is one of the siblings and works at ? Need infer maybe ε works at ψ? Wait phrase: \"η, ε's sister, works at ψ\" means η is the sister of ε and works at ψ. \"and her brother works at β\"—η's brother works at β. It doesn't state ε's employer. Maybe the answer is: η works at ψ; ε's brother (also η's brother) works at β; ε's workplace is not specified. But user asks \"Where does each sibling work?\" Maybe expects using relational logic: η is ε's sister and works at ψ; brother works at β. Need list for ε, η, and brother: ε unknown? Hmm.\n\nNeed consider if this is from a dataset of pronoun/coreference with Greek placeholders. They might want answer only from prompt. Need not hallucinate.\n\nLet's formulate: η works at ψ. The brother (η's/ε's brother) works at β. ε's own workplace isn't stated. If \"each sibling\" means η and her brother only, then those are the two; ε is the sibling whose workplace is unspecified. Need mention ambiguity. Keep concise. Ensure Greek letters exact: η, ε, ψ, β. Use letters exactly. Don't translate. Final concise.",
+      "restored": "Mary Smith works at Nordic Farms; Mary Smith's/John Smith's brother works at Acme. John Smith's workplace isn't stated.",
+      "leaks": [],
+      "ms": 6684,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "η",
+          "ε",
+          "ψ",
+          "β"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "η, ε's sister, works at ψ, and her brother works at β. Where does each sibling work?",
+      "restoreReport": {
+        "restored": 79,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

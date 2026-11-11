@@ -1,0 +1,45 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "Floarea a fost culeasă de Floare ⟦PERSON_1⟧, din grădina lui ⟦PERSON_2⟧.",
+      "rawReasoning": "The user asks in Romanian a reading comprehension-like question: \"Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧. Cine a cules floarea și din grădina cui?\" Need answer based on text. We must preserve placeholders exactly. Need parse Romanian: \"Floare ⟦PERSON_1⟧\" Could mean the person named Floare? Actually sentence: \"Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧.\" There is ambiguity: \"Floare ⟦PERSON_1⟧\" maybe first name Floare + placeholder surname? They replaced confidential data with placeholders. The subject is \"Floare ⟦PERSON_1⟧\" (a person whose first name is Floare and surname is placeholder ⟦PERSON_1⟧?) It says \"Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧.\" Question: \"Cine a cules floarea și din grădina cui?\" Answer: ⟦PERSON_1⟧? Wait exact subject includes \"Floare\" as maybe common noun? Let's analyze carefully.\n\nSentence components:\n- \"Floare ⟦PERSON_1⟧\" – In Romanian, \"Floare\" is a female first name (literally Flower). It can be followed by surname placeholder: \"Floare ⟦PERSON_1⟧\" = [first name Floare] [last name placeholder PERSON_1]. They say placeholders replaced confidential data; here ⟦PERSON_1⟧ stands for a person's name? Actually placeholder form ⟦CLASS_N⟧ e.g. ⟦PERSON_1⟧ protects confidential data, treat as real value it stands for. But we don't know what PERSON_1 stands for. However syntactically \"Floare ⟦PERSON_1⟧\" likely is a full name: Floare (given name) + ⟦PERSON_1⟧ (family name). The verb \"a cules\" (singular) agrees. \"din grădina lui ⟦PERSON_2⟧\" = from the garden of ⟦PERSON_2⟧. Question asks: who picked the flower and from whose garden? Answer: Floare ⟦PERSON_1⟧ picked it, from ⟦PERSON_2⟧'s garden. Need maybe say \"Floare ⟦PERSON_1⟧ a cules floarea din grădina lui ⟦PERSON_2⟧.\" Keep placeholders exact. Since user in Romanian, answer in Romanian concis.\n\nNeed be careful: If \"Floare\" is a common noun? \"Floare ⟦PERSON_1⟧\" as subject would be odd: \"Flower PERSON_1 picked...\" No.\n\nCould be a trick about coreference: \"Floare ⟦PERSON_1⟧\" includes the word \"Floare\" (flower) as a name, and object \"o floare mare\". The answer should not confuse: the person who picked is Floare ⟦PERSON_1⟧ (the one named Floare), not the flower; the garden belongs to ⟦PERSON_2⟧. Use exact placeholders.\n\nNeed final concise.",
+      "restored": "Floarea a fost culeasă de Floare Munteanu, din grădina lui Radu Mare.",
+      "leaks": [],
+      "ms": 7076,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Floare ⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧. Cine a cules floarea și din grădina cui?",
+      "restoreReport": {
+        "restored": 29,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "case": "E5",
+  "category": "E. Cod",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie o expresie regulată care găsește într-un text numele «Ion Popescu», inclusiv variantele «I. Popescu» și «Popescu Ion».",
+      "raw": "Poți folosi:\n\n```regex\n(?<![\\p{L}\\p{N}_])(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)(?![\\p{L}\\p{N}_])\n```\n\ncu flagurile `g` și `u` unde sunt disponibile.\n\nAcoperă: `ψ`, `I. ψ`, `ψ Ion`. În Python/PCRE simplu, `\\b(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)\\b` e de obicei suficient.",
+      "rawReasoning": "The user asks in Romanian: write a regex that finds in a text the name «ψ», including variants «I. ψ» and «ψ Ion». There's a confidential term replaced by Greek letter ψ. We must treat ψ as real term. Need answer in Romanian, concise. Need produce regex. Need think carefully about matching name ψ including variants \"I. ψ\" and \"ψ Ion\". Need infer pattern: They want regex to find the name «ψ», including variants «I. ψ» and «ψ Ion». Likely ψ is a surname? Variants: \"I. ψ\" (initial + surname) and \"ψ Ion\" (surname + first name?) In Romanian names, \"I.\" could be first initial before family name? Example \"I. Popescu\" and \"Popescu Ion\". They want find name ψ in text including those variants. Need construct regex with word boundaries and optional parts: (?:\\bI\\.\\s+)?ψ(?:\\s+Ion)? perhaps. But \"I. ψ\" means capital I, period, space, ψ. \"ψ Ion\" means ψ space Ion. Need also plain ψ. Regex: \\b(?:I\\.\\s*)?ψ(?:\\s+Ion)?\\b maybe. But if want include variants, must match exactly three: ψ, I. ψ, ψ Ion. Could be /\\b(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)\\b/g. Simpler: /\\b(?:I\\.\\s+)?ψ(?:\\s+Ion)?\\b/g matches I. ψ Ion too (undesired maybe). Need avoid matching \"I. ψ Ion\" if only variants listed? The prompt: \"găsește într-un text numele «ψ», inclusiv variantele «I. ψ» și «ψ Ion».\" It says find the name ψ, including variants I. ψ and ψ Ion. It doesn't explicitly say exclude I. ψ Ion. But logically the union of {ψ, I. ψ, ψ Ion} would exclude I. ψ Ion. Need decide.\n\nNeed answer with regex. Could present exact union: /\\b(?:I\\.\\s+ψ|ψ Ion|ψ)\\b/g or ordered alternation /\\b(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)\\b/g (this includes I. ψ Ion? no: first alternative requires after I. ψ exactly boundary; \"I. ψ Ion\" would not match fully? Let's test mentally: pattern ((?:I\\.\\s+)?ψ(?:\\s+Ion)?) matches optional prefix and optional suffix independently, so I. ψ Ion matches (prefix yes suffix yes). The union pattern (?:I\\.\\s+ψ|ψ(?:\\s+Ion)?) alternatives: for \"I. ψ Ion\", first alt matches \"I. ψ\" but then there is \" Ion\" remaining; if using find with no anchors, it will still find substring \"I. ψ\" within \"I. ψ Ion\". So not exclude. To exclude, need boundaries around whole and order: /\\b(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)\\b/ same issue: matches substring I. ψ in I. ψ Ion, boundary after ψ is space? \\b between ψ and space yes, so matches. Excluding requires negative lookahead after? Could use /(?<![\\w.])(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)(?![\\w])/ still for I. ψ Ion matches I. ψ with following space not word, ok. To disallow suffix Ion after I. ψ? Hard but possible: /(?<![\\w.])(?:I\\.\\s+ψ(?!\\s+Ion)|ψ(?:\\s+Ion)?)(?![\\w])/. But likely unnecessary.\n\nNeed mention in Romanian. Could say: `\\b(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)\\b` cu flag `g` (și eventual `i` dacă de scrisul e variabil). Aceasta acoperă `ψ`, `I. ψ`, `ψ Ion`. If want also accent? Spaces: use `\\s+`. Need escape dot. For Unicode boundaries, \\b works with ASCII word chars; ψ is non-ASCII? In JS \\b doesn't treat Greek as word? Important: JavaScript \\b is ASCII-centric: \\w = [A-Za-z0-9_], and ψ is non-word, so \\b around ψ may behave unexpectedly: boundary between space and ψ? In JS, \\b matches between word and non-word; if ψ is non-word, then before ψ after space both non-word => no boundary, failing. In Python re with Unicode, \\b treats ψ as word (letters) yes. Need be aware language unspecified. Better provide robust regex not relying on \\b around ψ, maybe use lookarounds with Unicode or explicit boundaries. Use `(?<![\\p{L}\\p{N}_])(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)(?![\\p{L}\\p{N}_])` with flags `gu` in JS/Python? Python supports \\p? no, Python re doesn't support \\p{L}; use regex module or `[^\\W\\d_]`? In Python `\\w` with re.UNICODE matches Greek letters by default in Py3. So \\b ok in Python. In JS need u flag? JS \\w still ASCII even with u. Use lookaheads with Unicode property `\\p{L}` and u flag: `/(?<![\\p{L}\\p{N}_])(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)(?![\\p{L}\\p{N}_])/gu`. But variable-length? lookbehind fixed? JS supports variable? Modern JS supports lookbehind but not necessarily variable. Use fixed sets.\n\nNeed maybe keep concise and mention flavor differences. Final answer in Romanian concise.\n\nNeed include exact letter ψ as given. Don't translate. Good.\n\nLet's craft: \"O variantă (Unicode, JS/PCRE cu \\p{L}): `/(?<![\\p{L}\\p{N}_])(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)(?![\\p{L}\\p{N}_])/gu`. În Python/PCRE simplu, `\\b(?:I\\.\\s+ψ|ψ(?:\\s+Ion)?)\\b` e suficient.\" But PCRE \\b with Unicode? if UTF and Unicode property? okay maybe.\n\nNeed note if vrea exact numai cele trei fără `I. ψ Ion`, primul? Let's avoid complexity. The given regex with alternation in find still matches substrings, but fine.\n\nMaybe better exact whole-token: `(?<![\\p{L}\\p{N}_.]?)` no.\n\nKeep concise: include examples matched. Provide flags. Also say spații multiple `\\s+`; dacă punctul după I poate lipsi, adaugă `?`: `I\\.?`. But prompt variants include I. with dot, keep exact. final in Romanian.",
+      "restored": "Poți folosi:\n\n```regex\n(?<![\\p{L}\\p{N}_])(?:I\\.\\s+Ion Popescu|Ion Popescu(?:\\s+Ion)?)(?![\\p{L}\\p{N}_])\n```\n\ncu flagurile `g` și `u` unde sunt disponibile.\n\nAcoperă: `Ion Popescu`, `I. Ion Popescu`, `Ion Popescu Ion`. În Python/PCRE simplu, `\\b(?:I\\.\\s+Ion Popescu|Ion Popescu(?:\\s+Ion)?)\\b` e de obicei suficient.",
+      "leaks": [],
+      "ms": 14327,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3
+        },
+        "tokensUsed": [
+          "ψ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Scrie o expresie regulată care găsește într-un text numele «ψ», inclusiv variantele «I. ψ» și «ψ Ion».",
+      "restoreReport": {
+        "restored": 100,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

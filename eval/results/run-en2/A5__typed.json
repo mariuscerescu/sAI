@@ -1,0 +1,37 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I don’t have the substance of yesterday’s conversation, so I can’t invent the deal details. A safe two-line version:\n\n“⟦PERSON_3⟧, I spoke with ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal. Key point: we’re aligned on the main direction, but we should confirm the open items/next steps before moving forward.”\n\nIf you paste your notes, I can make it specific.",
+      "rawReasoning": "The user asks summarize in two lines what to tell ⟦PERSON_3⟧ about ⟦COMPANY_1⟧ deal after talking to ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday. We lack any notes/context. Need not guess placeholders. Should be honest: I don't have the substance of yesterday's conversation; provide a template/placeholder summary based only on known: discussed deal, need alignment. Could ask for notes, but user asked can you summarize. Maybe give a safe two-line draft with placeholders and caveat. Need not use tools; none available. Keep concise. Avoid inventing facts. Use placeholders exactly. Need include that specifics should be inserted from notes. Two lines.",
+      "restored": "I don’t have the substance of yesterday’s conversation, so I can’t invent the deal details. A safe two-line version:\n\n“Johnson, I spoke with Smith and Walker yesterday about the acme deal. Key point: we’re aligned on the main direction, but we should confirm the open items/next steps before moving forward.”\n\nIf you paste your notes, I can make it specific.",
+      "leaks": [],
+      "ms": 3837,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_3⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "I talked to ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal. Can you summarize in two lines what I should tell ⟦PERSON_3⟧?",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

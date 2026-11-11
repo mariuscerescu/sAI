@@ -1,0 +1,79 @@
+{
+  "case": "I3",
+  "category": "I. Document lung",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, Proiectul Orion, 12 mai 2026\n\nParticipanți: Ion Popescu (Acme), Maria Ceban (Nordic Agro), Elena Vrabie (consilier juridic), Andrei Lungu (manager proiect), Sergiu Railean (IT), Natalia Cozma (achiziții), Victor Ciobanu (logistică), Rodica Sandu (contabilitate), Floare Munteanu (stagiară), Radu Mare (furnizor), Lilia Bostan (HR), Dorin Jardan (calitate).\n\n1. Andrei Lungu prezintă stadiul. Se decide ca Sergiu Railean să configureze senzorii TermoGuard X9 până la 20 mai.\n2. Maria Ceban cere raport financiar. Rodica Sandu va pregăti raportul pentru Banca Verde până la 25 mai.\n3. Elena Vrabie revizuiește contractul cu Acme Logistic și trimite observații lui Ion Popescu.\n4. Natalia Cozma comandă 40 de unități TermoGuard X9 de la Radu Mare.\n5. Victor Ciobanu planifică rutele pentru depozitul de pe str. Florilor 12.\n6. Floare Munteanu asistă la inventar. Lilia Bostan organizează instruirea. Dorin Jardan nu a primit sarcini.",
+      "raw": "Participanți cu sarcini:\n\n- σ — prezintă stadiul.\n- ω — configurează senzorii ρ până la 20 mai.\n- ι — pregătește raportul pentru λ până la 25 mai.\n- ο — revizuiește contractul cu χ și trimite observații lui μ.\n- α — comandă 40 de unități ρ de la β.\n- γ — planifică rutele pentru depozitul de pe θ.\n- Floare η — asistă la inventar.\n- τ — organizează instruirea.\n\nFără sarcini atribuite clar: ξ (cere raport financiar), μ (primește observații), β (nu primește sarcină explicită), ζ (nu a primit sarcini).",
+      "rawReasoning": "We need answer in Romanian. Need parse confidential terms replaced with Greek letters. User asks list each participant who received tasks and what task. Need be careful: treat Greek letters as real terms but write exactly as given. We can refer to participants by letters exactly. Need identify tasks assigned in process-verbal.\n\nLet's parse:\nTitle: ședinței de lucru, ψ, 12 mai 2026.\nParticipanți: μ (χ), ξ (ε), ο (consilier juridic), σ (manager proiect), ω (IT), α (achiziții), γ (logistică), ι (contabilitate), Floare η (stagiară), β (furnizor), τ (HR), ζ (calitate).\nItems:\n1. σ prezintă stadiul. Se decide ca ω să configureze senzorii ρ până la 20 mai.\n2. ξ cere raport financiar. ι va pregăti raportul pentru λ până la 25 mai.\n3. ο revizuiește contractul cu χ și trimite observații lui μ.\n4. α comandă 40 de unități ρ de la β.\n5. γ planifică rutele pentru depozitul de pe θ.\n6. Floare η asistă la inventar. τ organizează instruirea. ζ nu a primit sarcini.\n\nNeed list participants who received tasks and tasks:\n- σ: prezintă stadiul? Is presentation a task? The question: \"fiecare participant care a primit sarcini\"—from process verbal, actions/decisions. σ prezintă stadiul (action in meeting, maybe task/responsibility). ξ cere raport financiar (request, not assigned task? participanți care au primit sarcini = those entrusted with tasks; \"ξ cere\" is a request, not receiving task). ο revizuiește contractul cu χ și trimite observații lui μ (task). μ primește observații? Does μ have task? \"trimite observații lui μ\" means μ is recipient, not task. Unless μ must act? no.\n- ω: configurează senzorii ρ până la 20 mai.\n- ι: pregătește raportul pentru λ până la 25 mai.\n- α: comandă 40 unități ρ de la β.\n- γ: planifică rutele pentru depozitul de pe θ.\n- Floare η: asistă la inventar.\n- τ: organizează instruirea.\n- ζ explicitly no tasks -> exclude.\n- β (furnizor) is supplier, not explicitly receives task? α orders from β, doesn't assign task to β in PV. β is participant/furnizor; not said β must deliver. Exclude.\n- ξ: asks for financial report; not assigned task. μ: receives observations; not explicitly task. \nPotential nuance: σ prezintă stadiul — is that a task received? It says \"σ prezintă stadiul\" ( presents status), an action, likely yes, but it's more an activity done at meeting rather than assigned task. The question wants list with each participant who received tasks. In PV, item 1: σ prezintă stadiul. That's not a decided task but an agenda/presentation. Should we include σ? Need decide based on wording.\n\nLet's inspect Romanian: \"Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\" They want extraction from meeting minutes. In such tasks, \"a primit sarcini\" includes people who are assigned actions (va face, decide ca ... să..., revizuiește, comandă, planifică, asistă, organizează). σ prezintă stadiul and ξ cere raport are roles in meeting; not necessarily tasks. But \"σ prezintă stadiul\" could be an assigned action? It states as fact at meeting. They contrast with ζ no tasks. We should include all mentioned with action verbs except requests? Let's systematically mark:\n1 σ prezintă stadiul (action), se decide ca ω să configureze senzorii ρ până la 20 mai (assigned task).\n2 ξ cere raport financiar (request), ι va pregăti raportul pentru λ până la 25 mai (task).\n3 ο revizuiește contractul cu χ și trimite observații lui μ (tasks: revizuire + transmitere observații). μ is recipient, no task.\n4 α comandă 40 unități ρ de la β (task). β has implicit supply? Not stated; no.\n5 γ planifică rutele pentru depozitul de pe θ (task).\n6 Floare η asistă la inventar (task), τ organizează instruirea (task), ζ nu a primit sarcini (exclude).\n\nShould include σ? If list \"participant care a primit sarcini\" maybe σ has the task of presenting status? The wording \"σ prezintă stadiul\" isn't phrased as received task but as a report. The question likely uses information extraction and expects include people with action items. I'd include σ with \"prezintă stadiul\" but note it's a prezentare în ședință, if counted? The user asked concise; avoid ambiguity maybe provide main list and note excluded: ξ doar cere, μ primește observații, ζ fără sarcini, β furnizor fără sarcină atribuită explicit. Include σ? Hmm.\n\nNeed answer in Romanian, concise. Use Greek letters exactly. Must not spell out Greek letters. We can use them as given. Need no translate/spell out. Fine.\n\nLet's formulate:\n- σ — prezintă stadiul (în ședință). \n- ω — configurează senzorii ρ până la 20 mai.\n- ι — pregătește raportul pentru λ până la 25 mai.\n- ο — revizuiește contractul cu χ și trimite observații lui μ.\n- α — comandă 40 de unități ρ de la β.\n- γ — planifică rutele pentru depozitul de pe θ.\n- Floare η — asistă la inventar.\n- τ — organizează instruirea.\nObservații: ξ cere raport financiar (nu primește sarcină); μ primește observații (nu primește sarcină formulată); β nu primește sarcină explicită; ζ nu a primit sarcini.\n\nIf uncertain about σ, phrase \"Dacă numărăm și prezentarea din ședință: σ — ...; în rest, sarcinile atribuite sunt...\" But user wants list. Could include note. Better not be ambiguous. We can include σ but mark as prezentare. The phrase \"care a primit sarcini\" might exclude σ because he didn't receive, he presents. But in process verbal, \"σ prezintă stadiul\" is an item; many would list him as participant with responsibility. Let's include with note \"prezentare, nu decizie delegată\"? That is too nuanced.\n\nNeed concise. Final only. Ensure Greek letters exact: ψ not needed; ρ, λ, χ, θ, β etc. Names: Floare η exact. Use \"ι\" etc.\n\nLet's final with list and brief exclusions.",
+      "restored": "Participanți cu sarcini:\n\n- Andrei Lungu — prezintă stadiul.\n- Sergiu Railean — configurează senzorii TermoGuard X9 până la 20 mai.\n- Rodica Sandu — pregătește raportul pentru Banca Verde până la 25 mai.\n- Elena Vrabie — revizuiește contractul cu Acme și trimite observații lui Ion Popescu.\n- Natalia Cozma — comandă 40 de unități TermoGuard X9 de la Radu Mare.\n- Victor Ciobanu — planifică rutele pentru depozitul de pe str. Florilor 12.\n- Floare Munteanu — asistă la inventar.\n- Lilia Bostan — organizează instruirea.\n\nFără sarcini atribuite clar: Maria Ceban (cere raport financiar), Ion Popescu (primește observații), Radu Mare (nu primește sarcină explicită), Dorin Jardan (nu a primit sarcini).",
+      "leaks": [
+        "STEM?:Acme Logistic SRL (logistica)",
+        "STEM?:Acme Logistic (logistica)",
+        "STEM?:Proiectul Orion (proiect)"
+      ],
+      "ms": 21277,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 24,
+          "COMPANY": 4,
+          "PRODUCT": 2,
+          "ADDRESS": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "μ",
+          "χ",
+          "ξ",
+          "ε",
+          "ο",
+          "σ",
+          "ω",
+          "α",
+          "γ",
+          "ι",
+          "η",
+          "β",
+          "τ",
+          "ζ",
+          "ρ",
+          "λ",
+          "θ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, ψ, 12 mai 2026\n\nParticipanți: μ (χ), ξ (ε), ο (consilier juridic), σ (manager proiect), ω (IT), α (achiziții), γ (logistică), ι (contabilitate), Floare η (stagiară), β (furnizor), τ (HR), ζ (calitate).\n\n1. σ prezintă stadiul. Se decide ca ω să configureze senzorii ρ până la 20 mai.\n2. ξ cere raport financiar. ι va pregăti raportul pentru λ până la 25 mai.\n3. ο revizuiește contractul cu χ și trimite observații lui μ.\n4. α comandă 40 de unități ρ de la β.\n5. γ planifică rutele pentru depozitul de pe θ.\n6. Floare η asistă la inventar. τ organizează instruirea. ζ nu a primit sarcini.",
+      "restoreReport": {
+        "restored": 151,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "case": "B1",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Org chart: John Smith runs Acme. Mary Johnson reports to Smith. David Walker and Emily Clark report to Johnson. Victor Hale reports to Walker. Who is exactly two levels below Smith? Draw the org chart as text.",
+      "raw": "Exactly two levels below ⟦PERSON_1⟧: ⟦PERSON_3⟧ and ⟦PERSON_4⟧.\n\n```text\n⟦PERSON_1⟧\n└── ⟦PERSON_2⟧\n    ├── ⟦PERSON_3⟧\n    │   └── ⟦PERSON_5⟧\n    └── ⟦PERSON_4⟧\n```",
+      "rawReasoning": "We need answer question about org chart. Need parse. ⟦PERSON_1⟧ runs Acme = top. ⟦PERSON_2⟧ reports to ⟦PERSON_1⟧. ⟦PERSON_3⟧ and ⟦PERSON_4⟧ report to ⟦PERSON_2⟧. ⟦PERSON_5⟧ reports to ⟦PERSON_3⟧. Asked: Who is exactly two levels below ⟦PERSON_1⟧? Draw org chart as text.\n\nNeed reason levels: If ⟦PERSON_1⟧ level 0. Exactly two levels below means level 2 (reporting chain: person1 -> X -> person). ⟦PERSON_2⟧ is one level below. ⟦PERSON_3⟧ and ⟦PERSON_4⟧ are two levels below (via ⟦PERSON_2⟧). ⟦PERSON_5⟧ is three levels below. Need draw text org chart. Use placeholders exactly. Ensure no guessing. Concise. Could include indentation:\n⟦PERSON_1⟧\n└── ⟦PERSON_2⟧\n    ├── ⟦PERSON_3⟧\n    │   └── ⟦PERSON_5⟧\n    └── ⟦PERSON_4⟧\n\nAnswer: exactly two levels below ⟦PERSON_1⟧ are ⟦PERSON_3⟧ and ⟦PERSON_4⟧.\n\nNeed be careful: Some might interpret exactly two levels below as two reporting edges down, yes. Final only.",
+      "restored": "Exactly two levels below John Smith: David Walker and Emily Clark.\n\n```text\nJohn Smith\n└── Mary Johnson\n    ├── David Walker\n    │   └── Victor Hale\n    └── Emily Clark\n```",
+      "leaks": [],
+      "ms": 5341,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 9
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦PERSON_4⟧",
+          "⟦PERSON_5⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Org chart: ⟦PERSON_1⟧ runs Acme. ⟦PERSON_2⟧ reports to ⟦PERSON_1⟧. ⟦PERSON_3⟧ and ⟦PERSON_4⟧ report to ⟦PERSON_2⟧. ⟦PERSON_5⟧ reports to ⟦PERSON_3⟧. Who is exactly two levels below ⟦PERSON_1⟧? Draw the org chart as text.",
+      "restoreReport": {
+        "restored": 31,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

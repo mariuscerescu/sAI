@@ -1,0 +1,43 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Thursday meeting about ρ\n\nDear Mr. ψ,\n\nI hope you are well. This is ο writing to confirm our Thursday meeting about ρ. Please let me know if the timing or details need to be adjusted.\n\nBest regards,  \nο",
+      "rawReasoning": "The user asks write short polite email to Mr. ψ from ο confirming Thursday meeting about ρ. Need treat Greek letters as real terms, write letters exactly as given. Need produce email. Need infer placeholders: Mr. ψ is a person, ο is sender? Actually \"from ο\" means from the term ο. \"about ρ\" topic. Need not translate or spell out. We should write letter exactly. Could say \"Dear Mr. ψ, ... This is ο confirming our Thursday meeting about ρ...\" But \"from ο\" maybe email signed ο. Need be natural.\n\nNeed ensure Greek letters exactly as given: ψ, ο, ρ. Use them in body. Avoid adding subscripts. Short polite email. Maybe include subject line. Need not disclose confidentiality. Final only email. Need be careful not to use ψ etc as other meaning. Fine.\n\nNeed produce concise. Maybe:\nSubject: Thursday meeting about ρ\n\nDear Mr. ψ,\n\nI hope you are well. I am writing to confirm our meeting on Thursday to discuss ρ. Please let me know if the time or details need to be adjusted.\n\nBest regards,\nο\n\nThis uses \"from ο\" as signature. Good. Could say \"This is ο writing to confirm...\" Maybe email from ο. Use exact letters. Need concise. Ensure not spell out. Final in English.",
+      "restored": "Subject: Thursday meeting about Project Orion\n\nDear Mr. Smith,\n\nI hope you are well. This is Acme writing to confirm our Thursday meeting about Project Orion. Please let me know if the timing or details need to be adjusted.\n\nBest regards,  \nAcme",
+      "leaks": [],
+      "ms": 4881,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "ο",
+          "ρ"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Write a short, polite email to Mr. ψ from ο confirming our Thursday meeting about ρ.",
+      "restoreReport": {
+        "restored": 29,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

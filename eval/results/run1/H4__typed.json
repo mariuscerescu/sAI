@@ -1,0 +1,34 @@
+{
+  "case": "H4",
+  "category": "H. Identificatori",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Compară IDNP-urile 2001234567891 și 0981203456787: care persoană e mai în vârstă?",
+      "raw": "Nu pot spune care e mai în vârstă doar din placeholder-ele ⟦IDNP_1⟧ și ⟦IDNP_2⟧ — nu conțin cifrele reale din care se poate citi data nașterii. Nu vreau să ghicesc.\n\nDacă ai valorile reale și există temei legal/consimțământ, în IDNP-ul moldovenesc data nașterii este codificată în primele cifre; se compară data nașterii, nu valoarea numerică totală. Practic: extrage câmpul de dată din fiecare IDNP și compară datele — cea mai veche dată = persoana mai în vârstă.\n\nDacă îmi dai cele două valori (și confirmă că e autorizat/consimțit), îți pot arăta comparația. Altfel, răspunsul corect este: nedeterminat din datele disponibile.",
+      "rawReasoning": "The user asks compare IDNP placeholders. IDNP is Moldovan personal ID, encodes birth date? Need answer based on placeholders? They ask which person older. We don't have actual values, placeholders hidden. Need be careful: treat placeholder as real value? We cannot know real value. But maybe IDNP format can derive age from digits? Placeholder includes no digits (⟦IDNP_1⟧), cannot infer. We shouldn't guess. Need respond that cannot determine from placeholders alone; if IDNPs are actual values, Moldovan IDNP encodes date of birth in first 7 digits? Let's recall: Moldova IDNP is 13 digits? First digit maybe sex/century? Format: YYMMDD? Actually Moldovan IDNP (IDNP) consists of 13 digits: first digit is 0/1/2? It encodes birth date perhaps. Need answer concise. We can explain method without revealing? Since placeholders replaced, can't compute. We can say send the numeric IDNPs or dates; from placeholders alone cannot tell. If IDs available, compare embedded birth date rather than numeric value. Avoid fabricating. Mention need consent/privacy? Comparing IDNPs of persons involves personal data; should only do with lawful basis/consent. But user asks direct. Provide general lawful caveat.",
+      "restored": "Nu pot spune care e mai în vârstă doar din placeholder-ele 2001234567891 și 0981203456787 — nu conțin cifrele reale din care se poate citi data nașterii. Nu vreau să ghicesc.\n\nDacă ai valorile reale și există temei legal/consimțământ, în IDNP-ul moldovenesc data nașterii este codificată în primele cifre; se compară data nașterii, nu valoarea numerică totală. Practic: extrage câmpul de dată din fiecare IDNP și compară datele — cea mai veche dată = persoana mai în vârstă.\n\nDacă îmi dai cele două valori (și confirmă că e autorizat/consimțit), îți pot arăta comparația. Altfel, răspunsul corect este: nedeterminat din datele disponibile.",
+      "leaks": [],
+      "ms": 5645,
+      "redactReport": {
+        "countsByClass": {
+          "IDNP": 2
+        },
+        "tokensUsed": [
+          "⟦IDNP_1⟧",
+          "⟦IDNP_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Compară IDNP-urile ⟦IDNP_1⟧ și ⟦IDNP_2⟧: care persoană e mai în vârstă?",
+      "restoreReport": {
+        "restored": 3,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

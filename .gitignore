@@ -1,0 +1,6 @@
+node_modules/
+lib/
+*.tsbuildinfo
+.claude/
+# Wikipedia test corpus: fetched locally (see eval/corpus/README.md), not redistributed here.
+eval/corpus/**/*.txt

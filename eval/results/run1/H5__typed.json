@@ -1,0 +1,35 @@
+{
+  "case": "H5",
+  "category": "H. Identificatori",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Facturi: Acme 12.450,50 lei, Nordic Agro 8.300 lei, Banca Verde 1.249,50 lei. Care este totalul și ce procent revine firmei Acme?",
+      "raw": "Total facturi: 12.450,50 + 8.300 + 1.249,50 = **22.000,00 lei**.\n\nProcentul pentru ⟦COMPANY_1⟧: 12.450,50 / 22.000,00 × 100 ≈ **56,59%**.",
+      "rawReasoning": "The user asks in Romanian. Need compute total and percent for COMPANY_1. Values: 12,450.50 + 8,300 + 1,249.50 = 22,000.00? 12,450.50+8,300=20,750.50; +1,249.50=22,000.00 exactly. Percent COMPANY_1 = 12,450.50 / 22,000 *100 = ? 12,450.50/22,000 = 0.5659318... *100 = 56.59318...%. Compute: 22,000*0.566 = 12,452; slightly high. Difference. Let's exact: 12450.5/22000 = 24901/44000 =? 44000*0.5659=24,899.6? Percent = 56.5931818? Let's calculate precisely: 44000 into 24901. 0.56 =>24640, remainder261; 261/44000=0.0059318. So ratio 0.5659318, percent 56.59318%. About 56.59%. Need answer concise Romanian, include placeholders exactly. Ensure no guess real values. Final in Romanian.",
+      "restored": "Total facturi: 12.450,50 + 8.300 + 1.249,50 = **22.000,00 lei**.\n\nProcentul pentru Acme: 12.450,50 / 22.000,00 × 100 ≈ **56,59%**.",
+      "leaks": [],
+      "ms": 2305,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 4
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧",
+          "⟦COMPANY_3⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Facturi: ⟦COMPANY_1⟧ 12.450,50 lei, ⟦COMPANY_2⟧ 8.300 lei, ⟦COMPANY_3⟧ 1.249,50 lei. Care este totalul și ce procent revine firmei ⟦COMPANY_1⟧?",
+      "restoreReport": {
+        "restored": 1,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

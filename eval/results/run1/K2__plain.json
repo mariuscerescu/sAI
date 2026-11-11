@@ -1,0 +1,16 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "Floarea a fost culeasă de **Floare Munteanu**, din grădina lui **Radu Mare**.",
+      "rawReasoning": "The user asks in Romanian: \"Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?\" Need answer concise in Romanian. Need parse ambiguity: Floare Munteanu is a person (first name Floare, surname Munteanu). Radu Mare is person (first name Radu, surname Mare). Question: who picked the flower and from whose garden? Answer: Floare Munteanu a cules-o, din grădina lui Radu Mare. Avoid being confused by common nouns floare/mare. Need mention \"Floare\" is name. Final concise.",
+      "restored": "Floarea a fost culeasă de **Floare Munteanu**, din grădina lui **Radu Mare**.",
+      "leaks": [],
+      "ms": 2356
+    }
+  ]
+}

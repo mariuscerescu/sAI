@@ -1,0 +1,34 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "BV a aprobat creditul pentru Acme. BV înseamnă Banca Verde. Separat, în cod, variabila bv_total ține suma. Ce a aprobat BV?",
+      "raw": "⟦COMPANY_1⟧ a aprobat creditul pentru ⟦COMPANY_2⟧. Variabila de cod ⟦COMPANY_1⟧_total este separată și nu schimbă acest înțeles.",
+      "rawReasoning": "The user is asking in Romanian. Need be careful with placeholders. They define ⟦COMPANY_1⟧ înseamnă ⟦COMPANY_1⟧ tautological, probably says \"means ⟦COMPANY_1⟧\" but placeholder hides actual. They ask: What did ⟦COMPANY_1⟧ approve? Need refer to placeholder exactly, not guess. We can say: ⟦COMPANY_1⟧ a aprobat creditul pentru ⟦COMPANY_2⟧. Do not expand hidden values. Need note variable ⟦COMPANY_1⟧_total in code is separate and doesn't change meaning? We can answer concise. Need not overthink. Final in Romanian. Ensure placeholders exact. Maybe mention variabila de cod e doar un nume și nu modifică ce a aprobat.",
+      "restored": "BV a aprobat creditul pentru Acme. Variabila de cod BV_total este separată și nu schimbă acest înțeles.",
+      "leaks": [],
+      "ms": 3634,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 6
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦COMPANY_1⟧ a aprobat creditul pentru ⟦COMPANY_2⟧. ⟦COMPANY_1⟧ înseamnă ⟦COMPANY_1⟧. Separat, în cod, variabila ⟦COMPANY_1⟧_total ține suma. Ce a aprobat ⟦COMPANY_1⟧?",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "case": "B3",
+  "category": "B. Raționament",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Popescu i-a împrumutat Cebanei 5.000 lei, Ceban i-a dat lui Lungu 2.000 lei, iar Lungu i-a returnat lui Popescu 1.500 lei. Cine cui și cât mai datorează la final? Fă un tabel.",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 9,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ i-a împrumutat Cebanei 5.000 lei, ⟦PERSON_2⟧ i-a dat lui ⟦PERSON_3⟧ 2.000 lei, iar ⟦PERSON_3⟧ i-a returnat lui ⟦PERSON_1⟧ 1.500 lei. Cine cui și cât mai datorează la final? Fă un tabel.",
+      "error": "TRANSPORT: Connection error.",
+      "restoreReport": {
+        "restored": 0,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

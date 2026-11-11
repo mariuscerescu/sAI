@@ -1,0 +1,36 @@
+{
+  "case": "A2",
+  "category": "A. Bază",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu și Maria Ceban lucrează la Acme Logistic. Popescu e director, Ceban e contabilă. Cine semnează facturile, după tine? Răspunde folosind numele lor.",
+      "raw": "După mine: ⟦PERSON_2⟧ le întocmește/verifică ca contabilă, iar ⟦PERSON_1⟧ le aprobă sau semnează în calitate de director, dacă are mandat/împuternicire. Fără acte interne clare, rolul singur nu stabilește cu certitudine semnătura.",
+      "rawReasoning": "The user asks a general inference question: director vs accountant at company, who signs invoices? Need answer in Romanian concise. Must use placeholders exactly. Need be careful: roles don't legally determine signing authority; but \"după tine\" asks opinion. Likely ⟦PERSON_2⟧ as accountant prepares/signs accounting docs, director ⟦PERSON_1⟧ may approve/sign as legal representative depending on delegation. Need answer using names. We should not invent policy. Say: de regulă ⟦PERSON_2⟧ verifică/semnează evidența contabilă, iar semnătura cu valoare juridică pentru companie o dă ⟦PERSON_1⟧ dacă e reprezentant legal sau împuternicit; fără act/delegare nu se poate decide. But user asks \"Cine semnează facturile\" maybe expects accountant signs invoices? In Romania, invoice is signed by issuer? If asking within company for payment, both? We can give concise nuance: after me: ⟦PERSON_2⟧ le întocmește/verifică, iar ⟦PERSON_1⟧ le aprobă/semnează ca director. Use placeholders.",
+      "restored": "După mine: Maria Ceban le întocmește/verifică ca contabilă, iar Ion Popescu le aprobă sau semnează în calitate de director, dacă are mandat/împuternicire. Fără acte interne clare, rolul singur nu stabilește cu certitudine semnătura.",
+      "leaks": [],
+      "ms": 3886,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ și ⟦PERSON_2⟧ lucrează la ⟦COMPANY_1⟧. ⟦PERSON_1⟧ e director, ⟦PERSON_2⟧ e contabilă. Cine semnează facturile, după tine? Răspunde folosind numele lor.",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

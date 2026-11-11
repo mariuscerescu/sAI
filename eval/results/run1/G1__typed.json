@@ -1,0 +1,37 @@
+{
+  "case": "G1",
+  "category": "G. Format",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Tradu în engleză, franceză și rusă: «Dl. Popescu de la Acme vă invită la prezentarea TermoGuard X9.»",
+      "raw": "EN: ⟦PERSON_1⟧ from ⟦COMPANY_1⟧ invites you to the presentation of ⟦PRODUCT_1⟧.  \nFR: ⟦PERSON_1⟧ de ⟦COMPANY_1⟧ vous invite à la présentation de ⟦PRODUCT_1⟧.  \nRU: ⟦PERSON_1⟧ из ⟦COMPANY_1⟧ приглашает вас на презентацию ⟦PRODUCT_1⟧.",
+      "rawReasoning": "The user asks translation. Need handle placeholders exactly. Need translate sentence into English, French, Russian, preserving placeholders. We can translate: \"⟦PERSON_1⟧ from ⟦COMPANY_1⟧ invites you to the presentation of ⟦PRODUCT_1⟧.\" French: \"⟦PERSON_1⟧ de ⟦COMPANY_1⟧ vous invite à la présentation de ⟦PRODUCT_1⟧.\" Russian: need grammatically with placeholders. \"⟦PERSON_1⟧ из ⟦COMPANY_1⟧ приглашает вас на презентацию ⟦PRODUCT_1⟧.\" Russian product maybe accusative? \"презентацию ⟦PRODUCT_1⟧\" treats product as genitive? Actually Russian \"на презентацию продукта\" = \"на презентацию ⟦PRODUCT_1⟧\" if placeholder product name is nominative? Placeholder stands real value; phrase \"презентацию ⟦PRODUCT_1⟧\" works if product name indeclinable or title. Could use \"на презентацию «⟦PRODUCT_1⟧»\" but adding quotes changes? Fine but maybe avoid adding quotes? Keep placeholder exactly: \"на презентацию ⟦PRODUCT_1⟧.\" Need answer concise. Ensure no extra explanation. Use English/French/Russian labels.",
+      "restored": "EN: Ion Popescu from Acme invites you to the presentation of TermoGuard X9.  \nFR: Ion Popescu de Acme vous invite à la présentation de TermoGuard X9.  \nRU: Ion Popescu из Acme приглашает вас на презентацию TermoGuard X9.",
+      "leaks": [],
+      "ms": 4388,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PRODUCT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PRODUCT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Tradu în engleză, franceză și rusă: «⟦PERSON_1⟧ de la ⟦COMPANY_1⟧ vă invită la prezentarea ⟦PRODUCT_1⟧.»",
+      "restoreReport": {
+        "restored": 23,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

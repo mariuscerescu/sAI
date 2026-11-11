@@ -1,0 +1,16 @@
+{
+  "case": "A2",
+  "category": "A. Bază",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu și Maria Ceban lucrează la Acme Logistic. Popescu e director, Ceban e contabilă. Cine semnează facturile, după tine? Răspunde folosind numele lor.",
+      "raw": "După mine: **Ion Popescu** ar semna facturile în calitate de director/reprezentant, iar **Maria Ceban** le verifică/înregistrează—dar **Maria Ceban** poate semna doar dacă are mandat sau delegație clară. Rolul de contabilă, singur, nu îi dă automat dreptul de semnătură. Nu e sfat juridic; contează statutul și împuternicirile firmei.",
+      "rawReasoning": "The user asks in Romanian: Ion Popescu and Maria Ceban work at Acme Logistic. Popescu is director, Ceban is accountant. Who signs invoices, according to you? Answer using their names. Need be careful: legal/signature authority depends on internal rules, power of attorney, company type, not just role. In Romania, invoices can be signed according to delegation; accounting role doesn't necessarily authorize signing. Need avoid giving definitive legal advice? The phrasing \"după tine\" asks opinion. Need answer concise. We can say: In principle, signatures must follow empowerment/statute; based only on roles, factures are usually approved/signed by Popescu (director) as representative, while Ceban records/verifies them, not signs unless delegated. Since question demands using names: \"Ion Popescu, cu condiția să fie reprezentantul legal/împuternicit; Maria Ceban doar dacă are mandat/delegație — de regulă nu.\" Need note not legal advice maybe concise. Ensure Romanian.",
+      "restored": "După mine: **Ion Popescu** ar semna facturile în calitate de director/reprezentant, iar **Maria Ceban** le verifică/înregistrează—dar **Maria Ceban** poate semna doar dacă are mandat sau delegație clară. Rolul de contabilă, singur, nu îi dă automat dreptul de semnătură. Nu e sfat juridic; contează statutul și împuternicirile firmei.",
+      "leaks": [],
+      "ms": 4262
+    }
+  ]
+}

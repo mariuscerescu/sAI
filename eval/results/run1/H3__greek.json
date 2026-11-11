@@ -1,0 +1,25 @@
+{
+  "case": "H3",
+  "category": "H. Identificatori",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Plătește 1.200 lei către Acme cu cardul 4111 1111 1111 1111.",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 0,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1
+        },
+        "tokensUsed": [],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "blocked": "POLICY_BLOCKED (CARD)"
+    }
+  ]
+}

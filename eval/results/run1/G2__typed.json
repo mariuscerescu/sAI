@@ -1,0 +1,37 @@
+{
+  "case": "G2",
+  "category": "G. Format",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie cu MAJUSCULE textul: «Maria Ceban de la Nordic Agro va prezenta Proiectul Orion.»",
+      "raw": "⟦PERSON_1⟧ DE LA ⟦COMPANY_1⟧ VA PREZENTA ⟦PROJECT_1⟧.",
+      "rawReasoning": "The user asks in Romanian: write in uppercase text «⟦PERSON_1⟧ de la ⟦COMPANY_1⟧ va prezenta ⟦PROJECT_1⟧.» Need answer with uppercase text. Placeholders should be treated as real values? Instruction says treat each placeholder as real value it stands for and whenever refer to it write placeholder exactly as given. But converting to uppercase might alter placeholders? Need preserve placeholders exactly including brackets, because must write placeholder exactly as given. If we uppercase whole text including placeholders, would become ⟦PERSON_1⟧? Romanian says placeholders form ⟦PERSON_1⟧; uppercase of letters inside placeholder would be ⟦PERSON_1⟧? Actually placeholders include uppercase already and digits/underscore. PERSON_1 etc are already uppercase. The surrounding Romanian words need uppercased: \"DE LA\", \"VA PREZENTA\". The sentence: «⟦PERSON_1⟧ DE LA ⟦COMPANY_1⟧ VA PREZENTA ⟦PROJECT_1⟧.» Placeholders unchanged. Need output just that. Ensure exact placeholder spelling: ⟦PERSON_1⟧, ⟦COMPANY_1⟧, ⟦PROJECT_1⟧. Quotes maybe include? User says write text; answer can be just uppercase sentence. No extra explanation. Final concise.",
+      "restored": "Maria Ceban DE LA Nordic Agro VA PREZENTA Proiectul Orion.",
+      "leaks": [],
+      "ms": 3017,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Scrie cu MAJUSCULE textul: «⟦PERSON_1⟧ de la ⟦COMPANY_1⟧ va prezenta ⟦PROJECT_1⟧.»",
+      "restoreReport": {
+        "restored": 15,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

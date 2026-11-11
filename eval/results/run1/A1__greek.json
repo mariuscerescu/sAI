@@ -1,0 +1,37 @@
+{
+  "case": "A1",
+  "category": "A. Bază",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un e-mail scurt și politicos către dl. Popescu de la Acme, în care îi confirmi întâlnirea de joi pentru Proiectul Orion.",
+      "raw": "Subiect: Confirmare întâlnire de joi – ρ\n\nBună ziua, ψ,\n\nÎți confirm întâlnirea de joi pentru ρ. Îmi mențin disponibilitatea și aștept cu plăcere confirmarea finală a detaliilor.\n\nCu respect,  \nο",
+      "rawReasoning": "The user asks in Romanian to write a short polite email to ψ from ο, confirming Thursday meeting for ρ. Need treat Greek letters as real confidential terms, write exactly as given, not translate. Need produce email in Romanian likely. Need ensure use ψ, ο, ρ exactly. Need concise. Need maybe include subject and placeholders? We can write: Către: ψ; De la: ο? User says \"către ψ de la ο\" meaning email from ο to ψ. We are assistant; should produce text of email sent by ο. Use salutation. Need confirm întâlnirea de joi pentru ρ. Since terms are confidential placeholders, keep letters.\n\nNeed answer in Romanian. Avoid spelling out. Include exact letters. Ensure not accidentally use Greek letters elsewhere. Let's craft short polite email:\n\nSubiect: Confirmare întâlnire de joi – ρ\n\nBună ziua, ψ,\n\nÎți confirm întâlnirea de joi pentru ρ. Sunt disponibil/ă și îmi respectă termenul stabilit... maybe too much.\n\nCu respect,\nο\n\nNeed maybe \"de la ο\" the sender is ο, signature ο. Use exact. Keep concise. No translation of Greek. Use diacritics. Good.",
+      "restored": "Subiect: Confirmare întâlnire de joi – Proiectul Orion\n\nBună ziua, Ion Popescu,\n\nÎți confirm întâlnirea de joi pentru Proiectul Orion. Îmi mențin disponibilitatea și aștept cu plăcere confirmarea finală a detaliilor.\n\nCu respect,  \nAcme",
+      "leaks": [],
+      "ms": 5107,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "ο",
+          "ρ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Scrie un e-mail scurt și politicos către ψ de la ο, în care îi confirmi întâlnirea de joi pentru ρ.",
+      "restoreReport": {
+        "restored": 25,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

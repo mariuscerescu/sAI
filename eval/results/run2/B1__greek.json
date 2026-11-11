@@ -1,0 +1,44 @@
+{
+  "case": "B1",
+  "category": "B. Raționament",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Organigrama: Ion Popescu conduce Acme. Maria Ceban raportează lui Popescu. Andrei Lungu și Elena Vrabie raportează Cebanei. Victor Ciobanu raportează lui Lungu. Cine e la exact două niveluri sub Popescu? Desenează organigrama în text.",
+      "raw": "La exact două niveluri sub τ sunt: **θ** și **χ**.\n\n```text\nτ\n├── ρ\n└── ε\n    ├── θ\n    │   └── ω\n    └── χ\n```",
+      "rawReasoning": "We need answer in Romanian concise. Need solve. Terms Greek letters treated as real terms, write exactly. Need parse: \"τ conduce ρ. ε raportează lui τ. θ și χ raportează ε. ω raportează lui θ. Cine e la exact două niveluri sub τ? Desenează organigrama în text.\"\nNeed infer hierarchy. τ conducts ρ? In Romanian \"conduce ρ\" maybe manages ρ. ε reports to τ. θ and χ report to ε. ω reports to θ. Also ρ is led by τ, so ρ reports to τ? likely yes. Need draw org chart text.\nHierarchy:\nτ\n├─ ρ\n└─ ε\n   ├─ θ\n   │  └─ ω\n   └─ χ\nWait ρ and ε are both direct reports to τ? τ conduce ρ and ε raportează lui τ => direct. θ and χ report to ε (one level below ε, two below τ). ω reports to θ (two below ε, three below τ). Exact two levels under τ: θ and χ (if ε level1, θ/χ level2). ρ is level1. ω level3. Need answer that and draw text. Need mention assuming \"conduce\" means direct manager. Keep concise. Need use Greek letters exactly. Final in Romanian. Ensure no extra translations of letters. Could format tree.",
+      "restored": "La exact două niveluri sub Ion Popescu sunt: **Andrei Lungu** și **Elena Vrabie**.\n\n```text\nIon Popescu\n├── Acme\n└── Maria Ceban\n    ├── Andrei Lungu\n    │   └── Victor Ciobanu\n    └── Elena Vrabie\n```",
+      "leaks": [],
+      "ms": 4683,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 9,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "τ",
+          "ρ",
+          "ε",
+          "θ",
+          "χ",
+          "ω"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Organigrama: τ conduce ρ. ε raportează lui τ. θ și χ raportează ε. ω raportează lui θ. Cine e la exact două niveluri sub τ? Desenează organigrama în text.",
+      "restoreReport": {
+        "restored": 64,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "τ",
+          "θ",
+          "θ",
+          "χ"
+        ]
+      }
+    }
+  ]
+}

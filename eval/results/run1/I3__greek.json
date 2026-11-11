@@ -1,0 +1,78 @@
+{
+  "case": "I3",
+  "category": "I. Document lung",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, Proiectul Orion, 12 mai 2026\n\nParticipanți: Ion Popescu (Acme), Maria Ceban (Nordic Agro), Elena Vrabie (consilier juridic), Andrei Lungu (manager proiect), Sergiu Railean (IT), Natalia Cozma (achiziții), Victor Ciobanu (logistică), Rodica Sandu (contabilitate), Floare Munteanu (stagiară), Radu Mare (furnizor), Lilia Bostan (HR), Dorin Jardan (calitate).\n\n1. Andrei Lungu prezintă stadiul. Se decide ca Sergiu Railean să configureze senzorii TermoGuard X9 până la 20 mai.\n2. Maria Ceban cere raport financiar. Rodica Sandu va pregăti raportul pentru Banca Verde până la 25 mai.\n3. Elena Vrabie revizuiește contractul cu Acme Logistic și trimite observații lui Ion Popescu.\n4. Natalia Cozma comandă 40 de unități TermoGuard X9 de la Radu Mare.\n5. Victor Ciobanu planifică rutele pentru depozitul de pe str. Florilor 12.\n6. Floare Munteanu asistă la inventar. Lilia Bostan organizează instruirea. Dorin Jardan nu a primit sarcini.",
+      "raw": "- σ — prezintă stadiul.\n- ω — configurează senzorii ρ până la 20 mai.\n- ι — pregătește raportul pentru λ până la 25 mai.\n- ο — revizuiește contractul cu χ și trimite observații lui μ.\n- α — comandă 40 de unități ρ de la β.\n- γ — planifică rutele pentru depozitul de pe θ.\n- Floare η — asistă la inventar.\n- τ — organizează instruirea.\n\nNu primesc sarcini explicite: ξ, μ, β, ζ.",
+      "rawReasoning": "We need answer in Romanian, concise. Need parse document. Need identify each participant who received tasks and task. Confidential terms replaced with Greek letters; must treat each letter as real term and write exactly as given. Need list participants with assignments only, not those no tasks. Need be careful: Greek letters appear both participants and terms/places/projects? Need distinguish.\n\nDocument:\nPROCES-VERBAL al ședinței de lucru, ψ, 12 mai 2026\nParticipanți: μ (χ), ξ (ε), ο (consilier juridic), σ (manager proiect), ω (IT), α (achiziții), γ (logistică), ι (contabilitate), Floare η (stagiară), β (furnizor), τ (HR), ζ (calitate).\n\n1. σ prezintă stadiul. Se decide ca ω să configureze senzorii ρ până la 20 mai.\n2. ξ cere raport financiar. ι va pregăti raportul pentru λ până la 25 mai.\n3. ο revizuiește contractul cu χ și trimite observații lui μ.\n4. α comandă 40 de unități ρ de la β.\n5. γ planifică rutele pentru depozitul de pe θ.\n6. Floare η asistă la inventar. τ organizează instruirea. ζ nu a primit sarcini.\n\nNeed list participants who received tasks (implicit assignments). Determine for each:\n- σ: presents status (prezintă stadiul). Is that a sarcină? In minutes, likely a task/action. It says σ prezintă stadiul—yes assigned/performed? The question: \"fiecare participant care a primit sarcini și ce sarcină are\". Include tasks explicitly delegated or stated as actions. σ has task to present the stage. Could be in meeting (already did). I'd include? Wording: \"a primit sarcini\" means was given tasks, likely action items. In point 1, σ presents stadiul; not necessarily received task but has an action. We need decide.\n- ω: configure senzorii ρ până la 20 mai.\n- ξ: cere raport financiar (makes request) - is requesting a task? Not a task assigned to ξ; he requested report. Not a sarcină for ξ (unless task is to request? no).\n- ι: prepare report for λ until 25 May.\n- ο: review contract with χ and send observations to μ.\n- α: order 40 units ρ from β.\n- γ: plan routes for warehouse on θ.\n- Floare η: assists at inventory.\n- τ: organizes training.\n- ζ: no tasks (exclude)\n- μ: receives observations from ο? Is μ assigned? The text says ο sends observations to μ; μ is recipient, not assigned explicit task. But as participant, μ (χ) maybe represents χ? Does μ have task? Not assigned in PV except maybe to be informed. Not include as task unless implicit? Question asks received sarcini; being sent observations isn't a sarcină.\n- β: supplier; α orders from β, β is party/recipient of order, not explicitly assigned? Could imply β must supply 40 units? But text does not say β must deliver, only α commands. Include? No explicit task for β; avoid inventing.\n- η part of Floare η participant; task assist inventory. Write exactly \"Floare η\".\n- β (furnizor) maybe task? \"α comandă 40 de unități ρ de la β\" The actual order is α's task. β is supplier; may need fulfill but not stated.\n- λ is not participant; report for λ.\n- χ appears as participant μ (χ) and contract with χ; χ likely company/counterparty, not participant? no task.\n- ψ meeting name; ρ product/sensors; θ location; ε maybe ξ's role? Participants list includes ξ (ε) maybe ε is department? no tasks.\n\nNeed formulate concise list. Mention if counting only sarcini explicite, σ's \"prezintă stadiul\" is an action in ședință; include as \"prezintă stadiul\" maybe. The prompt likely expects all participants with tasks in PV: σ (presents), ω, ι, ο, α, γ, Floare η, τ. Exclude ζ explicitly and μ/β/ξ as not assigned. Need maybe μ gets observations? no.\n\nNeed ensure Greek letters exactly: ψ? we refer? Not needed. Use ρ, λ, θ, χ, η etc exactly. \"Floare η\". \"ι va pregăti raportul pentru λ\". Use Romanian. Final only. No extra caveats too much. Could include note: \"Nu sunt incluși ξ (a cerut raportul), μ (primește observații), β (furnizor), ζ (fără sarcini).\" This is helpful and concise. Ensure not spell letters. Use exactly letters. ",
+      "restored": "- Andrei Lungu — prezintă stadiul.\n- Sergiu Railean — configurează senzorii TermoGuard X9 până la 20 mai.\n- Rodica Sandu — pregătește raportul pentru Banca Verde până la 25 mai.\n- Elena Vrabie — revizuiește contractul cu Acme și trimite observații lui Ion Popescu.\n- Natalia Cozma — comandă 40 de unități TermoGuard X9 de la Radu Mare.\n- Victor Ciobanu — planifică rutele pentru depozitul de pe str. Florilor 12.\n- Floare Munteanu — asistă la inventar.\n- Lilia Bostan — organizează instruirea.\n\nNu primesc sarcini explicite: Maria Ceban, Ion Popescu, Radu Mare, Dorin Jardan.",
+      "leaks": [],
+      "ms": 9402,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 24,
+          "COMPANY": 4,
+          "PRODUCT": 2,
+          "ADDRESS": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "μ",
+          "χ",
+          "ξ",
+          "ε",
+          "ο",
+          "σ",
+          "ω",
+          "α",
+          "γ",
+          "ι",
+          "η",
+          "β",
+          "τ",
+          "ζ",
+          "ρ",
+          "λ",
+          "θ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, ψ, 12 mai 2026\n\nParticipanți: μ (χ), ξ (ε), ο (consilier juridic), σ (manager proiect), ω (IT), α (achiziții), γ (logistică), ι (contabilitate), Floare η (stagiară), β (furnizor), τ (HR), ζ (calitate).\n\n1. σ prezintă stadiul. Se decide ca ω să configureze senzorii ρ până la 20 mai.\n2. ξ cere raport financiar. ι va pregăti raportul pentru λ până la 25 mai.\n3. ο revizuiește contractul cu χ și trimite observații lui μ.\n4. α comandă 40 de unități ρ de la β.\n5. γ planifică rutele pentru depozitul de pe θ.\n6. Floare η asistă la inventar. τ organizează instruirea. ζ nu a primit sarcini.",
+      "restoreReport": {
+        "restored": 142,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "μ",
+          "β"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "sAI — protected terms",
+    "description": "Replaces protected names, companies, and identifiers with symbols before a request reaches the model, and restores them in the answer"
+  }
+}

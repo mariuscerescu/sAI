@@ -1,0 +1,16 @@
+{
+  "case": "E4",
+  "category": "E. Cod",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Generează un fișier YAML de configurare pentru Proiectul Orion, cu responsabil Elena Vrabie, telefon +373 79 555 123, sediu la str. Florilor 12 și produsul TermoGuard X9.",
+      "raw": "```yaml\nproiect:\n  nume: \"Proiectul Orion\"\n  responsabil: \"Elena Vrabie\"\n  telefon: \"+373 79 555 123\"\n  sediu: \"str. Florilor 12\"\n  produs: \"TermoGuard X9\"\n```",
+      "rawReasoning": "The user asks in Romanian to generate a YAML configuration file for \"Proiectul Orion\", with responsible Elena Vrabie, phone +373 79 555 123, HQ at str. Florilor 12, product TermoGuard X9. This is benign. Need answer in Romanian, concise. Need create plausible YAML. We can provide code block. Note personal data? User provided personal data (name, phone, address). Is it sensitive? It's personal data but user supplied and asks to include in file. We can generate config with given data. Avoid fabricating too much? We can include placeholders as needed. Need be careful phone format. YAML string with + should be quoted. Address string quoted. Maybe include proiect: nume, responsabil, contact, sediu, produs, versiune? Keep concise.\n\nNeed final only, in Romanian. Use YAML code block. Ensure valid YAML: colon in address? \"str. Florilor 12\" no colon. Phone quoted. Maybe:\nproiect:\n  nume: \"Proiectul Orion\"\n  responsabil: \"Elena Vrabie\"\n  contact:\n    telefon: \"+373 79 555 123\"\n  sediu: \"str. Florilor 12\"\n  produs: \"TermoGuard X9\"\nCould add mediu: \"producție\"? Don't invent too much; can include optional fields commented. Provide minimal valid config.",
+      "restored": "```yaml\nproiect:\n  nume: \"Proiectul Orion\"\n  responsabil: \"Elena Vrabie\"\n  telefon: \"+373 79 555 123\"\n  sediu: \"str. Florilor 12\"\n  produs: \"TermoGuard X9\"\n```",
+      "leaks": [],
+      "ms": 4085
+    }
+  ]
+}

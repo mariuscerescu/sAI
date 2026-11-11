@@ -1,0 +1,16 @@
+{
+  "case": "K4",
+  "category": "K. Ambiguitate",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Иван Попеску (adică Ion Popescu) a sunat de la Acme. Cum se scrie numele lui în alfabetul latin?",
+      "raw": "În alfabetul latin: **Ion Popescu** — dacă păstrezi transcrierea rusă strictă, ar fi **Ivan Popesku**, dar forma românească este **Ion Popescu**.",
+      "rawReasoning": "The user asks in Romanian. Need answer: \"Иван Попеску\" is Cyrillic with Russian spelling of Ion? They say \"(adică Ion Popescu)\" and ask how to write his name in Latin alphabet. Need be careful: Иван = Ivan, not Ion necessarily. They explicitly say i.e. Ion Popescu? Romanian transliteration? Names from Cyrillic to Latin: Иван Попеску -> Ivan Popescu. But user asserts \"adică Ion Popescu\" perhaps expecting \"Ion Popescu\"? Need parse: \"Иван Попеску (adică Ion Popescu) a sunat de la Acme. Cum se scrie numele lui în alfabetul latin?\" There is ambiguity: Russian Иван is Ivan; Romanian equivalent is Ion/Ioan? Popescu is already Latin spelling (Romanian) though Cyrillic Попеску transliterates Popesku, but Romanian name is Popescu. They include \"adică Ion Popescu\" to give clarification? They ask how name is written in Latin alphabet. If literally transliterating from Cyrillic: Ivan Popesku? But since name is Romanian, Latin is Ion Popescu. Need answer concise, maybe note: literally Иван = Ivan; if e vorba de forma românească, se scrie Ion Popescu (Ivan dacă păstrezi transcrierea). But user asks singular. They explicitly parenthetical \"adică Ion Popescu\" maybe answer: Ion Popescu. Need avoid overexplaining. Mention грань: \"Иван\" în română corespunde lui \"Ion\"/\"Ioan\"? Actually Russian Иван corresponds to Romanian Ion? Yes по etymology Ivan = Ioan/Ion. So Latin spelling: Ion Popescu (dacă e român); transliterare mecanică ar fi Ivan Popesku/Popescu. Let's craft concise in Romanian.",
+      "restored": "În alfabetul latin: **Ion Popescu** — dacă păstrezi transcrierea rusă strictă, ar fi **Ivan Popesku**, dar forma românească este **Ion Popescu**.",
+      "leaks": [],
+      "ms": 5131
+    }
+  ]
+}

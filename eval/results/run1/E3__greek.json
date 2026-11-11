@@ -1,0 +1,35 @@
+{
+  "case": "E3",
+  "category": "E. Cod",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie un query SQL care selectează facturile clientului 'Nordic Agro SA' plătite în contul cu IBAN-ul MD24AG000225100013104168 după 1 ianuarie 2026.",
+      "raw": "Presupunând tabelele `clients`, `invoices`, `payments`, `accounts`:\n\n```sql\nSELECT i.*\nFROM invoices i\nJOIN clients c  ON c.id = i.client_id\nJOIN payments p ON p.invoice_id = i.id\nJOIN accounts a ON a.id = p.account_id\nWHERE c.name = 'β'\n  AND a.iban = 'π'\n  AND p.paid_at > DATE '2026-01-01';\n```\n\nAjustează numele tabelelor/coloanelor la schema ta.",
+      "rawReasoning": "The user asks in Romanian: write SQL query selecting invoices of client 'β' paid into account with IBAN π after Jan 1 2026. Confidential terms replaced with Greek letters; treat as real term, write exactly. Need answer concise Romanian. Need construct plausible schema? We don't know table names. We can provide generic query with assumed tables and note adjust names. Need include β and π exactly. Need ensure π not confused with pi constant; use string literal 'π'? The IBAN-ul π means value is π? It says account with IBAN π, replace with isolated Greek letter standing for real term. So literal should be π exactly: WHERE a.iban = 'π'. Client 'β'. Date after 2026-01-01. Need maybe paid after date: paid_at > '2026-01-01' or >=? \"după 1 ianuarie 2026\" strict >. In SQL date literal depends dialect. Use standard DATE '2026-01-01'. Query:\n\nSELECT i.*\nFROM invoices i\nJOIN payments p ON p.invoice_id = i.id\nJOIN accounts a ON a.id = p.account_id\nJOIN clients c ON c.id = i.client_id\nWHERE c.name = 'β' AND a.iban = 'π' AND p.paid_at > DATE '2026-01-01';\n\nNeed mention table/column names adjust. Concise. No need reveal hidden terms. Use Greek exactly. Final in Romanian.",
+      "restored": "Presupunând tabelele `clients`, `invoices`, `payments`, `accounts`:\n\n```sql\nSELECT i.*\nFROM invoices i\nJOIN clients c  ON c.id = i.client_id\nJOIN payments p ON p.invoice_id = i.id\nJOIN accounts a ON a.id = p.account_id\nWHERE c.name = 'Nordic Agro SA'\n  AND a.iban = 'MD24AG000225100013104168'\n  AND p.paid_at > DATE '2026-01-01';\n```\n\nAjustează numele tabelelor/coloanelor la schema ta.",
+      "leaks": [],
+      "ms": 5358,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1,
+          "IBAN": 1
+        },
+        "tokensUsed": [
+          "β",
+          "π"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Scrie un query SQL care selectează facturile clientului 'β' plătite în contul cu IBAN-ul π după 1 ianuarie 2026.",
+      "restoreReport": {
+        "restored": 16,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

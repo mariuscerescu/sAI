@@ -1,0 +1,16 @@
+{
+  "case": "B1",
+  "category": "B. Raționament",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Organigrama: Ion Popescu conduce Acme. Maria Ceban raportează lui Popescu. Andrei Lungu și Elena Vrabie raportează Cebanei. Victor Ciobanu raportează lui Lungu. Cine e la exact două niveluri sub Popescu? Desenează organigrama în text.",
+      "raw": "La exact două niveluri sub Popescu sunt **Andrei Lungu** și **Elena Vrabie**.\n\n```text\nIon Popescu — Acme\n└── Maria Ceban\n    ├── Andrei Lungu\n    │   └── Victor Ciobanu\n    └── Elena Vrabie\n```",
+      "rawReasoning": "The user asks in Romanian. Need answer concise. Need parse hierarchy:\nIon Popescu conduce Acme (CEO top). Maria Ceban reports to Popescu (level 1 under). Andrei Lungu and Elena Vrabie report to Cebanei (level 2 under Popescu). Victor Ciobanu reports to Lungu (level 3 under Popescu). Question: Cine e la exact două niveluri sub Popescu? Those are Andrei Lungu and Elena Vrabie. Need draw org chart in text. Ensure Romanian diacritics. Final only. Concise. Need maybe mention Victor is three levels below. Use text tree.",
+      "restored": "La exact două niveluri sub Popescu sunt **Andrei Lungu** și **Elena Vrabie**.\n\n```text\nIon Popescu — Acme\n└── Maria Ceban\n    ├── Andrei Lungu\n    │   └── Victor Ciobanu\n    └── Elena Vrabie\n```",
+      "leaks": [],
+      "ms": 2239
+    }
+  ]
+}

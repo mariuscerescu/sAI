@@ -1,0 +1,63 @@
+{
+  "case": "C2",
+  "category": "C. Volum",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Sortează angajații de mai jos alfabetic după numele de familie și scrie lista sortată (doar numele).\n\n1. Adrian Bostan — Vânzări — 18.000 lei\n2. Lilia Caraman — IT — 21.779 lei\n3. Sergiu Rotaru — Contabilitate — 25.558 lei\n4. Natalia Banari — Logistică — 29.337 lei\n5. Vadim Enache — Juridic — 33.116 lei\n6. Corina Paduraru — Vânzări — 36.895 lei\n7. Dorin Diaconu — IT — 19.674 lei\n8. Tatiana Popovici — Contabilitate — 23.453 lei\n9. Grigore Bejan — Logistică — 27.232 lei\n10. Ludmila Postica — Juridic — 31.011 lei\n11. Pavel Balan — Vânzări — 34.790 lei\n12. Olga Creanga — IT — 38.569 lei\n13. Igor Oprea — Contabilitate — 21.348 lei\n14. Svetlana Toma — Logistică — 25.127 lei\n15. Marin Petrescu — Juridic — 28.906 lei\n16. Doina Spinu — Vânzări — 32.685 lei\n17. Viorel Nistor — IT — 36.464 lei\n18. Rodica Arnaut — Contabilitate — 19.243 lei\n19. Eugen Ciorba — Logistică — 23.022 lei\n20. Nadejda Nedelcu — Juridic — 26.801 lei\n21. Oleg Tanase — Vânzări — 30.580 lei\n22. Larisa Neagu — IT — 34.359 lei\n23. Tudor Jardan — Contabilitate — 38.138 lei\n24. Stela Mocanu — Logistică — 20.917 lei\n25. Valeriu Andronic — Juridic — 24.696 lei\n26. Mihaela Cimpoi — Vânzări — 28.475 lei\n27. Iurie Manole — IT — 32.254 lei\n28. Veronica Stanciu — Contabilitate — 36.033 lei\n29. Artur Lupascu — Logistică — 18.812 lei\n30. Cristina Turcanu — Juridic — 22.591 lei",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 23,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 30
+        },
+        "tokensUsed": [
+          "β",
+          "ζ",
+          "ο",
+          "ψ",
+          "κ",
+          "φ",
+          "ω",
+          "χ",
+          "ρ",
+          "ξ",
+          "λ",
+          "α",
+          "υ",
+          "δ",
+          "γ",
+          "θ",
+          "ν",
+          "π",
+          "σ",
+          "ε",
+          "μ",
+          "ι",
+          "τ",
+          "η",
+          "β₂",
+          "ζ₂",
+          "ο₂",
+          "ψ₂",
+          "κ₂",
+          "φ₂"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Sortează angajații de mai jos alfabetic după numele de familie și scrie lista sortată (doar numele).\n\n1. β — Vânzări — 18.000 lei\n2. ζ — IT — 21.779 lei\n3. ο — Contabilitate — 25.558 lei\n4. ψ — Logistică — 29.337 lei\n5. κ — Juridic — 33.116 lei\n6. φ — Vânzări — 36.895 lei\n7. ω — IT — 19.674 lei\n8. χ — Contabilitate — 23.453 lei\n9. ρ — Logistică — 27.232 lei\n10. ξ — Juridic — 31.011 lei\n11. λ — Vânzări — 34.790 lei\n12. α — IT — 38.569 lei\n13. υ — Contabilitate — 21.348 lei\n14. δ — Logistică — 25.127 lei\n15. γ — Juridic — 28.906 lei\n16. θ — Vânzări — 32.685 lei\n17. ν — IT — 36.464 lei\n18. π — Contabilitate — 19.243 lei\n19. σ — Logistică — 23.022 lei\n20. ε — Juridic — 26.801 lei\n21. μ — Vânzări — 30.580 lei\n22. ι — IT — 34.359 lei\n23. τ — Contabilitate — 38.138 lei\n24. η — Logistică — 20.917 lei\n25. β₂ — Juridic — 24.696 lei\n26. ζ₂ — Vânzări — 28.475 lei\n27. ο₂ — IT — 32.254 lei\n28. ψ₂ — Contabilitate — 36.033 lei\n29. κ₂ — Logistică — 18.812 lei\n30. φ₂ — Juridic — 22.591 lei",
+      "error": "TRANSPORT: Connection error.",
+      "restoreReport": {
+        "restored": 0,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

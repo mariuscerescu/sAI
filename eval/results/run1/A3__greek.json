@@ -1,0 +1,35 @@
+{
+  "case": "A3",
+  "category": "A. Bază",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reformulează corect gramatical: «Contractul Popescului cu Acme-ului a fost semnat de Cebanei la Proiectul Orion.»",
+      "raw": "Corect: «Contractul lui Popescu cu μ-ul a fost semnat de Cebanei la γ.»\n\nDacă μ este nume propriu/nearticulabil, formularea este: «Contractul lui Popescu cu μ a fost semnat de Cebanei la γ.»",
+      "rawReasoning": "The user wants Romanian grammar reformulation. Need parse sentence with Greek letters standing for confidential terms; treat letters as real terms. Need rewrite correctly grammatical. Sentence: «Contractul Popescului cu μ-ului a fost semnat de Cebanei la γ.» Need infer intended grammar.\n\nRomanian: \"Contractul Popescului cu μ-ului\" awkward. Possible possessive? \"Contractul lui Popescu cu μ-ul a fost semnat de Cebănescu?\" Wait \"Cebanei\" genitive/dative? \"de Cebanei\" maybe should be \"de Cebănescu\"? Need produce corrected: «Contractul lui Popescu cu μ-ul a fost semnat de Cebănescu la γ.» But must keep Greek letters exactly as given; cannot translate μ or γ. Need retain β/κ? Here μ and γ only. Need not spell them out.\n\nNeed analyze Romanian declension. \"Popescului\" is wrong if Popescu is proper noun masculine: genitive \"lui Popescu\" in modern Romanian, or \"Popescului\"? Actually Romanian family names can take article suffix: \"lui Popescu\" common; \"Popescului\" as genitive of articulated \"Popescu\"? The articulated masculine singular genitive/dative is \"Popescului\" (from Popescu + -l? Let's recall: nouns ending -u? \"leu\" -> leului; \"Mihai\" -> lui Mihai. For proper names, article proclitic \"lui\" is preferred: lui Ion. Some masculine names take suffixal article? \"Albu\" -> \"Albului\" maybe. \"Popescu\" as noun? It ends in -u (silent?), articulated \"Popescul\"? Romanian surname Popescu has stem Popesc-? \"Popescu\" pronounced /poˈpesku/, article suffix \"-ul\" -> \"Popescul\"? Genitive \"Popescului\" might be grammatically possible: \"casa Popescului\"? Hmm Romanian surnames in -escu often articulated: \"a lui Popescu\" or \"Popescului\"? Examples: \"mormântul lui Eminescu\", \"Eminescului\" uncommon. \"opera Popescului\" sounds possible archaic/poetic? Maybe issue is \"Contractul Popescului\" = Popescu's contract, okay though formal.\n\n\"cu μ-ului\" definitely wrong: after \"cu\" need bare/articulated according to context, not genitive \"μ-ului\". If μ is a term replaced (maybe \"Statul\"?). It has suffix \"-ului\" genitive/dative; with preposition \"cu\" should be \"cu μ-ul\" if direct/articulated or \"cu μ\" if proper. The phrase \"Contractul Popescului cu μ-ului\" mixes. Correct: \"Contractul lui Popescu cu μ-ul a fost semnat de Cebanei la γ.\" But \"Cebanei\": Romanian family name Cebanei? If subject de Cebanei maybe genitive? \"semnat de Cebanei\" means signed by Cebanei? If \"Cebanei\" is a proper noun plural? Romanian surname \"Cebanei\" ends -i, genitive/dative of plural? It could be \"de Cebănescu\"? But must not change non-Greek terms? We can correct grammar but not replace words arbitrarily. \"de Cebanei\" as by Cebanei: proper noun in nominative can follow de: \"semnat de Popescu\". If surname is \"Cebanei\" (nominative maybe), \"de Cebanei\" is fine if Cebanei is a name. If meant genitive \"the contract of Cebanei\"? No.\n\n\"la γ\": preposition la + place, fine if γ is place (Greek letter standing term). Keep.\n\nNeed answer concise. Maybe offer variants depending on meaning:\n- If μ is common masculine singular: «Contractul lui Popescu cu μ-ul a fost semnat de Cebanei la γ.»\n- If referring to proper names: «Contractul Popescului cu μ a fost semnat de Cebanei la γ.»? Hmm.\n\nNeed decide. \"cu μ-ului\": double marking? If μ stands for real term, maybe the original intended phrase had \"μului\" genitive after \"cu\" erroneously. We need preserve letters. Use \"μ-ul\" (nominative/accusative articulated) not \"μ-ului\". \"Contractul Popescului\" maybe should be \"Contractul lui Popescu\" more idiomatic. \"semnat de Cebanei\" if name maybe \"de Cebănescu\"? Not given. We shouldn't invent diacritics. Use \"Cebanei\" as given.\n\nPhrase: «Contractul lui Popescu cu μ-ul a fost semnat de Cebanei la γ.» But is \"lui Popescu\" replacing \"Popescului\"—allowed reformulation. If μ is feminine? Greek letter no gender. The article in Romanian encodes gender; since confidential term replaced by μ, cannot know gender? But the given \"-ului\" implies masculine genitive singular or neuter. \"μ-ului\" indicates μ masculine (or maybe neuter? Romanian neuter genitive \"-ului\" too). So \"μ-ul\" masculine/neuter accusative. Good.\n\nNeed perhaps mention if μ propriu: fără articol. Final concise in Romanian. Ensure letters exact. No translation of letters. Use them exactly. Could say: „Corect: «Contractul lui Popescu cu μ-ul a fost semnat de Cebanei la γ.» (Dacă μ este nume propriu/nearticulat: «cu μ».)” Is that too much? Good. Need not include β etc.\n\nNeed ensure code/paths none. final with quote.",
+      "restored": "Corect: «Contractul lui Popescu cu Acme-ul a fost semnat de Cebanei la Proiectul Orion.»\n\nDacă Acme este nume propriu/nearticulabil, formularea este: «Contractul lui Popescu cu Acme a fost semnat de Cebanei la Proiectul Orion.»",
+      "leaks": [],
+      "ms": 15059,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "μ",
+          "γ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Reformulează corect gramatical: «Contractul Popescului cu μ-ului a fost semnat de Cebanei la γ.»",
+      "restoreReport": {
+        "restored": 46,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "case": "A3",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»",
+      "raw": "⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.",
+      "rawReasoning": "The user asks to rewrite a sentence with correct capitalization and grammar. Need treat placeholders exactly. Need determine grammatical fix. Original: «⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»\nIssues: singular possessive \"⟦PERSON_1⟧'s contract\" singular subject? Phrase: [person's contract with company] were signed by the [person] at [project]. Subject is singular \"contract\", so verb should be \"was signed\". Capitalization: placeholders likely proper nouns already? The placeholder tokens include class; we shouldn't change inside. \"the ⟦PERSON_2⟧\" maybe \"the ⟦PERSON_2⟧\" odd if person placeholder is a person's name? Original says \"by the ⟦PERSON_2⟧\" maybe should be \"by ⟦PERSON_2⟧\" no \"the\"? Need infer. If ⟦PERSON_2⟧ is a person name, \"the\" before name is wrong unless title. The placeholder is ⟦PERSON_2⟧, representing a person, so likely no article. But if it stands for role? It's class PERSON, so a person, no \"the\". \"at ⟦PROJECT_1⟧\" okay if project name. Capitalization: sentence starts with placeholder; keep. \"company\" placeholder kept. Use: \"⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\" Need mention if \"the ⟦PERSON_2⟧\" intended as a title/role, keep \"the\"? But asked rewrite. We can provide one corrected sentence, concise. Need preserve placeholders exactly. Avoid guessing. Could say: \"⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\" If ⟦PERSON_2⟧ is preceded by an official title included in placeholder? No.\nNeed final concise.",
+      "restored": "Smith's contract with Acme was signed by Johnson at project orion.",
+      "leaks": [
+        "STEM?:Project Orion (project)"
+      ],
+      "ms": 5429,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Rewrite this sentence with correct capitalization and grammar: «⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»",
+      "restoreReport": {
+        "restored": 26,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

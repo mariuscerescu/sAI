@@ -1,0 +1,33 @@
+{
+  "case": "D2",
+  "category": "D. Greek",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "În fizică, Δv = a·Δt. Dacă Maria Ceban accelerează cu 2 m/s² timp de 3 s, cât este Δv? Apoi calculează aria unui cerc de rază 2 m folosind π.",
+      "raw": "Pentru β: Δv = a·Δt = 2 m/s² · 3 s = 6 m/s.\n\nAria cercului: A = πr² = π·2² = 4π m² ≈ 12,57 m².",
+      "rawReasoning": "The user asks in Romanian. Need answer concise. But there's instruction: confidential terms replaced with isolated Greek letters such as β or κ. Treat each Greek letter as real term it stands for. Whenever refer to it, write letter exactly as given, also inside code etc. Do not translate or spell out these letters, and do not use them with any other meaning.\n\nWe need parse: \"În fizică, Δv = a·Δt. Dacă β accelerează cu 2 m/s² timp de 3 s, cât este Δv? Apoi calculează aria unui cerc de rază 2 m folosind π.\"\n\nHere β is a confidential term placeholder, not Greek beta meaning value; we must treat β as real term it stands for, but we don't know what term. Must refer to it as β exactly. Sentence: \"Dacă β accelerează cu...\" grammatically odd: if β accelerates at 2 m/s^2 for 3s, what is Δv? β might be a vehicle? We cannot spell out. We can compute Δv = a Δt = 2*3 = 6 m/s, independent of β. Need perhaps say pentru β, Δv = ... Aria cerc radius 2 = π r^2 = 4π m^2 ≈ 12.566 m^2. Need use π (pi given as symbol? They wrote \"π\" not isolated Greek? It is pi, but likely actual math pi, allowed? The replacement uses isolated Greek letters such as β or κ possibly α₂. π is Greek too. But the prompt itself uses π as constant \"folosind π\". The instruction says confidential terms replaced with isolated Greek letters such as β or κ (possibly with subscript...). Treat each such letter as the real term it stands for. Is π one of those confidential letters? It says such as β or κ, not π; and \"folosind π\" strongly indicates the mathematical constant pi. Also Δv and Δt include Δ, Greek delta, but clearly math symbols delta for change. Hmm instruction says isolated Greek letters such as β or κ; Δ is in formulas as part of standard notation Δv, Δt. Not confidential. π is constant. Need answer in Romanian concise.\n\nNeed be careful not to translate β into e.g. \"obiectul\"? We can use β as a noun. Example: \"Pentru β: Δv = a·Δt = 2·3 = 6 m/s.\" That's fine. \"Aria cercului: A = πr² = π·2² = 4π m² ≈ 12,57 m².\" Romanian decimal comma perhaps. Use concise.\n\nNeed maybe avoid saying \"beta\". Good.",
+      "restored": "Pentru Maria Ceban: Δv = a·Δt = 2 m/s² · 3 s = 6 m/s.\n\nAria cercului: A = πr² = π·2² = 4π m² ≈ 12,57 m².",
+      "leaks": [],
+      "ms": 6770,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1
+        },
+        "tokensUsed": [
+          "β"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "În fizică, Δv = a·Δt. Dacă β accelerează cu 2 m/s² timp de 3 s, cât este Δv? Apoi calculează aria unui cerc de rază 2 m folosind π.",
+      "restoreReport": {
+        "restored": 18,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

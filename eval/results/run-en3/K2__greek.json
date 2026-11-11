@@ -1,0 +1,33 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "ω picked the red rose, from Will Baker's garden.",
+      "rawReasoning": "We need answer question. They mention Greek letter ω as placeholder for confidential term. Need treat each such letter as real term it stands for, but we don't know the real term? The instruction says some confidential terms replaced with isolated Greek letters. We should refer to it as ω exactly. User asks: \"ω picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?\" This is oddly simple: ω picked, from Will Baker's garden. Need answer using ω and Will Baker. Perhaps the term Will Baker might also be a placeholder? It isn't Greek letter, so normal. Need not infer real identities. Answer concise: ω picked the red rose, from Will Baker's garden. Ensure exact letter ω. No extra.",
+      "restored": "Rose Walker picked the red rose, from Will Baker's garden.",
+      "leaks": [],
+      "ms": 3213,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1
+        },
+        "tokensUsed": [
+          "ω"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "ω picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

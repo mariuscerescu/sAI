@@ -1,0 +1,36 @@
+{
+  "case": "H4",
+  "category": "H. Identificatori",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Compară IDNP-urile 2001234567891 și 0981203456787: care persoană e mai în vârstă?",
+      "raw": "Nu se poate determina doar din simbolurile ζ și η — sunt doar etichete, nu IDNP-uri reale. Trebuie valorile numerice efective; apoi compar componenta de dată a nașterii codificată în IDNP. Persoana cu data de naștere mai timpurie este mai în vârstă, nu neapărat cea cu IDNP-ul „mai mic” numeric.",
+      "rawReasoning": "The user asks in Romanian: \"Compară IDNP-urile ζ și η: care persoană e mai în vârstă?\" They refer to IDNP (Moldovan personal numeric code?) and Greek letters replaced confidential terms. Need answer. Need understand if enough info? IDNP structure? We have no actual values, just symbols ζ and η representing placeholders? We must treat Greek letters as real terms, cannot translate/spell out. Need compare IDs? We need infer maybe IDNP encodes birth date. Need know structure of Moldovan IDNP. IDNP is 13-digit personal identification number in Moldova. Format? Let's recall: Moldovan IDNP (IDNP) 13 digits: first? It may encode date of birth? Actually Moldova IDNP: 13 digits, first digit maybe? Hmm.\n\nNeed answer likely cannot determine without the actual IDNP values. But maybe question is a puzzle: compare ζ and η (Greek letters standing for confidential terms) as IDNPs? Wait ζ and η are variables replacing confidential terms, not digits. They ask \"Compară IDNP-urile ζ și η: care persoană e mai în vârstă?\" There's no data. Perhaps they expect based on IDNP checksum? We don't have values. Need not hallucinate. Could explain method: IDNP's first digits encode birth date? Need be careful.\n\nLet's recall exact Moldovan IDNP structure. IDNP = \"identificatorul numeric personal\". 13 digits? For citizens: e.g. 097...? Format maybe SXXXXXXNNNNN? Let's search memory: Moldova IDNP consists of 13 digits: first 7? In many post-Soviet countries, personal code encodes sex/century and birth date. Ukrainian? IDNP Moldova: first two digits? Example not known.\n\nRomanian CNP: first digit sex/century, next 6 YYMMDD birth date, etc. Moldovan IDNP maybe similar? It may be 13 digits: 1 digit category, 6? Need not exact? User likely testing confidential handling and wants answer from provided letters only. We should state cannot compare because actual IDNP values absent; if they supply values, compare embedded birth date. Need avoid treating ζ/η as digits.\n\nNeed mention IDNP structure accurately but maybe not sure. Safer: \"Nu pot determina doar din simbolurile ζ și η; acelea sunt doar etichete. Dacă îmi provide cifrele, compar componenta de dată a nașterii (și, dacă e cazul, secolul/sexul) din IDNP; persoana cu data mai timpurie e mai în vârstă.\" The user specifically asks compare; concise. Could add \"dacă valorile sunt în format IDNP, vârsta se compară după data nașterii codificată, nu după ordinalul IDNP.\" Good.\n\nNeed no unsupported details. Final in Romanian.",
+      "restored": "Nu se poate determina doar din simbolurile 2001234567891 și 0981203456787 — sunt doar etichete, nu IDNP-uri reale. Trebuie valorile numerice efective; apoi compar componenta de dată a nașterii codificată în IDNP. Persoana cu data de naștere mai timpurie este mai în vârstă, nu neapărat cea cu IDNP-ul „mai mic” numeric.",
+      "leaks": [],
+      "ms": 7882,
+      "redactReport": {
+        "countsByClass": {
+          "IDNP": 2
+        },
+        "tokensUsed": [
+          "ζ",
+          "η"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Compară IDNP-urile ζ și η: care persoană e mai în vârstă?",
+      "restoreReport": {
+        "restored": 16,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ζ"
+        ]
+      }
+    }
+  ]
+}

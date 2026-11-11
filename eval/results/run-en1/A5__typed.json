@@ -1,0 +1,35 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I don’t have the actual notes from your ⟦PERSON_1⟧ / ⟦PERSON_2⟧ conversation, so I shouldn’t invent specifics. A safe two-line summary for ⟦PERSON_3⟧ would be:\n\n“⟦PERSON_1⟧ and ⟦PERSON_2⟧ reviewed the acme deal and aligned on the key points and next steps. The main open items/decisions are being captured, and we’ll confirm timing and ownership before moving forward.”\n\nIf you paste the notes, I can make it accurate and specific.",
+      "rawReasoning": "The user asks for summary of conversation with ⟦PERSON_1⟧/⟦PERSON_2⟧ about acme deal to tell ⟦PERSON_3⟧. I don't have context/data. Could use tools? No tools provided. Need answer concise, maybe ask for details or provide a template based on placeholders. Need not invent facts. Since they ask summarize, but no provided notes. We should not fabricate. Say I don't have the conversation details; here's a two-line safe summary template. Need maintain placeholders exactly. Keep concise.",
+      "restored": "I don’t have the actual notes from your Smith / Walker conversation, so I shouldn’t invent specifics. A safe two-line summary for Johnson would be:\n\n“Smith and Walker reviewed the acme deal and aligned on the key points and next steps. The main open items/decisions are being captured, and we’ll confirm timing and ownership before moving forward.”\n\nIf you paste the notes, I can make it accurate and specific.",
+      "leaks": [],
+      "ms": 4735,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "I talked to ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the acme deal. Can you summarize in two lines what I should tell ⟦PERSON_3⟧?",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

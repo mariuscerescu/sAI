@@ -1,0 +1,33 @@
+{
+  "case": "D2",
+  "category": "D. Greek",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "În fizică, Δv = a·Δt. Dacă Maria Ceban accelerează cu 2 m/s² timp de 3 s, cât este Δv? Apoi calculează aria unui cerc de rază 2 m folosind π.",
+      "raw": "Δv = a·Δt = 2 m/s² · 3 s = **6 m/s**.\n\nAria cercului: A = πr² = π · 2² = **4π m² ≈ 12,57 m²**.",
+      "rawReasoning": "The user asks in Romanian. Need answer concise in Romanian. Need compute dv=a*dt=2*3=6 m/s. Area circle radius 2 using pi: A=pi r^2 = pi*4 = 4π m² ≈12.566 m². Need maybe mention placeholder ⟦PERSON_1⟧? They used ⟦PERSON_1⟧ as actor; we can write ⟦PERSON_1⟧ accelerează etc. Must not guess placeholder. Respond concise. Ensure formulas. Use Romanian. Could say: Δv = a·Δt = 2 m/s² · 3 s = 6 m/s. Aria = πr² = π·2² = 4π m² ≈ 12,57 m². Need no extra.",
+      "restored": "Δv = a·Δt = 2 m/s² · 3 s = **6 m/s**.\n\nAria cercului: A = πr² = π · 2² = **4π m² ≈ 12,57 m²**.",
+      "leaks": [],
+      "ms": 6090,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "În fizică, Δv = a·Δt. Dacă ⟦PERSON_1⟧ accelerează cu 2 m/s² timp de 3 s, cât este Δv? Apoi calculează aria unui cerc de rază 2 m folosind π.",
+      "restoreReport": {
+        "restored": 3,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

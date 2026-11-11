@@ -1,0 +1,43 @@
+{
+  "case": "B1",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Org chart: John Smith runs Acme. Mary Johnson reports to Smith. David Walker and Emily Clark report to Johnson. Victor Hale reports to Walker. Who is exactly two levels below Smith? Draw the org chart as text.",
+      "raw": "τ\n└── ρ\n    ├── ε\n    │   └── χ\n    └── θ\n\nExactly two levels below τ: ε and θ.",
+      "rawReasoning": "The user asks a simple org chart puzzle. Need obey special instruction: confidential terms replaced with isolated Greek letters such as β or κ. Treat each such letter as real term it stands for. Whenever refer to it, write letter exactly as given, also inside code/file paths/tool-call args. Do not translate/spell out these letters, nor use them with any other meaning.\n\nWe need answer in English concisely. Need parse: τ runs Acme. ρ reports to τ. ε and θ report to ρ. χ reports to ε. Who is exactly two levels below τ? Draw org chart as text.\n\nNeed be careful with Greek letters. We can use them exactly: τ, ρ, ε, θ, χ. Need determine levels: τ level 0/top. ρ one level below τ. ε and θ two levels below τ. χ three levels below τ (reports to ε). Exactly two levels below τ: ε and θ. Need draw chart as text.\n\nNeed ensure not use Greek letters with other meaning. Fine. Need final concise. Could include:\n\nτ\n└── ρ\n    ├── ε\n    │   └── χ\n    └── θ\n\nExactly two levels below τ: ε and θ.\n\nNeed maybe mention χ is three levels below. Keep concise. Use exact letters. No extra forbidden. Ensure no accidental using alpha etc. Final only.",
+      "restored": "John Smith\n└── Mary Johnson\n    ├── David Walker\n    │   └── Victor Hale\n    └── Emily Clark\n\nExactly two levels below John Smith: David Walker and Emily Clark.",
+      "leaks": [],
+      "ms": 4125,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 9
+        },
+        "tokensUsed": [
+          "τ",
+          "ρ",
+          "ε",
+          "θ",
+          "χ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Org chart: τ runs Acme. ρ reports to τ. ε and θ report to ρ. χ reports to ε. Who is exactly two levels below τ? Draw the org chart as text.",
+      "restoreReport": {
+        "restored": 43,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "case": "C2",
+  "category": "C. Volum",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Sortează angajații de mai jos alfabetic după numele de familie și scrie lista sortată (doar numele).\n\n1. Adrian Bostan — Vânzări — 18.000 lei\n2. Lilia Caraman — IT — 21.779 lei\n3. Sergiu Rotaru — Contabilitate — 25.558 lei\n4. Natalia Banari — Logistică — 29.337 lei\n5. Vadim Enache — Juridic — 33.116 lei\n6. Corina Paduraru — Vânzări — 36.895 lei\n7. Dorin Diaconu — IT — 19.674 lei\n8. Tatiana Popovici — Contabilitate — 23.453 lei\n9. Grigore Bejan — Logistică — 27.232 lei\n10. Ludmila Postica — Juridic — 31.011 lei\n11. Pavel Balan — Vânzări — 34.790 lei\n12. Olga Creanga — IT — 38.569 lei\n13. Igor Oprea — Contabilitate — 21.348 lei\n14. Svetlana Toma — Logistică — 25.127 lei\n15. Marin Petrescu — Juridic — 28.906 lei\n16. Doina Spinu — Vânzări — 32.685 lei\n17. Viorel Nistor — IT — 36.464 lei\n18. Rodica Arnaut — Contabilitate — 19.243 lei\n19. Eugen Ciorba — Logistică — 23.022 lei\n20. Nadejda Nedelcu — Juridic — 26.801 lei\n21. Oleg Tanase — Vânzări — 30.580 lei\n22. Larisa Neagu — IT — 34.359 lei\n23. Tudor Jardan — Contabilitate — 38.138 lei\n24. Stela Mocanu — Logistică — 20.917 lei\n25. Valeriu Andronic — Juridic — 24.696 lei\n26. Mihaela Cimpoi — Vânzări — 28.475 lei\n27. Iurie Manole — IT — 32.254 lei\n28. Veronica Stanciu — Contabilitate — 36.033 lei\n29. Artur Lupascu — Logistică — 18.812 lei\n30. Cristina Turcanu — Juridic — 22.591 lei",
+      "raw": "Nu pot sorta corect după numele de familie, deoarece numele sunt mascate ca ⟦PERSON_N⟧; ordinea alfabetică reală nu poate fi dedusă fără valorile reale.\n\nSingura ordine determinabilă din date este cea după eticheta placeholder-ului:\n\n⟦PERSON_1⟧, ⟦PERSON_2⟧, ⟦PERSON_3⟧, ⟦PERSON_4⟧, ⟦PERSON_5⟧, ⟦PERSON_6⟧, ⟦PERSON_7⟧, ⟦PERSON_8⟧, ⟦PERSON_9⟧, ⟦PERSON_10⟧, ⟦PERSON_11⟧, ⟦PERSON_12⟧, ⟦PERSON_13⟧, ⟦PERSON_14⟧, ⟦PERSON_15⟧, ⟦PERSON_16⟧, ⟦PERSON_17⟧, ⟦PERSON_18⟧, ⟦PERSON_19⟧, ⟦PERSON_20⟧, ⟦PERSON_21⟧, ⟦PERSON_22⟧, ⟦PERSON_23⟧, ⟦PERSON_24⟧, ⟦PERSON_25⟧, ⟦PERSON_26⟧, ⟦PERSON_27⟧, ⟦PERSON_28⟧, ⟦PERSON_29⟧, ⟦PERSON_30⟧\n\nPentru sortarea alfabetică după numele de familie sunt necesare numele reale.",
+      "rawReasoning": "The user asks in Romanian: sort employees alphabetically by family name and write sorted list (only names). Data is placeholders ⟦PERSON_N⟧, no actual family names. Need treat placeholders as real values? Instruction says placeholders protect confidential data, treat each placeholder as real value it stands for, never guess. We don't know underlying names. We cannot derive alphabetical order by family name from placeholders unless we sort by placeholder token? Need answer maybe cannot determine alphabetical by surname because names are masked; if sorted by placeholder label, list ⟦PERSON_1⟧...⟦PERSON_30⟧ numerically, but that's not alphabetical by family name. Need be honest.\n\nBut perhaps task expects sorting by names represented as placeholders? There are no actual names/family names visible. We can only sort by placeholder identifier if interpreting literally, but not by family name. Should state limitation and provide the only determinate ordering: numeric placeholder order, or maybe alphabetical of placeholder strings is same as numeric? Actually string alphabetical of ⟦PERSON_1⟧, ⟦PERSON_10⟧, ⟦PERSON_11⟧... would lexicographic: PERSON_1, PERSON_10, PERSON_11, ... PERSON_2 ... not family. Not requested.\n\nNeed maybe output only names sorted? Cannot. Provide concise explanation in Romanian. Could say: Nu pot determina ordinea alfabetică după numele de familie deoarece valorile sunt mascate ca ⟦PERSON_N⟧ și nu cunosc numele reale; sortarea după placeholder (numeric) rămâne: list. Dacă se dorește, trebuie furnizate numele reale. The user said write sorted list only names; but impossible. We should not fabricate. Keep concise.\n",
+      "restored": "Nu pot sorta corect după numele de familie, deoarece numele sunt mascate ca ⟦PERSON_N⟧; ordinea alfabetică reală nu poate fi dedusă fără valorile reale.\n\nSingura ordine determinabilă din date este cea după eticheta placeholder-ului:\n\nAdrian Bostan, Lilia Caraman, Sergiu Rotaru, Natalia Banari, Vadim Enache, Corina Paduraru, Dorin Diaconu, Tatiana Popovici, Grigore Bejan, Ludmila Postica, Pavel Balan, Olga Creanga, Igor Oprea, Svetlana Toma, Marin Petrescu, Doina Spinu, Viorel Nistor, Rodica Arnaut, Eugen Ciorba, Nadejda Nedelcu, Oleg Tanase, Larisa Neagu, Tudor Jardan, Stela Mocanu, Valeriu Andronic, Mihaela Cimpoi, Iurie Manole, Veronica Stanciu, Artur Lupascu, Cristina Turcanu\n\nPentru sortarea alfabetică după numele de familie sunt necesare numele reale.",
+      "leaks": [],
+      "ms": 6943,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 30
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦PERSON_4⟧",
+          "⟦PERSON_5⟧",
+          "⟦PERSON_6⟧",
+          "⟦PERSON_7⟧",
+          "⟦PERSON_8⟧",
+          "⟦PERSON_9⟧",
+          "⟦PERSON_10⟧",
+          "⟦PERSON_11⟧",
+          "⟦PERSON_12⟧",
+          "⟦PERSON_13⟧",
+          "⟦PERSON_14⟧",
+          "⟦PERSON_15⟧",
+          "⟦PERSON_16⟧",
+          "⟦PERSON_17⟧",
+          "⟦PERSON_18⟧",
+          "⟦PERSON_19⟧",
+          "⟦PERSON_20⟧",
+          "⟦PERSON_21⟧",
+          "⟦PERSON_22⟧",
+          "⟦PERSON_23⟧",
+          "⟦PERSON_24⟧",
+          "⟦PERSON_25⟧",
+          "⟦PERSON_26⟧",
+          "⟦PERSON_27⟧",
+          "⟦PERSON_28⟧",
+          "⟦PERSON_29⟧",
+          "⟦PERSON_30⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Sortează angajații de mai jos alfabetic după numele de familie și scrie lista sortată (doar numele).\n\n1. ⟦PERSON_1⟧ — Vânzări — 18.000 lei\n2. ⟦PERSON_2⟧ — IT — 21.779 lei\n3. ⟦PERSON_3⟧ — Contabilitate — 25.558 lei\n4. ⟦PERSON_4⟧ — Logistică — 29.337 lei\n5. ⟦PERSON_5⟧ — Juridic — 33.116 lei\n6. ⟦PERSON_6⟧ — Vânzări — 36.895 lei\n7. ⟦PERSON_7⟧ — IT — 19.674 lei\n8. ⟦PERSON_8⟧ — Contabilitate — 23.453 lei\n9. ⟦PERSON_9⟧ — Logistică — 27.232 lei\n10. ⟦PERSON_10⟧ — Juridic — 31.011 lei\n11. ⟦PERSON_11⟧ — Vânzări — 34.790 lei\n12. ⟦PERSON_12⟧ — IT — 38.569 lei\n13. ⟦PERSON_13⟧ — Contabilitate — 21.348 lei\n14. ⟦PERSON_14⟧ — Logistică — 25.127 lei\n15. ⟦PERSON_15⟧ — Juridic — 28.906 lei\n16. ⟦PERSON_16⟧ — Vânzări — 32.685 lei\n17. ⟦PERSON_17⟧ — IT — 36.464 lei\n18. ⟦PERSON_18⟧ — Contabilitate — 19.243 lei\n19. ⟦PERSON_19⟧ — Logistică — 23.022 lei\n20. ⟦PERSON_20⟧ — Juridic — 26.801 lei\n21. ⟦PERSON_21⟧ — Vânzări — 30.580 lei\n22. ⟦PERSON_22⟧ — IT — 34.359 lei\n23. ⟦PERSON_23⟧ — Contabilitate — 38.138 lei\n24. ⟦PERSON_24⟧ — Logistică — 20.917 lei\n25. ⟦PERSON_25⟧ — Juridic — 24.696 lei\n26. ⟦PERSON_26⟧ — Vânzări — 28.475 lei\n27. ⟦PERSON_27⟧ — IT — 32.254 lei\n28. ⟦PERSON_28⟧ — Contabilitate — 36.033 lei\n29. ⟦PERSON_29⟧ — Logistică — 18.812 lei\n30. ⟦PERSON_30⟧ — Juridic — 22.591 lei",
+      "restoreReport": {
+        "restored": 35,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

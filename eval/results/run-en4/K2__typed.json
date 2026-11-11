@@ -1,0 +1,34 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "⟦PERSON_1⟧ picked the rose, from ⟦PERSON_2⟧'s garden.",
+      "rawReasoning": "The user asks question with placeholders. Need answer based on text. Need treat placeholders as real values, write exactly. Sentence: ⟦PERSON_1⟧ picked a red rose from ⟦PERSON_2⟧'s garden. Question: Who picked the rose, and from whose garden? Answer: ⟦PERSON_1⟧ picked the rose from ⟦PERSON_2⟧'s garden. Need concise. Ensure exact placeholder formatting. No extra guessing.",
+      "restored": "Rose Walker picked the rose, from Will Baker's garden.",
+      "leaks": [],
+      "ms": 2654,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ picked a red rose from ⟦PERSON_2⟧'s garden. Who picked the rose, and from whose garden?",
+      "restoreReport": {
+        "restored": 6,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

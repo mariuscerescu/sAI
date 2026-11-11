@@ -1,0 +1,38 @@
+{
+  "case": "A3",
+  "category": "A. Bază",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reformulează corect gramatical: «Contractul Popescului cu Acme-ului a fost semnat de Cebanei la Proiectul Orion.»",
+      "raw": "Varianta corectă, păstrând genitivul „γ-ului”:\n\n«Contractul μ al γ-ului a fost semnat de ι la θ.»\n\nDacă intenția era sensul „împreună cu γ”, atunci: «Contractul μ cu γ a fost semnat de ι la θ.»",
+      "rawReasoning": "The user in Romanian asks: reformulate grammatically correct «Contractul μ cu γ-ului a fost semnat de ι la θ.» Need preserve Greek letters exactly. Need figure correct grammar. Given phrase: \"Contractul μ cu γ-ului a fost semnat de ι la θ.\" There's mismatch: \"cu γ-ului\" should likely be \"cu γ\" or \"al γ-ului\"? Need infer intended structure. Confidential terms replaced by Greek letters. We must treat letters as real terms, write exact letters. Need produce grammatically correct Romanian.\n\nSentence: «Contractul μ cu γ-ului a fost semnat de ι la θ.»\nIssues: \"Contractul μ\" maybe if μ is a proper noun/name? In Romanian, \"Contractul μ\" okay if μ is name (like Contractul X?). \"cu γ-ului\" ungrammatical because cu takes nominative/accusative no -ului. Could be \"cu γ\" or \"cu al γ-ului\" depending relation. \"de ι\" fine if ι is agent. \"la θ\" okay maybe location/time. Need reformulate minimal: «Contractul μ cu γ a fost semnat de ι la θ.» But maybe if γ is genitive possessive, phrase should be «Contractul μ al γ-ului a fost semnat de ι la θ.» Hmm.\n\nOriginal: \"Contractul μ cu γ-ului\" maybe intended \"Contractul μ cu γ-ul\"? Romanian definite article: \"γ-ul\"? For masculine noun starting with consonant? If Greek letter represents term, cannot know gender. The suffix \"-ului\" indicates genitive/dative masculine/neuter. \"cu\" never takes genitive. If intended possessive: \"Contractul μ al γ-ului\" (the μ contract of γ) is grammatical if γ masculine/neuter singular. If intended accompaniment with entity γ: \"Contractul μ cu γ\" no article maybe if γ is proper name; if common noun needs article: \"cu γ-ul\" masculine or \"cu γ-a\" feminine unknown.\n\nThe prompt asks \"Reformulează corect gramatical\" likely expects fix only article misuse: replace \"cu γ-ului\" with \"cu γ-ul\"? Let's inspect.\n\nPhrase structure: \"Contractul μ cu γ-ului a fost semnat de ι la θ.\" In Romanian, after preposition \"cu\", a common masculine noun with definite article takes \"γ-ul\" (with hyphen if ending in vocal? Actually letter?). If γ is a proper name (confidential term maybe stands for entity), no article usually. \"γ-ului\" is genitive/dative, cannot follow cu. Could be a typo for \"γ-ului\" where they wanted \"cu γ\" as term? We need answer with best grammatically correct version and maybe mention depending intended meaning.\n\nNeed concise. Provide alternatives:\n- Dacă γ este complement cu „cu”: «Contractul μ cu γ a fost semnat de ι la θ.» (sau «cu γ-ul» dacă γ cere articol hotărât).\n- Dacă γ-ului era posesiv/genitiv: «Contractul μ al γ-ului a fost semnat de ι la θ.»\n\nBut user likely wants one reformulate. Need avoid inventing. Best answer: «Contractul μ al γ-ului a fost semnat de ι la θ.»? Let's decide.\n\nOriginal includes \"Contractul μ cu γ-ului\": word order \"Contractul μ cu γ-ului\" = \"The μ contract with γγ's ...\" Maybe in Romanian \"cu\" + genitive definitely wrong. If they meant \"the μ contract of γ\", Romanian uses \"Contractul μ al γ-ului\" (for masculine/neuter possessor). That preserves \"γ-ului\" and only changes cu->al, very plausible minimal correction. If they meant \"contract with γ\", would drop -ului. Which is more likely? The presence of \"-ului\" suggests possessive genitive mistakenly introduced by \"cu\". Correct grammar while keeping γ-ului is \"al γ-ului\". Also \"Contractul μ\" before noun phrase: \"Contractul μ al γ-ului\" = The μ contract of γ. If μ itself is a name/identifier, okay.\n\nNeed maybe say: „Contractul μ al γ-ului a fost semnat de ι la θ.” If intended sense was “împreună cu γ”, atunci: „Contractul μ cu γ a fost semnat de ι la θ.” This covers ambiguity, concise. Ensure letters exact: μ, γ-ului, ι, θ. Use code? Fine. Final in Romanian. ",
+      "restored": "Varianta corectă, păstrând genitivul „Acme-ului”:\n\n«Contractul Ion Popescu al Acme-ului a fost semnat de Ceban la Proiectul Orion.»\n\nDacă intenția era sensul „împreună cu Acme”, atunci: «Contractul Ion Popescu cu Acme a fost semnat de Ceban la Proiectul Orion.»",
+      "leaks": [],
+      "ms": 11651,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "μ",
+          "γ",
+          "ι",
+          "θ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Reformulează corect gramatical: «Contractul μ cu γ-ului a fost semnat de ι la θ.»",
+      "restoreReport": {
+        "restored": 121,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

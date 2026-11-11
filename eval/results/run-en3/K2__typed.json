@@ -1,0 +1,33 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "⟦PERSON_1⟧ picked the red rose, from Will Baker's garden.",
+      "rawReasoning": "The user is asking a question with placeholders. Need treat placeholder as real value but never guess. They ask \"Who picked the rose, and from whose garden?\" The sentence: \"⟦PERSON_1⟧ picked a red rose from Will Baker's garden.\" So answer: ⟦PERSON_1⟧ picked the rose, from Will Baker's garden. Need be concise. Ensure exact placeholder. No extra guessing. Could say \"⟦PERSON_1⟧ picked the red rose, from Will Baker's garden.\" Need note Will Baker is not placeholder? It's a name maybe confidential? It appears as plain text, so use as given? The instruction says placeholders replaced to protect confidential data; names not placeholder are presumably allowed. Answer exactly.",
+      "restored": "Rose Walker picked the red rose, from Will Baker's garden.",
+      "leaks": [],
+      "ms": 2263,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "restoreReport": {
+        "restored": 4,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

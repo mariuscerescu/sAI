@@ -1,0 +1,36 @@
+{
+  "case": "A4",
+  "category": "A. Bază",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Pune la genitiv și la dativ numele: Ion Popescu, Maria Ceban, Acme Logistic. Dă exemple de propoziții.",
+      "raw": "Nu pot ghici valorile reale din spatele placeholder‑urilor, deci forma sigură/uzuală este cea cu **lui** pentru persoane și cu substantiv comun + genitiv pentru companie:\n\n- **Genitiv:**  \n  - al/a/ai/ale **lui ⟦PERSON_1⟧**: „Contractul **lui ⟦PERSON_1⟧** a fost semnat ieri.”  \n  - al/a/ai/ale **lui ⟦PERSON_2⟧**: „Casa **lui ⟦PERSON_2⟧** este aproape.”  \n  - al/a/ai/ale **companiei ⟦COMPANY_1⟧**: „Raportul **companiei ⟦COMPANY_1⟧** este public.”\n\n- **Dativ:**  \n  - **lui ⟦PERSON_1⟧**: „Îi trimit **lui ⟦PERSON_1⟧** documentele.”  \n  - **lui ⟦PERSON_2⟧**: „Îi mulțumesc **lui ⟦PERSON_2⟧** pentru ajutor.”  \n  - **companiei ⟦COMPANY_1⟧**: „Plata se face **companiei ⟦COMPANY_1⟧** până vineri.”\n\nObservații: dacă ⟦PERSON_1⟧ / ⟦PERSON_2⟧ sunt nume feminine românești declinabile terminate în **-a**, pot avea formă sintetică de gen./dat. în **-ei** (ex. Maria → **Mariei**); dacă sunt străine/invariabile, se folosește de obicei **lui** / **ei** după gen. Pentru companie, construcția naturală este cu substantiv comun: **compania/companiei ⟦COMPANY_1⟧**.",
+      "rawReasoning": "The user asks in Romanian for genitive and dative forms of names, with placeholders. Need treat placeholders as real values but not guess. Need answer in Romanian. Need be careful: Romanian genitive/dative of names depends on gender/article and diacritics maybe. Placeholders: ⟦PERSON_1⟧, ⟦PERSON_2⟧ likely person names; ⟦COMPANY_1⟧ company. We don't know actual endings. Need explain how to form and give examples using placeholders, perhaps with generic rules. Need include placeholders exactly as given. We must not invent actual values? We can provide forms by appending endings? For names in Romanian, genitive-dative: masculine singular proper names often \"lui ⟦PERSON_1⟧\" indeclinable, feminine often \"Elenei\" etc if adapted, but with foreign/unknown use \"lui/ei\". For company, often \"companiei ⟦COMPANY_1⟧\" if generic feminine noun? But company name can be indeclinable or with \"al/a/ai/ale\". Need be honest: without knowing gender/form, safest constructions: genitiv/dativ with \"lui\" for persons (especially masculine/foreign/indeclinable): \"lui ⟦PERSON_1⟧\". For feminine Romanian names: if name is female and ends in -a e.g. Maria -> Mariei; but don't know. We can use analytic forms: \"către/dela?\" Let's formulate: Dacă ⟦PERSON_1⟧/⟦PERSON_2⟧/⟦COMPANY_1⟧ păstrează forma invariabilă, genitiv-dativ: lui ⟦PERSON_1⟧ etc. But \"lui ⟦COMPANY_1⟧\" if company is treated as masculine/neuter? Romanian companies often feminine \"compania X\"; genitive \"companiei X\". Better present patterns and examples.\n\nNeed satisfy request. Use placeholders. Maybe say: Nu pot ști sigur fără genul/terminațierea reală, dar în română standard formele corecte uzuale sunt: gen./dat. sg. cu \"lui\" înaintea numelui (mai ales masculine/neclare): al/a/ai/ale lui ⟦PERSON_1⟧; dativ: lui ⟦PERSON_1⟧ etc. For plural: numelor. For company: dacă e construită cu substantiv comun \"compania ⟦COMPANY_1⟧\": gen. companiei ⟦COMPANY_1⟧, dat. companiei ⟦COMPANY_1⟧; dacă ⟦COMPANY_1⟧ e tratat ca marcă invariabilă: al ⟦COMPANY_1⟧? Hmm.\n\nLet's create concise answer with examples:\n- Genitive: exemplarul lui ⟦PERSON_1⟧; succesul lui ⟦PERSON_2⟧; sediul companiei ⟦COMPANY_1⟧ / logoul lui ⟦COMPANY_1⟧? Need examples not too ambiguous.\n- Dative: îi dau lui ⟦PERSON_1⟧ cartea; îi scriu lui ⟦PERSON_2⟧; trimit factura companiei ⟦COMPANY_1⟧.\n- If feminine Romanian names declinable: „Elenei”, „Mariei”; but cannot map placeholders. Mention: dacă ⟦PERSON_1⟧/⟦PERSON_2⟧ sunt nume feminine românești terminate în -a, genitiv-dativ poate fi „al/a ⟦...?” No, cannot produce exact without value. Say replace -a cu -ei: Maria→Mariei; but for placeholder exact? Maybe phrase: „Dacă unul dintre ⟦PERSON_1⟧/⟦PERSON_2⟧ este, de exemplu, un nume feminin terminat în -a, forma sintetică va fi cu -ei (Maria→Mariei); altfel se folosește „lui/ei”.”\n\nNeed include placeholder exactly when referring. Examples with placeholders:\nGenitiv:\n„Contractul lui ⟦PERSON_1⟧ a fost semnat ieri.”\n„Cheile lui ⟦PERSON_2⟧ sunt pe masă.” (chei lui? ok)\n„Raportul companiei ⟦COMPANY_1⟧ este public.” (companiei as common noun? Actually \"raportul companiei ⟦COMPANY_1⟧\" ok if company = feminine common noun)\nDativ:\n„Îi trimit lui ⟦PERSON_1⟧ documentele.”\n„Îi mulțumesc lui ⟦PERSON_2⟧ pentru ajutor.”\n„Plata se face companiei ⟦COMPANY_1⟧ până vineri.”\nGender agreements: „al lui ⟦PERSON_1⟧” (masculine object), „a lui ⟦PERSON_1⟧” (feminine object).\nCompany: if no common noun: „al ⟦COMPANY_1⟧”? Hmm better: „brandul ⟦COMPANY_1⟧” not genitive. „prestigiul ⟦COMPANY_1⟧” sounds wrong; „prestigiul companiei ⟦COMPANY_1⟧” ok. Dative: „către ⟦COMPANY_1⟧” is not dative proper but marks recipient; better \"companiei ⟦COMPANY_1⟧\".\nNeed mention plural? User didn't ask. Concise.",
+      "restored": "Nu pot ghici valorile reale din spatele placeholder‑urilor, deci forma sigură/uzuală este cea cu **lui** pentru persoane și cu substantiv comun + genitiv pentru companie:\n\n- **Genitiv:**  \n  - al/a/ai/ale **lui Ion Popescu**: „Contractul **lui Ion Popescu** a fost semnat ieri.”  \n  - al/a/ai/ale **lui Maria Ceban**: „Casa **lui Maria Ceban** este aproape.”  \n  - al/a/ai/ale **companiei Acme Logistic**: „Raportul **companiei Acme Logistic** este public.”\n\n- **Dativ:**  \n  - **lui Ion Popescu**: „Îi trimit **lui Ion Popescu** documentele.”  \n  - **lui Maria Ceban**: „Îi mulțumesc **lui Maria Ceban** pentru ajutor.”  \n  - **companiei Acme Logistic**: „Plata se face **companiei Acme Logistic** până vineri.”\n\nObservații: dacă Ion Popescu / Maria Ceban sunt nume feminine românești declinabile terminate în **-a**, pot avea formă sintetică de gen./dat. în **-ei** (ex. Maria → **Mariei**); dacă sunt străine/invariabile, se folosește de obicei **lui** / **ei** după gen. Pentru companie, construcția naturală este cu substantiv comun: **compania/companiei Acme Logistic**.",
+      "leaks": [],
+      "ms": 15297,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Pune la genitiv și la dativ numele: ⟦PERSON_1⟧, ⟦PERSON_2⟧, ⟦COMPANY_1⟧. Dă exemple de propoziții.",
+      "restoreReport": {
+        "restored": 59,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

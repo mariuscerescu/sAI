@@ -1,0 +1,37 @@
+{
+  "case": "E1",
+  "category": "E. Cod",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie o funcție Python `send_invoice(amount)` care trimite o factură firmei Acme Logistic pe adresa ion.popescu@acme.md, cu subiectul «Factură Proiectul Orion».",
+      "raw": "Da. Exemplu cu `smtplib`, fără secrete hardcodate:\n\n```python\nimport os\nimport ssl\nimport smtplib\nfrom email.message import EmailMessage\n\ndef send_invoice(amount):\n    try:\n        value = float(amount)\n    except (TypeError, ValueError):\n        raise ValueError(\"amount trebuie să fie numeric\")\n    if value <= 0:\n        raise ValueError(\"amount trebuie să fie pozitiv\")\n\n    host = os.environ[\"SMTP_HOST\"]\n    port = int(os.environ.get(\"SMTP_PORT\", \"465\"))\n    user = os.environ[\"SMTP_USER\"]\n    password = os.environ[\"SMTP_PASSWORD\"]\n    sender = os.environ.get(\"INVOICE_FROM\", user)\n\n    msg = EmailMessage()\n    msg[\"From\"] = sender\n    msg[\"To\"] = \"ion.β@ψ.md\"\n    msg[\"Subject\"] = \"Factură δ\"\n    msg.set_content(f\"Salvează,\\n\\nVă transmitem factura pentru suma de {amount}.\\n\")\n\n    ctx = ssl.create_default_context()\n    with smtplib.SMTP_SSL(host, port, context=ctx) as smtp:\n        smtp.login(user, password)\n        smtp.send_message(msg)\n```\n\nNecesită variabile de mediu: `SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD`, opțional `SMTP_PORT` și `INVOICE_FROM`. Nu pune parola în cod și folosește un server SMTP autorizat.",
+      "rawReasoning": "We need answer in Romanian. Need handle confidential terms replaced Greek letters. User asks write Python function sends invoice to firm ψ at email ion.β@ψ.md, subject «Factură δ». This seems benign coding but maybe involves payment/invoice. We can provide code but need be careful: sending real emails requires SMTP credentials, etc. Is this request disallowed? It's not inherently malicious. Could be automating sending invoice. We can give example using smtplib, placeholders for credentials, no real secrets. Need include Greek letters exactly: ψ, β, δ. We must refer to them exactly. Need not translate. Need concise. Need produce safe code. Since sending emails externally, ensure it's explicit user-invoked and configured. Provide function with env vars SMTP host/port/user/password, from address maybe. Use ssl, MIMEText. Don't hardcode secrets. Code sends to ion.β@ψ.md subject «Factură δ». Body can include amount. Need maybe validate amount. Should use SMTP_SSL. Mention needs configured server and credentials; don't commit secrets. Could use smtplib. Code:\nimport os, smtplib, ssl, email.message\ndef send_invoice(amount):\n    if amount is None or float(amount) <= 0: raise ValueError\n    host=os.environ['SMTP_HOST']; port=int(os.environ.get('SMTP_PORT','465'))\n    user=os.environ['SMTP_USER']; password=os.environ['SMTP_PASSWORD']\n    msg=EmailMessage()\n    msg['From']=os.environ.get('INVOICE_FROM', user)\n    msg['To']='ion.β@ψ.md'\n    msg['Subject']='Factură δ'\n    msg.set_content(f'Salut,\\n\\nVă transmitem factura pentru suma de {amount}.\\n')\n    context=ssl.create_default_context()\n    with smtplib.SMTP_SSL(host, port, context=context) as s:\n       s.login(user,password)\n       s.send_message(msg)\nNeed amount formatting maybe Decimal. Use f\"{amount}\". Ensure exact ψ etc inside code strings. Good. Note β personal? Treat as term. No extra detail. Final concise in Romanian.",
+      "restored": "Da. Exemplu cu `smtplib`, fără secrete hardcodate:\n\n```python\nimport os\nimport ssl\nimport smtplib\nfrom email.message import EmailMessage\n\ndef send_invoice(amount):\n    try:\n        value = float(amount)\n    except (TypeError, ValueError):\n        raise ValueError(\"amount trebuie să fie numeric\")\n    if value <= 0:\n        raise ValueError(\"amount trebuie să fie pozitiv\")\n\n    host = os.environ[\"SMTP_HOST\"]\n    port = int(os.environ.get(\"SMTP_PORT\", \"465\"))\n    user = os.environ[\"SMTP_USER\"]\n    password = os.environ[\"SMTP_PASSWORD\"]\n    sender = os.environ.get(\"INVOICE_FROM\", user)\n\n    msg = EmailMessage()\n    msg[\"From\"] = sender\n    msg[\"To\"] = \"ion.Ion Popescu@Acme Logistic.md\"\n    msg[\"Subject\"] = \"Factură Proiectul Orion\"\n    msg.set_content(f\"Salvează,\\n\\nVă transmitem factura pentru suma de {amount}.\\n\")\n\n    ctx = ssl.create_default_context()\n    with smtplib.SMTP_SSL(host, port, context=ctx) as smtp:\n        smtp.login(user, password)\n        smtp.send_message(msg)\n```\n\nNecesită variabile de mediu: `SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD`, opțional `SMTP_PORT` și `INVOICE_FROM`. Nu pune parola în cod și folosește un server SMTP autorizat.",
+      "leaks": [],
+      "ms": 7598,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 2,
+          "PERSON": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "ψ",
+          "β",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Scrie o funcție Python `send_invoice(amount)` care trimite o factură firmei ψ pe adresa ion.β@ψ.md, cu subiectul «Factură δ».",
+      "restoreReport": {
+        "restored": 18,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

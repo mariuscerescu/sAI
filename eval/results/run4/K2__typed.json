@@ -1,0 +1,40 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "⟦PERSON_1⟧ a cules floarea, din grădina lui ⟦PERSON_2⟧.",
+      "rawReasoning": "The user asks a simple reading comprehension question in Romanian. Need answer concisely. Need preserve placeholders exactly. Sentence: \"⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧. Cine a cules floarea și din grădina cui?\" Translation: PERSON_1 picked a big flower from PERSON_2's garden. Who picked the flower and from whose garden? Answer: ⟦PERSON_1⟧ a cules floarea, din grădina lui ⟦PERSON_2⟧. Need maybe mention \"lui\" refers to ⟦PERSON_2⟧. Keep concise.",
+      "restored": "Floare Munteanu a cules floarea, din grădina lui Radu Mare.",
+      "leaks": [],
+      "ms": 2539,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ a cules o floare mare din grădina lui ⟦PERSON_2⟧. Cine a cules floarea și din grădina cui?",
+      "restoreReport": {
+        "restored": 7,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

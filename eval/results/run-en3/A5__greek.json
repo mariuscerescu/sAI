@@ -1,0 +1,43 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "For κ: I spoke with ι and ο yesterday about the β deal; the headline is that it’s active, but nothing should be treated as final yet.\nBefore we commit to terms, let’s align on the open points, approvals, and next steps—I’ll confirm the details rather than overstate what was discussed.",
+      "rawReasoning": "The user mentions Greek letters standing in for confidential terms: ι, ο, β, κ. Need answer concise two lines. We don't have details of conversation. Need not fabricate. We can provide a cautious summary template? They ask 'Can you summarize in two lines what I should tell κ?' We need infer maybe they want a two-line summary based on 'I talked to ι and ο yesterday about the β deal.' But no actual content. As assistant, should be honest: I don’t have the details from yesterday. Provide a two-line message to κ with placeholders? But instruction says treat letters as real terms, refer exactly. We can write a concise two-line summary using only known fact: spoke with ι and ο yesterday about β deal; next step align with κ on status/risks/decision. Need avoid inventing specifics like terms, pricing, dates. Could say: \"ι and ο and I reviewed the β deal yesterday; key points are still confidential/need verification.\" Hmm \"what I should tell κ\" perhaps wants actual summary; but absent info, best helpful answer: give a two-line version you can send, with no invented facts. Need exactly two lines maybe. Ensure letters exact. Could include κ as recipient. Let's craft two lines only:\n\n\"I spoke with ι and ο yesterday about the β deal; the takeaway is that we should treat it as active but not final and keep details confidential for now.\nPlease sync with me before κ discusses terms further—I'll confirm scope, open risks, and next steps once I verify the specifics we discussed.\"\n\nBut \"κ discusses terms\" means κ is a person? \"before you discuss...\" better. Two lines. Need no inventing 'pricing'. Use 'terms' maybe generic deal terms okay. \"scope, open risks, next steps\" are generic. Maybe okay. It says can you summarize in two lines what I should tell κ? We can phrase as message to κ. Final should be two lines only. No extra caveat because user asked concise. But honesty: must note lack of details? Could embed \"based on what you told me\" but that adds line. Two lines can include: \"I spoke with ι and ο yesterday about the β deal; I don’t want to overstate anything until I confirm the details.\" second line: \"The headline for κ is: β is moving forward in discussion, but terms/next steps aren’t final—let’s align on open items and approvals before committing.\" This is two lines and honest. Use κ maybe at start: \"For κ: ...\" Good.\n\nNeed ensure exact letters. final 2 lines. ",
+      "restored": "For Johnson: I spoke with Smith and Walker yesterday about the Acme deal; the headline is that it’s active, but nothing should be treated as final yet.\nBefore we commit to terms, let’s align on the open points, approvals, and next steps—I’ll confirm the details rather than overstate what was discussed.",
+      "leaks": [],
+      "ms": 9914,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 3,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "ι",
+          "ο",
+          "β",
+          "κ"
+        ],
+        "warnings": [
+          {
+            "classId": "COMPANY",
+            "detector": "dictionary",
+            "confidence": 0.6
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "I talked to ι and ο yesterday about the β deal. Can you summarize in two lines what I should tell κ?",
+      "restoreReport": {
+        "restored": 37,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

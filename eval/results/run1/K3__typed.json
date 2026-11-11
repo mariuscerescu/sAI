@@ -1,0 +1,33 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ieri am fost la cinematograful Orion, dar mă gândeam doar la Proiectul Orion. Unde am fost și la ce mă gândeam?",
+      "raw": "Ai fost la cinematograful ⟦PROJECT_1⟧ și, conform textului, te gândeai tot la ⟦PROJECT_1⟧. Nu pot ști ce valoare reală are ⟦PROJECT_1⟧; dacă trebuiau să fie placeholder-e diferite, atunci informația lipsește.",
+      "rawReasoning": "We need answer user in Romanian. Need parse trick. They say \"Ieri am fost la cinematograful ⟦PROJECT_1⟧, dar mă gândeam doar la ⟦PROJECT_1⟧. Unde am fost și la ce mă gândeam?\" Placeholders same token ⟦PROJECT_1⟧ used for cinema and thing thought about. Need treat placeholder as real value it stands for, but unknown. Cannot guess what it stands for. We know where they were: cinematograful ⟦PROJECT_1⟧. What were they thinking about? also ⟦PROJECT_1⟧, per literal text, even though odd. Need avoid guessing expansion. Could say: Ai fost la cinematograful ⟦PROJECT_1⟧ și te gândeai la ⟦PROJECT_1⟧ (același placeholder; nu pot ști valoarea reală). Maybe note ambiguity: if intended different placeholders, then question underdetermined; but as written same placeholder. Need concise.",
+      "restored": "Ai fost la cinematograful Orion și, conform textului, te gândeai tot la Orion. Nu pot ști ce valoare reală are Orion; dacă trebuiau să fie placeholder-e diferite, atunci informația lipsește.",
+      "leaks": [],
+      "ms": 3514,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 2
+        },
+        "tokensUsed": [
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Ieri am fost la cinematograful ⟦PROJECT_1⟧, dar mă gândeam doar la ⟦PROJECT_1⟧. Unde am fost și la ce mă gândeam?",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

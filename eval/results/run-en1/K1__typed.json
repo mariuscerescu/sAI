@@ -1,0 +1,36 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "⟦PERSON_1⟧ works at ⟦COMPANY_1⟧, and ⟦PERSON_2⟧ works at Acme.",
+      "rawReasoning": "The user asks: ⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at Acme. Where does each sibling work?\n\nNeed parse. Placeholders are values. We know ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister. ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧. \"her brother works at Acme.\" Her brother = ⟦PERSON_2⟧? Since ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, ⟦PERSON_2⟧ is sibling of ⟦PERSON_1⟧. If ⟦PERSON_1⟧ is sister, ⟦PERSON_2⟧ could be brother or sister? Wording: \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister\" means ⟦PERSON_1⟧ is the sister of ⟦PERSON_2⟧. It doesn't explicitly state ⟦PERSON_2⟧'s gender. Then \"her brother works at Acme\" — her brother likely ⟦PERSON_2⟧ if ⟦PERSON_2⟧ is male? But ⟦PERSON_2⟧ could be female? Let's analyze.\n\nThe question: \"Where does each sibling work?\" There are two siblings: ⟦PERSON_1⟧ and ⟦PERSON_2⟧? It says ⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at Acme. If ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, then ⟦PERSON_2⟧ is ⟦PERSON_1⟧'s sibling. \"her brother\" refers to ⟦PERSON_1⟧'s brother. Is that ⟦PERSON_2⟧? It implies ⟦PERSON_2⟧ is her brother? Actually if ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister, ⟦PERSON_2⟧ may be brother or sister. The phrase \"and her brother works at Acme\" singular her brother could be ⟦PERSON_2⟧, if ⟦PERSON_2⟧ is male. But placeholder ⟦PERSON_2⟧ gender unknown. Need not guess? We can say ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧; ⟦PERSON_2⟧, described as her brother/sibling, works at Acme. But if ⟦PERSON_2⟧ is female, then her brother would be a third person, not ⟦PERSON_2⟧. Let's inspect exact wording.\n\n\"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at Acme. Where does each sibling work?\"\n\nThis is like a logic puzzle with apposition. \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧\" = Person1 is Person2's sister and works at Company1. \"and her brother works at Acme\" = Person1's brother works at Acme. Who is her brother? If Person1 is Person2's sister, Person2 is sibling. If Person2 is male, Person2 is her brother. But the placeholder doesn't tell gender. However \"her brother\" may refer to ⟦PERSON_2⟧ because only other mentioned sibling. The question says \"Where does each sibling work?\" suggesting two siblings (⟦PERSON_1⟧ and ⟦PERSON_2⟧). Answer: ⟦PERSON_1⟧ at ⟦COMPANY_1⟧, ⟦PERSON_2⟧ at Acme. Need include caveat maybe: assuming \"her brother\" refers to ⟦PERSON_2⟧. But user likely expects direct resolution.\n\nNeed treat placeholders exactly. Final concise.",
+      "restored": "Mary Smith works at Nordic Farms, and John Smith works at Acme.",
+      "leaks": [],
+      "ms": 9907,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at Acme. Where does each sibling work?",
+      "restoreReport": {
+        "restored": 61,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

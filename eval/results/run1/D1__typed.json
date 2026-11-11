@@ -1,0 +1,33 @@
+{
+  "case": "D1",
+  "category": "D. Greek",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu face un test statistic cu α = 0,05 și β = 0,2. Calculează puterea testului și explică-i rezultatul lui Popescu în două fraze.",
+      "raw": "Puterea testului este \\(1-\\beta = 1-0{,}2 = 0{,}8\\), adică 80%.  \n⟦PERSON_1⟧, asta înseamnă că testul are 80% șanse să detecteze efectul real atunci când el există, iar α = 0,05 înseamnă un risc de 5% de eroare de tip I, adică de a respinge ipoteza nulă când ea este adevărată. Cu alte cuvinte, β = 0,2 indică un risc de 20% de eroare de tip II, adică de a nu detecta un efect real.",
+      "rawReasoning": "The user asks in Romanian: ⟦PERSON_1⟧ takes a statistical test with alpha=0.05 beta=0.2. Calculate power and explain result to ⟦PERSON_1⟧ in two sentences. Need answer in Romanian concise. Need compute power = 1 - beta = 0.8 = 80%. Explain alpha is type I error, beta type II; power probability of rejecting false null / detecting real effect. Need be careful: question wording: \"test statistic\" maybe \"test statistic\" means statistical test. Need respond with placeholder exactly. Two sentences? User asks calculate and explain in two sentences. We can provide formula plus two sentences. Need concise. Ensure use ⟦PERSON_1⟧ exactly. Romanian decimal maybe 0,8. Include α? Fine.\n\nNeed final only. No more tools needed.",
+      "restored": "Puterea testului este \\(1-\\beta = 1-0{,}2 = 0{,}8\\), adică 80%.  \nIon Popescu, asta înseamnă că testul are 80% șanse să detecteze efectul real atunci când el există, iar α = 0,05 înseamnă un risc de 5% de eroare de tip I, adică de a respinge ipoteza nulă când ea este adevărată. Cu alte cuvinte, β = 0,2 indică un risc de 20% de eroare de tip II, adică de a nu detecta un efect real.",
+      "leaks": [],
+      "ms": 4773,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ face un test statistic cu α = 0,05 și β = 0,2. Calculează puterea testului și explică-i rezultatul lui ⟦PERSON_1⟧ în două fraze.",
+      "restoreReport": {
+        "restored": 4,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "case": "A3",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»",
+      "raw": "μ's contract with Acme was signed by the γ at ι.",
+      "rawReasoning": "The user wants rewrite sentence: «μ's contract with acme were signed by the γ at ι». Need treat Greek letters as real terms, keep exact letters. Need correct capitalization and grammar.\n\nWe need infer terms? We cannot spell out. Need rewrite preserving letters. Sentence: \"μ's contract with acme were signed by the γ at ι\". Issues: \"acme\" likely proper noun should be capitalized \"Acme\"? But confidential terms replaced with Greek letters; \"acme\" is ordinary word? It appears lower-case acme, likely a company name maybe \"Acme\". Need capitalize Acme. \"μ's contract\" singular subject? \"contract\" singular, verb \"were\" should be \"was\". \"signed by the γ at ι\" maybe if γ is a role? Need article? We only know rewrite with correct capitalization/grammar, keep Greek letters exact. Sentence: \"μ's contract with Acme was signed by the γ at ι\". Capitalization: start with μ? Greek letter μ at start—capitalize? Greek mu has lowercase μ; capitalization of Greek terms maybe not possible/should keep exact? The instruction says whenever refer to term write letter exactly as given, also inside code/paths/tool args. So keep μ lowercase even at sentence start? But correct capitalization would require start capitalized; cannot write Μ if that's a different letter? Greek capital mu Μ is not the same exact letter? Must write exactly as given, so keep μ. Maybe sentence begins with μ's, lowercase. That's acceptable due constraint.\n\nShould \"ι\" at end maybe location proper noun; keep letter. \"the γ\" maybe if γ is a person/title? Keep. Final just rewritten sentence. Ensure letters exact: μ, γ, ι. Use \"Acme\" capitalized. Could \"μ's\" possessive already correct. Output concise.",
+      "restored": "Smith's contract with Acme was signed by the Johnson at project orion.",
+      "leaks": [],
+      "ms": 11587,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "μ",
+          "γ",
+          "ι"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Rewrite this sentence with correct capitalization and grammar: «μ's contract with acme were signed by the γ at ι»",
+      "restoreReport": {
+        "restored": 31,
+        "tolerantMatches": [
+          "μ",
+          "μ"
+        ],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

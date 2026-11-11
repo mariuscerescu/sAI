@@ -1,0 +1,40 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "ω a cules floarea din grădina lui ξ.",
+      "rawReasoning": "The user asks in Romanian: \"ω a cules o floare mare din grădina lui ξ. Cine a cules floarea și din grădina cui?\" The confidential terms are Greek letters. Need treat each as real term. Need answer concise in Romanian. Need refer exactly as given: ω and ξ. Sentence: \"ω a cules o floare mare din grădina lui ξ\" means ω picked a big flower from ξ's garden. Question: Who picked the flower and from whose garden? Answer: ω a cules floarea din grădina lui ξ. Need maybe keep letters exactly. No extra. Ensure not translate Greek letters. Final concise.",
+      "restored": "Floare Munteanu a cules floarea din grădina lui Radu Mare.",
+      "leaks": [],
+      "ms": 2372,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "ω",
+          "ξ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "ω a cules o floare mare din grădina lui ξ. Cine a cules floarea și din grădina cui?",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

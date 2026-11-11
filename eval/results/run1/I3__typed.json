@@ -1,0 +1,75 @@
+{
+  "case": "I3",
+  "category": "I. Document lung",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, Proiectul Orion, 12 mai 2026\n\nParticipanți: Ion Popescu (Acme), Maria Ceban (Nordic Agro), Elena Vrabie (consilier juridic), Andrei Lungu (manager proiect), Sergiu Railean (IT), Natalia Cozma (achiziții), Victor Ciobanu (logistică), Rodica Sandu (contabilitate), Floare Munteanu (stagiară), Radu Mare (furnizor), Lilia Bostan (HR), Dorin Jardan (calitate).\n\n1. Andrei Lungu prezintă stadiul. Se decide ca Sergiu Railean să configureze senzorii TermoGuard X9 până la 20 mai.\n2. Maria Ceban cere raport financiar. Rodica Sandu va pregăti raportul pentru Banca Verde până la 25 mai.\n3. Elena Vrabie revizuiește contractul cu Acme Logistic și trimite observații lui Ion Popescu.\n4. Natalia Cozma comandă 40 de unități TermoGuard X9 de la Radu Mare.\n5. Victor Ciobanu planifică rutele pentru depozitul de pe str. Florilor 12.\n6. Floare Munteanu asistă la inventar. Lilia Bostan organizează instruirea. Dorin Jardan nu a primit sarcini.",
+      "raw": "Sarcini atribuite:\n\n- ⟦PERSON_5⟧ — configurează senzorii ⟦PRODUCT_1⟧, până la 20 mai.\n- ⟦PERSON_8⟧ — pregătește raportul financiar pentru ⟦COMPANY_3⟧, până la 25 mai.\n- ⟦PERSON_3⟧ — revizuiește contractul cu ⟦COMPANY_1⟧ și trimite observații lui ⟦PERSON_1⟧; termen neprecizat.\n- ⟦PERSON_6⟧ — comandă 40 de unități ⟦PRODUCT_1⟧ de la ⟦PERSON_10⟧; termen neprecizat.\n- ⟦PERSON_7⟧ — planifică rutele pentru depozitul de pe ⟦ADDRESS_1⟧; termen neprecizat.\n- Floare ⟦PERSON_9⟧ — asistă la inventar; termen neprecizat.\n- ⟦PERSON_11⟧ — organizează instruirea; termen neprecizat.\n\nNu au primit sarcini: ⟦PERSON_1⟧, ⟦PERSON_2⟧, ⟦PERSON_4⟧, ⟦PERSON_10⟧ și explicit ⟦PERSON_12⟧. ⟦PERSON_4⟧ doar prezintă stadiul, iar ⟦PERSON_2⟧ doar cere raportul financiar.",
+      "rawReasoning": "We need answer in Romanian. Need parse PV carefully, list each participant who received tasks and what task. Need be careful pronouns/assignment. Let's inspect text.\n\nParticipants: ⟦PERSON_1⟧ (⟦COMPANY_1⟧), ⟦PERSON_2⟧ (⟦COMPANY_2⟧), ⟦PERSON_3⟧ (consilier juridic), ⟦PERSON_4⟧ (manager proiect), ⟦PERSON_5⟧ (IT), ⟦PERSON_6⟧ (achiziții), ⟦PERSON_7⟧ (logistică), ⟦PERSON_8⟧ (contabilitate), Floare ⟦PERSON_9⟧ (stagiară), ⟦PERSON_10⟧ (furnizor), ⟦PERSON_11⟧ (HR), ⟦PERSON_12⟧ (calitate).\n\nItems:\n1. ⟦PERSON_4⟧ prezintă stadiul. Se decide ca ⟦PERSON_5⟧ să configureze senzorii ⟦PRODUCT_1⟧ până la 20 mai.\n- ⟦PERSON_4⟧ prezintă stadiul. Is presenting a task? It says he presents stage; could be an agenda/action at meeting. The question: participant who received tasks and what task. Need determine if \"prezintă stadiul\" counts as task? Usually in PV, action list includes things decided. It could mean during meeting he presented status (not assigned for future). Need include? We need distinguish tasks assigned vs actions in meeting. Wording: \"fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\" It asks each participant who received tasks. In text explicit:\n1. PERSON_4 presents stage. It decides PERSON_5 configure sensors by 20 May.\n2. PERSON_2 asks financial report. PERSON_8 will prepare report for COMPANY_3 until 25 May.\n3. PERSON_3 reviews contract with COMPANY_1 and sends observations to PERSON_1.\n4. PERSON_6 orders 40 units PRODUCT_1 from PERSON_10.\n5. PERSON_7 plans routes for deposit on ADDRESS_1.\n6. Floare PERSON_9 assists at inventory. PERSON_11 organizes training. PERSON_12 received no tasks.\n\nNeed assign tasks:\n- ⟦PERSON_5⟧: configure sensors ⟦PRODUCT_1⟧ până la 20 mai.\n- ⟦PERSON_8⟧: prepare financial report for ⟦COMPANY_3⟧ până la 25 mai.\n- ⟦PERSON_3⟧: review contract with ⟦COMPANY_1⟧ and send observations to ⟦PERSON_1⟧. (Does PERSON_1 receive? PERSON_3 sends observations to PERSON_1; is PERSON_1 assigned a task? no, recipient, not task unless expected to receive. Not task.)\n- ⟦PERSON_6⟧: order 40 units ⟦PRODUCT_1⟧ from ⟦PERSON_10⟧. (PERSON_10 supplier is recipient/source, not assigned)\n- ⟦PERSON_7⟧: plan routes for warehouse at ⟦ADDRESS_1⟧.\n- Floare ⟦PERSON_9⟧: assists at inventory.\n- ⟦PERSON_11⟧: organize training.\nPotential ⟦PERSON_4⟧: \"prezintă stadiul\" maybe did so at the meeting, not assigned future task. Could list as action during ședință but not a assigned sarcină. Similarly ⟦PERSON_2⟧ requested report (not task). ⟦PERSON_12⟧ explicitly no tasks. ⟦PERSON_10⟧ supplier? item 4 says ⟦PERSON_6⟧ orders from ⟦PERSON_10⟧, no task assigned to PERSON_10. PERSON_1 receives observations (recipient), not task. COMPANY_3 is recipient of report. Need maybe mention non-included: ⟦PERSON_12⟧ no tasks; ⟦PERSON_4⟧ presented status, ⟦PERSON_2⟧ asked report but not assigned; ⟦PERSON_1⟧/⟦PERSON_10⟧ are recipients/counterparties not assignees. Keep concise but enough. Ensure placeholders exact.\n\nNeed maybe include \"Floare ⟦PERSON_9⟧\" exactly; she is participant with placeholder. Use placeholder. Final in Romanian. Use bullet list. Maybe note interpretation: am considerat sarcini doar acțiunile atribuite, nu cererile/prezentările din timpul ședinței. But PERSON_4's \"prezintă stadiul\" could be seen as task? The phrase \"prezintă\" present tense maybe he did at meeting, not a assigned future task. To be safe, list separately under \"Nu este o sarcină atribuită\" or note. User asked list each participant with tasks; giving caveat useful.\n\nNeed no invented details. Phrase: \"Am inclus doar acțiunile atribuite explicit; prezentarea/cererile din ședință nu sunt sarcini viitoare.\" Then list.\n\nNeed mention ⟦PERSON_3⟧ sends observations to ⟦PERSON_1⟧: yes. Include deadline? none specified -> \"fără termen indicat\". Same for others no deadline: unspecified. PERSON_5 and PERSON_8 have deadlines. Items 3-6 no term. Use \"termen neprecizat\".\n\nNeed be concise. Ensure placeholders exact including ⟦ ⟧. Use ⟦ADDRESS_1⟧ etc. Final only.",
+      "restored": "Sarcini atribuite:\n\n- Sergiu Railean — configurează senzorii TermoGuard X9, până la 20 mai.\n- Rodica Sandu — pregătește raportul financiar pentru Banca Verde, până la 25 mai.\n- Elena Vrabie — revizuiește contractul cu Acme și trimite observații lui Ion Popescu; termen neprecizat.\n- Natalia Cozma — comandă 40 de unități TermoGuard X9 de la Radu Mare; termen neprecizat.\n- Victor Ciobanu — planifică rutele pentru depozitul de pe str. Florilor 12; termen neprecizat.\n- Floare Munteanu — asistă la inventar; termen neprecizat.\n- Lilia Bostan — organizează instruirea; termen neprecizat.\n\nNu au primit sarcini: Ion Popescu, Maria Ceban, Andrei Lungu, Radu Mare și explicit Dorin Jardan. Andrei Lungu doar prezintă stadiul, iar Maria Ceban doar cere raportul financiar.",
+      "leaks": [],
+      "ms": 11825,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 1,
+          "PERSON": 24,
+          "COMPANY": 4,
+          "PRODUCT": 2,
+          "ADDRESS": 1
+        },
+        "tokensUsed": [
+          "⟦PROJECT_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_2⟧",
+          "⟦PERSON_3⟧",
+          "⟦PERSON_4⟧",
+          "⟦PERSON_5⟧",
+          "⟦PERSON_6⟧",
+          "⟦PERSON_7⟧",
+          "⟦PERSON_8⟧",
+          "⟦PERSON_9⟧",
+          "⟦PERSON_10⟧",
+          "⟦PERSON_11⟧",
+          "⟦PERSON_12⟧",
+          "⟦PRODUCT_1⟧",
+          "⟦COMPANY_3⟧",
+          "⟦ADDRESS_1⟧"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          }
+        ],
+        "strategy": "typed"
+      },
+      "sentUser": "Din procesul-verbal de mai jos, fă o listă cu fiecare participant care a primit sarcini și ce sarcină are.\n\nPROCES-VERBAL al ședinței de lucru, ⟦PROJECT_1⟧, 12 mai 2026\n\nParticipanți: ⟦PERSON_1⟧ (⟦COMPANY_1⟧), ⟦PERSON_2⟧ (⟦COMPANY_2⟧), ⟦PERSON_3⟧ (consilier juridic), ⟦PERSON_4⟧ (manager proiect), ⟦PERSON_5⟧ (IT), ⟦PERSON_6⟧ (achiziții), ⟦PERSON_7⟧ (logistică), ⟦PERSON_8⟧ (contabilitate), Floare ⟦PERSON_9⟧ (stagiară), ⟦PERSON_10⟧ (furnizor), ⟦PERSON_11⟧ (HR), ⟦PERSON_12⟧ (calitate).\n\n1. ⟦PERSON_4⟧ prezintă stadiul. Se decide ca ⟦PERSON_5⟧ să configureze senzorii ⟦PRODUCT_1⟧ până la 20 mai.\n2. ⟦PERSON_2⟧ cere raport financiar. ⟦PERSON_8⟧ va pregăti raportul pentru ⟦COMPANY_3⟧ până la 25 mai.\n3. ⟦PERSON_3⟧ revizuiește contractul cu ⟦COMPANY_1⟧ și trimite observații lui ⟦PERSON_1⟧.\n4. ⟦PERSON_6⟧ comandă 40 de unități ⟦PRODUCT_1⟧ de la ⟦PERSON_10⟧.\n5. ⟦PERSON_7⟧ planifică rutele pentru depozitul de pe ⟦ADDRESS_1⟧.\n6. Floare ⟦PERSON_9⟧ asistă la inventar. ⟦PERSON_11⟧ organizează instruirea. ⟦PERSON_12⟧ nu a primit sarcini.",
+      "restoreReport": {
+        "restored": 68,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

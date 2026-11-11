@@ -1,0 +1,43 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Maria Popescu, sora lui Ion Popescu, lucrează la Nordic Agro, iar fratele ei lucrează la Acme. Unde lucrează fiecare dintre frați?",
+      "raw": "Maria ⟦PERSON_1⟧ lucrează la ⟦COMPANY_1⟧; fratele ei, ⟦PERSON_1⟧, lucrează la ⟦COMPANY_2⟧.",
+      "rawReasoning": "We need answer in Romanian, concise. Need parse tricky sentence. User: \"Maria ⟦PERSON_1⟧, sora lui ⟦PERSON_1⟧, lucrează la ⟦COMPANY_1⟧, iar fratele ei lucrează la ⟦COMPANY_2⟧. Unde lucrează fiecare dintre frați?\"\nWe need infer. There's Maria ⟦PERSON_1⟧, sister of ⟦PERSON_1⟧, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Question: Where does each sibling work? Need identify the siblings: Maria ⟦PERSON_1⟧ and ⟦PERSON_1⟧? Wait phrase \"Maria ⟦PERSON_1⟧, sora lui ⟦PERSON_1⟧\" means Maria [PERSON_1], the sister of [PERSON_1]. It could be weird: Maria ⟦PERSON_1⟧ is sister of ⟦PERSON_1⟧. So Maria is one sibling, works at ⟦COMPANY_1⟧. Her brother (⟦PERSON_1⟧?) works at ⟦COMPANY_2⟧. Need answer: Maria ⟦PERSON_1⟧ lucrează la ⟦COMPANY_1⟧; fratele ei (⟦PERSON_1⟧) lucrează la ⟦COMPANY_2⟧. But careful: The phrase \"fratele ei\" refers to Maria's brother, i.e., ⟦PERSON_1⟧ (the person whose sister Maria is). However if Maria's surname/placeholder is ⟦PERSON_1⟧ and she's sister of ⟦PERSON_1⟧, are they same placeholder? It might indicate Maria ⟦PERSON_1⟧, sister of ⟦PERSON_1⟧ — placeholder reused for family surname? The instruction says treat each placeholder as real value it stands for; same placeholder stands for same real value. If Maria ⟦PERSON_1⟧ is sister of ⟦PERSON_1⟧, then Maria shares placeholder with brother? Could be odd, but must not guess. We can answer based on explicit info: Maria ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧; her brother (⟦PERSON_1⟧) works at ⟦COMPANY_2⟧. Need mention cannot determine more than stated? The question asks \"Unde lucrează fiecare dintre frați?\" The two siblings are Maria and ⟦PERSON_1⟧. Answer concise in Romanian.\nNeed ensure placeholder exact format: ⟦PERSON_1⟧, ⟦COMPANY_1⟧, ⟦COMPANY_2⟧. Use brackets exactly.\nPotential ambiguity: \"Maria ⟦PERSON_1⟧, sora lui ⟦PERSON_1⟧\" If ⟦PERSON_1⟧ is a person, then Maria ⟦PERSON_1⟧ would have same name? Not necessarily, placeholder same means same value, so maybe the real value is e.g. \"Popescu\"? But placeholders are typed PERSON, not surname. It could be from dataset where entities are anonymized and the text has \"Maria ⟦PERSON_1⟧, sora lui ⟦PERSON_1⟧\" hmm same placeholder for Maria's token and the brother's reference? Let's think. If ⟦PERSON_1⟧ = \"Andrei Ionescu\" maybe sentence originally \"Maria Andrei?, sora lui Andrei Ionescu\" no.\nMaybe this is a coreference puzzle: \"Maria ⟦PERSON_1⟧, sora lui ⟦PERSON_1⟧\" unnatural. It might mean \"Maria, sora lui ⟦PERSON_1⟧\" but the text includes placeholder after Maria as surname? The instruction says placeholders replaced confidential data; same placeholder same value. If Maria [PERSON_1] is sister of [PERSON_1], then Maria and [PERSON_1] share same real value, contradiction unless [PERSON_1] is a family name but typed PERSON. We shouldn't guess. Use placeholders as given.\nNeed answer only. No extra speculation. Maybe: \"Maria ⟦PERSON_1⟧ lucrează la ⟦COMPANY_1⟧; fratele ei, ⟦PERSON_1⟧, lucrează la ⟦COMPANY_2⟧.\" Hmm if same placeholder then saying \"fratele ei, ⟦PERSON_1⟧\" is logical from \"sora lui ⟦PERSON_1⟧\" (Maria is sister of ⟦PERSON_1⟧). Good.\nNeed final in Romanian concise.",
+      "restored": "Maria Ion Popescu lucrează la Nordic Agro; fratele ei, Ion Popescu, lucrează la Acme.",
+      "leaks": [],
+      "ms": 11004,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Maria ⟦PERSON_1⟧, sora lui ⟦PERSON_1⟧, lucrează la ⟦COMPANY_1⟧, iar fratele ei lucrează la ⟦COMPANY_2⟧. Unde lucrează fiecare dintre frați?",
+      "restoreReport": {
+        "restored": 63,
+        "tolerantMatches": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦PERSON_1⟧",
+          "⟦PERSON_1⟧"
+        ],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

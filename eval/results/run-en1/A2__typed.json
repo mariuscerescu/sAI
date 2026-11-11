@@ -1,0 +1,36 @@
+{
+  "case": "A2",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "John Smith and Mary Johnson work at Acme Logistics. Smith is the director, Johnson is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "raw": "In my opinion, ⟦PERSON_1⟧ — as director — would usually be the one authorized to sign or approve invoices, while ⟦PERSON_2⟧ as accountant likely prepares and checks them. Actual practice can differ if ⟦COMPANY_1⟧ has delegated signing authority to ⟦PERSON_2⟧.",
+      "rawReasoning": "The user asks who signs invoices based on roles/director/accountant at company. Need answer using names/placeholders exactly. Need be careful: in real world, responsibility may vary by jurisdiction, delegation, company policy, contracts. But 'in your opinion' asks infer. Director is ultimately responsible; accountant may prepare/sign operationally. They want names. We need answer with placeholders ⟦PERSON_1⟧ and ⟦PERSON_2⟧ exactly. We can say legally/authority-wise likely ⟦PERSON_1⟧ signs or authorizes, while ⟦PERSON_2⟧ prepares/checks; actual signature depends on delegation. But user asks 'Who signs the invoices' singular? Need concise. Avoid pretending legal certainty. Use names. Since placeholders stand for real values, use placeholders. Final concise.",
+      "restored": "In my opinion, John Smith — as director — would usually be the one authorized to sign or approve invoices, while Mary Johnson as accountant likely prepares and checks them. Actual practice can differ if Acme Logistics has delegated signing authority to Mary Johnson.",
+      "leaks": [],
+      "ms": 5289,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧ and ⟦PERSON_2⟧ work at ⟦COMPANY_1⟧. ⟦PERSON_1⟧ is the director, ⟦PERSON_2⟧ is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

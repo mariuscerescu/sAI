@@ -1,0 +1,38 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "η works at ψ, and ε — her brother — works at Acme.",
+      "rawReasoning": "We need answer. Need infer from context? This seems riddle with Greek letters standing for confidential terms. Need know mapping? Maybe hidden in prompt? η, ε's sister, works at ψ, and her brother works at Acme. Ask where each sibling works? We know η works at ψ, ε's brother works at Acme? Need parse carefully.\n\nWe have terms replaced with Greek letters. Need treat each letter as real term. User asks: \"η, ε's sister, works at ψ, and her brother works at Acme. Where does each sibling work?\"\n\nNeed infer relationships: η is ε's sister. η works at ψ. Her brother (probably ε? Wait ε could be male or female) works at Acme. Sentence: \"η, ε's sister, works at ψ, and her brother works at Acme.\" The subject η = ε's sister. η works at ψ, and η's brother works at Acme. Who are siblings? η and ε are sisters? It says ε's sister = η. η's brother works at Acme. Could ε be the brother? No, ε's sister means η is female sibling of ε. If η has a brother, is that brother ε? If ε is male, phrase \"ε's sister\" okay, η sister of ε. Then η works at ψ; her brother ε works at Acme. So siblings are η (works at ψ) and ε (works at Acme). But user asks \"Where does each sibling work?\" likely wants: η works at ψ; ε works at Acme. Need maybe mention if \"her brother\" refers to ε. Let's craft concise answer.\n\nNeed ensure use Greek letters exactly. Final: η works at ψ, and her brother ε works at Acme. If referring to ε and η, both siblings: ε at Acme, η at ψ.",
+      "restored": "Mary Smith works at Nordic Farms, and John Smith — her brother — works at Acme.",
+      "leaks": [],
+      "ms": 5375,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "η",
+          "ε",
+          "ψ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "η, ε's sister, works at ψ, and her brother works at Acme. Where does each sibling work?",
+      "restoreReport": {
+        "restored": 59,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "η"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "case": "H1",
+  "category": "H. Identificatori",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Clientul are IDNP 2001234567891 și telefonul 069123456. Formatează-le pentru un formular oficial, pe câte o linie.",
+      "raw": "IDNP: 2001234567891\nTelefon: +373 69 123 456",
+      "rawReasoning": "The user wants formatting of IDNP and phone for an official form, one per line. IDNP Moldova is 13 digits. Given 2001234567891 is 13 digits. Validate checksum? Could be not valid but user just asks format. Phone 069123456 Moldovan mobile, official format likely +373 69 123 456. Need be careful with personal data? They provided data; formatting is allowed? It's personal data processing. We can assist formatting user's provided data, not validate identity beyond format. Avoid claiming validity if not sure.\n\nNeed output in Romanian, concise. Format one per line. IDNP remains digits maybe grouped? Official Moldovan IDNP is 13 digits, usually unspaced. Phone international: +373 69 123 456. Local: 069 123 456? They ask format for official form. Provide labels perhaps:\nIDNP: 2001234567891\nTelefon: +373 69 123 456\nNeed mention if form requires national format: 069 123 456. But concise. Maybe include note \"IDNP se păstrează ca 13 cifre\". Ensure one per line? They said \"pe câte o linie\" meaning each on its own line. Final should just two lines perhaps.",
+      "restored": "IDNP: 2001234567891\nTelefon: +373 69 123 456",
+      "leaks": [],
+      "ms": 4472
+    }
+  ]
+}

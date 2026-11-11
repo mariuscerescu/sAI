@@ -1,0 +1,40 @@
+{
+  "case": "A3",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»",
+      "raw": "⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\n\nIf ⟦PERSON_2⟧ is meant as a title/role rather than a person’s name, keep “the ⟦PERSON_2⟧.”",
+      "rawReasoning": "The user wants a rewrite with correct capitalization and grammar. Need treat placeholders as real values. Sentence: «⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»\nNeed grammar: subject \"⟦PERSON_1⟧'s contract\" singular, so verb should be \"was signed\" not \"were signed\". Capitalization: placeholders likely proper nouns; keep exactly. \"the ⟦PERSON_2⟧\" maybe if placeholder is a person, \"the\" before person odd. Could rewrite as \"⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\" But should placeholders include ⟦PERSON_2⟧ maybe role? It says PERSON, so remove \"the\" before person? Correct grammar: \"the\" with singular person name is wrong; maybe if title, \"the ⟦PERSON_2⟧\" if placeholder stands for title? But placeholder says PERSON_2, not role. We should not guess. Minimal fix: change were to was; keep the? The request correct capitalization and grammar. \"the ⟦PERSON_2⟧\" ungrammatical if ⟦PERSON_2⟧ is a person name. However removing \"the\" changes wording but appropriate. Need maybe sentence: \"⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\" If ⟦PERSON_2⟧ is a title-like placeholder? It says PERSON, so no \"the\". Capitalization already proper via placeholders. Final concise. Also mention if ⟦PERSON_2⟧ is intended as a role/title, keep \"the\". Need answer probably just rewritten sentence. Ensure exact placeholders. Could say: \"⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\" If you meant ⟦PERSON_2⟧ as a role/title, use \"the ⟦PERSON_2⟧\". Keep concise.",
+      "restored": "Smith's contract with acme was signed by Johnson at project orion.\n\nIf Johnson is meant as a title/role rather than a person’s name, keep “the Johnson.”",
+      "leaks": [
+        "STEM?:Project Orion (project)"
+      ],
+      "ms": 7062,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Rewrite this sentence with correct capitalization and grammar: «⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»",
+      "restoreReport": {
+        "restored": 32,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

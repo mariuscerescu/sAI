@@ -1,0 +1,39 @@
+{
+  "case": "A2",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "John Smith and Mary Johnson work at Acme Logistics. Smith is the director, Johnson is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "raw": "In my opinion, **π** — as director — should be the authorized signatory for invoices, while **ψ**, the accountant, prepares and reconciles them. Final authority depends on χ’s internal signing rules and applicable law.",
+      "rawReasoning": "The user is asking a somewhat legal/accounting question but with placeholders. Need answer using their names. They used π and ψ as confidential terms replaced by Greek letters; we must treat each letter as real term it stands for, write letter exactly. They ask: π and ψ work at χ. π is the director, ψ is the accountant. Who signs the invoices, in your opinion? Answer using their names.\n\nWe need infer likely answer: director signs invoices? Need be careful: Invoices are typically issued by company and signed by authorized signatory; accountant prepares, director authorizes. But depends jurisdiction and internal controls. \"In your opinion\" wants concise opinion. We can say π (the director) should sign/authorize invoices, while ψ (accountant) prepares them; final authority depends on χ's internal policies/legal requirements. Need use names exactly: π, ψ, χ. Since asks answer using their names, maybe \"π signs the invoices.\" Let's craft concise with caveat. Must not translate Greek letters. Ensure letters exact. Use π and ψ and χ. Could say: \"My opinion: π (as director) should be the authorized signatory for invoices, with ψ (the accountant) preparing and reconciling them. Ultimately it depends on χ’s signing authority/internal controls and applicable law.\" That uses names. Need concise.",
+      "restored": "In my opinion, **John Smith** — as director — should be the authorized signatory for invoices, while **Mary Johnson**, the accountant, prepares and reconciles them. Final authority depends on Acme Logistics’s internal signing rules and applicable law.",
+      "leaks": [],
+      "ms": 6997,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "π",
+          "ψ",
+          "χ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "π and ψ work at χ. π is the director, ψ is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "restoreReport": {
+        "restored": 23,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "π",
+          "ψ"
+        ]
+      }
+    }
+  ]
+}

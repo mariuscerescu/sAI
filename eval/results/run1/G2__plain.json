@@ -1,0 +1,16 @@
+{
+  "case": "G2",
+  "category": "G. Format",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie cu MAJUSCULE textul: «Maria Ceban de la Nordic Agro va prezenta Proiectul Orion.»",
+      "raw": "MARIA CEBAN DE LA NORDIC AGRO VA PREZENTA PROIECTUL ORION.",
+      "rawReasoning": "The user explicitly asks in Romanian to write with capital letters the text: «Maria Ceban de la Nordic Agro va prezenta Proiectul Orion.» Need output all caps. Need be careful diacritics? \"MAJUSCULE\" means uppercase. Romanian uppercase diacritics: MARIA CEBAN DE LA NORDIC AGRO VA PREZENTA PROIECTUL ORION. Need include maybe period? Original has period inside quotes. Use uppercase including final period. Answer concise only text. Ensure exactly uppercase. Romanian \"de la\" remains DE LA. \"va prezenta\" VA PREZENTA. final: MARIA CEBAN DE LA NORDIC AGRO VA PREZENTA PROIECTUL ORION.",
+      "restored": "MARIA CEBAN DE LA NORDIC AGRO VA PREZENTA PROIECTUL ORION.",
+      "leaks": [],
+      "ms": 2065
+    }
+  ]
+}

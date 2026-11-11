@@ -1,0 +1,45 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "Floare ω a cules floarea, din grădina lui ξ.",
+      "rawReasoning": "We need answer in Romanian. Need parse question with placeholders Greek letters. User: \"Floare ω a cules o floare mare din grădina lui ξ. Cine a cules floarea și din grădina cui?\" Need treat Greek letters as real terms. The sentence says \"Floare ω\" maybe name? It asks: Who picked the flower and from whose garden? We need resolve: \"Floare ω\" - ambiguous. In Romanian, \"Floare\" is a common noun/name? Let's inspect. Sentence: \"Floare ω a cules o floare mare din grădina lui ξ.\" It includes subject \"Floare ω\"? Maybe Greek letters replaced confidential terms, so ω and ξ stand for names. The question: \"Cine a cules floarea și din grădina cui?\" They expect answer based on literal text: Floare ω picked a big flower from ξ's garden. Need be careful: \"Floare ω\" could be a person with first name Floare and last initial ω? Or maybe \"Floare ω\" = [term] ω. We should not translate/spell out Greek letters. Use exactly as given.\n\nNeed answer concis: \"Floare ω a cules floarea, din grădina lui ξ.\" That restates. Ensure ω and ξ exact. No extra.\n\nNeed note if asked \"Cine\" -> subject is Floare ω. \"din grădina cui?\" -> a lui ξ. Final in Romanian.",
+      "restored": "Floare Munteanu a cules floarea, din grădina lui Radu Mare.",
+      "leaks": [],
+      "ms": 5241,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "ω",
+          "ξ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Floare ω a cules o floare mare din grădina lui ξ. Cine a cules floarea și din grădina cui?",
+      "restoreReport": {
+        "restored": 23,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

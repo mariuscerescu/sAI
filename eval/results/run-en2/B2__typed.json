@@ -1,0 +1,35 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "Step by step:\n\n1. ⟦COMPANY_1⟧ owns 30% of ⟦COMPANY_2⟧.\n2. ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧.\n3. Indirect economic ownership = 30% × 60% = 18%.\n\nSo ⟦COMPANY_1⟧ has an 18% indirect economic interest in ⟦COMPANY_3⟧.\n\nBut “control” is different: since ⟦COMPANY_1⟧ owns only 30% of ⟦COMPANY_2⟧, it normally does not control ⟦COMPANY_2⟧ by itself, so it generally would not control ⟦COMPANY_3⟧ either—absent special rights, board control, agreements, or other circumstances. If you mean ownership-equivalent share rather than legal control, the answer is 18%.",
+      "rawReasoning": "The user asks a simple math/control indirect share. Need answer in English concise. Need be careful: bought 30% of COMPANY_2; COMPANY_2 owns 60% of COMPANY_3. Indirect ownership interest = 30% * 60% = 18%. But question says \"control indirectly\"—control isn't necessarily same as ownership. If COMPANY_1 owns only 30% of COMPANY_2, it likely does not control COMPANY_2 outright unless other rights; thus it cannot unilaterally control COMPANY_3 merely through 30% voting stake, even though economic indirect interest is 18%. Need explain step by step and distinguish economic interest vs control. The phrasing \"what share of COMPANY_3 does COMPANY_1 control indirectly?\" Many might answer 18%, but strictly control requires >50% usually. Need state assumption. Treat placeholders exactly.\n\nNeed final concise with steps. Ensure placeholders exact.",
+      "restored": "Step by step:\n\n1. Acme Logistics owns 30% of Nordic Farms.\n2. Nordic Farms owns 60% of Greenfield Bank.\n3. Indirect economic ownership = 30% × 60% = 18%.\n\nSo Acme Logistics has an 18% indirect economic interest in Greenfield Bank.\n\nBut “control” is different: since Acme Logistics owns only 30% of Nordic Farms, it normally does not control Nordic Farms by itself, so it generally would not control Greenfield Bank either—absent special rights, board control, agreements, or other circumstances. If you mean ownership-equivalent share rather than legal control, the answer is 18%.",
+      "leaks": [],
+      "ms": 4908,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 6
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧",
+          "⟦COMPANY_3⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦COMPANY_1⟧ bought 30% of ⟦COMPANY_2⟧. ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧. What share of ⟦COMPANY_3⟧ does ⟦COMPANY_1⟧ control indirectly? Explain step by step.",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

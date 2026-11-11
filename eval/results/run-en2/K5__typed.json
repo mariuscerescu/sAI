@@ -1,0 +1,34 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "GB approved the loan for Acme. GB stands for Greenfield Bank. Separately, in code, the variable gb_total holds the amount. What did GB approve?",
+      "raw": "⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧. The variable ⟦COMPANY_1⟧_total doesn’t change that; it just holds an amount.",
+      "rawReasoning": "The user is asking a somewhat odd question. We need answer in English, concisely. Need parse placeholders. They say: \"⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧. ⟦COMPANY_1⟧ stands for ⟦COMPANY_1⟧. Separately, in code, the variable ⟦COMPANY_1⟧_total holds the amount. What did ⟦COMPANY_1⟧ approve?\"\n\nNeed treat placeholders exactly. They include sentence \"⟦COMPANY_1⟧ stands for ⟦COMPANY_1⟧\" which is self-referential weird. We must not guess what placeholders stand for. The question asks \"What did ⟦COMPANY_1⟧ approve?\" The text explicitly says \"⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧.\" So answer: the loan for ⟦COMPANY_2⟧. Need perhaps note cannot know real-world identities because placeholders; and the `_total` variable is irrelevant to what was approved. Also phrase \"⟦COMPANY_1⟧ stands for ⟦COMPANY_1⟧\" maybe means placeholder stands for itself? No need. Must write placeholders exactly. Avoid expanding or guessing. Final concise.",
+      "restored": "GB approved the loan for Acme. The variable GB_total doesn’t change that; it just holds an amount.",
+      "leaks": [],
+      "ms": 3395,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 6
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧. ⟦COMPANY_1⟧ stands for ⟦COMPANY_1⟧. Separately, in code, the variable ⟦COMPANY_1⟧_total holds the amount. What did ⟦COMPANY_1⟧ approve?",
+      "restoreReport": {
+        "restored": 17,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

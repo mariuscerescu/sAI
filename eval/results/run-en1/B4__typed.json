@@ -1,0 +1,95 @@
+{
+  "case": "B4",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Remember: Emily Clark is Nordic Farms' lawyer, and David Walker is Greenfield Bank's auditor.",
+      "raw": "Noted: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧'s lawyer, and ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor.",
+      "rawReasoning": "The user just gave me a memory-like instruction: \"Remember: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧' lawyer, and ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor.\" We need respond acknowledging. Need note weird apostrophe \"⟦COMPANY_1⟧' lawyer\" likely lawyer. We should treat placeholders exactly. No need tool. Need final concise. Since user says remember, we can say noted. Ensure placeholders exact. Could restate: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧'s lawyer; ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor. Need preserve exact placeholder brackets. Use ⟦COMPANY_1⟧'s maybe fine. Do not guess.",
+      "restored": "Noted: Emily Clark is Nordic Farms's lawyer, and David Walker is Greenfield Bank's auditor.",
+      "leaks": [],
+      "ms": 4959,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Remember: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧' lawyer, and ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor.",
+      "restoreReport": {
+        "restored": 14,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Who is Nordic Farms' lawyer?",
+      "raw": "⟦PERSON_1⟧ is ⟦COMPANY_1⟧'s lawyer.",
+      "rawReasoning": "The user asks based on given fact: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧' lawyer. Need answer concise, preserve placeholder exactly. We can answer: ⟦PERSON_1⟧. Need not add extra.",
+      "restored": "Emily Clark is Nordic Farms's lawyer.",
+      "leaks": [],
+      "ms": 2370,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Who is ⟦COMPANY_1⟧' lawyer?",
+      "restoreReport": {
+        "restored": 5,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "And who audits Greenfield Bank? Answer with the full name.",
+      "raw": "⟦PERSON_2⟧ audits ⟦COMPANY_2⟧. I don’t have the underlying real name beyond the placeholder.",
+      "rawReasoning": "The user is asking who audits COMPANY_2, and to answer with full name. We know from placeholder setup: ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor. They ask full name, but full name is not provided; placeholder is the protected value. We must not guess what placeholder stands for. Need answer with placeholder exactly: ⟦PERSON_2⟧. They said answer with full name—maybe \"full name\" means don't just say auditor, use the placeholder. But cannot reveal real name. We can say ⟦PERSON_2⟧ audits ⟦COMPANY_2⟧. Need maybe mention I only have the placeholder, not underlying full name? They want full name; however placeholder stands for real value. Placeholder exactly is ⟦PERSON_2⟧, not a full name necessarily. We should not invent. Concise.",
+      "restored": "David Walker audits Greenfield Bank. I don’t have the underlying real name beyond the placeholder.",
+      "leaks": [],
+      "ms": 3657,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5,
+          "COMPANY": 7
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "And who audits ⟦COMPANY_2⟧? Answer with the full name.",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

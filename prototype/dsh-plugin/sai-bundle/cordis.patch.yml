@@ -1,0 +1,5 @@
+- insert:
+    - id: sai
+      name: '@deepseek-ai/dsh-experimental-sai'
+      config:
+        strategy: typed

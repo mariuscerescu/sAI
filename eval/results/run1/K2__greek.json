@@ -1,0 +1,45 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Floare Munteanu a cules o floare mare din grădina lui Radu Mare. Cine a cules floarea și din grădina cui?",
+      "raw": "Floare ω a cules floarea, din grădina lui ξ.",
+      "rawReasoning": "We need answer in Romanian. Need parse question: \"Floare ω a cules o floare mare din grădina lui ξ. Cine a cules floarea și din grădina cui?\" Need treat Greek letters as real terms but not spell them out. The question seems intentionally: proper noun Floare? \"Floare ω\" maybe name is Floare ω? Asks who picked flower and from whose garden. We need answer using letters exactly given.\n\nWe need infer: Sentence: \"Floare ω a cules o floare mare din grădina lui ξ.\" Subject is \"Floare ω\" (person maybe named Floare ω?). Verb \"a cules\". Object \"o floare mare\". Source \"din grădina lui ξ\". Question: Cine a cules floarea și din grădina cui? Answer: Floare ω a cules-o, din grădina lui ξ. Need concise.\n\nNeed ensure not translate letters. Say: Floarea? Careful: \"Cine a cules floarea\" -> \"Floare ω a cules floarea din grădina lui ξ.\" Greek letters exactly as given: ω and ξ. Use in answer. Do not add extra. Final concise.",
+      "restored": "Floare Munteanu a cules floarea, din grădina lui Radu Mare.",
+      "leaks": [],
+      "ms": 5065,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "ω",
+          "ξ"
+        ],
+        "warnings": [
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.5
+          },
+          {
+            "classId": "PERSON",
+            "detector": "names",
+            "confidence": 0.8
+          }
+        ],
+        "strategy": "greek"
+      },
+      "sentUser": "Floare ω a cules o floare mare din grădina lui ξ. Cine a cules floarea și din grădina cui?",
+      "restoreReport": {
+        "restored": 17,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

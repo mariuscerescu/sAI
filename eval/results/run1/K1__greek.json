@@ -1,0 +1,36 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Maria Popescu, sora lui Ion Popescu, lucrează la Nordic Agro, iar fratele ei lucrează la Acme. Unde lucrează fiecare dintre frați?",
+      "raw": "Maria η lucrează la ε, iar fratele ei — η — lucrează la ψ.",
+      "rawReasoning": "We need answer Romanian. Need parse puzzle? Confidential terms replaced with Greek letters. User asks: \"Maria η, sora lui η, lucrează la ε, iar fratele ei lucrează la ψ. Unde lucrează fiecare dintre frați?\" Need infer? We have placeholders η, ε, ψ likely terms. Need treat letters as real terms. We don't know mapping. Need solve riddle? Let's inspect exact: Maria η, sora lui η, lucrează la ε, iar fratele ei lucrează la ψ. Unde lucrează fiecare dintre frați?\n\nCould be a classic riddle: \"Maria Ionescu, sora lui Ionescu, lucrează la Google, iar fratele ei lucrează la Microsoft. Unde lucrează fiecare dintre frați?\" Hmm.\n\nNeed answer based only givens? Let's translate: \"Maria η, the sister of η, works at ε, and her brother works at ψ. Where does each of the siblings work?\" This sounds maybe from a logic puzzle with names? Greek letters stand for confidential terms. We cannot know real terms. Need answer using letters: Maria η lucrează la ε; fratele ei lucrează la ψ. But question \"Unde lucrează fiecare dintre frați?\" maybe ask not workplaces but relationship? \"frați\" means siblings collectively? Maybe answer: Maria works at ε, brother at ψ. But that's just given. Perhaps there is a trick: Maria η, sister of η — same surname η? If Maria η is sister of η, her brother is η too? The text: \"Maria η, sora lui η\" maybe η is a name (surname?) Maria η is sister of η (maybe a person). Fratele ei lucrează la ψ. Ask \"Unde lucrează fiecare dintre frați?\" We need infer gender of η? Let's parse Romanian: \"Maria η, sora lui η, lucrează la ε, iar fratele ei lucrează la ψ. Unde lucrează fiecare dintre frați?\" Literally: \"Maria η, sister of η, works at ε, and her brother works at ψ. Where does each of the siblings work?\" There are three Greek placeholders: η appears twice as name? ε and ψ are workplaces.\n\nMaybe hidden known puzzle: \"Maria Ionescu, sister of Ion Ionescu, works at Google, and her brother works at Microsoft. Where does each of the siblings work?\" No.\n\nCould be about \"η\" being \"the liar\"? Confidential terms replaced with isolated Greek letters. Need not translate. We need answer perhaps \"Maria η la ε, iar fratele (η) la ψ\". They specifically instruct treat Greek letters as real terms and write exactly. So likely expected answer uses letters: Maria η lucrează la ε, iar fratele ei (η) lucrează la ψ. But user already stated that; maybe asks \"Unde lucrează fiecare dintre frați?\" Need produce concise.\n\nNeed ensure not invent actual terms. We can say: Din enunț, Maria η lucrează la ε, iar fratele ei lucrează la ψ. Nu avem informații suplimentare pentru a deduce alte detalii. Is that acceptable? Maybe. But perhaps there's a linguistic trick: \"Maria η, sora lui η\" means Maria's last name η? Her brother is also η. Question \"Unde lucrează fiecare dintre frați?\" In Romanian \"frați\" plural can mean siblings (brother and sister). Answer: Maria η (sora) la ε; fratele (η) la ψ. \n\nNeed perhaps mention if η is used for a person, both siblings are η? \"Fratele ei\" is also η because sora lui η -> Maria is sister of η, so η is the brother? Wait: \"Maria η, sora lui η\" — if η is a person (male?) then Maria is sister of η, so η refers to brother. But then \"iar fratele ei lucrează la ψ\" means Maria's brother lucrează la ψ. Therefore the person denoted by η (brother) works at ψ. Maria works at ε. The question \"Unde lucrează fiecare dintre frați?\" (where do each of the siblings work) answer: Maria la ε; η (fratele) la ψ. Use exact letters.\n\nNeed be concise. No extra. Final in Romanian.",
+      "restored": "Maria Ion Popescu lucrează la Nordic Agro, iar fratele ei — Ion Popescu — lucrează la Acme.",
+      "leaks": [],
+      "ms": 10363,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "η",
+          "ε",
+          "ψ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Maria η, sora lui η, lucrează la ε, iar fratele ei lucrează la ψ. Unde lucrează fiecare dintre frați?",
+      "restoreReport": {
+        "restored": 87,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

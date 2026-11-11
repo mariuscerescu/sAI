@@ -1,0 +1,35 @@
+{
+  "case": "A3",
+  "category": "A. Bază",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reformulează corect gramatical: «Contractul Popescului cu Acme-ului a fost semnat de Cebanei la Proiectul Orion.»",
+      "raw": "„Contractul lui Popescu cu ⟦COMPANY_1⟧ a fost semnat de Cebanei la ⟦PROJECT_1⟧.”",
+      "rawReasoning": "The user asks in Romanian: rewrite grammatically correct. Need handle placeholders exactly. Original: «Contractul Popescului cu ⟦COMPANY_1⟧-ului a fost semnat de Cebanei la ⟦PROJECT_1⟧.» Need infer proper forms. \"Contractul Popescului\" maybe should be \"Contractul lui ⟦PERSON?⟧\"? Placeholders: ⟦COMPANY_1⟧-ului is wrong because company name placeholder with suffix? Need perhaps \"contractul lui Popescu cu ⟦COMPANY_1⟧ a fost semnat de Cebane(i?) la ⟦PROJECT_1⟧\". Need not guess placeholder standing; treat as real value. We can refer to placeholders.\n\nRomanian grammar: \"Contractul Popescului cu ⟦COMPANY_1⟧-ului\" - Possessive genitive: \"Contractul Popescului\" is acceptable if Popescu is surname? Romanian names genitive: \"lui Popescu\" often for surnames, but \"Popescului\" also occurs for surname with article? Actually common masculine surnames can form genitive with article: \"contractul Popescului\" (of Popescu) is grammatical in colloquial/legal? More standard: \"contractul lui Popescu\".\n\n\"cu ⟦COMPANY_1⟧-ului\" definitely wrong: with company = \"cu ⟦COMPANY_1⟧\", no -ului. If ⟦COMPANY_1⟧ is feminine? Regardless cu takes accusative, no genitive suffix. \"de Cebanei\" - agent with de +? If Cebanei is oblique? For name after de should be nominative/accusative? Romanian agent passive: \"de către ⟦PERSON?⟧\". If surname \"Cebanei\" maybe genitive? Proper: \"de Cebane\"? But placeholder? Here Cebanei is not placeholder, real surname? Need correct gramatical. Maybe \"Cebanei\" is dative/genitive form, should be \"Cebane\" if nominative? Romanian surname ending -ei? Hmm.\n\nNeed produce corrected sentence without adding hidden info. Could say: „Contractul lui Popescu cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_1?⟧...” but Cebanei not placeholder. Need keep as given? The task is rewrite correct; can adjust cases of normal words. For placeholders must keep exact. Cebanei is normal text maybe a name. Need determine correct: \"de Cebanei\" maybe genitive of surname Ceban? If person is \"Cebanei\"? Romanian family name \"Cebanei\" genitive of \"Cebane\"? Actually Romanian surname \"Cebane\"? The original likely intentionally contains errors around case: \"Popescului\" (genitive with article?), \"⟦COMPANY_1⟧-ului\" (suffix after placeholder), \"Cebanei\" (should be nominative? \"Cebane\"?), maybe \"la ⟦PROJECT_1⟧\" fine.\n\nNeed formulate: „Contractul lui Popescu cu ⟦COMPANY_1⟧ a fost semnat de Cebanei la ⟦PROJECT_1⟧.” Is \"de Cebanei\" correct? If Cebanei is a proper name in nominative? Could be surname \"Cebanei\" (ending -ei) nominative? There is Romanian surname \"Cebanei\"? Maybe genitive of \"Ceban\"? Agent phrase uses accusative; proper names have same nominative/accusative for masculine singular? \"de Cebanei\" if surname is Cebanei (nominative) works. But if it's genitive intended \"al lui Cebanei\"? Hmm.\n\nLet's think examples: Romanian name \"Popescu\" genitive \"Popescului\" or \"lui Popescu\". Name \"Cebanei\" maybe family name \"Cebanei\" itself, nominative ends -ei, genitive \"lui Cebanei\" or \"Cebaneilor\"? After preposition de, remains \"Cebanei\". If author meant genitive \"contractul Cebanei\" no.\n\nOriginal: \"Contractul Popescului cu ⟦COMPANY_1⟧-ului\" means \"the contract of Popescu with of-company\". Correct around company: remove -ului. \"a fost semnat de Cebanei\" maybe should be \"de către Cebanei\" (agent) more explicit, but \"de\" is acceptable passive agent. Could use \"de către Cebanei\" for clarity. \"la ⟦PROJECT_1⟧\" OK if project is location/event? For \"la proiect\" maybe \"la ⟦PROJECT_1⟧\" fine (at the project). Could be \"în cadrul proiectului ⟦PROJECT_1⟧\" but changes meaning/adds.\n\nNeed concise answer only corrected sentence. Ensure placeholders exact. Use Romanian quotes maybe. Correct: „Contractul lui Popescu cu ⟦COMPANY_1⟧ a fost semnat de Cebanei la ⟦PROJECT_1⟧.” If want avoid changing Cebanei? Keep.\n\nShould mention alternative: If \"Cebanei\" is genitive/dative form, use nominative \"Cebane\"? But don't invent. Since user asks reformulate, just give. Include optional \"de către\". Final in Romanian concise.",
+      "restored": "„Contractul lui Popescu cu Acme a fost semnat de Cebanei la Proiectul Orion.”",
+      "leaks": [],
+      "ms": 10660,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Reformulează corect gramatical: «Contractul Popescului cu ⟦COMPANY_1⟧-ului a fost semnat de Cebanei la ⟦PROJECT_1⟧.»",
+      "restoreReport": {
+        "restored": 22,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

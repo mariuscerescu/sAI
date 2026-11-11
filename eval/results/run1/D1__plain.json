@@ -1,0 +1,16 @@
+{
+  "case": "D1",
+  "category": "D. Greek",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu face un test statistic cu α = 0,05 și β = 0,2. Calculează puterea testului și explică-i rezultatul lui Popescu în două fraze.",
+      "raw": "Puterea testului este \\(1-\\beta = 1-0{,}2 = 0{,}8\\), adică 80%.\n\nAsta înseamnă că, dacă efectul real există, testul îl va detecta cu probabilitatea de 80%. Rămâne un risc de 20% de eroare de tip II, adică să nu respingem ipoteza nulă chiar dacă este falsă; α = 0,05 indică separat riscul acceptat de fals pozitiv.",
+      "rawReasoning": "The user asks in Romanian: Ion Popescu takes a statistical test with α=0.05 and β=0.2. Calculate power of test and explain result in two sentences. Need answer concise Romanian. Power = 1 - β = 0.8. Explain in two sentences. Need ensure exactly? They ask \"în două fraze\" likely explanation in two sentences. We can provide formula and two-sentence explanation. Need concise. Let's craft: Puterea = 1−β = 1−0.2 = 0.8 (80%). \"Asta înseamnă că, dacă ipoteza alternativă este adevărată, testul va detecta efectul cu probabilitatea de 80%. Există totuși un risc de 20% de a nu respinge ipoteza nulă când ar trebui (eroare de tip II).\" That's explanation two sentences. Include α? α=0.05 is significance, not used in power except context. Could mention α sets false positive risk. But two sentences maybe: first includes power? Need answer all. Keep concise. Ensure Romanian diacritics.",
+      "restored": "Puterea testului este \\(1-\\beta = 1-0{,}2 = 0{,}8\\), adică 80%.\n\nAsta înseamnă că, dacă efectul real există, testul îl va detecta cu probabilitatea de 80%. Rămâne un risc de 20% de eroare de tip II, adică să nu respingem ipoteza nulă chiar dacă este falsă; α = 0,05 indică separat riscul acceptat de fals pozitiv.",
+      "leaks": [],
+      "ms": 4386
+    }
+  ]
+}

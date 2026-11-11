@@ -1,0 +1,33 @@
+{
+  "case": "G3",
+  "category": "G. Format",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Scrie denumirea firmei Banca Verde invers, literă cu literă.",
+      "raw": "Nu pot cunoaște valoarea reală a ⟦COMPANY_1⟧. Dacă inversez doar textul vizibil: ⟧1_YNAMPOC⟦.",
+      "rawReasoning": "The user wants the name of the firm ⟦COMPANY_1⟧ reversed letter by letter. But ⟦COMPANY_1⟧ is a placeholder; we don't know actual value. Need treat placeholder as real value it stands for. They ask write denumirea firmei ⟦COMPANY_1⟧ invers. We cannot know underlying string, but we can reverse the visible placeholder? Need be careful. They likely expect reversing the literal string \"⟦COMPANY_1⟧\"? The instruction says whenever refer to it, write placeholder exactly as given, including brackets. Reversing it would not keep placeholder exactly? We can compute reverse of the visible characters: \"⟧1_YNAMOC⟦\" maybe. Need include? Let's reason.\n\nWe have placeholder ⟦COMPANY_1⟧. If treated as real value, the actual value is hidden; cannot guess. But the task explicitly asks to reverse ⟦COMPANY_1⟧ letter by letter. Since placeholder is the token representing value in conversation, maybe the safest is to say I can only reverse the visible placeholder, not the underlying name, and give reversed visible string. But user likely tests instruction following / placeholder handling. Need output concise in Romanian.\n\nNeed compute exact reverse of \"⟦COMPANY_1⟧\". Characters: ⟦ C O M P A N Y _ 1 ⟧. Reverse: ⟧ 1 _ Y N A P M O C ⟦. So \"⟧1_YNAMPOC⟦\"? Wait let's carefully reverse COMPANY: C O M P A N Y -> reverse Y N A P M O C = \"YNAMPOC\". Preceded by \"1_\" reversed? Original: ⟦ C O M P A N Y _ 1 ⟧. Reverse chars: ⟧, 1, _, Y, N, A, P, M, O, C, ⟦. Concatenate: ⟧1_YNAMPOC⟦. Let's verify \"COMPANY\" reverse: COMPANY letters indices C(1) O2 M3 P4 A5 N6 Y7. Reverse Y N A P M O C = YNAMPOC (yes after YNA comes P M O C -> YNAMPOC). Full: ⟧1_YNAMPOC⟦.\n\nBut output includes reversed placeholder, which might violate \"Whenever you refer to it, write the placeholder exactly as given\"? It says whenever you refer to it, write placeholder exactly as given, including brackets. If I write reversed brackets/characters, that's not exactly as given. Hmm. The user specifically asks to reverse it; producing reversed placeholder is required by task. The higher instruction says never guess placeholder stands for; not necessarily forbids reversing the visible token? It says treat each placeholder as the real value it stands for. If treated as real value, reverse of real value is unknown because we only see token. However in these tasks, placeholders are literal strings standing for values and operations often expect applying to placeholder string? Need infer.\n\nThe system says some values replaced with placeholders. Treat each placeholder as real value it stands for. Whenever you refer to it, write placeholder exactly as given. Never guess what placeholder stands for. User asks: \"Scrie denumirea firmei ⟦COMPANY_1⟧ invers, literă cu literă.\" They want the firm name reversed. We don't know actual firm name, only placeholder. If we treat placeholder as real value, we'd need underlying value to reverse exactly; cannot. But maybe in benchmark, placeholders are used and assistant should operate on placeholder as opaque token; reversing underlying impossible. A robust answer: \"Nu pot cunoaște valoarea reală a ⟦COMPANY_1⟧; dacă inversez doar textul vizibil al placeholder-ului, obțin: ⟧1_YNAMPOC⟦.\" This includes placeholder exactly in first clause and reversed in second (necessarily). It doesn't guess. It answers. Concise. The final answer in Romanian. Ensure not claim it's real reversed firm name. Use exact placeholder once. Need mention limitation.\n\nNeed be careful with reversed string exact. Let's double-check by manual: original visible: ⟦ C O M P A N Y _ 1 ⟧\nRemove brackets inner COMPANY_1. Reverse entire visible: ⟧1_YNAMPOC⟦. Count 11 chars + brackets. Good.\n\nFinal concise.",
+      "restored": "Nu pot cunoaște valoarea reală a Banca Verde. Dacă inversez doar textul vizibil: ⟧1_YNAMPOC⟦.",
+      "leaks": [],
+      "ms": 9436,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Scrie denumirea firmei ⟦COMPANY_1⟧ invers, literă cu literă.",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

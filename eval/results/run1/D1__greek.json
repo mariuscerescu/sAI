@@ -1,0 +1,33 @@
+{
+  "case": "D1",
+  "category": "D. Greek",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu face un test statistic cu α = 0,05 și β = 0,2. Calculează puterea testului și explică-i rezultatul lui Popescu în două fraze.",
+      "raw": "Puterea testului este 1 − β = 1 − 0,2 = 0,8, adică 80%. Pentru υ: la α = 0,05 accepți un risc de 5%, iar β = 0,2 înseamnă 20% șanse să ratezi un efect real, deci testul are 80% șanse să îl detecteze când există.",
+      "rawReasoning": "The user asks in Romanian: \"υ face un test statistic cu α = 0,05 și β = 0,2. Calculează puterea testului și explică-i rezultatul lui υ în două fraze.\"\n\nNeed answer concise in Romanian. Confidential terms replaced by isolated Greek letters. We must treat υ, α, β as real terms. α=significance? β is probably \"eroare de tip II\"? Power = 1-β = 0.8. Need explain to υ. Need be careful: isolated Greek letters stand for real terms. We shouldn't spell out the confidential term? Instruction: Whenever you refer to it, write the letter exactly as given. Do not translate or spell out these letters. So use α and β and υ as letters, not expand. Need compute power = 1 - β = 1 - 0.2 = 0.8 = 80%. Explain in two sentences to υ. Mention with α=0,05 and β=0,2, power is 80%, meaning test has 80% probability to detect real effect. Maybe \"υ\" is person. Need concise. Ensure not spell out Greek letters. Could say: \"Puterea = 1 − β = 1 − 0,2 = 0,8 (80%). Pentru υ: cu α = 0,05, riscul de eroare pe care îl accepți este de 5%, iar β = 0,2 înseamnă 20% șanse să nu detectezi un efect real. Prin urmare, testul tău are 80% șanse să detecteze efectul când el există.\" That's two sentences? It's three if split. Need exactly two fraze maybe: \"Puterea testului este 1 − β = 1 − 0,2 = 0,8, adică 80%. Pentru υ: la α = 0,05 accepți un risc de 5%, iar β = 0,2 înseamnă 20% șanse să ratezi un efect real, deci testul are 80% șanse să îl detecteze când există.\" Two sentences. Good. Need mention decimals comma.",
+      "restored": "Puterea testului este 1 − β = 1 − 0,2 = 0,8, adică 80%. Pentru Ion Popescu: la α = 0,05 accepți un risc de 5%, iar β = 0,2 înseamnă 20% șanse să ratezi un efect real, deci testul are 80% șanse să îl detecteze când există.",
+      "leaks": [],
+      "ms": 4834,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2
+        },
+        "tokensUsed": [
+          "υ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "υ face un test statistic cu α = 0,05 și β = 0,2. Calculează puterea testului și explică-i rezultatul lui υ în două fraze.",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

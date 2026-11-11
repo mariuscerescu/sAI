@@ -1,0 +1,37 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Maria Popescu, sora lui Ion Popescu, lucrează la Nordic Agro, iar fratele ei lucrează la Acme. Unde lucrează fiecare dintre frați?",
+      "raw": "⟦PERSON_1⟧ lucrează la ⟦COMPANY_1⟧, iar fratele ei, ⟦PERSON_2⟧, lucrează la ⟦COMPANY_2⟧.",
+      "rawReasoning": "The user asks in Romanian. They say ⟦PERSON_1⟧, sister of ⟦PERSON_2⟧, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Question: where does each sibling work?\n\nNeed parse carefully. ⟦PERSON_1⟧ is sister of ⟦PERSON_2⟧. She works at ⟦COMPANY_1⟧. Her brother works at ⟦COMPANY_2⟧. If ⟦PERSON_1⟧ is sister of ⟦PERSON_2⟧, then brother of ⟦PERSON_1⟧ is ⟦PERSON_2⟧ (assuming male). So ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧, ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧. Need answer concise in Romanian. Ensure placeholders exact. Maybe phrase: ⟦PERSON_1⟧ lucrează la ⟦COMPANY_1⟧, iar fratele ei, ⟦PERSON_2⟧, lucrează la ⟦COMPANY_2⟧.",
+      "restored": "Maria Popescu lucrează la Nordic Agro, iar fratele ei, Ion Popescu, lucrează la Acme.",
+      "leaks": [],
+      "ms": 4380,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦COMPANY_1⟧",
+          "⟦COMPANY_2⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "⟦PERSON_1⟧, sora lui ⟦PERSON_2⟧, lucrează la ⟦COMPANY_1⟧, iar fratele ei lucrează la ⟦COMPANY_2⟧. Unde lucrează fiecare dintre frați?",
+      "restoreReport": {
+        "restored": 24,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

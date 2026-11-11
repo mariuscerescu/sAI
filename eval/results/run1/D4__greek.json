@@ -1,0 +1,23 @@
+{
+  "case": "D4",
+  "category": "D. Greek",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Simplifică expresiile pentru Ion Popescu și Maria Ceban: α+β+γ+δ+ε+ζ+η+θ+ι+κ+λ+μ+ν+ξ+ο+π+ρ+σ+τ+υ+φ+χ+ψ+ω, unde fiecare literă e egală cu 1.",
+      "raw": "",
+      "rawReasoning": "",
+      "restored": "",
+      "leaks": [],
+      "ms": 0,
+      "redactReport": {
+        "countsByClass": {},
+        "tokensUsed": [],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "blocked": "STRATEGY_UNSUITABLE"
+    }
+  ]
+}

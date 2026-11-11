@@ -1,0 +1,35 @@
+{
+  "case": "K4",
+  "category": "K. Ambiguitate",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Иван Попеску (adică Ion Popescu) a sunat de la Acme. Cum se scrie numele lui în alfabetul latin?",
+      "raw": "Se scrie: **Ivan Popescu**.  \nDacă folosești placeholderul, rămâne **⟦PERSON_1⟧**.",
+      "rawReasoning": "The user asks in Romanian: 'Иван Попеску (adică ⟦PERSON_1⟧) a sunat de la ⟦COMPANY_1⟧. Cum se scrie numele lui în alfabetul latin?' They provide placeholder mapping? Actually text includes Cyrillic 'Иван Попеску' and says adică ⟦PERSON_1⟧. They ask how to write his name in Latin alphabet. Need be careful: placeholders are real values, don't guess. But 'Иван Попеску' transliterates to 'Ivan Popescu' in Romanian. They say adică ⟦PERSON_1⟧, meaning placeholder stands for real value. We shouldn't reveal/guess? We can refer to placeholder exactly. Need answer perhaps: numele transliterat este „Ivan Popescu”; dacă vrei să folosești placeholderul, scrie ⟦PERSON_1⟧. The question explicitly asks 'Cum se scrie numele lui în alfabetul latin?' The Cyrillic is visible: Иван Попеску -> Ivan Popescu. Is that allowed? It's not guessing placeholder; it's transliteration from given Cyrillic. Need answer concise in Romanian. Mention for company? Not needed maybe. Need not translate company. Ensure placeholders exact if used. Final in Romanian.",
+      "restored": "Se scrie: **Ivan Popescu**.  \nDacă folosești placeholderul, rămâne **Ion Popescu**.",
+      "leaks": [],
+      "ms": 3500,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 1,
+          "COMPANY": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Иван Попеску (adică ⟦PERSON_1⟧) a sunat de la ⟦COMPANY_1⟧. Cum se scrie numele lui în alfabetul latin?",
+      "restoreReport": {
+        "restored": 6,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

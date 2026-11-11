@@ -1,0 +1,41 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "Step by step:\n\n1. ψ owns **30% of ε**.\n2. ε owns **60% of ζ**.\n3. ψ’s indirect economic interest in ζ is the product across the chain: **30% × 60% = 18%**.\n\nSo the indirect share is **18% of ζ**.\n\nStrictly speaking, “control” is different: 30% of ε usually does **not** give ψ control of ε, and therefore does not by itself give control of ζ. Rather, ε controls ζ through its 60% stake, while ψ has an **18% indirect economic interest** in ζ, absent other facts such as voting agreements, board control, or veto rights. If “Acme” is the party meant by ψ, the same applies to Acme.",
+      "rawReasoning": "We need answer. Need interpret symbols? ψ bought 30% of ε, ε owns 60% of ζ. Ask what share of ζ does Acme control indirectly? Hmm \"Acme\" maybe corresponds to ψ? Need treat Greek letters as real terms? User asks Acme control indirectly. Terms replaced by Greek letters; must write letters exactly. Need infer Acme perhaps ψ? Actually question: \"ψ bought 30% of ε. ε owns 60% of ζ. What share of ζ does Acme control indirectly? Explain step by step.\"\n\nNeed answer concise. Need be careful: If ψ owns 30% of ε, and ε owns 60% of ζ, the indirect economic interest ψ has in ζ is 30% × 60% = 18%. But \"control\" is different: owning 30% may be significant influence/minority, not control; ε controls ζ if 60% voting. Acme? Maybe Acme is ψ? They ask \"What share of ζ does Acme control indirectly?\" Could mean Acme (maybe the English term represented by ψ?) controls indirectly via ε. But we don't know Acme relation to ψ/ε. Perhaps original question likely from corporate law: \"Acme bought 30% of Beta. Beta owns 60% of Zeta. What share of Zeta does Acme control indirectly?\" Confidential terms replaced: ψ = Acme? Wait instruction: confidential terms replaced with isolated Greek letters. ψ stands for a confidential term; user included \"Acme\" in plain text. Maybe Acme is not confidential? We can refer to Acme as given. Need not map ψ to Acme unless explicit. The user asks what share of ζ does Acme control indirectly, but setup involves ψ and ε. There is ambiguity: if ψ is Acme? The isolated Greek letters are terms; Acme appears as actual term? Maybe \"Acme\" is outside confidential set? Need not translate Greek letters, but can write Acme.\n\nNeed explain step by step: multiplication of stakes gives indirect ownership/economic interest: 0.30*0.60=0.18 = 18%. But control: not the same as economic share. ψ does not control ε by owning only 30% (assuming no other facts like board control, agreements), so Acme/ψ (if same) cannot be said to \"control\" ζ merely through 18% economic exposure. ε controls ζ with 60% (assuming voting shares). ψ's indirect interest in ζ is 18%; indirect control would require control of ε or agreement. If the question uses \"control\" loosely to mean indirect ownership share, answer 18%. Need mention both to avoid wrong. The user specifically asks \"What share of ζ does Acme control indirectly?\" Could expect 18%. Need answer: 18% indirect share, but not control in strict sense. Step-by-step.\n\nNeed not use tools. Ensure Greek letters exact: ψ, ε, ζ. Use them. Final concise.",
+      "restored": "Step by step:\n\n1. Acme Logistics owns **30% of Nordic Farms**.\n2. Nordic Farms owns **60% of Greenfield Bank**.\n3. Acme Logistics’s indirect economic interest in Greenfield Bank is the product across the chain: **30% × 60% = 18%**.\n\nSo the indirect share is **18% of Greenfield Bank**.\n\nStrictly speaking, “control” is different: 30% of Nordic Farms usually does **not** give Acme Logistics control of Nordic Farms, and therefore does not by itself give control of Greenfield Bank. Rather, Nordic Farms controls Greenfield Bank through its 60% stake, while Acme Logistics has an **18% indirect economic interest** in Greenfield Bank, absent other facts such as voting agreements, board control, or veto rights. If “Acme” is the party meant by Acme Logistics, the same applies to Acme.",
+      "leaks": [],
+      "ms": 9881,
+      "redactReport": {
+        "countsByClass": {
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "ψ",
+          "ε",
+          "ζ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "ψ bought 30% of ε. ε owns 60% of ζ. What share of ζ does Acme control indirectly? Explain step by step.",
+      "restoreReport": {
+        "restored": 62,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "ψ",
+          "ψ",
+          "ε",
+          "ζ",
+          "ζ"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "case": "F5",
+  "category": "F. Imposibil",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ion Popescu și Maria Ceban vin mâine la ședință. Scrie o propoziție despre fiecare folosind pronumele corecte (el/ea).",
+      "raw": "Ion Popescu vine mâine la ședință; el va participa la discuții.  \nMaria Ceban vine mâine la ședință; ea va prezenta punctele de pe ordinea de zi.",
+      "rawReasoning": "The user asks in Romanian: Ion Popescu and Maria Ceban come tomorrow to the meeting. Write a sentence about each using correct pronouns (el/ea). Need answer in Romanian concise. Need ensure pronoun agreement: Ion Popescu = el; Maria Ceban = ea (Romanian surname Ceban common Moldova; Maria female). Need produce two sentences. Could say: \"Ion Popescu vine mâine la ședință; el este așteptat la ora programată.\" \"Maria Ceban vine mâine la ședință; ea va prezenta punctele agendei.\" Need maybe avoid assuming too much? It's fine. Need just sentences. Ensure diacritics.",
+      "restored": "Ion Popescu vine mâine la ședință; el va participa la discuții.  \nMaria Ceban vine mâine la ședință; ea va prezenta punctele de pe ordinea de zi.",
+      "leaks": [],
+      "ms": 2920
+    }
+  ]
+}

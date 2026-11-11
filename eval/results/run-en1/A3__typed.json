@@ -1,0 +1,38 @@
+{
+  "case": "A3",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»",
+      "raw": "⟦PERSON_1⟧'s contract with Acme was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.",
+      "rawReasoning": "The user wants rewrite sentence with correct capitalization and grammar. Placeholders must remain exact. Sentence: «⟦PERSON_1⟧'s contract with acme were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»\nNeed determine corrections. Issues: \"acme\" likely capitalization? It is a company name maybe \"Acme\" but placeholder? It says acme lower-case, should be Acme? We can capitalize as proper noun Acme, unless placeholder replaced data? It's not placeholder, just acme. Correct: \"⟦PERSON_1⟧'s contract with Acme was signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\" Grammar: contract singular, was signed. \"the ⟦PERSON_2⟧\" maybe if PERSON_2 is a person, \"the\" may be odd but not necessarily; could be title? Keep placeholders. Article \"the ⟦PERSON_2⟧\" maybe if PERSON_2 refers to role like CEO? Keep. Capitalization at start already placeholder. Need answer concise. Maybe provide just rewritten sentence. Ensure placeholders exact. Use Acme capitalization? Could be stylized \"ACME\" but unknown; standard proper noun Acme. If confidential, acme might stand for a company replaced not placeholder? It says values replaced with placeholders form ⟦CLASS_N⟧, acme wasn't replaced, so it's real? Treat \"acme\" as real value lower-case? Proper noun should be capitalized: Acme. Final one line.",
+      "restored": "Smith's contract with Acme was signed by Johnson at project orion.",
+      "leaks": [
+        "STEM?:Project Orion (project)"
+      ],
+      "ms": 10932,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Rewrite this sentence with correct capitalization and grammar: «⟦PERSON_1⟧'s contract with acme were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»",
+      "restoreReport": {
+        "restored": 11,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

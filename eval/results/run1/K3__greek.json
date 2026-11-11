@@ -1,0 +1,33 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguitate",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Ieri am fost la cinematograful Orion, dar mă gândeam doar la Proiectul Orion. Unde am fost și la ce mă gândeam?",
+      "raw": "Ai fost la cinematograful υ și te gândeai doar la υ.",
+      "rawReasoning": "The user uses Greek letters as placeholders; need answer by treating letters as real terms but cannot know mapping? The prompt says terms replaced with isolated Greek letters. Need infer from sentence? \"Ieri am fost la cinematograful υ, dar mă gândeam doar la υ.\" Same letter υ used twice, so same term? If same glyph stands for same real term, then answer: cinematograful υ and thinking about υ. But question asks \"Unde am fost și la ce mă gândeam?\" We should answer exactly with letter, not spell out. Need maybe say \"Ai fost la cinematograful υ și te gândeai la υ.\" We don't know actual terms, but must refer using letters. Since same υ both places, it implies same thing. Need concise Romanian. Ensure not translate or spell out letters.",
+      "restored": "Ai fost la cinematograful Orion și te gândeai doar la Orion.",
+      "leaks": [],
+      "ms": 3605,
+      "redactReport": {
+        "countsByClass": {
+          "PROJECT": 2
+        },
+        "tokensUsed": [
+          "υ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Ieri am fost la cinematograful υ, dar mă gândeam doar la υ. Unde am fost și la ce mă gândeam?",
+      "restoreReport": {
+        "restored": 10,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "case": "H1",
+  "category": "H. Identificatori",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Clientul are IDNP 2001234567891 și telefonul 069123456. Formatează-le pentru un formular oficial, pe câte o linie.",
+      "raw": "Nu pot regrupa cifrele fără valorile reale, dar pentru formular păstrând valorile exacte:\n\nIDNP: ⟦IDNP_1⟧\nTelefon: ⟦PHONE_1⟧",
+      "rawReasoning": "The user wants formatting of IDNP and phone for official form, one per line. They provided placeholders ⟦IDNP_1⟧ and ⟦PHONE_1⟧. Need treat placeholder as real value but cannot know underlying actual values. Need not guess. We can format structurally? IDNP is Moldovan personal numeric code typically 13 digits. Phone maybe Moldovan number. Since values are placeholders, cannot validate digits or insert spaces based on actual digits. Need be honest: cannot normalize exact content without seeing values, but can provide format templates/lines using placeholders. Need answer in Romanian concise.\n\nNeed be careful: They ask \"Formatează-le pentru un formular oficial, pe câte o linie.\" We can output two lines with labels maybe:\nIDNP: ⟦IDNP_1⟧\nTelefon: ⟦PHONE_1⟧\nBut \"formatează\" implies perhaps phone with +373 and IDNP spaced? Can't alter placeholder internals. We can say păstrând valorile exacte:\nIDNP: ⟦IDNP_1⟧\nTelefon: ⟦PHONE_1⟧\n\nMaybe official form wants no extra labels? \"pe câte o linie\". Provide exactly two lines. Could include that validation/formatting numeric groups can't be done because actual chars are masked. But desired concise. Let's craft with note short. Ensure placeholders exact.",
+      "restored": "Nu pot regrupa cifrele fără valorile reale, dar pentru formular păstrând valorile exacte:\n\nIDNP: 2001234567891\nTelefon: 069123456",
+      "leaks": [],
+      "ms": 4408,
+      "redactReport": {
+        "countsByClass": {
+          "IDNP": 1,
+          "PHONE": 1
+        },
+        "tokensUsed": [
+          "⟦IDNP_1⟧",
+          "⟦PHONE_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Clientul are IDNP ⟦IDNP_1⟧ și telefonul ⟦PHONE_1⟧. Formatează-le pentru un formular oficial, pe câte o linie.",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

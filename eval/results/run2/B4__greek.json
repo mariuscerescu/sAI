@@ -1,0 +1,98 @@
+{
+  "case": "B4",
+  "category": "B. Raționament",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reține: Elena Vrabie e avocata firmei Nordic Agro, iar Andrei Lungu e auditorul Băncii Verde.",
+      "raw": "Am reținut: κ este avocata firmei ζ, iar ρ este auditorul δ.",
+      "rawReasoning": "The user states: \"Remember: κ is the lawyer of firm ζ, and ρ is the auditor of δ.\" Need acknowledge. Need be careful with confidential terms replaced by Greek letters. We must treat letters as real terms; refer exactly as given. We can just remember. Need maybe mention understood: κ = avocata firmei ζ, ρ = auditorul δ. Respond concise in Romanian. No need tools. Ensure use exact Greek letters. Final concise.",
+      "restored": "Am reținut: Elena Vrabie este avocata firmei Nordic Agro, iar Andrei Lungu este auditorul Banca Verde.",
+      "leaks": [],
+      "ms": 1816,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 2
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Reține: κ e avocata firmei ζ, iar ρ e auditorul δ.",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "κ",
+          "ρ"
+        ]
+      }
+    },
+    {
+      "user": "Cine e avocata firmei Nordic Agro?",
+      "raw": "κ este avocata firmei ζ.",
+      "rawReasoning": "The user states confidential mappings replacing terms with Greek letters. They ask who is avocata firm ζ. We know from prior sentence: κ is avocata firm ζ. Need answer concise in Romanian, keep Greek letter exact. We can answer: κ. Ensure don't invent beyond prompt. They said treat letters as real term stands; whenever refer to it write letter exactly. So final: κ este avocata firmei ζ.",
+      "restored": "Elena Vrabie este avocata firmei Nordic Agro.",
+      "leaks": [],
+      "ms": 1764,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 4,
+          "COMPANY": 5
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Cine e avocata firmei ζ?",
+      "restoreReport": {
+        "restored": 8,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    },
+    {
+      "user": "Și cine verifică Banca Verde? Răspunde cu numele complet.",
+      "raw": "ρ verifică δ — atât știu; nu mi-ai dat un nume complet pentru ρ.",
+      "rawReasoning": "The user states facts in Romanian, asks who verifies δ and asks full name. We only have placeholders: κ avocata firmei ζ, ρ auditorul δ. \"Cine verifică δ?\" δ is audited by ρ, the auditor. They ask \"Răspunde cu numele complet\" but we don't know full names, only Greek letters. Need answer with letter exactly as given. Can't invent full name. Need mention only known identifier is ρ, no full name provided. Concise Romanian.",
+      "restored": "Andrei Lungu verifică Banca Verde — atât știu; nu mi-ai dat un nume complet pentru Andrei Lungu.",
+      "leaks": [],
+      "ms": 1849,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 5,
+          "COMPANY": 7
+        },
+        "tokensUsed": [
+          "κ",
+          "ζ",
+          "ρ",
+          "δ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "Și cine verifică δ? Răspunde cu numele complet.",
+      "restoreReport": {
+        "restored": 12,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

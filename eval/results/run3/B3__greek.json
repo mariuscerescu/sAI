@@ -1,0 +1,45 @@
+{
+  "case": "B3",
+  "category": "B. Raționament",
+  "variant": "greek",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Popescu i-a împrumutat Cebanei 5.000 lei, Ceban i-a dat lui Lungu 2.000 lei, iar Lungu i-a returnat lui Popescu 1.500 lei. Cine cui și cât mai datorează la final? Fă un tabel.",
+      "raw": "Presupunând că toate mișcările privesc aceeași sumă și nu s-a creat un împrumut separat θ→ζ:\n\n**Fluxuri nete**\n- ψ: −5000 + 1500 = **−3500**\n- θ: +5000 − 2000 = **+3000**\n- ζ: +2000 − 1500 = **+500**\n\n**Cine cui mai datorează la final**\n\n| De la | Către | Rest datorat |\n|---|---|---:|\n| θ | ψ | 3000 lei |\n| ζ | ψ | 500 lei |\n| θ | ζ | 0 lei |\n| **Total către ψ** |  | **3500 lei** |\n\nNotă: dacă θ→ζ a fost intenționat ca **împrumut separat**, atunci ζ îi datorează lui θ 2000 lei, iar situația se schimbă; la fel, plata ζ→ψ stinge datoria θ→ψ doar dacă a fost făcută în contul lui θ sau cu acordul părților.",
+      "rawReasoning": "We need answer in Romanian. Need solve. Problem: ψ lent θ 5000, θ gave ζ 2000, ζ returned to ψ 1500. Need determine final debts. Need be careful: terms replaced with Greek letters; treat as real terms. Need refer letters exactly as given. Need make table.\n\nLet's parse: A (ψ) loaned B (θ) 5000 lei. B gave C (ζ) 2000 lei. C returned to A 1500 lei. Question: who owes whom and how much at final? We have only stated transactions. Need infer relationships:\n- ψ -> θ loan: θ owes ψ 5000 (unless subsequent transactions offset?).\n- θ -> ζ: ambiguous: θ gave ζ 2000. Could be a loan? It says \"i-a dat\" not împrumutat. ζ i-a returnat lui ψ 1500 means zeta returned to psi 1500. Need construct net obligations from flows.\n\nMaybe classic puzzle: ψ lent θ 5000, θ gave ζ 2000, ζ returned ψ 1500. If θ's 2000 came from the 5000? ζ then returns 1500 to ψ. Net effect: ψ paid out 5000, received 1500 => net out 3500. θ received 5000, paid 2000 => net in 3000. ζ received 2000, paid 1500 => net in 500. Net flows: ψ -3500, θ +3000, ζ +500. To settle, θ owes ψ 3000? ζ owes ψ 500? But θ originally owes ψ 5000; θ gave ζ 2000—if this was a loan from θ to ζ, then ζ owes θ 2000. ζ returned 1500 to ψ—maybe ζ repaying ψ directly? Need not assume unstated loans; only actual transfers matter.\n\nLet's analyze possible interpretations:\n1. Transactions as gifts? ψ→θ 5000 loan creates debt θ→ψ 5000. θ→ζ 2000 unspecified (could gift or payment) doesn't create debt unless loan. ζ→ψ 1500 unspecified. If all are just transfers, debts only from explicit \"împrumutat\": θ owes ψ 5000. Other transfers are payments/settlements: θ paid ζ 2000 (maybe settles something), ζ paid ψ 1500 (partial repayment toward θ's debt? But ζ wasn't the debtor; maybe ζ acts on behalf). Question expects chain offset: ψ loaned θ 5000; θ passed 2000 to ζ; ζ returned 1500 to ψ. Net ψ has disbursed 5000 and received 1500 = 3500 still out. θ has 3000 (5000-2000) and hasn't repaid; ζ has 500 (2000-1500). So final: θ owes ψ 3000; ζ owes θ? Hmm where does ζ's 500 come from?\n\nMaybe model as obligations from initial loan and subsequent redistributions. Start: θ owes ψ 5000. θ gives ζ 2000. If those 2000 are part of borrowed money passed on, does ζ owe ψ or θ? If θ lends 2000 to ζ, then obligations: θ owes ψ 5000, ζ owes θ 2000. Then ζ returns 1500 to ψ directly. That could be repayment of ψ's loan, perhaps on behalf of θ? If ζ pays ψ 1500, reduce θ's debt to ψ? If payment directed to ψ, likely can be allocated to θ's debt (or ζ's own if ζ owes ψ? no). Then θ owes ψ 3500, ζ owes θ 2000. But if ζ's 1500 to ψ was repayment of the 2000 θ gave ζ (but to ψ instead of θ), weird.\n\nAlternative: Treat all as debts from loans/gifts? θ gave ζ 2000 (implicit loan? Romanian \"i-a dat\" plain means gave, not lent). ζ \"a returnat\" (returned) lui ψ 1500 implies ζ had received something from ψ? But ζ didn't receive from ψ directly. Maybe phrase means ζ paid back ψ 1500 of the money that originated from ψ via θ. In common sense, tracking money: ψ's 5000 goes to θ, θ passes 2000 to ζ, ζ returns 1500 to ψ. Net positions: ψ net -3500, θ +3000, ζ +500. To make whole, θ and ζ must pay ψ their net gains: θ 3000, ζ 500. That matches equality: ψ receives 3500, total outflow θ+ζ=3500. Also if θ passed 2000 to ζ, and ζ passed 1500 back to ψ, θ still holds 3000, ζ holds 500; both came from ψ's loaned money, so both are effectively debtors to ψ (θ 3000, ζ 500) if no direct θ-ζ debt. But then what about θ owes ψ original 5000? The transaction θ→ζ 2000 maybe transfers part of debt to ζ? Not legally unless agreed, but puzzle likely wants net accounting.\n\nNeed answer with assumptions and note ambiguity. User asks \"Cine cui și cât mai datorează la final? Fă un tabel.\" They probably expect a concise table. We can present interpretation explicitly: considering the three movements as against the same sum and no new loans, net remaining: θ owes ψ 3000; ζ owes ψ 500; ζ doesn't owe θ? Wait if ζ has 500 of ψ's money, owes ψ 500. θ has 3000, owes ψ 3000. Sum owed to ψ =3500, equal ψ net out. This ignores formal initial debt θ owes ψ 5000 minus ζ's payment? Formal legal reading: θ remains debtor of ψ 5000; θ→ζ and ζ→ψ are separate gifts/payments, unless designated. But then ψ received 1500 from third party—can be applied to θ's debt if intended; otherwise not. Need mention ambiguity maybe.\n\nLet's derive both scenarios to be safe but answer asked direct. We can say \"Dacă tratăm transferurile ca plăți din aceeași sumă (interpretarea uzuală a întrebării):\". Table:\nψ ↔ θ: θ datorează ψ 3000\nψ ↔ ζ: ζ datorează ψ 500\nθ ↔ ζ: 0 (conform doar fluxurilor nete; dacă θ→ζ a fost împrumut separat, vezi nota)\nTotal către ψ: 3500.\n\nNote: Dacă citiți strict literal, doar „ψ a împrumutat θ\" creează obligație: θ→ψ 5000; plățile ulterioare se pot imputa doar dacă părțile au convenit/indicat. Dacă θ→ζ a fost împrumut, atunci ζ datorează θ 2000, iar plata ζ→ψ fie reduce datoria θ→ψ la 3500 (dacă e făcută în numele lui θ/cu acceptul ψ), fie rămâne a ζ față de ψ? Hmm third-party payment rules: payment by third party can discharge with debtor consent; without, third party may have recourse. Too legal; keep simple.\n\nNeed ensure Greek letters exact. Use ψ, θ, ζ. Don't translate. Romanian concise. Include formulas maybe:\nψ: -5000+1500=-3500\nθ: +5000-2000=+3000\nζ: +2000-1500=+500\nThus settlement: θ pays ψ 3000; ζ pays ψ 500. Final no one owes each other after settlement.\n\nNeed mention if θ→ζ was intended as a separate loan, then different: θ owes ψ 3500? Wait let's formulate note correctly: \"Dacă θ→ζ a fost împrumut separat, atunci ζ datorează θ 2000; plata ζ→ψ nu stinge automat acea datorie fără acord. În plus, dacă ζ→ψ a fost făcută pentru θ, datoria θ→ψ devine 3500. Detaliile depind de intenția părților.\" But that's nuanced. Keep concise.\n\nNeed answer exactly? Could be: \n\"Presupunând că toate mișcările se referă la aceeași bani și nu s-au creat datorii noi: ...\" Table columns: De la / Către / Rămas de plătit. Include net sums.\n\nNeed avoid claiming legal certainty. Final: \"Pe fluxuri nete\" etc.\n\nNeed ensure not use letters with other meaning. Fine.",
+      "restored": "Presupunând că toate mișcările privesc aceeași sumă și nu s-a creat un împrumut separat Ceban→Lungu:\n\n**Fluxuri nete**\n- Ion Popescu: −5000 + 1500 = **−3500**\n- Ceban: +5000 − 2000 = **+3000**\n- Lungu: +2000 − 1500 = **+500**\n\n**Cine cui mai datorează la final**\n\n| De la | Către | Rest datorat |\n|---|---|---:|\n| Ceban | Ion Popescu | 3000 lei |\n| Lungu | Ion Popescu | 500 lei |\n| Ceban | Lungu | 0 lei |\n| **Total către Ion Popescu** |  | **3500 lei** |\n\nNotă: dacă Ceban→Lungu a fost intenționat ca **împrumut separat**, atunci Lungu îi datorează lui Ceban 2000 lei, iar situația se schimbă; la fel, plata Lungu→Ion Popescu stinge datoria Ceban→Ion Popescu doar dacă a fost făcută în contul lui Ceban sau cu acordul părților.",
+      "leaks": [],
+      "ms": 32345,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 6
+        },
+        "tokensUsed": [
+          "ψ",
+          "θ",
+          "ζ"
+        ],
+        "warnings": [],
+        "strategy": "greek"
+      },
+      "sentUser": "ψ i-a împrumutat θ 5.000 lei, θ i-a dat lui ζ 2.000 lei, iar ζ i-a returnat lui ψ 1.500 lei. Cine cui și cât mai datorează la final? Fă un tabel.",
+      "restoreReport": {
+        "restored": 262,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": [
+          "θ",
+          "ζ",
+          "θ",
+          "ζ",
+          "θ",
+          "ζ",
+          "ψ",
+          "θ",
+          "ψ"
+        ]
+      }
+    }
+  ]
+}

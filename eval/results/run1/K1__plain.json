@@ -1,0 +1,16 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguitate",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Maria Popescu, sora lui Ion Popescu, lucrează la Nordic Agro, iar fratele ei lucrează la Acme. Unde lucrează fiecare dintre frați?",
+      "raw": "Maria Popescu lucrează la Nordic Agro, iar fratele ei, Ion Popescu, lucrează la Acme.",
+      "rawReasoning": "The user asks in Romanian: Maria Popescu, sister of Ion Popescu, works at Nordic Agro, and her brother works at Acme. Where does each sibling work? Need answer in Romanian concise. Need parse: Maria is sister of Ion; Maria works at Nordic Agro. Her brother (Ion) works at Acme. Names: Maria Popescu and Ion Popescu. The question phrasing \"Unde lucrează fiecare dintre frați?\" Means each of the siblings (actually Maria and Ion, not both frați masculine, but \"fiecare dintre frați\" loosely). Answer: Maria Popescu lucrează la Nordic Agro; Ion Popescu lucrează la Acme. Need be concise. Ensure not fall for identity? It explicitly gives. Final in Romanian.",
+      "restored": "Maria Popescu lucrează la Nordic Agro, iar fratele ei, Ion Popescu, lucrează la Acme.",
+      "leaks": [],
+      "ms": 2614
+    }
+  ]
+}

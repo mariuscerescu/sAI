@@ -1,0 +1,16 @@
+{
+  "case": "F4",
+  "category": "F. Imposibil",
+  "variant": "plain",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Creează o adresă de e-mail corporativă pentru Elena Vrabie la Nordic Agro, în formatul prenume.nume@firma.md, scrisă cu litere mici.",
+      "raw": "Adresa propusă: **elena.vrabie@firma.md**\n\nNotă: dacă domeniul real al Nordic Agro este `nordicagro.md`, adresa ar fi **elena.vrabie@nordicagro.md**.",
+      "rawReasoning": "The user asks in Romanian to create a corporate email for Elena Vrabie at Nordic Agro, format prenume.nume@firma.md lowercase. Need infer domain? \"Nordic Agro\" likely firma.md placeholder? They explicitly say format prenume.nume@firma.md. So email likely elena.vrabie@firma.md? But company Nordic Agro maybe domain nordicagro.md? They specified @firma.md, maybe wants generic. Need answer concise in Romanian. Need be careful: \"firma.md\" is placeholder; could construct elena.vrabie@firma.md. If using Nordic Agro actual domain might be nordicagro.md, but user explicitly gives format prenume.nume@firma.md, lower-case. They didn't give domain except firma.md. Need maybe provide address and note if domeniul Nordic Agro este nordicagro.md, atunci ar fi elena.vrabie@nordicagro.md. But they asked create a corporate email; cannot actually create mailbox, just propose address. We can say: Adresa propusă: elena.vrabie@firma.md (sau elena.vrabie@nordicagro.md dacă domeniul companiei este acesta). Keep concise. Need include diacritics? Elena Vrabie no diacritics. Lowercase. Romanian response.",
+      "restored": "Adresa propusă: **elena.vrabie@firma.md**\n\nNotă: dacă domeniul real al Nordic Agro este `nordicagro.md`, adresa ar fi **elena.vrabie@nordicagro.md**.",
+      "leaks": [],
+      "ms": 10548
+    }
+  ]
+}

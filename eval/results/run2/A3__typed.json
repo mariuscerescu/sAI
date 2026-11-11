@@ -1,0 +1,38 @@
+{
+  "case": "A3",
+  "category": "A. Bază",
+  "variant": "typed",
+  "model": "thinkingmachines/inkling-2-small:free",
+  "turns": [
+    {
+      "user": "Reformulează corect gramatical: «Contractul Popescului cu Acme-ului a fost semnat de Cebanei la Proiectul Orion.»",
+      "raw": "Variantă corectă și sigură:\n\n**„Contractul încheiat de ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.”**\n\nDacă vrei să păstrezi structura inițială: **„Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.”**",
+      "rawReasoning": "The user asks in Romanian to reformulate grammatically. Need answer concise. Need inspect sentence: \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.\" Need placeholders exact.\n\nOriginal has \"Contractul ⟦PERSON_1⟧\" missing preposition? Likely intended \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧\" hmm need determine grammar. Romanian: \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului\" is malformed. Maybe should be \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.\" But placeholder ⟦COMPANY_1⟧-ului indicates genitive/dative suffix attached to placeholder? They want keep placeholders, maybe correct declension as \"⟦COMPANY_1⟧-ului\"? Need understand placeholders: ⟦COMPANY_1⟧ is a noun (company). In Romanian, \"cu ⟦COMPANY_1⟧-ului\" wrong because after cu requires accusative: \"cu ⟦COMPANY_1⟧\". If possessive contract of X with Y? \"Contractul ⟦PERSON_1⟧ al lui?\" Let's parse.\n\n\"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului a fost semnat...\" Maybe intended \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧, al ...\"? The placeholder name ⟦PERSON_1⟧ after Contractul lacks \"lui\" or \"al\". Could be \"Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat...\" Natural Romanian: \"Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.\" But if PERSON_1 is name with genitive? e.g. \"Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului\" maybe missing preposition \"al\": \"Contractul al ⟦PERSON_1⟧\" not grammatical for proper name? Romanian genitive of proper names: \"contractul lui ⟦PERSON_1⟧\" or \"contractul ⟦PERSON_1⟧-ului\" if name ends in consonant? Placeholder complicates because can't know gender/case. Need not guess; provide safe correction.\n\nCould say: „Contractul lui ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.” If referring to contract concluded by person: alternative „Contractul încheiat de ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧ ...” This avoids declension uncertainty. Need answer concise. Include note: if ⟦COMPANY_1⟧ needs genitive, use „contractul ⟦COMPANY_1⟧-ului” only in proper contexts? Hmm.\n\nNeed ensure placeholders exactly as given. Final in Romanian. Maybe mention variants depending intended meaning.\n\nNeed not use tool further.",
+      "restored": "Variantă corectă și sigură:\n\n**„Contractul încheiat de Ion Popescu cu Acme a fost semnat de Ceban la Proiectul Orion.”**\n\nDacă vrei să păstrezi structura inițială: **„Contractul lui Ion Popescu cu Acme a fost semnat de Ceban la Proiectul Orion.”**",
+      "leaks": [],
+      "ms": 9997,
+      "redactReport": {
+        "countsByClass": {
+          "PERSON": 2,
+          "COMPANY": 1,
+          "PROJECT": 1
+        },
+        "tokensUsed": [
+          "⟦PERSON_1⟧",
+          "⟦COMPANY_1⟧",
+          "⟦PERSON_2⟧",
+          "⟦PROJECT_1⟧"
+        ],
+        "warnings": [],
+        "strategy": "typed"
+      },
+      "sentUser": "Reformulează corect gramatical: «Contractul ⟦PERSON_1⟧ cu ⟦COMPANY_1⟧-ului a fost semnat de ⟦PERSON_2⟧ la ⟦PROJECT_1⟧.»",
+      "restoreReport": {
+        "restored": 51,
+        "tolerantMatches": [],
+        "unknownTokens": [],
+        "suspicious": []
+      }
+    }
+  ]
+}

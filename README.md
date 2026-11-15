@@ -38,11 +38,12 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 
 ## Rezultate
 
-- **840 de teste automate.** Ele acoperă:
+- **855 de teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.
 - **Testul de potriviri false** pe ~360.000 de cuvinte din Wikipedia (română și engleză): niciun cuvânt scris cu literă mică nu e mascat greșit.
+- **Acoperirea flexiunilor** pe 339.212 cuvinte din Wikipedia: 92,4% din formele flexionate ale numelor proprii sunt generate direct, încă 4% din baza corectă (vezi [eval/results/inflection-coverage-wiki.md](eval/results/inflection-coverage-wiki.md)). În engleză, pe 251.322 de cuvinte: pluralul și posesivul sunt acoperite 100% ([eval/results/inflection-coverage-wiki-en.md](eval/results/inflection-coverage-wiki-en.md)).
 - **Evaluarea cu un model real,** în română și engleză: zero scurgeri ale numelor declarate. Vezi:
   - [eval/RAPORT-flexiuni.md](eval/RAPORT-flexiuni.md)
   - [eval/RAPORT-engleza.md](eval/RAPORT-engleza.md)

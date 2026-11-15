@@ -79,6 +79,14 @@ describe('language packs', () => {
     expect(engine.problems).toContain('unknown language "xx"')
     expect(engine.settings.languages).toEqual(['ro', 'en'])
   })
+
+  it('forms the -ies plural of a consonant + y, and keeps the family -ys', () => {
+    expect(englishWordForms('industry')).toEqual(['industry', 'industrys', 'industries'])
+    expect(englishWordForms('kennedy')).toContain('kennedys')
+    expect(englishWordForms('day')).toEqual(['day', 'days'])
+    const engine = new Engine({ patterns: [], languages: ['en'], vocabulary: [{ id: 'u', class: 'ORGANIZATION', terms: ['Northfield University'] }] })
+    expect(engine.session().redact('Both Northfield Universities closed.').text).toBe('Both ⟦ORGANIZATION_1⟧ closed.')
+  })
 })
 
 describe('capital letters', () => {

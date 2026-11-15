@@ -67,6 +67,32 @@ describe('forms a declared name takes in a sentence', () => {
     expect(session.restore(session.redact('Contul Băncii Verzi e activ.').text).text).toBe('Contul Banca Verde e activ.')
   })
 
+  it.each([
+    // Words ending in -i: București, Carpați, Bălți, Război
+    ['Locuitorii Bucureștiului au votat.', 'București', 'COMPANY', 'Bucureștiului'],
+    ['Pădurile Carpaților sunt vechi.', 'Carpați', 'LOCATION', 'Carpaților'],
+    ['Am urcat în Carpații Orientali.', 'Carpați', 'LOCATION', 'Carpații'],
+    ['Primăria Bălțului a decis.', 'Bălți', 'LOCATION', 'Bălțului'],
+    ['Sfârșitul Războiului a venit.', 'Război', 'PROJECT', 'Războiului'],
+    // Words ending in -e: genitive -ii, article -le, plural genitive -lor
+    ['Consiliul Securității a votat.', 'Securitate', 'ORGANIZATION', 'Securității'],
+    ['Lumina Soarelui e puternică.', 'Soare', 'PROJECT', 'Soarelui'],
+    ['Am văzut Soarele azi.', 'Soare', 'PROJECT', 'Soarele'],
+    ['Guvernul Filipinelor a răspuns.', 'Filipine', 'LOCATION', 'Filipinelor'],
+    // The form without the article
+    ['A fost o universitate mare, dar Universitate Tehnică nu există.', 'Universitatea', 'ORGANIZATION', 'Universitate'],
+    // Plural of consonant-final words
+    ['Președintele Statelor a sosit.', 'Stat', 'ORGANIZATION', 'Statelor'],
+    // Genitive alternations ea → e, ia → ie
+    ['Primăria Sucevei a decis.', 'Suceava', 'LOCATION', 'Sucevei'],
+    ['Administrația Pieței a decis.', 'Piața', 'COMPANY', 'Pieței'],
+    // A name that only ends in -ul
+    ['Primarul Istanbulului a sosit.', 'Istanbul', 'LOCATION', 'Istanbulului'],
+  ])('%s', (text, declared, cls, form) => {
+    const out = new Engine({ vocabulary: [{ id: 'x', class: cls, terms: [declared] }], patterns: [] }).session().redact(text)
+    expect(out.text).not.toContain(form)
+  })
+
   it('still leaves ordinary lowercase words alone in a text that capitalizes names', () => {
     // "flori", "mari", "verzi" are everyday words; one-word forms need a capital here.
     const out = engine.session().redact('Am cumpărat flori mari și verzi pentru Maria Ceban.')

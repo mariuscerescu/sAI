@@ -19,9 +19,9 @@ const MAX_FORMS_PER_TERM = 96
 /**
  * A stem as it reads before the endings -i, -ii, -ile, -ilor, where Romanian changes the
  * last syllable: d → z (verde → verzi), sc → șt (Popescu → Popeștii), oa → o (Floarea →
- * Florii, școala → școlii), ea → e (seara → serii). t → ț and s → ș need no rule: the
- * search view drops diacritics. Both readings are kept, since not every word alternates
- * (Ioana → Ioanei keeps oa).
+ * Florii, școala → școlii), ea → e (seara → serii, Suceava → Sucevei), ia → ie (piața →
+ * pieței, pretoriană → pretoriene). t → ț and s → ș need no rule: the search view drops
+ * diacritics. Both readings are kept, since not every word alternates (Ioana → Ioanei keeps oa).
  * @param stem - normalized stem without its ending.
  * @returns the stem, then its alternated reading when different.
  */
@@ -31,6 +31,7 @@ export function alternations(stem: string): string[] {
     .replace(/d$/, 'z')
     .replace(/oa([^aeiou]+)$/, 'o$1')
     .replace(/ea([^aeiou]+)$/, 'e$1')
+    .replace(/ia([^aeiou]+)$/, 'ie$1')
   return changed === stem ? [stem] : [stem, changed]
 }
 
@@ -56,12 +57,15 @@ export function wordForms(word: string, singular = false): string[] {
   if (word.endsWith('ea')) {
     // Andreea → Andreei, Andreeo (vocative) · Universitatea → Universității, Universitățile · Floarea → Florii
     const base = word.slice(0, -1)
-    add(`${base}i`, `${base.slice(0, -1)}ii`, `${base}o`)
+    // The form without the article: Universitatea → Universitate · Curtea → Curte
+    add(`${base}i`, `${base.slice(0, -1)}ii`, `${base}o`, base)
     iPlural(base.slice(0, -1), singular ? ['ii'] : I_PLURAL)
   } else if (word.endsWith('a')) {
     // Maria → Mariei · Banca → Băncii · Olga → Olgăi · Tehnica → Tehnice · Maria → Mario
     const stem = word.slice(0, -1)
     add(`${stem}ei`, `${stem}ii`, `${stem}ai`, `${stem}e`, `${stem}o`)
+    // The genitive alternates too: Suceava → Sucevei · Piața → Pieței
+    for (const reading of alternations(stem).slice(1)) add(`${reading}ei`)
     // Plural: Banca → Bănci, Băncile, Băncilor · Școala → Școlii, Școlile · Casa → Casele, Caselor
     // · Neagra → Negre (the -e ending alternates too)
     iPlural(stem, singular ? ['ii'] : I_PLURAL)
@@ -72,7 +76,8 @@ export function wordForms(word: string, singular = false): string[] {
   } else if (word.endsWith('ul')) {
     // Proiectul → Proiectului · plural: Grupul → Grupurile, Grupurilor · Proiectul → Proiectele · Lupul → Lupii
     const base = word.slice(0, -2)
-    add(`${word}ui`)
+    // A name that merely ends in -ul takes the article itself: Istanbul → Istanbulului
+    add(`${word}ui`, `${word}ului`)
     if (!singular) {
       add(`${base}uri`, `${base}urile`, `${base}urilor`, `${base}ele`, `${base}elor`)
       iPlural(base, ['ii', 'ilor'])
@@ -86,20 +91,35 @@ export function wordForms(word: string, singular = false): string[] {
   } else if (word.endsWith('e')) {
     // Vrabie → Vrabiei · Sandule (vocative) has no rule here
     add(`${word}i`, `${word}lui`)
-    // Plural and feminine genitive: Verde → Verzi · Mare → Mari · Floare → Flori, Florile · Carte → Cărți
-    if (!singular) iPlural(word.slice(0, -1), ['i', 'ile', 'ilor'])
-  } else if (word.endsWith('i') || word.endsWith('o')) {
-    // Ursachi, Mario: only the analytic genitive ("lui Ursachi") exists
+    // Feminine genitive with the article: Securitate → Securității · Mare → Marii (Marii Britanii)
+    iPlural(word.slice(0, -1), ['ii'])
+    if (!singular) {
+      // Plural: Verde → Verzi · Mare → Mari · Floare → Flori, Florile · Carte → Cărți
+      iPlural(word.slice(0, -1), ['i', 'ile', 'ilor'])
+      // Masculine article and plural genitive: Soare → Soarele · Mare → Marele · Filipine → Filipinelor
+      add(`${word}le`, `${word}lor`)
+    }
+  } else if (word.endsWith('i')) {
+    // București → Bucureștiul, Bucureștiului · Război → Războiul · Vechi → Vechiul · Bălți → Bălțului
+    add(`${word}ul`, `${word}ului`, `${word.slice(0, -1)}ului`)
+    if (!singular) {
+      // Plural with the article: Carpați → Carpații, Carpaților · Alpi → Alpii · Ramuri → Ramurile
+      // · Munții → Munților, Principii → Principiile
+      add(`${word}i`, `${word}le`, word.endsWith('ii') ? `${word.slice(0, -1)}lor` : `${word}lor`)
+    }
+  } else if (word.endsWith('o')) {
+    // Mario, Bruno: only the analytic genitive ("lui Bruno") exists
   } else {
     // Consonant: Ceban → Cebanul, Cebanului, Cebanule, Cebanei · Orion → Orionului
     add(`${word}ul`, `${word}ului`, `${word}ule`, `${word}ei`)
     // Vocative: Ștefan → Ștefane, Pavel → Pavele; with o → oa in the last syllable: Ion → Ioane
     add(`${word}e`)
     if (/o[^aeiou]+$/.test(word)) add(word.replace(/o([^aeiou]+)$/, 'oa$1e'))
-    // Plural: Ceban → Cebanii, Cebanilor · Grup → Grupuri, Grupurile, Grupurilor
+    // Plural: Ceban → Cebanii, Cebanilor · Grup → Grupuri, Grupurile, Grupurilor · Roman → Romani
+    // · Stat → Statele, Statelor
     if (!singular) {
-      iPlural(word, ['ii', 'ilor'])
-      add(`${word}uri`, `${word}urile`, `${word}urilor`)
+      iPlural(word, ['i', 'ii', 'ilor'])
+      add(`${word}uri`, `${word}urile`, `${word}urilor`, `${word}ele`, `${word}elor`)
     }
   }
   return [...forms]

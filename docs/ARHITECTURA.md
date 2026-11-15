@@ -271,7 +271,12 @@ Formatul fiecărei secțiuni: **Rol, Intrare, Ieșire, Erori, Puncte de extensie
 **Formele flexionate (15.11.2026).** Pachetul de limbă generează, prin reguli (fără dicționar), formele fiecărui cuvânt dintr-un termen declarat:
 - **singular:** genitiv/dativ, articol hotărât, vocativ (Popescului, Mariei, Băncii, Ioane, Ștefane, Petre);
 - **alternanțele din rădăcină** dinaintea terminațiilor -i, -ii, -ile, -ilor, -e: d → z (Verde → Verzi), sc → șt (Popescu → Popeștii), oa → o (Floarea → Florii, Școala → Școlii), ea → e (Neagră → Negre). t → ț și s → ș nu au nevoie de regulă, pentru că căutarea ignoră diacriticele;
-- **pluralul:** Băncile, Băncilor, Grupurile, Grupurilor, Proiectele, Casele, Cebanii. Un prenume găsit singur primește doar formele de singular, pentru că pluralele lui sunt de obicei alte cuvinte („Mării” de la „Marea Neagră” pentru Maria, „Stelele” pentru Stela).
+- **pluralul:** Băncile, Băncilor, Grupurile, Grupurilor, Proiectele, Casele, Cebanii, Statele, Romani. Un prenume găsit singur primește doar formele de singular, pentru că pluralele lui sunt de obicei alte cuvinte („Mării” de la „Marea Neagră” pentru Maria, „Stelele” pentru Stela);
+- **cuvintele terminate în -i** (București → Bucureștiului, Carpați → Carpaților, Bălți → Bălțului) și **în -e** (Securitate → Securității, Soare → Soarele, Filipine → Filipinelor), **forma nearticulată** (Universitatea → Universitate), **alternanțele la genitiv** ea → e și ia → ie (Suceava → Sucevei, Piața → Pieței).
+
+**Acoperirea măsurată** pe 339.212 cuvinte din Wikipedia (`scripts/wiki-inflection-coverage.ts`, rezultate în `eval/results/inflection-coverage-wiki.md`): 92,4% din aparițiile formelor flexionate ale numelor proprii sunt generate direct din bază, alte 4,0% din baza corectă. Restul de 3,6% sunt mai ales nume străine, cuvinte diferite și forme neregulate (Munți → Munte, Mâncare → Mâncăruri).
+
+**Engleza** flexionează puțin numele: pachetul generează pluralul (+s, +es, iar consoană + y → -ies: Industries, Universities, păstrând și -ys: „the Kennedys”). Posesivul („Smith's”) e prins fără o formă generată, pentru că apostroful e graniță de cuvânt. Pe 251.322 de cuvinte din Wikipedia (`scripts/wiki-inflection-coverage-en.ts`): +s 100%, -ies 100%, posesivul 100%. Neregulatele (Men, Lives, Wolves) se declară.
 
 Un termen din mai multe cuvinte se caută **cuvânt cu cuvânt**: fiecare cuvânt din text poate fi oricare formă a cuvântului de pe aceeași poziție („Băncii Verzi”, „Cooperativei Agricole Prut”). Combinațiile nu se mai enumeră, deci nu mai există o limită de combinații pe termen. Vechea limită de 96 tăia exact formele acordate corect.
 

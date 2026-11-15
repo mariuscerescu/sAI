@@ -226,6 +226,18 @@
   - Viteză: compilarea a 1.000 de intrări durează 25 ms (1,4 MB); un mesaj de 50 de cuvinte, 0,3–0,6 ms.
   - Se declară explicit (nu se generează): diminutivele (Ionel, Gheorghiță), derivatele (Ruseștilor), pluralele neregulate englezești (Wolves).
 
+- [x] **G4 · Acoperirea flexiunilor măsurată pe Wikipedia (15.11.2026)**
+  - Metoda: 339.212 cuvinte românești din Wikipedia. Perechile bază → formă ale numelor scrise cu majusculă sunt extrase cu o gramatică independentă, mai largă decât generatorul. Script: `scripts/wiki-inflection-coverage.ts`.
+  - Înainte: 75,6% din apariții generate direct din bază. Golurile: cuvintele în -i (București, Carpați), în -e (Securitate, Soare), forma nearticulată (Universitate), pluralul cu consoană (Statele), alternanțele la genitiv (Sucevei, Pieței).
+  - Corecție: reguli pentru toate acestea, plus „Bălți → Bălțului” și „Istanbul → Istanbulului”.
+  - După: **92,4%** generate direct din bază și 4,0% din baza corectă; 3,6% negenerate. Verificate manual, acestea sunt mai ales nume străine (Galileo, Ernesto), cuvinte diferite (Varna/Verne) și pluralul luat drept bază. Golurile reale rămase sunt cam 35 de apariții: Geniu → Genii, Olaru → Olari, neregulate ca Munți → Munte.
+  - Testul de potriviri false: neschimbat (566 în română, 695 în engleză, niciun cuvânt scris cu literă mică). Suita are 854 de teste, toate trec.
+  - **Engleză** (251.322 de cuvinte, `scripts/wiki-inflection-coverage-en.ts`):
+    - pluralul +s și posesivul erau deja acoperite 100%;
+    - singurul gol era -y → -ies (Universities, Companies), 0 din 38;
+    - după adăugarea regulii: 38 din 38;
+    - potrivirile false au rămas neschimbate; suita are 855 de teste.
+
 ---
 
 ## Ordinea de lucru propusă

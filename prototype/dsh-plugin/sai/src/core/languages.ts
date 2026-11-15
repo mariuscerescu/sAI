@@ -49,7 +49,11 @@ const ENGLISH_INVARIANT = new Set([
  */
 export function englishWordForms(word: string, singular = false): string[] {
   if (singular || word.length < 3 || !/^\p{L}+$/u.test(word) || ENGLISH_INVARIANT.has(word)) return [word]
-  return [word, /(?:s|x|z|ch|sh)$/.test(word) ? `${word}es` : `${word}s`]
+  const forms = [word, /(?:s|x|z|ch|sh)$/.test(word) ? `${word}es` : `${word}s`]
+  // A consonant + y: Industry → Industries, University → Universities. Family names keep -ys
+  // ("the Kennedys"), so both plurals are kept.
+  if (/[^aeiou]y$/.test(word)) forms.push(`${word.slice(0, -1)}ies`)
+  return forms
 }
 
 /** Every shipped pack, keyed by id. */

@@ -4,6 +4,7 @@ import { checksum731, checksumCnp, Engine, ibanMod97, luhn, RedactionBatch, type
 const VOCABULARY: SaiSettings['vocabulary'] = [
   { id: 'pers_ion', class: 'PERSON', terms: ['Ion Popescu', 'Popescu', 'dl. Popescu'] },
   { id: 'acme', class: 'COMPANY', terms: ['Acme Logistic SRL', 'Acme Logistic', 'Acme'] },
+  { id: 'pers_maria', class: 'PERSON', terms: ['Maria Rusu'] },
 ]
 
 const TEXT = 'Dl. Popescu de la Acme a sunat de pe 069123456. IDNP: 2001234567891. Maria Rusu confirmă.'
@@ -58,7 +59,7 @@ describe('typed strategy', () => {
     expect(session.redact(TEXT).text).toBe(first)
   })
 
-  it('finds a known name again when written without capitals', () => {
+  it('finds a declared name again when written without capitals', () => {
     const session = new Engine({ vocabulary: VOCABULARY }).session()
     session.redact(TEXT)
     expect(session.redact('am vorbit cu maria rusu ieri').text).toBe('am vorbit cu ⟦PERSON_2⟧ ieri')
@@ -83,10 +84,11 @@ describe('typed strategy', () => {
     expect(blocked.verdict).toMatchObject({ kind: 'blocked', code: 'POLICY_BLOCKED', classId: 'CARD' })
     expect(blocked.text).toBe('')
 
-    const keep = new Engine({ warnHandling: 'keep' }).session().redact('Rusu a întârziat.')
+    // A first name alone is uncertain (0.6, below the PERSON threshold of 0.85).
+    const keep = new Engine({ vocabulary: VOCABULARY, warnHandling: 'keep' }).session().redact('Maria a întârziat.')
     expect(keep.verdict).toEqual({ kind: 'needs-confirmation' })
-    expect(keep.text).toBe('Rusu a întârziat.')
-    const auto = new Engine({}).session().redact('Rusu a întârziat.')
+    expect(keep.text).toBe('Maria a întârziat.')
+    const auto = new Engine({ vocabulary: VOCABULARY }).session().redact('Maria a întârziat.')
     expect(auto.text).toBe('⟦PERSON_1⟧ a întârziat.')
     expect(auto.report.warnings).toHaveLength(1)
   })

@@ -34,7 +34,7 @@ export interface Candidate {
   readonly end: number
   readonly classId: ClassId
   readonly detector: DetectorId
-  /** Higher wins overlaps: literal 400, dictionary 300, session 250, pattern 200, names 100. */
+  /** Higher wins overlaps: literal 400, dictionary 300, session 250, pattern 200. */
   readonly priority: number
   /** Rule-based score in [0, 1]; compared with the class threshold by the policy. */
   readonly confidence: number

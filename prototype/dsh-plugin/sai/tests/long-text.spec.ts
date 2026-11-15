@@ -7,12 +7,13 @@ import { describe, expect, it } from 'vitest'
 import { Engine } from '../src/core/index.ts'
 
 describe('repeated spellings within one text', () => {
-  it('replaces a titled name also where it appears without its title', () => {
-    const session = new Engine({}).session()
-    const out = session.redact('Am vorbit cu dl. Botezatu ieri. Apoi Botezatu a plecat acasă.')
+  it('replaces a first name joined to a protected surname everywhere in the text', () => {
+    const session = new Engine({ vocabulary: [{ id: 'm', class: 'PERSON', terms: ['Cristina Munteanu'] }] }).session()
+    const text = 'Am vorbit cu Floare Munteanu ieri. Floare Munteanu a plecat acasă.'
+    const out = session.redact(text)
     expect(out.verdict.kind).toBe('proceed')
-    expect(out.text).not.toContain('Botezatu')
-    expect(session.restore(out.text).text).toBe('Am vorbit cu dl. Botezatu ieri. Apoi Botezatu a plecat acasă.')
+    expect(out.text).not.toContain('Floare')
+    expect(session.restore(out.text).text).toBe(text)
   })
 
   it('does not block a long text', () => {

@@ -8,7 +8,6 @@
 import { termForms } from '../inflection.ts'
 import { combineLanguages, DEFAULT_LANGUAGES } from '../languages.ts'
 import { keyString } from '../vault.ts'
-import { isFirstName, isKnownName, isLastName } from './names.ts'
 import { isSentenceStart, isWordBounded, normalizeTerm, toOriginalRange } from '../normalize.ts'
 import type { VocabularyEntry } from '../settings.ts'
 import type { Candidate, ClassId, EntityKey, NormalizedText } from '../types.ts'
@@ -189,10 +188,9 @@ export function compileDictionary(vocabulary: readonly VocabularyEntry[], langua
         }
         continue
       }
-      // A one-word form is uncertain when it is a name in its own right ("Petre", vocative of
-      // "Petru", is also another person's name) or comes from a first name found alone ("Ioane").
+      // A form is uncertain when two entities share it or it comes from a first name found alone ("Ioane").
       const oneWord = !form.includes(' ')
-      const ambiguous = collision || confidence < 1 || (oneWord && form !== norm && isKnownName(form))
+      const ambiguous = collision || confidence < 1
       generated.set(form, {
         baseLength: norm.length,
         term: {
@@ -294,9 +292,10 @@ interface Source {
 
 /**
  * Each word of a multi-word person term is also searched alone: "Ion Rusu" protects
- * "Ion", "Ioane", "Rusu" and "Rusului". A first name alone is uncertain (another
- * Ion may be meant), so it is masked with a warning; a surname alone is certain
- * unless it is also an ordinary word or a first name.
+ * "Ion", "Ioane", "Rusu" and "Rusului". Terms are read as first names then surname:
+ * every name word but the last is a first name ("Ana Maria Popescu"). A first name alone
+ * is uncertain (another Ion may be meant), so it is masked with a warning and only when
+ * capitalized; a surname alone is certain.
  * @param vocabulary - resolved entries.
  * @returns the derived parts and, for every one-word person spelling, the entries that own it.
  */
@@ -317,15 +316,13 @@ function nameParts(vocabulary: readonly VocabularyEntry[], notNames: ReadonlySet
     for (const term of entry.terms) {
       const words = term.split(/\s+/).filter(Boolean)
       if (words.length === 1) { own(normalizeTerm(term), entry.id!); continue }
-      let position = 0
-      for (const word of words) {
-        const { spelling, norm } = bareWord(word)
-        if (norm.length < 3 || !NAME_PART.test(norm) || notNames.has(norm.replace(/\./g, ''))) continue
-        const index = position++
+      const names = words.map(bareWord)
+        .filter(({ norm }) => norm.length >= 3 && NAME_PART.test(norm) && !notNames.has(norm.replace(/\./g, '')))
+      for (const [index, { spelling, norm }] of names.entries()) {
         own(norm, entry.id!)
         if (seen.has(norm)) continue
         seen.add(norm)
-        const firstName = isFirstName(norm) || (index === 0 && !isLastName(norm))
+        const firstName = index < names.length - 1
         parts.push({ entry, norm, spelling, confidence: firstName ? AMBIGUOUS_FORM_CONFIDENCE : 1, firstName })
       }
     }

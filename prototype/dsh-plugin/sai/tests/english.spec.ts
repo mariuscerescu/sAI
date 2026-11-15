@@ -15,7 +15,7 @@ const vocabulary: VocabularyEntry[] = ENGLISH_CASES.map(c => ({ id: c.id, class:
 const NOT_NAMES = new Set(['mr', 'mrs', 'ms', 'dr', 'sir', 'inc', 'ltd', 'llc', 'corp', 'plc', 'llp', 'gmbh', 'corporation', 'project', 'operation'])
 
 describe.each([['en'], ['ro', 'en']])('English sentences with languages %s', (...languages) => {
-  const engine = new Engine({ vocabulary, names: false, patterns: [], languages })
+  const engine = new Engine({ vocabulary, patterns: [], languages })
   const sentences = ENGLISH_CASES.flatMap(c => c.sentences.map(sentence => [c.id, sentence, c] as const))
 
   it('has about 150 sentences', () => { expect(sentences.length).toBeGreaterThanOrEqual(140) })
@@ -45,17 +45,17 @@ describe('language packs', () => {
   const people: VocabularyEntry[] = [{ id: 'a', class: 'PERSON', terms: ['Ann Green'] }, { id: 'd', class: 'PERSON', terms: ['Dan Brown'] }, { id: 'i', class: 'PERSON', terms: ['Ion Rusu'] }]
 
   it('applies Romanian forms only when Romanian is enabled', () => {
-    const english = new Engine({ vocabulary: people, names: false, patterns: [], languages: ['en'] })
+    const english = new Engine({ vocabulary: people, patterns: [], languages: ['en'] })
     expect(english.session().redact('Anne met a Dane.').decisions).toHaveLength(0)
     expect(english.session().redact('Ioane, vino.').decisions).toHaveLength(0)
-    const both = new Engine({ vocabulary: people, names: false, patterns: [], languages: ['ro', 'en'] })
+    const both = new Engine({ vocabulary: people, patterns: [], languages: ['ro', 'en'] })
     expect(both.session().redact('Ioane, vino.').decisions).toHaveLength(1)
   })
 
   it('applies the English plural only when English is enabled', () => {
-    const romanian = new Engine({ vocabulary: people, names: false, patterns: [], languages: ['ro'] })
+    const romanian = new Engine({ vocabulary: people, patterns: [], languages: ['ro'] })
     expect(romanian.session().redact('We met the Greens.').decisions).toHaveLength(0)
-    const english = new Engine({ vocabulary: people, names: false, patterns: [], languages: ['en'] })
+    const english = new Engine({ vocabulary: people, patterns: [], languages: ['en'] })
     expect(english.session().redact('We met the Greens.').decisions).toHaveLength(1)
   })
 
@@ -67,7 +67,7 @@ describe('language packs', () => {
   })
 
   it('drops the legal form of a company name in both languages', () => {
-    const engine = new Engine({ names: false, patterns: [], vocabulary: [{ id: 'r', class: 'COMPANY', terms: ['SC Acme Logistic S.R.L.'] }] })
+    const engine = new Engine({ patterns: [], vocabulary: [{ id: 'r', class: 'COMPANY', terms: ['SC Acme Logistic S.R.L.'] }] })
     const session = engine.session()
     const out = session.redact('Contractul cu Acme Logistic e semnat.')
     expect(out.decisions).toHaveLength(1)
@@ -91,10 +91,10 @@ describe('capital letters', () => {
   })
 
   it('reads a sentence-initial capital as the keyboard\'s, not the writer\'s', () => {
-    const engine = new Engine({ names: false, patterns: [], vocabulary: [{ id: 's', class: 'PERSON', terms: ['John Smith'] }] })
+    const engine = new Engine({ patterns: [], vocabulary: [{ id: 's', class: 'PERSON', terms: ['John Smith'] }] })
     expect(engine.session().redact('I talked to smith yesterday.').decisions).toHaveLength(1)
     // A first name alone needs its capital: "will", "mark" and "grace" are usually ordinary words.
-    const will = new Engine({ names: false, patterns: [], vocabulary: [{ id: 'w', class: 'PERSON', terms: ['Will Turner'] }] })
+    const will = new Engine({ patterns: [], vocabulary: [{ id: 'w', class: 'PERSON', terms: ['Will Turner'] }] })
     expect(will.session().redact('I will call you.').decisions).toHaveLength(0)
     expect(will.session().redact('Will called me.').decisions).toHaveLength(1)
   })

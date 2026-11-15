@@ -21,7 +21,7 @@ export interface LanguagePack {
    * @param word - one word of a normalized term (lowercase, no diacritics).
    */
   readonly wordForms: (word: string) => readonly string[]
-  /** Titles and particles written next to names that are not name parts (normalized, no dots). */
+  /** Titles, particles, and salutations written next to names that are not name parts (normalized, no dots). */
   readonly notNames: readonly string[]
   /** Legal-form words of company names (normalized, no dots): "Acme Corp" also protects "Acme". */
   readonly legalForms: readonly string[]
@@ -55,7 +55,10 @@ export const LANGUAGES: Readonly<Record<LanguageId, LanguagePack>> = {
   ro: {
     id: 'ro',
     wordForms: romanianWordForms,
-    notNames: ['dl', 'dna', 'd-na', 'd-l', 'domnul', 'doamna', 'domnului', 'doamnei', 'dr', 'av', 'prof', 'ing', 'de', 'din', 'si'],
+    notNames: [
+      'dl', 'dna', 'd-na', 'd-l', 'domnul', 'doamna', 'domnului', 'doamnei', 'dr', 'av', 'prof', 'ing', 'de', 'din', 'si',
+      'stimate', 'stimata', 'draga', 'dragul', 'salut',
+    ],
     legalForms: ['srl', 'sa', 'sc', 'ii', 'ong', 'snc', 'scs', 'ra', 'im'],
     orgWords: [
       'banca', 'grupul', 'grup', 'compania', 'firma', 'societatea', 'fundatia', 'asociatia', 'universitatea', 'ministerul',
@@ -69,7 +72,10 @@ export const LANGUAGES: Readonly<Record<LanguageId, LanguagePack>> = {
   en: {
     id: 'en',
     wordForms: englishWordForms,
-    notNames: ['mr', 'mrs', 'ms', 'miss', 'mx', 'sir', 'madam', 'dr', 'prof', 'jr', 'sr', 'van', 'von', 'of', 'the'],
+    notNames: [
+      'mr', 'mrs', 'ms', 'miss', 'mx', 'sir', 'madam', 'lady', 'lord', 'dr', 'prof', 'jr', 'sr', 'van', 'von', 'of', 'the',
+      'dear', 'hi', 'hello',
+    ],
     legalForms: ['inc', 'ltd', 'llc', 'corp', 'co', 'plc', 'llp', 'lp', 'gmbh', 'ag', 'corporation', 'incorporated', 'limited'],
     orgWords: [
       'the', 'bank', 'group', 'company', 'foundation', 'association', 'university', 'college', 'school', 'ministry', 'department',

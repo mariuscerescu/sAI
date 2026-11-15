@@ -8,7 +8,7 @@ import { termForms } from '../src/core/inflection.ts'
 
 import { CASES, type Case } from './fixtures/inflection-vocabulary.ts'
 
-const make = (vocabulary: VocabularyEntry[]): Engine => new Engine({ vocabulary, names: false, patterns: [] })
+const make = (vocabulary: VocabularyEntry[]): Engine => new Engine({ vocabulary, patterns: [] })
 
 describe('name parts', () => {
   const engine = make([
@@ -32,6 +32,14 @@ describe('name parts', () => {
   it('warns on a first name alone but not on a surname alone', () => {
     expect(engine.session().redact('Ion a venit.').report.warnings).toHaveLength(1)
     expect(engine.session().redact('Rusu a venit.').report.warnings).toHaveLength(0)
+  })
+
+  it('reads every name word but the last as a first name, without name lists', () => {
+    const triple = make([{ id: 't', class: 'PERSON', terms: ['Ana Maria Popescu'] }])
+    // "Maria" is a first name here: masked only with its capital, with a warning.
+    expect(triple.session().redact('am vorbit cu maria ieri').decisions).toHaveLength(0)
+    expect(triple.session().redact('Am vorbit cu Maria ieri.').report.warnings).toHaveLength(1)
+    expect(triple.session().redact('Am vorbit cu Popescu ieri.').report.warnings).toHaveLength(0)
   })
 
   it('gives a part the symbol of its only owner', () => {

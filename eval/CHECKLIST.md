@@ -35,7 +35,7 @@
 
 - [x] **A4 · P0 · Prenume necunoscut lângă un nume protejat**
   - Cazuri: F1 („Mariei Ceban”), I3, K2 („Floare Munteanu”), K1 („Maria Popescu”)
-  - Corecție: detectorul de nume extinde potrivirea și spre stânga (cuvânt cu majusculă, sau prenume din listă, lipit de un nume). Dacă perechea nu e un termen din vocabular, devine o entitate nouă (vezi B4).
+  - Corecție: un cuvânt cu majusculă lipit de un nume protejat e prenumele lui. Dacă perechea nu e un termen din vocabular, devine o entitate nouă (vezi B4). (Varianta inițială folosea și listele de prenume; listele au fost eliminate pe 15.11.2026, vezi G1.)
   - Gata când: „Maria Popescu” și „Floare Munteanu” sunt mascate integral; K1 nu mai contopește cele două persoane.
   - **Rezolvat:**
     - prenumele și numele de familie ale persoanelor declarate sunt mascate și singure;
@@ -189,6 +189,21 @@
   - Rezolvat: forma IBAN-ului acceptă doar grupuri de câte 4 caractere și reîncearcă fără grupurile de la final; cifrele lipite de litere nu mai sunt considerate card, telefon sau IDNP. Teste adăugate (27/27).
 - [x] **F2 · P2 · Răspunsuri goale din cauza limitei de tokeni** (A3, A4, B1, C2, F6, H4)
   - Rezolvat în rulare: limita a crescut de la 2.500 la 8.000 de tokeni pentru modelele care raționează mult.
+
+---
+
+## G. Decizii de produs
+
+- [x] **G1 · Detectorul de nume din liste eliminat (15.11.2026)**
+  - Motiv: listele aveau 725 de nume (406 prenume, 339 de nume de familie, RO/MD și EN) și prindeau doar numele frecvente. Un detector care lasă să treacă numele rare dă o siguranță falsă.
+  - Regula de produs: sAI protejează garantat doar ce e declarat în vocabular (cu formele regulate) și identificatorii în formatele standard ale tiparelor activate. Persoanele nedeclarate ajung la model așa cum sunt scrise; pagina de setări spune asta explicit.
+  - Schimbări în cod:
+    - `NameDetector`, listele și setarea `names` au fost șterse;
+    - părțile unui nume declarat se citesc după poziție (toate cuvintele, în afară de ultimul, sunt prenume);
+    - la început de propoziție, un cuvânt se lipește de un nume protejat doar înaintea formei declarate, nu înaintea unei forme flexionate;
+    - formulele de adresare (`stimate`, `dragă`, `dear`, `hello`…) au fost adăugate la titluri.
+  - Teste: 808 trec; un test nou verifică explicit că persoanele nedeclarate trec neatinse.
+  - Rezultatele vechi (run1–run4, run-en1–run-en4) au fost obținute cu detectorul activ și rămân ca istoric.
 
 ---
 

@@ -42,7 +42,6 @@ export interface Config {
   warnHandling: Volatile<WarnHandling>
   vocabulary: Volatile<VocabularyEntry[]>
   patterns: Volatile<string[]>
-  names: Volatile<boolean>
   actions: Volatile<Record<string, Action>>
   minConfidence: Volatile<Record<string, number>>
   allowlist: Volatile<string[]>
@@ -68,7 +67,6 @@ export const Config = z.object({
     restoreAs: z.string(),
   })).default([]).volatile(),
   patterns: z.array(z.string()).default([...DEFAULT_PATTERNS]).volatile(),
-  names: z.boolean().default(DEFAULT_SETTINGS.names).volatile(),
   actions: z.dict(z.union([...ACTIONS])).default({ ...DEFAULT_SETTINGS.actions }).volatile(),
   minConfidence: z.dict(z.number().min(0).max(1)).default({ ...DEFAULT_SETTINGS.minConfidence }).volatile(),
   allowlist: z.array(z.string()).default([]).volatile(),
@@ -91,7 +89,6 @@ function snapshot(config: Config): SaiSettings {
     warnHandling: config.warnHandling.get(),
     vocabulary: config.vocabulary.get(),
     patterns: config.patterns.get(),
-    names: config.names.get(),
     actions: config.actions.get(),
     minConfidence: config.minConfidence.get(),
     allowlist: config.allowlist.get(),

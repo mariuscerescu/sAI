@@ -4,7 +4,6 @@
  */
 
 import { capitalizesNames, compileDictionary, type CompiledTerm, type DetectHints, TermDetector } from './detectors/dictionary.ts'
-import { isFirstName, NameDetector } from './detectors/names.ts'
 import { combineLanguages } from './languages.ts'
 import { PATTERNS, PatternDetector } from './detectors/patterns.ts'
 import { isSentenceStart, normalize, normalizeTerm } from './normalize.ts'
@@ -55,7 +54,7 @@ export class Engine {
     this.problems = problems
     this.dictionary = compileDictionary(settings.vocabulary, settings.languages)
     const patterns = settings.patterns.map(id => new PatternDetector(PATTERNS[id]!))
-    this.detectors = [this.dictionary, ...patterns, ...settings.names ? [new NameDetector()] : []]
+    this.detectors = [this.dictionary, ...patterns]
     this.leakDetectors = [this.dictionary, ...patterns]
     this.allowlist = new Set(settings.allowlist.map(normalizeTerm))
     this.restoreAs = new Map(settings.vocabulary.flatMap(entry => entry.restoreAs ? [[entry.id!, entry.restoreAs] as const] : []))
@@ -226,7 +225,9 @@ export class Session {
    * A capitalized word right before a protected surname is that person's first name, even
    * when the user never declared it ("Floare Munteanu", "Rose Walker"): the pair becomes one
    * new person, so the first name never leaves in clear. At the start of a sentence, where
-   * every word is capitalized, only a known first name counts ("Contractul Popescului" stays).
+   * every word is capitalized, the word counts only before the surname as declared, never
+   * before an inflected form: "Floare Munteanu a venit" joins, "Contractul Popescului" stays,
+   * as a first name before a genitive surname would be inflected itself ("Mariei Popescu").
    */
   private withFirstNames(text: NormalizedText, spans: Candidate[]): Candidate[] {
     const original = text.original
@@ -239,8 +240,9 @@ export class Session {
       if (word === null) { out.push(span); continue }
       const start = span.start - word[0].length
       const norm = normalizeTerm(word[1]!)
+      const inflected = normalizeTerm(original.slice(span.start, span.end)) !== normalizeTerm(surface)
       if ((previous !== undefined && previous.end > start) || this.engine.notNames.has(norm.replace(/\./g, ''))
-        || (isSentenceStart(original, start) && !isFirstName(norm))) {
+        || (isSentenceStart(original, start) && inflected)) {
         out.push(span)
         continue
       }

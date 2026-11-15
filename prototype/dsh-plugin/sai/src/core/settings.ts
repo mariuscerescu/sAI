@@ -38,8 +38,6 @@ export interface SaiSettings {
   vocabulary: readonly VocabularyEntry[]
   /** Enabled pattern detector ids (see `PATTERN_IDS`). */
   patterns: readonly string[]
-  /** Whether the first/last-name list detector runs. */
-  names: boolean
   /** Per-class action overrides. */
   actions: Readonly<Record<ClassId, Action>>
   /** Per-class confidence thresholds. */
@@ -101,7 +99,6 @@ export const DEFAULT_SETTINGS: SaiSettings = {
   warnHandling: 'tokenize',
   vocabulary: [],
   patterns: [...DEFAULT_PATTERNS],
-  names: true,
   actions: { CARD: 'block' },
   minConfidence: { PERSON: 0.85 },
   allowlist: [],
@@ -171,7 +168,6 @@ export function resolveSettings(input: Partial<SaiSettings> | undefined): { sett
       warnHandling: raw.warnHandling === 'keep' ? 'keep' : 'tokenize',
       vocabulary,
       patterns: (raw.patterns ?? DEFAULT_SETTINGS.patterns).filter(id => (PATTERN_IDS as readonly string[]).includes(id)),
-      names: raw.names ?? DEFAULT_SETTINGS.names,
       actions,
       minConfidence,
       allowlist: (raw.allowlist ?? []).map(word => word.trim()).filter(word => word.length > 0),

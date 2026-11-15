@@ -9,7 +9,7 @@ import { Engine, type VocabularyEntry } from '../src/core/index.ts'
 import { CASES } from './fixtures/inflection-vocabulary.ts'
 
 const vocabulary: VocabularyEntry[] = CASES.map(c => ({ id: c.id, class: c.cls, terms: c.terms }))
-const engine = new Engine({ vocabulary, names: false, patterns: [] })
+const engine = new Engine({ vocabulary, patterns: [] })
 const allForms = CASES.flatMap(c => c.forms.map(form => ({ entry: c, form })))
 
 describe('inflected forms coverage', () => {
@@ -43,7 +43,7 @@ describe('inflected forms coverage', () => {
 
   it('masks a spelling two entries share, and reports it as uncertain', () => {
     // "Raileanului" is the genitive of both "Railean" and "Răileanu" once diacritics are ignored.
-    const shared = new Engine({ names: false, patterns: [], vocabulary: [
+    const shared = new Engine({ patterns: [], vocabulary: [
       { id: 'a', class: 'PERSON', terms: ['Sergiu Railean', 'Railean'] },
       { id: 'b', class: 'PERSON', terms: ['Nadejda Răileanu', 'Răileanu'] },
     ] })

@@ -83,7 +83,7 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
 
     <section className={css.section}>
       <h3>{t('detectorsTitle')}</h3>
-      <Checkbox label={t('names')} checked={draft.names ?? true} disabled={disabled} onChange={(next) => { edit('names', String(next)) }} />
+      <p className={css.notice}>{t('detectorsHint')}</p>
       {PATTERN_IDS.map(id => <Checkbox key={id} label={`${t(`pattern_${id}` as SaiLocaleKey)} · ${PATTERNS[id]!.classId}`}
         checked={patterns.includes(id)} disabled={disabled}
         onChange={(next) => { edit('patterns', next ? [...patterns, id] : patterns.filter(item => item !== id)) }} />)}

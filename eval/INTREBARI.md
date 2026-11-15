@@ -32,7 +32,7 @@ Date detectate de tipare (nu sunt în vocabular):
 | Card (trebuie blocat) | `4111 1111 1111 1111` |
 | E-mail | `ion.popescu@acme.md` |
 
-Nume care **nu** sunt în vocabular și trebuie prinse doar de detectorul de nume: Victor Ciobanu, Rodica Sandu, Floare Munteanu, Radu Mare.
+Nume care **nu** sunt în vocabular: Victor Ciobanu, Rodica Sandu, Floare Munteanu, Radu Mare. În run1–run4 le căuta detectorul de nume din liste. Detectorul a fost eliminat pe 15.11.2026 (vezi [CHECKLIST.md](CHECKLIST.md), G1), așa că acum ajung la model ca atare. Excepție face „Floare Munteanu”, unde „Munteanu” e protejat.
 
 ---
 

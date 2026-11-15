@@ -38,7 +38,6 @@ sAI/
 ├── config/
 │   ├── vocabulary.toml    Vocabularul utilizatorului (exemplu fictiv).
 │   ├── detectors/*.toml   Detectori de tipare definiți ca date.
-│   ├── names/*.txt        Liste de prenume și nume (MD/RO).
 │   └── policy.toml        Politici per clasă.
 ├── tests/vectors/*.json   Vectori de test comuni (TS acum, Rust ulterior).
 └── docs/
@@ -98,11 +97,11 @@ Toate componentele comunică prin aceste tipuri. Sunt scrise ca TypeScript, dar 
 ```ts
 // ── Identificare ────────────────────────────────────────────────
 type ClassId = string                 // "PERSON", "COMPANY", "IDNP", "PHONE", "LITERAL"...
-type DetectorId = string              // "dictionary", "pattern:idnp", "names"...
+type DetectorId = string              // "dictionary", "pattern:idnp", "session", "literal"
 
 type EntityKey =                      // ce înseamnă "aceeași entitate"
   | { kind: 'entry';     entryId: string }                  // intrare din vocabular
-  | { kind: 'canonical'; classId: ClassId; value: string }  // valoare canonică (tipare, nume)
+  | { kind: 'canonical'; classId: ClassId; value: string }  // valoare canonică (tipare, părți de nume comune)
   | { kind: 'literal';   value: string }                    // șir care arată ca un token
 
 // ── Text normalizat ─────────────────────────────────────────────
@@ -117,7 +116,7 @@ interface Candidate {
   start: number; end: number          // în textul ORIGINAL, [start, end)
   classId: ClassId
   detector: DetectorId
-  priority: number                    // dictionary=300, pattern=200, names=100, literal=400
+  priority: number                    // literal=400, dictionary=300, session=250, pattern=200
   confidence: number                  // 0..1
   key: EntityKey
 }
@@ -268,20 +267,17 @@ Formatul fiecărei secțiuni: **Rol, Intrare, Ieșire, Erori, Puncte de extensie
 |---|---|---|---|---|
 | `DictionaryDetector` | Aho-Corasick pe `norm`, verificarea granițelor de cuvânt | 300 | 1.0 | `entry` |
 | `PatternDetector` (unul per fișier din `detectors/`) | regex → validator → canonicalizator. Cuvintele de context cresc încrederea | 200 | 0.6–1.0 | `canonical` |
-| `NameDetector` | liste de prenume și nume + indicii de context (titluri, nume vecine) | 100 | vezi regula de mai jos | `canonical` (normalizat) |
 | `SessionDetector` | formele deja înlocuite în sesiune (din seif), căutate din nou, cu granițe de cuvânt | 250 | 1.0 | cheia intrării din seif |
 | `LiteralDetector` (furnizat de strategie, vezi C3) | formatul simbolurilor strategiei | 400 | 1.0 | `literal` |
 
-Scorul `NameDetector` este o notă după reguli, nu o probabilitate. Candidat: un cuvânt cu majusculă aflat în liste, sau orice cuvânt cu majusculă precedat de un titlu. Scorul pornește de la 0.5, apoi:
+**Fără detector de nume nedeclarate (decizie 15.11.2026).** Un prototip anterior avea un `NameDetector` bazat pe liste publice de prenume și nume (725 de nume, RO/MD și EN). A fost eliminat, împreună cu listele: prindea doar numele frecvente, iar un detector care lasă să treacă numele rare dă o siguranță falsă. Promisiunea sAI e acum una pe care o poate ține integral:
 
-| Semnal | Efect |
-|---|---|
-| precedat de titlu (`dl.`, `dna`, `domnul`, `dr.`, `av.`…) | +0.4 |
-| prenume și nume alăturate, ambele în liste | +0.4 (span-ul acoperă ambele cuvinte) |
-| alăturat unui cuvânt cu majusculă necunoscut | +0.3 |
-| cuvânt comun în limbă (`Radu`, `Lupu`, `Negru`…), fără titlu și fără pereche | −0.3 |
+- **protejat garantat:** tot ce e declarat în vocabular, cu formele lui regulate, plus identificatorii în formatele standard ale tiparelor activate;
+- **neprotejat:** orice altceva, inclusiv persoanele nedeclarate, care ajung la model așa cum sunt scrise.
 
-Rezultatul e limitat la [0, 1]. Valorile se calibrează în bancul de evaluare (C18).
+Fără liste, părțile unui nume declarat se citesc după poziție: toate cuvintele în afară de ultimul sunt prenume („Ana Maria Popescu”: Ana și Maria sunt prenume, Popescu e numele de familie). Un prenume găsit singur cere majusculă și are încredere 0.6.
+
+Regula „prenume nedeclarat lângă un nume de familie protejat” rămâne, pentru că pornește de la ceva declarat: un cuvânt cu majusculă chiar înaintea numelui de familie formează cu acesta o persoană nouă („Floare Munteanu”). Nu se aplică titlurilor și formulelor de adresare din pachetele de limbă (`dl.`, `stimate`, `dear`, `hello`…). La început de propoziție se aplică doar înaintea formei declarate a numelui, nu înaintea unei forme flexionate („Contractul Popescului” rămâne).
 
 Format detector de tipar (date, nu cod):
 ```toml
@@ -416,7 +412,7 @@ confidence = { base = 0.9, with_context = 1.0 }
 ### C11. Verificatorul de scurgeri
 
 - **Rol:** ultima linie de apărare înainte de ieșire.
-- **Intrare:** textul redactat, seiful, detectorii C5 (fără `NameDetector`, prea zgomotos).
+- **Intrare:** textul redactat, seiful, detectorii C5.
 - **Ieșire:** `ok`, sau eroarea `LEAK_DETECTED { classId, detector }`.
 - **Verificări:**
   1. rulează din nou `DictionaryDetector` și `PatternDetector` pe textul redactat (normalizat). Orice potrivire în afara simbolurilor înseamnă scurgere;
@@ -642,7 +638,7 @@ Pentru prototip, vocabularul și seiful stau local, în fișiere. În ținta Rus
 | Interfață | Implementări acum | Posibile ulterior |
 |---|---|---|
 | `Normalizer` | `ro-default` | lematizare RO |
-| `Detector` | dictionary, pattern (IDNP, IDNO, CNP, telefon MD/RO, IBAN, card, email, IP, URL), names, literal | NER local (GLiNER) |
+| `Detector` | dictionary, session, pattern (IDNP/IDNO, CNP, telefoane MD/RO/SUA/UK, SSN, NINO, IBAN, card, e-mail, IP), literal | doar detectori care pot fi garantați pentru ce promit (vezi C5) |
 | `Resolver` | `priority-longest` | — |
 | `PolicyEngine` | `table` | reguli contextuale |
 | `TokenStrategy` | `typed`, `greek` | substitute realiste (Faker), coduri inventate |
@@ -689,7 +685,7 @@ Codul stă în checkout-ul Alterego-DSH, ca pachete experimentale:
 | `packages/experimental/sai` (`@deepseek-ai/dsh-experimental-sai`) | `src/core/`: nucleul pur (C0–C15, `RedactionBatch` pentru C16), fără importuri din DSH. `src/request.ts`: C16 pe tipurile DSH. `src/index.ts`: C17 (Config, interceptarea `llm/stream`). `src/client/`: pagina de setări cu previzualizare locală. |
 | `packages/experimental/sai-bundle` | Bundle-ul opțional care apare în **Plugins → Experimental plugins**. Adaugă rândul `sai` în compoziție. |
 
-Setările (`SaiSettings`) sunt câmpuri „volatile” ale pluginului, editate de pe pagina bundle-ului și salvate în profil. Câmpurile sunt `enabled`, `strategy`, `preamble`, `warnHandling`, `vocabulary`, `patterns`, `names`, `actions`, `minConfidence`, `allowlist`. Pagina rulează nucleul și în browser, ca să arate pe loc cum ar fi redactat un text de test cu setările curente, inclusiv cele nesalvate.
+Setările (`SaiSettings`) sunt câmpuri „volatile” ale pluginului, editate de pe pagina bundle-ului și salvate în profil. Câmpurile sunt `enabled`, `strategy`, `preamble`, `preambleTexts`, `warnHandling`, `vocabulary`, `patterns`, `actions`, `minConfidence`, `allowlist`, `languages`, `images`, `externalTools`. Câmpul `names` (detectorul de nume din liste) a fost eliminat pe 15.11.2026; dacă apare într-o configurație salvată, e ignorat. Pagina rulează nucleul și în browser, ca să arate pe loc cum ar fi redactat un text de test cu setările curente, inclusiv cele nesalvate.
 
 Numele claselor sunt în engleză. Clasele sunt deschise: orice nume format din A–Z, cifre și `_` e valid. Pagina propune un set predefinit (`SUGGESTED_CLASSES`): `PERSON`, `COMPANY`, `ORGANIZATION`, `LOCATION`, `ADDRESS`, `PROJECT`, `PRODUCT`, `CONTRACT` și clasele detectorilor (`PHONE`, `EMAIL`, `IDNP`, `CNP`, `IBAN`, `CARD`, `IP`). Opțiunea „Other” permite o clasă nouă.
 

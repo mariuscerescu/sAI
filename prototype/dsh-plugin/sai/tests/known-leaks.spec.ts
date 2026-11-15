@@ -1,11 +1,12 @@
 /**
  * The leaks known after the evaluations: an undeclared first name next to a protected
- * surname, English names nobody declared, and an organization called by its short name.
+ * surname and an organization called by its short name. People nobody declared are not
+ * guessed at: sAI protects exactly the vocabulary and the enabled formats.
  */
 import { describe, expect, it } from 'vitest'
 import { Engine, type VocabularyEntry } from '../src/core/index.ts'
 
-const make = (vocabulary: VocabularyEntry[], names = false): Engine => new Engine({ vocabulary, names, patterns: [] })
+const make = (vocabulary: VocabularyEntry[]): Engine => new Engine({ vocabulary, patterns: [] })
 
 describe('an undeclared first name next to a protected surname', () => {
   const engine = make([
@@ -34,6 +35,7 @@ describe('an undeclared first name next to a protected surname', () => {
 
   it.each([
     'Contractul Popescului e gata.', 'Dear Walker, thanks.', 'Dr. Walker agreed.', 'Raportul lui Munteanu a sosit.',
+    'Stimate Munteanu, vă scriu.', 'Hello Walker, thanks.',
   ])('leaves an ordinary capitalized word alone: %s', (text) => {
     const out = engine.session().redact(text)
     expect(out.decisions).toHaveLength(1)
@@ -41,23 +43,20 @@ describe('an undeclared first name next to a protected surname', () => {
   })
 })
 
-describe('English names nobody declared', () => {
-  const engine = make([], true)
+describe('people nobody declared', () => {
+  const engine = make([{ id: 'r', class: 'PERSON', terms: ['Ion Rusu'] }])
 
   it.each([
-    ['I met Robert Brown yesterday.', 'Robert Brown'], ['Send it to Mrs. Patterson.', 'Patterson'], ['Ask Jennifer about it.', 'Jennifer'],
-    ['A rose from Will Baker\'s garden.', 'Will Baker'], ['I met Zinovia Popescu.', 'Zinovia'],
-  ])(
-    'masks %s', (text, name) => {
-      expect(engine.session().redact(text).text).not.toContain(name)
-    },
-  )
+    'I met Robert Brown yesterday.', 'Send it to Mrs. Patterson.', 'Am vorbit cu Maria Popescu ieri.', 'Will you sign the contract?',
+  ])('reach the model as written: %s', (text) => {
+    const out = engine.session().redact(text)
+    expect(out.text).toBe(text)
+    expect(out.decisions).toHaveLength(0)
+  })
 
-  it.each(['Will you sign the contract?', 'Green light for the project.', 'Mark the date in the calendar.', 'King size bed.'])(
-    'leaves a common word that opens a sentence: %s', (text) => {
-      expect(engine.session().redact(text).text).toBe(text)
-    },
-  )
+  it('do not hide a declared person in the same text', () => {
+    expect(engine.session().redact('Maria Popescu și Ion Rusu au semnat.').text).toBe('Maria Popescu și ⟦PERSON_1⟧ au semnat.')
+  })
 })
 
 describe('an organization called by its short name', () => {

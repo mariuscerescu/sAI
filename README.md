@@ -18,7 +18,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
   - forme englezești: Smith's, the Smiths;
   - prenumele și numele de familie găsite singure;
   - numele firmei fără forma juridică și numele ei scurt.
-- **Persoane nedeclarate:** liste de prenume și nume de familie (MD/RO/EN). Un prenume necunoscut de lângă un nume de familie protejat devine o persoană nouă.
+- **Ce e garantat:** sAI protejează exact ce e declarat în vocabular, plus identificatorii în formatele standard. Persoanele nedeclarate ajung la model așa cum sunt scrise: nu există un detector care să ghicească nume. Singura excepție e un prenume necunoscut lipit de un nume de familie protejat („Floare Munteanu”), care devine o persoană nouă.
 - **Tipare cu validare:** IDNP/IDNO, CNP, telefoane MD/RO/US/UK, SSN, NINO, IBAN, card, e-mail, IPv4.
 - **Două strategii de simboluri:** typed (`⟦PERSON_1⟧`, recomandată) și greek (litere grecești, experimentală).
 - **Restaurare în streaming,** cu reținerea doar a câtorva caractere.
@@ -38,7 +38,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 
 ## Rezultate
 
-- **807 teste automate.** Ele acoperă:
+- **808 teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.
@@ -47,7 +47,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
   - [eval/RAPORT-flexiuni.md](eval/RAPORT-flexiuni.md)
   - [eval/RAPORT-engleza.md](eval/RAPORT-engleza.md)
   - [eval/CHECKLIST.md](eval/CHECKLIST.md)
-- **Latența:** sub 3 ms pentru un mesaj obișnuit. Nucleul are 31 KB minificat (12 KB gzip).
+- **Latența:** sub 3 ms pentru un mesaj obișnuit. Nucleul are sub 31 KB minificat (sub 12 KB gzip); măsurătoarea e dinainte de eliminarea listelor de nume.
 
 ## Rulare
 

@@ -131,7 +131,9 @@ Rezultatele sunt în `results/run-en1/` (prima rulare) și `results/run-en2/` (r
 | Persoane nedeclarate în engleză („Will Baker”) | Liste de prenume și nume de familie englezești în detectorul de nume. Posesivul („Baker's”) e scos din cuvânt. Un nume comun singur la început de propoziție („Will you sign?”, „Green light”) e ignorat. | K2 (en), `results/run-en4/`: `from ⟦PERSON_2⟧'s garden` |
 | Numele scurt al unei firme („Acme” pentru „Acme Logistics Inc.”) | Primul cuvânt distinctiv al numelui, cu avertisment. Nu se aplică pentru cuvinte generice și locuri (Banca, Project, Moldova). | A1, A3, A5, B2, K1 și K5 (en), `results/run-en3/`: „Acme” nedeclarat, mascat peste tot |
 
-Testele sunt în `tests/known-leaks.spec.ts`. Suita completă are **809 teste**, iar toate trec.
+Testele sunt în `tests/known-leaks.spec.ts`. Suita completă avea atunci **809 teste**, iar toate treceau.
+
+> **Actualizare 15.11.2026:** detectorul de nume din liste a fost eliminat (vezi [CHECKLIST.md](CHECKLIST.md), G1). Rândul „Persoane nedeclarate în engleză” nu mai e valabil: o persoană nedeclarată, cum e „Will Baker”, ajunge acum la model așa cum e scrisă. Prima regulă rămâne, fără liste: la început de propoziție, cuvântul se lipește de numele protejat doar înaintea formei declarate a numelui. Suita are acum 808 teste.
 
 În testul de potriviri false, numele scurte au adăugat puține potriviri, toate cu avertisment: în română „Nordic” ×1; în engleză „Summit” ×3, „Atlas” ×3, „Blue” ×2, „Riverside” ×1. Niciun cuvânt scris cu literă mică nu e mascat.
 

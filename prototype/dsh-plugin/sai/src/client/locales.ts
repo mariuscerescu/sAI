@@ -39,7 +39,7 @@ export const en = {
   addEntry: 'Add entity',
   remove: 'Remove',
   detectorsTitle: 'Detectors',
-  names: 'First and last names from public lists',
+  detectorsHint: 'sAI protects exactly what you declare in the vocabulary, plus the formats you enable below. Anything else, including people you have not declared, reaches the model as written.',
   pattern_idnp: 'IDNP / IDNO (Moldova)',
   'pattern_cnp': 'CNP (Romania)',
   'pattern_phone-md': 'Phone numbers (Moldova)',

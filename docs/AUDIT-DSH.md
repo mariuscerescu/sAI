@@ -59,6 +59,7 @@ Plugin-ul `session-log-deepseek` e activ implicit în bundle-ul `base`. La **fie
 - **Corecția:** DSH are aici un punct de redactare oficial (`session-telemetry/record`), iar sAI se conectează la el: corpul înregistrării și atributele (inclusiv `session.cwd`) sunt redactate.
 - **Fail-closed:** dacă sAI nu poate redacta, înregistrarea e reținută.
 - **Alternativa completă:** variabila de mediu `DSH_TELEMETRY_DISABLED=1` oprește acest canal cu totul.
+- **Aplicația desktop** setează ea însăși `DSH_TELEMETRY_DISABLED=1` la pornire (`apps/desktop/src/main.ts`), deci acolo canalul e oprit. El rămâne activ în CLI și în aplicația web.
 
 ### 8–10. Fără scurgeri de conținut
 
@@ -80,6 +81,16 @@ Acestea nu pleacă de pe computer, dar oricine are acces la disc le poate citi. 
 - **Serverele MCP care nu au prefixul `mcp__`.** Trebuie adăugate în lista „external tools”.
 - **Căile de fișiere și numele de utilizator** din mediul de lucru, de exemplu `C:\Users\<nume>\...`, sunt redactate doar dacă numele e în vocabular.
 - **Uneltele terminal** (bash, pwsh) primesc valorile reale, cum e necesar. O comandă scrisă de model, de exemplu un `curl` către un site, poate trimite date în afară. Asta ține de permisiunile uneltelor din DSH, nu de sAI.
+
+## Verificare în aplicația desktop (11.11.2026)
+
+Am pornit aplicația desktop din sursă, cu build-ul curent sAI, într-un profil separat cu vocabular fictiv: persoana „Ion Rusu” și compania „Acme Logistics Inc.”. Furnizorul DeepSeek și colectorul de telemetrie au fost îndreptate, prin `baseURL` și `DSH_TELEMETRY_OTLP_URL`, spre un server local care înregistra fiecare cerere și răspundea ca API-ul Messages. Nimic n-a plecat de pe computer.
+
+- **Mesajul trimis:** „Scrie un mesaj scurt pentru Ion Rusu de la Acme Logistics Inc. despre contractul semnat. Rusu așteaptă răspuns, iar Acme vrea factura.”
+- **Cereri primite:** două, cererea conversației și cererea de titlu. Amândouă aveau `dsh_session_log` (aproximativ 45 KB, 16 evenimente, inclusiv `user/message` și `session/title-llm-request`).
+- **Rezultat:** „Ion”, „Rusu”, „Acme” și „Logistics” apar de **0** ori în toate câmpurile: `messages`, `system`, `tools`, `dsh_session_log`, `dsh_plugin_packages`. Apar doar `⟦PERSON_1⟧` și `⟦COMPANY_1⟧`.
+- **Restaurarea:** în fereastră, răspunsul apare cu numele reale.
+- **Like:** apăsarea lui deschide formularul de feedback. După trimitere, serverul local n-a primit nicio cerere în aproape un minut, timp în care exportul ar fi rulat de câteva ori (întârzierea programată e de 10 s). Așa se confirmă că desktop-ul nu trimite telemetria de feedback.
 
 ## Teste
 

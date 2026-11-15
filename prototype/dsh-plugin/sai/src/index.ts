@@ -15,7 +15,7 @@ import { isAgentLoopRequest, type GenerateOptions, type LlmFailure, type StreamC
 import type {} from '@deepseek-ai/dsh-settings'
 import {
   DEFAULT_PATTERNS, DEFAULT_SETTINGS, Engine, type Action, type SaiSettings, type Session,
-  type StrategyId, type VocabularyEntry, type WarnHandling,
+  type StrategyId, type VocabularyEntry,
 } from './core/index.ts'
 import { guardEgress } from './egress.ts'
 import { redactRequest, restoreStream } from './request.ts'
@@ -39,11 +39,9 @@ export interface Config {
   strategy: Volatile<StrategyId>
   preamble: Volatile<boolean>
   preambleTexts: Volatile<{ typed?: string; greek?: string }>
-  warnHandling: Volatile<WarnHandling>
   vocabulary: Volatile<VocabularyEntry[]>
   patterns: Volatile<string[]>
-  actions: Volatile<Record<string, Action>>
-  minConfidence: Volatile<Record<string, number>>
+  actions: Volatile<Record<string, Action | 'warn'>>
   allowlist: Volatile<string[]>
   languages: Volatile<string[]>
   images: Volatile<'block' | 'allow'>
@@ -52,14 +50,14 @@ export interface Config {
   maxSessions: number
 }
 
-const ACTIONS = ['tokenize', 'mask', 'warn', 'ignore', 'block'] as const
+/** `warn` is accepted only so profiles saved by older versions still load; the core treats it as `tokenize`. */
+const ACTIONS = ['tokenize', 'mask', 'ignore', 'block', 'warn'] as const
 
 export const Config = z.object({
   enabled: z.boolean().default(DEFAULT_SETTINGS.enabled).volatile(),
   strategy: z.union(['typed', 'greek'] as const).default(DEFAULT_SETTINGS.strategy).volatile(),
   preamble: z.boolean().default(DEFAULT_SETTINGS.preamble).volatile(),
   preambleTexts: z.object({ typed: z.string(), greek: z.string() }).default({}).volatile(),
-  warnHandling: z.union(['tokenize', 'keep'] as const).default(DEFAULT_SETTINGS.warnHandling).volatile(),
   vocabulary: z.array(z.object({
     id: z.string(),
     class: z.string().required(),
@@ -68,7 +66,6 @@ export const Config = z.object({
   })).default([]).volatile(),
   patterns: z.array(z.string()).default([...DEFAULT_PATTERNS]).volatile(),
   actions: z.dict(z.union([...ACTIONS])).default({ ...DEFAULT_SETTINGS.actions }).volatile(),
-  minConfidence: z.dict(z.number().min(0).max(1)).default({ ...DEFAULT_SETTINGS.minConfidence }).volatile(),
   allowlist: z.array(z.string()).default([]).volatile(),
   languages: z.array(z.string()).default([...DEFAULT_SETTINGS.languages]).volatile(),
   images: z.union(['block', 'allow'] as const).default(DEFAULT_SETTINGS.images).volatile(),
@@ -86,11 +83,10 @@ function snapshot(config: Config): SaiSettings {
     strategy: config.strategy.get(),
     preamble: config.preamble.get(),
     preambleTexts: config.preambleTexts.get(),
-    warnHandling: config.warnHandling.get(),
     vocabulary: config.vocabulary.get(),
     patterns: config.patterns.get(),
-    actions: config.actions.get(),
-    minConfidence: config.minConfidence.get(),
+    // A legacy `warn` is mapped to `tokenize` when the Engine resolves these settings.
+    actions: config.actions.get() as SaiSettings['actions'],
     allowlist: config.allowlist.get(),
     languages: config.languages.get(),
     images: config.images.get(),
@@ -201,7 +197,7 @@ export function apply(ctx: Context, config: Config): void {
       const hint = code === 'IMAGE_NOT_INSPECTABLE' ? ' — sAI cannot read images; allow them in the sAI settings to send this request' : ''
       return refusal(`sAI blocked this request: ${code}${classId === undefined ? '' : ` (class ${classId})`}${hint}`)
     }
-    ctx.logger.debug('sAI redacted a request (%s): %s; warnings=%d', session.strategy.id, counts || 'nothing', redacted.report.warnings.length)
+    ctx.logger.debug('sAI redacted a request (%s): %s', session.strategy.id, counts || 'nothing')
     const outgoing = redacted.options
     own.add(outgoing)
     // Only conversation requests define what the Session shows; title and compaction calls do not.

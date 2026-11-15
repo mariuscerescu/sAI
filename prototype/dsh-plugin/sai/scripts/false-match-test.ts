@@ -33,7 +33,7 @@ const termsByEntry = new Map(vocabulary.map(entry => [entry.id!, entry.terms.joi
 
 const files = readdirSync(CORPUS).filter(name => name.endsWith('.txt')).sort().filter((_, index) => english || index % 2 === 1)
 let words = 0
-const rows: { file: string; text: string; entry: string; kind: string; confidence: number; context: string }[] = []
+const rows: { file: string; text: string; entry: string; kind: string; context: string }[] = []
 for (const file of files) {
   const original = readFileSync(join(CORPUS, file), 'utf8')
   words += original.split(/\s+/).length
@@ -42,16 +42,15 @@ for (const file of files) {
     rows.push({
       file, text: original.slice(match.start, match.end), entry: key,
       kind: match.baseForm === undefined ? 'declarat' : `generat din „${match.baseForm}”`,
-      confidence: match.confidence,
       context: original.slice(Math.max(0, match.start - 50), match.end + 50).replace(/\s+/g, ' '),
     })
   }
 }
 const generated = rows.filter(row => row.kind !== 'declarat')
-const groups = new Map<string, { text: string; entry: string; kind: string; confidence: number; count: number }>()
+const groups = new Map<string, { text: string; entry: string; kind: string; count: number }>()
 for (const row of rows) {
-  const id = `${normalize(row.text).norm}|${row.entry}|${row.kind}|${row.confidence}`
-  const group = groups.get(id) ?? { text: row.text, entry: row.entry, kind: row.kind, confidence: row.confidence, count: 0 }
+  const id = `${normalize(row.text).norm}|${row.entry}|${row.kind}`
+  const group = groups.get(id) ?? { text: row.text, entry: row.entry, kind: row.kind, count: 0 }
   group.count++
   groups.set(id, group)
 }
@@ -59,12 +58,12 @@ const summary = [...groups.values()].sort((a, b) => Number(a.kind === 'declarat'
 const lines = [
   `# Test de potriviri false (${english ? 'Wikipedia în engleză' : 'jumătatea B a corpusului românesc'}; limbi: ${languages.join(', ')})`, '',
   `Fișiere: ${files.length} · cuvinte: ${words} · spellings căutate: ${detector.size} · potriviri: ${rows.length} (declarate: ${rows.length - generated.length}, generate: ${generated.length})`, '',
-  '## Rezumat pe text găsit', '', '| Text | Intrare | Tip | Încredere | Apariții |', '|---|---|---|---|---|',
-  ...summary.map(group => `| ${group.text} | ${group.entry} (${termsByEntry.get(group.entry) ?? ''}) | ${group.kind} | ${group.confidence} | ${group.count} |`),
+  '## Rezumat pe text găsit', '', '| Text | Intrare | Tip | Apariții |', '|---|---|---|---|',
+  ...summary.map(group => `| ${group.text} | ${group.entry} (${termsByEntry.get(group.entry) ?? ''}) | ${group.kind} | ${group.count} |`),
   '', '## Toate potrivirile', '',
-  '| # | Fișier | Text găsit | Intrare | Tip | Încredere | Context |', '|---|---|---|---|---|---|---|',
-  ...rows.map((row, index) => `| ${index + 1} | ${row.file.replace('.txt', '')} | **${row.text}** | ${row.entry} (${termsByEntry.get(row.entry) ?? ''}) | ${row.kind} | ${row.confidence} | …${row.context.replace(/\|/g, '/')}… |`),
+  '| # | Fișier | Text găsit | Intrare | Tip | Context |', '|---|---|---|---|---|---|',
+  ...rows.map((row, index) => `| ${index + 1} | ${row.file.replace('.txt', '')} | **${row.text}** | ${row.entry} (${termsByEntry.get(row.entry) ?? ''}) | ${row.kind} | …${row.context.replace(/\|/g, '/')}… |`),
 ]
 writeFileSync(OUT, `${lines.join('\n')}\n`)
 console.log(`files ${files.length}, words ${words}, spellings ${detector.size}, matches ${rows.length} (declared ${rows.length - generated.length}, generated ${generated.length})`)
-for (const row of rows) console.log(`${row.kind === 'declarat' ? 'D' : 'G'} ${row.confidence} ${row.text} → ${row.entry} | …${row.context}…`)
+for (const row of rows) console.log(`${row.kind === 'declarat' ? 'D' : 'G'} ${row.text} → ${row.entry} | …${row.context}…`)

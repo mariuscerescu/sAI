@@ -65,11 +65,10 @@ describe('an organization called by its short name', () => {
     { id: 'm', class: 'COMPANY', terms: ['Moldova Agroindbank'] }, { id: 'j', class: 'PROJECT', terms: ['Project Falcon'] },
   ])
 
-  it('masks the distinctive first word, as uncertain', () => {
+  it('masks the distinctive first word', () => {
     const session = engine.session()
     const out = session.redact('Acme said yes, and Acme\'s lawyer signed.')
     expect(out.text).not.toContain('Acme')
-    expect(out.report.warnings.length).toBeGreaterThan(0)
     expect(session.restore(out.text).text).toBe('Acme said yes, and Acme\'s lawyer signed.')
     // A text typed without capitals writes the short name in lowercase too.
     expect(engine.session().redact('the acme deal is done').text).not.toContain('acme')

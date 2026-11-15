@@ -41,7 +41,7 @@ describe('inflected forms coverage', () => {
     expect(out.text.replace(token, '').replace(/-[\p{L}]+/u, '')).toBe(`${lead}  a fost semnat.`)
   })
 
-  it('masks a spelling two entries share, and reports it as uncertain', () => {
+  it('masks a spelling two entries share, giving it to the closer one', () => {
     // "Raileanului" is the genitive of both "Railean" and "Răileanu" once diacritics are ignored.
     const shared = new Engine({ patterns: [], vocabulary: [
       { id: 'a', class: 'PERSON', terms: ['Sergiu Railean', 'Railean'] },
@@ -49,7 +49,6 @@ describe('inflected forms coverage', () => {
     ] })
     const out = shared.session().redact('Dosarul Raileanului e gata.')
     expect(out.text).toBe('Dosarul ⟦PERSON_1⟧ e gata.')
-    expect(out.report.warnings).toHaveLength(1)
   })
 
   it('restores an inflected form as the declared spelling', () => {

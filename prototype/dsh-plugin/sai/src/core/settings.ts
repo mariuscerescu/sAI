@@ -22,9 +22,6 @@ export interface VocabularyEntry {
 /** Token strategy shown to the model. */
 export type StrategyId = 'typed' | 'greek'
 
-/** What the Host does with spans whose confidence is below the class threshold. */
-export type WarnHandling = 'tokenize' | 'keep'
-
 /** Complete user configuration. */
 export interface SaiSettings {
   /** Master switch; when false requests pass through unchanged. */
@@ -34,14 +31,11 @@ export interface SaiSettings {
   preamble: boolean
   /** User-written preamble per strategy; a missing or blank text uses the strategy's default. */
   preambleTexts: Readonly<Partial<Record<StrategyId, string>>>
-  warnHandling: WarnHandling
   vocabulary: readonly VocabularyEntry[]
   /** Enabled pattern detector ids (see `PATTERN_IDS`). */
   patterns: readonly string[]
-  /** Per-class action overrides. */
+  /** Per-class action overrides; every other class is replaced with a symbol. */
   actions: Readonly<Record<ClassId, Action>>
-  /** Per-class confidence thresholds. */
-  minConfidence: Readonly<Record<ClassId, number>>
   /** Words that are never protected, matched after normalization. */
   allowlist: readonly string[]
   /** Languages of the user's texts (see `LANGUAGE_IDS`): their inflections, titles, and legal forms apply. */
@@ -96,11 +90,9 @@ export const DEFAULT_SETTINGS: SaiSettings = {
   strategy: 'typed',
   preamble: true,
   preambleTexts: {},
-  warnHandling: 'tokenize',
   vocabulary: [],
   patterns: [...DEFAULT_PATTERNS],
   actions: { CARD: 'block' },
-  minConfidence: { PERSON: 0.85 },
   allowlist: [],
   languages: [...DEFAULT_LANGUAGES],
   images: 'block',
@@ -116,10 +108,7 @@ function resolveLanguages(raw: readonly string[] | undefined, problems: Settings
   return [...new Set(known)]
 }
 
-/** Default threshold for classes without an explicit one. */
-export const DEFAULT_MIN_CONFIDENCE = 0.8
-
-const ACTIONS: readonly Action[] = ['tokenize', 'mask', 'warn', 'ignore', 'block']
+const ACTIONS: readonly Action[] = ['tokenize', 'mask', 'ignore', 'block']
 
 /** Problems found while resolving settings; empty when valid. */
 export type SettingsProblems = string[]
@@ -150,13 +139,10 @@ export function resolveSettings(input: Partial<SaiSettings> | undefined): { sett
   }
   const actions: Record<ClassId, Action> = { ...DEFAULT_SETTINGS.actions }
   for (const [classId, action] of Object.entries(raw.actions ?? {})) {
-    if (ACTIONS.includes(action)) actions[classId.toUpperCase()] = action
+    // `warn` (send unchanged, from older versions) became the safe default: replace.
+    if ((action as string) === 'warn') actions[classId.toUpperCase()] = 'tokenize'
+    else if (ACTIONS.includes(action)) actions[classId.toUpperCase()] = action
     else problems.push(`unknown action "${String(action)}" for ${classId}`)
-  }
-  const minConfidence: Record<ClassId, number> = { ...DEFAULT_SETTINGS.minConfidence }
-  for (const [classId, value] of Object.entries(raw.minConfidence ?? {})) {
-    if (typeof value === 'number' && value >= 0 && value <= 1) minConfidence[classId.toUpperCase()] = value
-    else problems.push(`threshold for ${classId} must be between 0 and 1`)
   }
   return {
     settings: {
@@ -165,11 +151,9 @@ export function resolveSettings(input: Partial<SaiSettings> | undefined): { sett
       preamble: raw.preamble ?? DEFAULT_SETTINGS.preamble,
       preambleTexts: Object.fromEntries(Object.entries(raw.preambleTexts ?? {})
         .filter(([id, text]) => (id === 'typed' || id === 'greek') && typeof text === 'string' && text.trim().length > 0)),
-      warnHandling: raw.warnHandling === 'keep' ? 'keep' : 'tokenize',
       vocabulary,
       patterns: (raw.patterns ?? DEFAULT_SETTINGS.patterns).filter(id => (PATTERN_IDS as readonly string[]).includes(id)),
       actions,
-      minConfidence,
       allowlist: (raw.allowlist ?? []).map(word => word.trim()).filter(word => word.length > 0),
       languages: resolveLanguages(raw.languages, problems),
       images: raw.images === 'allow' ? 'allow' : 'block',

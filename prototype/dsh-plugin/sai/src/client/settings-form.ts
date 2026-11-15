@@ -16,7 +16,7 @@ export const SAI_NS = 'sai'
 
 /** Every edited field. */
 export const SAI_FIELDS = [
-  'enabled', 'strategy', 'preamble', 'preambleTexts', 'warnHandling', 'vocabulary', 'patterns', 'actions', 'minConfidence',
+  'enabled', 'strategy', 'preamble', 'preambleTexts', 'vocabulary', 'patterns', 'actions',
   'allowlist', 'languages', 'images', 'externalTools',
 ] as const
 
@@ -80,11 +80,9 @@ const SPECS: SettingsFieldSpec[] = [
   choiceField('strategy', ['typed', 'greek']),
   booleanField('preamble'),
   jsonField('preambleTexts', isRecordOf(value => typeof value === 'string')),
-  choiceField('warnHandling', ['tokenize', 'keep']),
   jsonField('vocabulary', isVocabulary),
   jsonField('patterns', isStringArray),
   jsonField('actions', isRecordOf(value => typeof value === 'string')),
-  jsonField('minConfidence', isRecordOf(value => typeof value === 'number' && value >= 0 && value <= 1)),
   jsonField('allowlist', isStringArray),
   jsonField('languages', isStringArray),
   choiceField('images', ['block', 'allow']),

@@ -12,7 +12,7 @@ import { resolveSettings, type SaiSettings, type StrategyId } from './settings.t
 import { createStrategy, type TokenStrategy } from './strategies.ts'
 import type {
   Candidate, ClassId, Decision, EntityKey, NormalizedText, RedactOutput, RedactReport, RestoreContext, RestoreOutput,
-  RestoreReport, Verdict, VaultEntry, Warning,
+  RestoreReport, Verdict, VaultEntry,
 } from './types.ts'
 import { Vault } from './vault.ts'
 
@@ -90,9 +90,9 @@ export class Session {
    * @returns the text to send, the verdict, and a value-free report.
    */
   redact(original: string): RedactOutput {
-    const empty = (verdict: Verdict): RedactOutput => ({ text: '', verdict, report: this.report([], []), decisions: [] })
+    const empty = (verdict: Verdict): RedactOutput => ({ text: '', verdict, report: this.report([]), decisions: [] })
     if (original.length > MAX_INPUT_CHARS) return empty({ kind: 'blocked', code: 'INPUT_TOO_LARGE' })
-    if (original.length === 0) return { text: '', verdict: { kind: 'proceed' }, report: this.report([], []), decisions: [] }
+    if (original.length === 0) return { text: '', verdict: { kind: 'proceed' }, report: this.report([]), decisions: [] }
     const unsuitable = this.strategy.observe(original, this.vault)
     if (unsuitable !== undefined) return empty({ kind: 'blocked', code: unsuitable })
     const text = normalize(original)
@@ -107,22 +107,22 @@ export class Session {
       this.withFirstNames(text, this.joinNameParts(text, resolveOverlaps(candidates, candidate => this.isAllowed(text, candidate)))),
       this.engine.settings,
     )
-    let { decisions, verdict, warnings } = resolve()
+    let { decisions, verdict } = resolve()
     // A spelling replaced somewhere in this text is replaced everywhere in it, as later texts of the
     // session already are: a name a detector recognized once ("dl. Mare") must not stay elsewhere.
     const decided = decisions.map(({ span }) => span)
     const repeats = this.repeatsOf(decisions, original).detect(text, hints).filter(repeat => !overlapsAny(decided, repeat))
     if (repeats.length > 0) {
       for (const repeat of repeats) candidates.push(repeat);
-      ({ decisions, verdict, warnings } = resolve())
+      ({ decisions, verdict } = resolve())
     }
-    if (verdict.kind === 'blocked') return { ...empty(verdict), report: this.report(decisions, warnings) }
+    if (verdict.kind === 'blocked') return { ...empty(verdict), report: this.report(decisions) }
     const { output, kept, tokenRanges } = this.rewrite(original, decisions)
     const leak = this.findLeak(output, [...kept, ...tokenRanges], hints)
     if (leak !== undefined) {
-      return { ...empty({ kind: 'blocked', code: 'LEAK_DETECTED', classId: leak.classId, detector: leak.detector }), report: this.report(decisions, warnings) }
+      return { ...empty({ kind: 'blocked', code: 'LEAK_DETECTED', classId: leak.classId, detector: leak.detector }), report: this.report(decisions) }
     }
-    return { text: output, verdict, report: this.report(decisions, warnings), decisions }
+    return { text: output, verdict, report: this.report(decisions), decisions }
   }
 
   /**
@@ -170,7 +170,7 @@ export class Session {
 
   private literalCandidates(original: string): Candidate[] {
     return this.strategy.literals(original, this.vault).map(range => ({
-      ...range, classId: 'LITERAL', detector: 'literal', priority: LITERAL_PRIORITY, confidence: 1,
+      ...range, classId: 'LITERAL', detector: 'literal', priority: LITERAL_PRIORITY,
       key: { kind: 'literal', value: original.slice(range.start, range.end) },
     }))
   }
@@ -212,7 +212,6 @@ export class Session {
       const spelling = `${left.baseForm ?? text.original.slice(left.start, left.end)} ${right.baseForm ?? text.original.slice(right.start, right.end)}`
       out.push({
         start: left.start, end: right.end, classId: 'PERSON', detector: 'dictionary', priority: left.priority,
-        confidence: Math.max(left.confidence, right.confidence),
         key: shared.length === 1 ? { kind: 'entry', entryId: shared[0]! } : { kind: 'canonical', classId: 'PERSON', value: normalizeTerm(spelling) },
         baseForm: spelling,
       })
@@ -248,7 +247,7 @@ export class Session {
       }
       const spelling = `${word[1]!} ${surface}`
       out.push({
-        start, end: span.end, classId: 'PERSON', detector: span.detector, priority: span.priority, confidence: span.confidence,
+        start, end: span.end, classId: 'PERSON', detector: span.detector, priority: span.priority,
         key: { kind: 'canonical', classId: 'PERSON', value: normalizeTerm(spelling) }, baseForm: spelling,
       })
     }
@@ -292,7 +291,6 @@ export class Session {
           emit(mask(value))
           tokenRanges.push({ start, end: length })
           break
-        case 'warn':
         case 'ignore':
           emit(value)
           kept.push({ start, end: length })
@@ -314,7 +312,7 @@ export class Session {
     return findings.find(finding => !this.isAllowed(text, finding) && !overlapsAny(ranges, finding))
   }
 
-  private report(decisions: readonly Decision[], warnings: readonly Warning[]): RedactReport {
+  private report(decisions: readonly Decision[]): RedactReport {
     const countsByClass: Record<ClassId, number> = {}
     const tokens = new Set<string>()
     for (const { span, action } of decisions) {
@@ -325,7 +323,7 @@ export class Session {
         if (entry !== undefined) tokens.add(entry.token)
       }
     }
-    return { countsByClass, tokensUsed: [...tokens], warnings, strategy: this.strategy.id }
+    return { countsByClass, tokensUsed: [...tokens], strategy: this.strategy.id }
   }
 }
 
@@ -407,7 +405,7 @@ function surfaceTerm(form: string, classId: ClassId, key: EntityKey): CompiledTe
   const norm = normalizeTerm(form)
   if (norm.length < 3) return []
   return [{
-    norm, classId, key, priority: SESSION_PRIORITY, confidence: 1,
+    norm, classId, key, priority: SESSION_PRIORITY,
     ...classId === 'PERSON' && /^\p{L}+$/u.test(norm) ? { capital: 'required' as const } : {},
   }]
 }

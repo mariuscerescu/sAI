@@ -78,19 +78,24 @@ describe('typed strategy', () => {
     expect(session.redact('STEFAN CIOBANU și ştefan ciobanu').text).toBe('⟦PERSON_1⟧ și ⟦PERSON_1⟧')
   })
 
-  it('blocks a payment card and keeps low-confidence names when asked', () => {
+  it('blocks a payment card and replaces every other finding', () => {
     const engine = new Engine({ vocabulary: VOCABULARY })
     const blocked = engine.session().redact('Plătește cu 4111 1111 1111 1111.')
     expect(blocked.verdict).toMatchObject({ kind: 'blocked', code: 'POLICY_BLOCKED', classId: 'CARD' })
     expect(blocked.text).toBe('')
+    // A first name alone is replaced like any finding: no score decides it.
+    expect(engine.session().redact('Maria a întârziat.').text).toBe('⟦PERSON_1⟧ a întârziat.')
+  })
 
-    // A first name alone is uncertain (0.6, below the PERSON threshold of 0.85).
-    const keep = new Engine({ vocabulary: VOCABULARY, warnHandling: 'keep' }).session().redact('Maria a întârziat.')
-    expect(keep.verdict).toEqual({ kind: 'needs-confirmation' })
-    expect(keep.text).toBe('Maria a întârziat.')
-    const auto = new Engine({ vocabulary: VOCABULARY }).session().redact('Maria a întârziat.')
-    expect(auto.text).toBe('⟦PERSON_1⟧ a întârziat.')
-    expect(auto.report.warnings).toHaveLength(1)
+  it('treats the removed `warn` action of older settings as replace', () => {
+    const engine = new Engine({ vocabulary: VOCABULARY, actions: { PERSON: 'warn' as never } })
+    expect(engine.problems).toEqual([])
+    expect(engine.session().redact('Maria a întârziat.').text).toBe('⟦PERSON_1⟧ a întârziat.')
+  })
+
+  it('sends a class as written only when the user chose to ignore it', () => {
+    const session = new Engine({ vocabulary: VOCABULARY, actions: { EMAIL: 'ignore' } }).session()
+    expect(session.redact('Scrie la birou@example.com.').text).toBe('Scrie la birou@example.com.')
   })
 
   it('respects the allowlist and per-class actions', () => {

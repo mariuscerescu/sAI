@@ -14,8 +14,6 @@ import type { Candidate, ClassId, EntityKey, NormalizedText } from '../types.ts'
 
 /** Priority of declared spellings and of their generated forms: the longer match wins between them. */
 export const DICTIONARY_PRIORITY = 300
-/** Confidence of an uncertain form: a first name alone, another person's name, or a spelling two entities share. */
-export const AMBIGUOUS_FORM_CONFIDENCE = 0.6
 
 /** One searchable spelling. */
 export interface CompiledTerm {
@@ -23,7 +21,6 @@ export interface CompiledTerm {
   readonly classId: ClassId
   readonly key: EntityKey
   readonly priority: number
-  readonly confidence: number
   /** Declared spelling this form was generated from; restored instead of the form. */
   readonly baseForm?: string
   /**
@@ -104,7 +101,7 @@ export class TermDetector {
       if ((term.capital === 'required' || (term.capital === 'expected' && capitalized))
         && !/^\p{Lu}/u.test(text.original.slice(range.start, range.start + 2))) return
       found.push({
-        ...range, classId: term.classId, detector: this.id, priority: term.priority, confidence: term.confidence, key: term.key,
+        ...range, classId: term.classId, detector: this.id, priority: term.priority, key: term.key,
         ...term.baseForm === undefined ? {} : { baseForm: term.baseForm },
       })
     }
@@ -155,7 +152,7 @@ export function compileDictionary(vocabulary: readonly VocabularyEntry[], langua
   for (const entry of vocabulary) {
     for (const term of entry.terms) {
       const norm = normalizeTerm(term)
-      if (norm.length > 0) sources.push({ entry, norm, spelling: term, key: keyOf(entry, norm), confidence: 1, derived: false })
+      if (norm.length > 0) sources.push({ entry, norm, spelling: term, key: keyOf(entry, norm), derived: false })
     }
   }
   const legalForms = new Set(language.legalForms)
@@ -171,31 +168,27 @@ export function compileDictionary(vocabulary: readonly VocabularyEntry[], langua
    * belongs to "Răileanu" rather than "Railean". Two classes claiming it drop it.
    */
   const generated = new Map<string, { term: CompiledTerm; baseLength: number } | null>()
-  for (const { entry, norm, spelling, key, confidence, derived, firstName } of sources) {
-    if (!derived) terms.push({ norm, classId: entry.class, key, priority: DICTIONARY_PRIORITY, confidence: 1 })
+  for (const { entry, norm, spelling, key, derived, firstName } of sources) {
+    if (!derived) terms.push({ norm, classId: entry.class, key, priority: DICTIONARY_PRIORITY })
     for (const form of termForms(norm, language.wordForms)) {
       if ((form === norm && !derived) || declared.has(form)) continue
       const claimed = generated.get(form)
       if (claimed === null) continue
       if (claimed !== undefined && claimed.term.classId !== entry.class) { generated.set(form, null); continue }
-      // Two entities of one class share this spelling: keep the closer one, but report it as uncertain.
+      // Two entities of one class share this spelling: the closer one keeps it.
       const collision = claimed !== undefined && keyString(claimed.term.key) !== keyString(key)
       if (claimed !== undefined && claimed.baseLength >= norm.length) {
-        if (collision) generated.set(form, { ...claimed, term: { ...claimed.term, confidence: AMBIGUOUS_FORM_CONFIDENCE } })
         // One shared part, a first name for one person and a surname for another ("Thomas"): keep the stricter reading.
-        else if (firstName === true && claimed.term.capital === 'expected') {
-          generated.set(form, { ...claimed, term: { ...claimed.term, confidence: Math.min(claimed.term.confidence, confidence), capital: 'required' } })
+        if (!collision && firstName === true && claimed.term.capital === 'expected') {
+          generated.set(form, { ...claimed, term: { ...claimed.term, capital: 'required' } })
         }
         continue
       }
-      // A form is uncertain when two entities share it or it comes from a first name found alone ("Ioane").
       const oneWord = !form.includes(' ')
-      const ambiguous = collision || confidence < 1
       generated.set(form, {
         baseLength: norm.length,
         term: {
-          norm: form, classId: entry.class, key, priority: DICTIONARY_PRIORITY,
-          confidence: ambiguous ? AMBIGUOUS_FORM_CONFIDENCE : 1, baseForm: spelling,
+          norm: form, classId: entry.class, key, priority: DICTIONARY_PRIORITY, baseForm: spelling,
           // A one-word generated form or name part counts only when capitalized, as names are:
           // "Iulie" may be Iulia, "în iulie" is the month; "Lungul" may be Lungu, "de-a lungul" is not.
           ...oneWord ? { capital: firstName === true ? 'required' : 'expected' } : {},
@@ -225,9 +218,8 @@ const NAME_PART = /^\p{L}[\p{L}'’-]*\p{L}$/u
 /**
  * An organization is often called by the first word of its name: "Acme Logistics Inc." is
  * "Acme". Like a surname, the first word needs its capital unless the text writes no names
- * with capitals, and it is reported as uncertain (it may be
- * an ordinary word: "Nordic", "Blue"), and generic words and places never count ("Banca",
- * "Project", "Moldova").
+ * with capitals (it may be an ordinary word: "Nordic", "Blue"; the allowlist exempts such a
+ * word), and generic words and places never count ("Banca", "Project", "Moldova").
  * @param vocabulary - resolved entries.
  * @param legalForms - normalized legal-form words of the enabled languages.
  * @param orgWords - generic first words of the enabled languages.
@@ -242,7 +234,7 @@ function shortNames(vocabulary: readonly VocabularyEntry[], legalForms: Readonly
       if (words.length < 2) continue
       const { spelling, norm } = bareWord(words[0]!)
       if (norm.length < 3 || !/^\p{L}+$/u.test(norm) || orgWords.has(norm)) continue
-      out.push({ entry, norm, spelling, confidence: AMBIGUOUS_FORM_CONFIDENCE })
+      out.push({ entry, norm, spelling })
     }
   }
   return out
@@ -270,7 +262,7 @@ function withoutLegalForm(vocabulary: readonly VocabularyEntry[], legalForms: Re
       const spelling = kept.join(' ').replace(/[,.;]+$/u, '')
       const norm = normalizeTerm(spelling)
       if (kept.length === 0 || norm.length < 3) continue
-      out.push({ entry, norm, spelling, confidence: 1 })
+      out.push({ entry, norm, spelling })
     }
   }
   return out
@@ -283,7 +275,6 @@ interface Source {
   /** Spelling restored for this source and its forms. */
   readonly spelling: string
   readonly key: EntityKey
-  readonly confidence: number
   /** A name part found alone, not a spelling the user declared. */
   readonly derived: boolean
   /** A first name found alone. */
@@ -294,8 +285,7 @@ interface Source {
  * Each word of a multi-word person term is also searched alone: "Ion Rusu" protects
  * "Ion", "Ioane", "Rusu" and "Rusului". Terms are read as first names then surname:
  * every name word but the last is a first name ("Ana Maria Popescu"). A first name alone
- * is uncertain (another Ion may be meant), so it is masked with a warning and only when
- * capitalized; a surname alone is certain.
+ * counts only when capitalized ("will", "mark", "iulie" are usually ordinary words).
  * @param vocabulary - resolved entries.
  * @returns the derived parts and, for every one-word person spelling, the entries that own it.
  */
@@ -323,7 +313,7 @@ function nameParts(vocabulary: readonly VocabularyEntry[], notNames: ReadonlySet
         if (seen.has(norm)) continue
         seen.add(norm)
         const firstName = index < names.length - 1
-        parts.push({ entry, norm, spelling, confidence: firstName ? AMBIGUOUS_FORM_CONFIDENCE : 1, firstName })
+        parts.push({ entry, norm, spelling, firstName })
       }
     }
   }

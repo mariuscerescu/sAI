@@ -5,7 +5,7 @@
  */
 
 import type { Session } from './engine.ts'
-import type { BlockCode, ClassId, RedactOutput, RedactReport, Verdict, Warning } from './types.ts'
+import type { BlockCode, ClassId, RedactOutput, RedactReport, Verdict } from './types.ts'
 
 const NO_KEYS: ReadonlySet<string> = new Set()
 
@@ -14,7 +14,6 @@ export class RedactionBatch {
   private verdict: Verdict = { kind: 'proceed' }
   private readonly counts: Record<ClassId, number> = {}
   private readonly tokens = new Set<string>()
-  private readonly warnings: Warning[] = []
   private fields = 0
 
   /** @param session - session whose vault every field shares. */
@@ -82,7 +81,7 @@ export class RedactionBatch {
   result(): { verdict: Verdict; report: RedactReport; fields: number } {
     return {
       verdict: this.verdict,
-      report: { countsByClass: { ...this.counts }, tokensUsed: [...this.tokens], warnings: [...this.warnings], strategy: this.session.strategy.id },
+      report: { countsByClass: { ...this.counts }, tokensUsed: [...this.tokens], strategy: this.session.strategy.id },
       fields: this.fields,
     }
   }
@@ -91,9 +90,7 @@ export class RedactionBatch {
     this.fields++
     for (const [classId, count] of Object.entries(output.report.countsByClass)) this.counts[classId] = (this.counts[classId] ?? 0) + count
     for (const token of output.report.tokensUsed) this.tokens.add(token)
-    this.warnings.push(...output.report.warnings)
     if (output.verdict.kind === 'blocked') this.verdict = output.verdict
-    else if (output.verdict.kind === 'needs-confirmation' && this.verdict.kind === 'proceed') this.verdict = output.verdict
     return output.text
   }
 }

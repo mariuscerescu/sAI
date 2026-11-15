@@ -1,7 +1,7 @@
 /** Overlap resolution and policy decisions. */
 
-import { DEFAULT_MIN_CONFIDENCE, type SaiSettings } from './settings.ts'
-import type { Action, Candidate, Decision, Verdict, Warning } from './types.ts'
+import type { SaiSettings } from './settings.ts'
+import type { Action, Candidate, Decision, Verdict } from './types.ts'
 
 const isLiteral = (candidate: Candidate): boolean => candidate.classId === 'LITERAL'
 const overlaps = (a: Candidate, b: Candidate): boolean => a.start < b.end && b.start < a.end
@@ -36,7 +36,7 @@ function containmentIndex(containers: readonly Candidate[]): (start: number, end
  * vocabulary word inside an e-mail address, IBAN, or phone number never leaves the rest
  * of that value in clear: the whole address becomes one symbol. Symbol-like input
  * (`LITERAL`) is the one exception and always wins. Between findings that only partly
- * overlap: higher priority, longer match, higher confidence, earlier start.
+ * overlap: higher priority, longer match, earlier start.
  * @param candidates - every finding, possibly overlapping.
  * @param isAllowed - whether a non-literal finding's normalized text is allowlisted.
  * @returns non-overlapping spans sorted by start.
@@ -49,7 +49,6 @@ export function resolveOverlaps(candidates: readonly Candidate[], isAllowed: (ca
   const order = (a: Candidate, b: Candidate): number => Number(isLiteral(b)) - Number(isLiteral(a))
     || b.priority - a.priority
     || (b.end - b.start) - (a.end - a.start)
-    || b.confidence - a.confidence
     || a.start - b.start
   const contained = (candidate: Candidate): boolean => !isLiteral(candidate) && inContainer(candidate.start, candidate.end)
   const accepted: Candidate[] = []
@@ -65,33 +64,21 @@ export function resolveOverlaps(candidates: readonly Candidate[], isAllowed: (ca
 }
 
 /**
- * Decide the action for every span and the aggregate verdict.
+ * Decide the action for every span and the aggregate verdict: every finding gets its
+ * class's action; nothing depends on a score.
  * @param spans - resolved spans.
- * @param settings - effective settings (actions and thresholds).
- * @returns decisions in span order, the verdict, and value-free warnings.
+ * @param settings - effective settings (per-class actions).
+ * @returns decisions in span order and the verdict.
  */
-export function decide(spans: readonly Candidate[], settings: SaiSettings): { decisions: Decision[]; verdict: Verdict; warnings: Warning[] } {
+export function decide(spans: readonly Candidate[], settings: SaiSettings): { decisions: Decision[]; verdict: Verdict } {
   const decisions: Decision[] = []
-  const warnings: Warning[] = []
   let verdict: Verdict = { kind: 'proceed' }
   for (const span of spans) {
-    let action: Action
-    if (span.classId === 'LITERAL') {
-      action = 'tokenize'
-    } else {
-      action = settings.actions[span.classId] ?? 'tokenize'
-      const threshold = settings.minConfidence[span.classId] ?? DEFAULT_MIN_CONFIDENCE
-      if ((action === 'tokenize' || action === 'mask') && span.confidence < threshold) {
-        warnings.push({ classId: span.classId, detector: span.detector, confidence: span.confidence })
-        action = settings.warnHandling === 'tokenize' ? 'tokenize' : 'warn'
-      }
-    }
+    const action: Action = span.classId === 'LITERAL' ? 'tokenize' : settings.actions[span.classId] ?? 'tokenize'
     if (action === 'block' && verdict.kind !== 'blocked') {
       verdict = { kind: 'blocked', code: 'POLICY_BLOCKED', classId: span.classId, detector: span.detector }
-    } else if (action === 'warn' && verdict.kind === 'proceed') {
-      verdict = { kind: 'needs-confirmation' }
     }
     decisions.push({ span, action })
   }
-  return { decisions, verdict, warnings }
+  return { decisions, verdict }
 }

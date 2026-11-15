@@ -18,7 +18,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
   - forme englezești: Smith's, the Smiths;
   - prenumele și numele de familie găsite singure;
   - numele firmei fără forma juridică și numele ei scurt.
-- **Ce e garantat:** sAI protejează exact ce e declarat în vocabular, plus identificatorii în formatele standard. Persoanele nedeclarate ajung la model așa cum sunt scrise: nu există un detector care să ghicească nume. Singura excepție e un prenume necunoscut lipit de un nume de familie protejat („Floare Munteanu”), care devine o persoană nouă.
+- **Ce e garantat:** sAI protejează exact ce e declarat în vocabular, plus identificatorii în formatele standard. Persoanele nedeclarate ajung la model așa cum sunt scrise: nu există un detector care să ghicească nume. Orice găsește sAI e înlocuit; nimic nu depinde de un scor sau de un prag. Singura excepție e un prenume necunoscut lipit de un nume de familie protejat („Floare Munteanu”), care devine o persoană nouă.
 - **Tipare cu validare:** IDNP/IDNO, CNP, telefoane MD/RO/US/UK, SSN, NINO, IBAN, card, e-mail, IPv4.
 - **Două strategii de simboluri:** typed (`⟦PERSON_1⟧`, recomandată) și greek (litere grecești, experimentală).
 - **Restaurare în streaming,** cu reținerea doar a câtorva caractere.
@@ -38,7 +38,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 
 ## Rezultate
 
-- **815 teste automate.** Ele acoperă:
+- **817 teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.

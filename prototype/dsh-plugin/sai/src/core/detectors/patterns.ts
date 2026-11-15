@@ -1,11 +1,11 @@
 /**
  * Shape detectors for identifiers with a recognizable form. Each pattern is a
  * regular expression over the normalized view, an optional validator that
- * filters (never scores) matches, a canonicalizer that defines entity
- * identity, and context words that raise the confidence.
+ * filters matches (a checksum, a numbering plan), and a canonicalizer that
+ * defines entity identity. Every validated match is a finding; none is scored.
  */
 
-import { normalizeTerm, toOriginalRange } from '../normalize.ts'
+import { toOriginalRange } from '../normalize.ts'
 import type { Candidate, ClassId, NormalizedText } from '../types.ts'
 
 /** Priority shared by pattern findings. */
@@ -21,9 +21,6 @@ export interface PatternSpec {
   /** On a failed check, retry the match without its trailing space-separated groups. */
   readonly shrink?: boolean
   readonly canonical: (match: string) => string
-  readonly context: readonly string[]
-  readonly base: number
-  readonly withContext: number
 }
 
 const digitsOf = (text: string): string => text.replace(/\D/g, '')
@@ -147,72 +144,61 @@ function phoneCanonical(country: string) {
 export const PATTERNS: Readonly<Record<string, PatternSpec>> = {
   'idnp': {
     id: 'idnp', classId: 'IDNP', regex: /(?<![a-z0-9])\d{13}(?![a-z0-9])/g, validate: checksum731, canonical: digitsOf,
-    context: ['idnp', 'idno', 'cod personal', 'numar de identificare', 'cod fiscal'], base: 0.9, withContext: 1,
   },
   'cnp': {
     id: 'cnp', classId: 'CNP', regex: /(?<![a-z0-9])[1-8]\d{12}(?![a-z0-9])/g, validate: checksumCnp, canonical: digitsOf,
-    context: ['cnp', 'cod numeric personal'], base: 0.9, withContext: 1,
   },
   'phone-md': {
     id: 'phone-md', classId: 'PHONE', regex: /(?<![a-z0-9+])(?:\+?373[ .-]?|0)\d{2}[ .-]?\d{3}[ .-]?\d{3}(?![a-z0-9])/g,
-    canonical: phoneCanonical('373'), context: ['tel', 'telefon', 'mobil', 'nr', 'numar', 'contact', 'suna'], base: 0.85, withContext: 1,
+    canonical: phoneCanonical('373'),
   },
   'phone-ro': {
     id: 'phone-ro', classId: 'PHONE', regex: /(?<![a-z0-9+])(?:\+?40[ .-]?|0)7\d{2}[ .-]?\d{3}[ .-]?\d{3}(?![a-z0-9])/g,
-    canonical: phoneCanonical('40'), context: ['tel', 'telefon', 'mobil', 'nr', 'numar', 'contact', 'suna'], base: 0.85, withContext: 1,
+    canonical: phoneCanonical('40'),
   },
   'iban': {
     // Compact, or printed in groups of four; a failed check retries without trailing groups.
     id: 'iban', classId: 'IBAN', validate: ibanMod97, shrink: true,
     regex: /(?<![a-z0-9])[a-z]{2}\d{2}(?:[a-z0-9]{11,30}|(?: [a-z0-9]{4}){2,7}(?: [a-z0-9]{1,4})?)(?![a-z0-9])/g,
-    canonical: text => text.replace(/\s/g, '').toUpperCase(), context: ['iban', 'cont'], base: 0.95, withContext: 1,
+    canonical: text => text.replace(/\s/g, '').toUpperCase(),
   },
   'card': {
     id: 'card', classId: 'CARD', regex: /(?<![a-z0-9])\d(?:[ -]?\d){14,18}(?![a-z0-9])/g, validate: luhn, canonical: digitsOf,
-    context: ['card', 'visa', 'mastercard', 'plata'], base: 0.85, withContext: 1,
   },
   'email': {
     id: 'email', classId: 'EMAIL', regex: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/g, canonical: text => text,
-    context: [], base: 0.95, withContext: 0.95,
   },
   'ssn-us': {
     id: 'ssn-us', classId: 'SSN', regex: /(?<![a-z0-9-])\d{3}[- ]\d{2}[- ]\d{4}(?![a-z0-9-])/g, validate: validSsn, canonical: digitsOf,
-    context: ['ssn', 'social security'], base: 0.9, withContext: 1,
   },
   'phone-us': {
     // Separators are required, so bare ten-digit numbers (order ids, Romanian mobiles) are left alone.
     id: 'phone-us', classId: 'PHONE', validate: validNanp,
     regex: /(?<![a-z0-9+])(?:\+?1[ .-]?)?(?:\(\d{3}\) ?|\d{3}[ .-])\d{3}[ .-]\d{4}(?![a-z0-9])/g,
-    canonical: text => `+1${digitsOf(text).slice(-10)}`, context: ['phone', 'tel', 'call', 'mobile', 'cell', 'contact'], base: 0.85, withContext: 1,
+    canonical: text => `+1${digitsOf(text).slice(-10)}`,
   },
   'phone-uk': {
     id: 'phone-uk', classId: 'PHONE', validate: text => ukNational(text) !== undefined,
     regex: /(?<![a-z0-9+])(?:\+44 ?(?:\(0\) ?)?|0)(?:\d[ -]?){9}\d(?![a-z0-9])/g,
-    canonical: text => `+44${ukNational(text) ?? digitsOf(text)}`, context: ['phone', 'tel', 'call', 'mobile', 'contact'], base: 0.85, withContext: 1,
+    canonical: text => `+44${ukNational(text) ?? digitsOf(text)}`,
   },
   'nino-uk': {
     id: 'nino-uk', classId: 'NINO', regex: /(?<![a-z0-9])[a-z]{2} ?\d{2} ?\d{2} ?\d{2} ?[a-d](?![a-z0-9])/g, validate: validNino,
-    canonical: text => text.replace(/\s/g, '').toUpperCase(), context: ['national insurance', 'nino', 'ni number'], base: 0.85, withContext: 1,
+    canonical: text => text.replace(/\s/g, '').toUpperCase(),
   },
   'ipv4': {
     id: 'ipv4', classId: 'IP', regex: /(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])/g,
     validate: text => text.split('.').every(part => Number(part) <= 255), canonical: text => text,
-    context: ['ip', 'server', 'adresa'], base: 0.8, withContext: 0.95,
   },
 }
-
-/** Characters around a match searched for context words. */
-const CONTEXT_WINDOW = 30
 
 /** Runs one pattern over the normalized view. */
 export class PatternDetector {
   readonly id: string
-  private readonly context: readonly string[]
 
   /** @param spec - the pattern definition. */
   constructor(private readonly spec: PatternSpec) {
     this.id = `pattern:${spec.id}`
-    this.context = spec.context.map(normalizeTerm)
   }
 
   /**
@@ -226,14 +212,11 @@ export class PatternDetector {
       const value = this.validPrefix(match[0])
       if (value === undefined) continue
       const at = match.index
-      const window = text.norm.slice(Math.max(0, at - CONTEXT_WINDOW), Math.min(text.norm.length, at + value.length + CONTEXT_WINDOW))
-      const hasContext = this.context.some(word => window.includes(word))
       found.push({
         ...toOriginalRange(text, at, at + value.length),
         classId: this.spec.classId,
         detector: this.id,
         priority: PATTERN_PRIORITY,
-        confidence: hasContext ? this.spec.withContext : this.spec.base,
         key: { kind: 'canonical', classId: this.spec.classId, value: this.spec.canonical(value) },
       })
     }

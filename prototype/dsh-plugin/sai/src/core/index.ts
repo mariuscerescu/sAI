@@ -14,10 +14,10 @@ export { combineLanguages, DEFAULT_LANGUAGES, englishWordForms, LANGUAGE_IDS, LA
 export type { LanguageId, LanguagePack } from './languages.ts'
 export { normalize, normalizeTerm } from './normalize.ts'
 export {
-  DEFAULT_EXTERNAL_TOOLS, DEFAULT_MIN_CONFIDENCE, DEFAULT_PATTERNS, DEFAULT_SETTINGS, isExternalTool, PATTERN_IDS, resolveSettings,
+  DEFAULT_EXTERNAL_TOOLS, DEFAULT_PATTERNS, DEFAULT_SETTINGS, isExternalTool, PATTERN_IDS, resolveSettings,
   SUGGESTED_CLASSES,
 } from './settings.ts'
-export type { SaiSettings, StrategyId, VocabularyEntry, WarnHandling } from './settings.ts'
+export type { SaiSettings, StrategyId, VocabularyEntry } from './settings.ts'
 export { GreekStrategy, TypedStrategy, createStrategy, defaultPreamble } from './strategies.ts'
 export type { TokenHit, TokenStrategy } from './strategies.ts'
 export { Vault, keyString } from './vault.ts'

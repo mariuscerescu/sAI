@@ -57,8 +57,8 @@
 
 - [ ] **A7 · P2 · IDNO cu cifră de control invalidă nu e mascat**
   - Caz: I1, I2 (IDNO inventat, cu cifră greșită, trimis în clar)
-  - Corecție: setare per tipar, „maschează și dacă validatorul eșuează”, cu încredere scăzută (avertisment), activă implicit pentru numere precedate de „IDNO” sau „IDNP”.
-  - Gata când: „IDNO 1003600012345” e mascat cu avertisment.
+  - Corecție: setare per tipar, „maschează și dacă validatorul eșuează”, activă implicit pentru numere precedate de „IDNO” sau „IDNP”. (Varianta inițială propunea un avertisment de încredere scăzută; scorurile au fost eliminate, vezi G2.)
+  - Gata când: „IDNO 1003600012345” e mascat.
 
 ---
 
@@ -205,6 +205,16 @@
     - formulele de adresare (`stimate`, `dragă`, `dear`, `hello`…) au fost adăugate la titluri.
   - Teste: 808 trec; un test nou verifică explicit că persoanele nedeclarate trec neatinse.
   - Rezultatele vechi (run1–run4, run-en1–run-en4) au fost obținute cu detectorul activ și rămân ca istoric.
+
+- [x] **G2 · Scorul de încredere, pragurile și acțiunea `warn` eliminate (15.11.2026)**
+  - Motiv: după G1 nu mai schimbau nimic implicit. Tiparele treceau mereu pragul, iar formele deduse (un prenume singur, un nume scurt) erau înlocuite oricum. Setarea „sub prag → păstrează” și acțiunea `warn` trimiteau în clar, fără nicio confirmare, date pe care sAI le găsise.
+  - Regula de produs: orice găsește sAI primește acțiunea clasei: înlocuire (implicit), mascare, ignorare (alegere explicită, de exemplu „nu ascunde e-mailurile”) sau blocare. Nimic nu depinde de un scor.
+  - Schimbări în cod:
+    - eliminate `confidence`, `minConfidence`, `warnHandling`, avertismentele din raport și verdictul `needs-confirmation`;
+    - eliminate cuvintele-cheie din tipare;
+    - un `warn` dintr-o configurație veche e citit ca înlocuire.
+  - Mascările greșite sunt prevenite de regulile de majusculă și de lista de excepții, care rămân.
+  - Teste: 817 trec. Testul de potriviri false dă aceleași rezultate ca înainte.
 
 ---
 

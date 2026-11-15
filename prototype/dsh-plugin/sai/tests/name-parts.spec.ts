@@ -29,17 +29,18 @@ describe('name parts', () => {
     expect(out.text).not.toMatch(/ion|rusu|maria|mario|ceban/iu)
   })
 
-  it('warns on a first name alone but not on a surname alone', () => {
-    expect(engine.session().redact('Ion a venit.').report.warnings).toHaveLength(1)
-    expect(engine.session().redact('Rusu a venit.').report.warnings).toHaveLength(0)
+  it('replaces a first name alone and a surname alone alike, with no score involved', () => {
+    expect(engine.session().redact('Ion a venit.').text).toBe('⟦PERSON_1⟧ a venit.')
+    expect(engine.session().redact('Rusu a venit.').text).toBe('⟦PERSON_1⟧ a venit.')
   })
 
   it('reads every name word but the last as a first name, without name lists', () => {
     const triple = make([{ id: 't', class: 'PERSON', terms: ['Ana Maria Popescu'] }])
-    // "Maria" is a first name here: masked only with its capital, with a warning.
+    // "Maria" is a first name here: matched only with its capital, even in a text written in lowercase.
     expect(triple.session().redact('am vorbit cu maria ieri').decisions).toHaveLength(0)
-    expect(triple.session().redact('Am vorbit cu Maria ieri.').report.warnings).toHaveLength(1)
-    expect(triple.session().redact('Am vorbit cu Popescu ieri.').report.warnings).toHaveLength(0)
+    expect(triple.session().redact('Am vorbit cu Maria ieri.').text).toBe('Am vorbit cu ⟦PERSON_1⟧ ieri.')
+    // A surname alone is read in lowercase when the text writes no names with capitals.
+    expect(triple.session().redact('am vorbit cu popescu ieri').text).toBe('am vorbit cu ⟦PERSON_1⟧ ieri')
   })
 
   it('gives a part the symbol of its only owner', () => {

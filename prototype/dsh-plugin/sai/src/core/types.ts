@@ -34,17 +34,19 @@ export interface Candidate {
   readonly end: number
   readonly classId: ClassId
   readonly detector: DetectorId
-  /** Higher wins overlaps: literal 400, dictionary 300, session 250, pattern 200. */
+  /** Higher wins partial overlaps: literal 400, dictionary 300, session 250, pattern 200. */
   readonly priority: number
-  /** Rule-based score in [0, 1]; compared with the class threshold by the policy. */
-  readonly confidence: number
   readonly key: EntityKey
   /** Declared spelling an inflected form was generated from; the vault records it instead of the form. */
   readonly baseForm?: string
 }
 
-/** Policy outcome for one span. */
-export type Action = 'tokenize' | 'mask' | 'warn' | 'ignore' | 'block'
+/**
+ * Policy outcome for one span, chosen per class by the user. Every finding gets its
+ * class's action; nothing depends on a score. `ignore` is an explicit choice to send a
+ * class in clear (for example e-mail addresses).
+ */
+export type Action = 'tokenize' | 'mask' | 'ignore' | 'block'
 
 /** One resolved span and the action chosen for it. */
 export interface Decision {
@@ -55,24 +57,15 @@ export interface Decision {
 /** Aggregate outcome of one redaction. */
 export type Verdict =
   | { readonly kind: 'proceed' }
-  | { readonly kind: 'needs-confirmation' }
   | { readonly kind: 'blocked'; readonly code: BlockCode; readonly classId?: ClassId; readonly detector?: DetectorId }
 
 /** Why a redaction refused to produce sendable text. */
 export type BlockCode = 'POLICY_BLOCKED' | 'LEAK_DETECTED' | 'STRATEGY_UNSUITABLE' | 'INPUT_TOO_LARGE' | 'IMAGE_NOT_INSPECTABLE'
 
-/** A finding left in clear text because its confidence was below the class threshold. */
-export interface Warning {
-  readonly classId: ClassId
-  readonly detector: DetectorId
-  readonly confidence: number
-}
-
 /** Value-free account of one redaction. */
 export interface RedactReport {
   readonly countsByClass: Readonly<Record<ClassId, number>>
   readonly tokensUsed: readonly string[]
-  readonly warnings: readonly Warning[]
   readonly strategy: string
 }
 

@@ -4,7 +4,7 @@ import { useId, useMemo, useState } from 'react'
 import { Button, Checkbox, SegmentedControl, SettingsForm, Switch, Tag } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import {
-  DEFAULT_MIN_CONFIDENCE, DEFAULT_SETTINGS, defaultPreamble, Engine, LANGUAGE_IDS, PATTERN_IDS, PATTERNS, SUGGESTED_CLASSES, type Action,
+  DEFAULT_SETTINGS, defaultPreamble, Engine, LANGUAGE_IDS, PATTERN_IDS, PATTERNS, SUGGESTED_CLASSES, type Action,
   type Decision, type SaiSettings, type StrategyId, type VocabularyEntry,
 } from '../core/index.ts'
 import { NS, formLabels, type SaiLocaleKey } from './locales.ts'
@@ -14,7 +14,7 @@ import css from './Sai.module.css'
 /** Props bound by the renderer for the bundle configuration slot. */
 export type SaiSettingsPageProps = PropsRuntime<'plugins.bundle.config'> & PropsLocale<typeof NS> & InjectFace<SaiFormFace>
 
-const ACTIONS: readonly Action[] = ['tokenize', 'mask', 'warn', 'ignore', 'block']
+const ACTIONS: readonly Action[] = ['tokenize', 'mask', 'ignore', 'block']
 const SAMPLE = 'Dl. Popescu de la Acme a sunat de pe 069123456. IDNP: 2001234567891. Maria Rusu confirmă.'
 
 /**
@@ -33,8 +33,7 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
   const patterns = draft.patterns ?? DEFAULT_SETTINGS.patterns
   const languages = draft.languages ?? DEFAULT_SETTINGS.languages
   const actions = draft.actions ?? DEFAULT_SETTINGS.actions
-  const minConfidence = draft.minConfidence ?? DEFAULT_SETTINGS.minConfidence
-  const classes = useMemo(() => policyClasses(vocabulary, actions, minConfidence, patterns), [vocabulary, actions, minConfidence, patterns])
+  const classes = useMemo(() => policyClasses(vocabulary, actions, patterns), [vocabulary, actions, patterns])
   const [newClass, setNewClass] = useState('')
   const invalid = (Object.keys(state.fields) as SaiField[]).filter(field => state.fields[field].invalid)
 
@@ -87,13 +86,6 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
       {PATTERN_IDS.map(id => <Checkbox key={id} label={`${t(`pattern_${id}` as SaiLocaleKey)} · ${PATTERNS[id]!.classId}`}
         checked={patterns.includes(id)} disabled={disabled}
         onChange={(next) => { edit('patterns', next ? [...patterns, id] : patterns.filter(item => item !== id)) }} />)}
-      <div className={css.inline}>
-        <span className={css.label}>{t('warnTitle')}</span>
-        <SegmentedControl id="sai-warn" label={t('warnTitle')} value={draft.warnHandling ?? 'tokenize'} disabled={disabled}
-          options={[{ value: 'tokenize', label: t('warnTokenize') }, { value: 'keep', label: t('warnKeep') }]}
-          onChange={(next) => { edit('warnHandling', next) }} />
-      </div>
-      <p className={css.notice}>{t('warnHint')}</p>
     </section>
 
     <section className={css.section}>
@@ -101,11 +93,9 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
       <p className={css.notice}>{t('policyHint')}</p>
       <div className={css.policy}>
         <span className={css.label}>{t('classLabel')}</span><span className={css.label}>{t('actionLabel')}</span>
-        <span className={css.label}>{t('thresholdLabel')}</span>
         {classes.map(classId => <PolicyRow key={classId} t={t} classId={classId} disabled={disabled}
-          action={actions[classId] ?? 'tokenize'} threshold={minConfidence[classId] ?? DEFAULT_MIN_CONFIDENCE}
-          onAction={(action) => { edit('actions', { ...actions, [classId]: action }) }}
-          onThreshold={(value) => { edit('minConfidence', { ...minConfidence, [classId]: value }) }} />)}
+          action={actions[classId] ?? 'tokenize'}
+          onAction={(action) => { edit('actions', { ...actions, [classId]: action }) }} />)}
       </div>
       <div className={css.inline}>
         <input className={css.input} value={newClass} placeholder={t('newClassPlaceholder')} disabled={disabled}
@@ -137,12 +127,12 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
 }
 
 function policyClasses(
-  vocabulary: readonly VocabularyEntry[], actions: Record<string, Action>, thresholds: Record<string, number>, patterns: readonly string[],
+  vocabulary: readonly VocabularyEntry[], actions: Record<string, Action>, patterns: readonly string[],
 ): string[] {
   const set = new Set<string>(['PERSON'])
   for (const entry of vocabulary) if (entry.class) set.add(entry.class)
   for (const id of patterns) { const spec = PATTERNS[id]; if (spec) set.add(spec.classId) }
-  for (const classId of [...Object.keys(actions), ...Object.keys(thresholds)]) set.add(classId)
+  for (const classId of Object.keys(actions)) set.add(classId)
   return [...set].sort()
 }
 
@@ -222,7 +212,7 @@ function VocabularyRow(props: RowProps & {
 }
 
 function PolicyRow(props: RowProps & {
-  classId: string; action: Action; threshold: number; onAction: (action: Action) => void; onThreshold: (value: number) => void
+  classId: string; action: Action; onAction: (action: Action) => void
 }) {
   const { t, disabled } = props
   return <>
@@ -231,11 +221,6 @@ function PolicyRow(props: RowProps & {
       onChange={(event) => { props.onAction(event.target.value as Action) }}>
       {ACTIONS.map(action => <option key={action} value={action}>{t(`action_${action}` as SaiLocaleKey)}</option>)}
     </select>
-    <input className={css.input} type="number" min={0} max={1} step={0.05} value={props.threshold} disabled={disabled}
-      onChange={(event) => {
-        const value = Number(event.target.value)
-        if (Number.isFinite(value) && value >= 0 && value <= 1) props.onThreshold(value)
-      }} />
   </>
 }
 
@@ -299,13 +284,12 @@ function Findings(props: { t: SaiSettingsPageProps['t']; input: string; decision
   return <table className={css.table}>
     <thead><tr>
       <th>{t('findingText')}</th><th>{t('findingClass')}</th><th>{t('findingDetector')}</th>
-      <th>{t('findingScore')}</th><th>{t('findingAction')}</th>
+      <th>{t('findingAction')}</th>
     </tr></thead>
     <tbody>{props.decisions.map(({ span, action }) => <tr key={`${span.start}:${span.end}`}>
       <td className={css.mono}>{props.input.slice(span.start, span.end)}</td>
       <td className={css.mono}>{span.classId}</td>
       <td>{span.detector}</td>
-      <td>{span.confidence.toFixed(2)}</td>
       <td>{t(`action_${action}` as SaiLocaleKey)}</td>
     </tr>)}</tbody>
   </table>

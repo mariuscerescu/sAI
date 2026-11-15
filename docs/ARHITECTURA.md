@@ -117,18 +117,16 @@ interface Candidate {
   classId: ClassId
   detector: DetectorId
   priority: number                    // literal=400, dictionary=300, session=250, pattern=200
-  confidence: number                  // 0..1
   key: EntityKey
 }
 
 interface Span extends Candidate {}   // un Candidate care a trecut de rezolvator
 
 // ── Politici ────────────────────────────────────────────────────
-type Action = 'tokenize' | 'mask' | 'warn' | 'ignore' | 'block'
+type Action = 'tokenize' | 'mask' | 'ignore' | 'block'   // pe clasă; niciun scor
 interface Decision { span: Span; action: Action; reason?: string }
 type Verdict =
   | { kind: 'proceed' }
-  | { kind: 'needs-confirmation'; warnings: Warning[] }
   | { kind: 'blocked'; reason: BlockReason }
 
 // ── Seif ────────────────────────────────────────────────────────
@@ -263,19 +261,19 @@ Formatul fiecărei secțiuni: **Rol, Intrare, Ieșire, Erori, Puncte de extensie
 - **Intrare:** `NormalizedText`
 - **Ieșire:** `Candidate[]` (pot fi suprapuși, ordinea nu contează)
 
-| Implementare | Cum lucrează | `priority` | `confidence` | `key` |
-|---|---|---|---|---|
-| `DictionaryDetector` | Aho-Corasick pe `norm`, verificarea granițelor de cuvânt | 300 | 1.0 | `entry` |
-| `PatternDetector` (unul per fișier din `detectors/`) | regex → validator → canonicalizator. Cuvintele de context cresc încrederea | 200 | 0.6–1.0 | `canonical` |
-| `SessionDetector` | formele deja înlocuite în sesiune (din seif), căutate din nou, cu granițe de cuvânt | 250 | 1.0 | cheia intrării din seif |
-| `LiteralDetector` (furnizat de strategie, vezi C3) | formatul simbolurilor strategiei | 400 | 1.0 | `literal` |
+| Implementare | Cum lucrează | `priority` | `key` |
+|---|---|---|---|
+| `DictionaryDetector` | index pe primul cuvânt peste `norm`, verificarea granițelor de cuvânt și a majusculei | 300 | `entry` |
+| `PatternDetector` | regex → validator → canonicalizator | 200 | `canonical` |
+| `SessionDetector` | formele deja înlocuite în sesiune (din seif), căutate din nou, cu granițe de cuvânt | 250 | cheia intrării din seif |
+| `LiteralDetector` (furnizat de strategie, vezi C3) | formatul simbolurilor strategiei | 400 | `literal` |
 
 **Fără detector de nume nedeclarate (decizie 15.11.2026).** Un prototip anterior avea un `NameDetector` bazat pe liste publice de prenume și nume (725 de nume, RO/MD și EN). A fost eliminat, împreună cu listele: prindea doar numele frecvente, iar un detector care lasă să treacă numele rare dă o siguranță falsă. Promisiunea sAI e acum una pe care o poate ține integral:
 
 - **protejat garantat:** tot ce e declarat în vocabular, cu formele lui regulate, plus identificatorii în formatele standard ale tiparelor activate;
 - **neprotejat:** orice altceva, inclusiv persoanele nedeclarate, care ajung la model așa cum sunt scrise.
 
-Fără liste, părțile unui nume declarat se citesc după poziție: toate cuvintele în afară de ultimul sunt prenume („Ana Maria Popescu”: Ana și Maria sunt prenume, Popescu e numele de familie). Un prenume găsit singur cere majusculă și are încredere 0.6.
+Fără liste, părțile unui nume declarat se citesc după poziție: toate cuvintele în afară de ultimul sunt prenume („Ana Maria Popescu”: Ana și Maria sunt prenume, Popescu e numele de familie). Un prenume găsit singur cere majusculă.
 
 Regula „prenume nedeclarat lângă un nume de familie protejat” rămâne, pentru că pornește de la ceva declarat: un cuvânt cu majusculă chiar înaintea numelui de familie formează cu acesta o persoană nouă („Floare Munteanu”). Nu se aplică titlurilor și formulelor de adresare din pachetele de limbă (`dl.`, `stimate`, `dear`, `hello`…). La început de propoziție se aplică doar înaintea formei declarate a numelui, nu înaintea unei forme flexionate („Contractul Popescului” rămâne).
 
@@ -286,9 +284,6 @@ class = "IDNP"
 regex = '(?<!\d)\d{13}(?!\d)'
 validator = "checksum_731"
 canonical = "digits_only"
-context = ["idnp", "cod personal", "numar de identificare"]
-context_window = 30          # caractere în jur
-confidence = { base = 0.9, with_context = 1.0 }
 ```
 
 ### C6. Rezolvatorul
@@ -302,8 +297,7 @@ confidence = { base = 0.9, with_context = 1.0 }
   3. **conținerea:** un candidat aflat complet în interiorul altuia, mai lung, pierde, indiferent de prioritate. Astfel „acme” din `ion.rusu@acme.md` nu mai rupe e-mailul: toată adresa devine `⟦EMAIL_1⟧`. Același lucru e valabil pentru IBAN și telefoane. Dacă cel care conține pierde la rândul lui o suprapunere parțială, cei dinăuntru sunt reluați, ca textul lor să rămână acoperit (decizie 15.11.2026);
   4. la suprapuneri parțiale, `priority` mai mare câștigă;
   5. potrivirea mai lungă câștigă;
-  6. `confidence` mai mare câștigă;
-  7. `start` mai mic câștigă.
+  6. `start` mai mic câștigă.
 
 ### C7. Motorul de politici
 
@@ -314,20 +308,15 @@ confidence = { base = 0.9, with_context = 1.0 }
   ```toml
   [default]
   action = "tokenize"
-  min_confidence = 0.8          # sub prag: acțiunea devine "warn"
 
   [class.CARD]
   action = "block"
 
-  [class.PERSON]
-  action = "tokenize"
-  min_confidence = 0.85
-
   [class.LITERAL]
   action = "tokenize"           # obligatoriu, nu poate fi suprascris
   ```
-- **Reguli:** orice `block` → verdict `blocked`. Orice `warn` (și niciun `block`) → `needs-confirmation`. `LITERAL` e întotdeauna `tokenize`.
-- **Notă:** în modul `needs-confirmation`, textul redactat **este** întors (cu span-urile `warn` netokenizate). Gazda decide dacă trimite. Pentru prototip, `sai-dsh-plugin` tratează `warn` ca `tokenize` și doar raportează, ca să nu întrerupă agentul.
+- **Reguli:** fiecare găsire primește acțiunea clasei ei; nimic nu depinde de un scor. Orice `block` → verdict `blocked`. `LITERAL` e întotdeauna `tokenize`. `ignore` e alegerea explicită a utilizatorului de a trimite o clasă în clar (de exemplu e-mailurile).
+- **Decizie 15.11.2026: fără scor de încredere și praguri.** Prototipul avea un scor pe fiecare găsire, praguri pe clasă (`minConfidence`), setarea „sub prag” (`warnHandling`) și acțiunea `warn`. După eliminarea detectorului de nume nu mai schimbau nimic implicit (tiparele treceau mereu pragul), iar `warn` și „sub prag → păstrează” trimiteau în clar, fără confirmare, date deja găsite. Au fost eliminate; un `warn` rămas într-o configurație veche e citit ca `tokenize`. Regulile de majusculă și allowlist-ul rămân singurele apărări împotriva mascărilor greșite.
 
 ### C8. Seiful
 
@@ -409,7 +398,7 @@ confidence = { base = 0.9, with_context = 1.0 }
 - **Rol:** construiește textul redactat dintr-o singură trecere.
 - **Intrare:** textul original, `Decision[]`, simbolurile atribuite (C9), regulile de mascare.
 - **Ieșire:** `string` redactat. Efect secundar: `vault.addSurfaceForm()` pentru fiecare span tokenizat.
-- **Acțiuni:** `tokenize` → simbolul. `mask` → masca clasei (de exemplu telefon `069 *** ***`, cu formatul păstrat). `warn` și `ignore` → textul original.
+- **Acțiuni:** `tokenize` → simbolul. `mask` → prima literă sau cifră, restul stele (`0********`). `ignore` → textul original.
 
 ### C11. Verificatorul de scurgeri
 
@@ -419,7 +408,7 @@ confidence = { base = 0.9, with_context = 1.0 }
 - **Verificări:**
   1. rulează din nou `DictionaryDetector` și `PatternDetector` pe textul redactat (normalizat). Orice potrivire în afara simbolurilor înseamnă scurgere;
   2. caută fiecare `surfaceForm` din seif (normalizată) în textul redactat normalizat.
-- **Excepții:** potrivirile care cad peste un simbol inserat, peste un span lăsat intenționat în clar de politică (`warn`, `ignore`) sau peste un termen din allowlist nu sunt scurgeri.
+- **Excepții:** potrivirile care cad peste un simbol inserat, peste un span lăsat intenționat în clar de politică (`ignore`) sau peste un termen din allowlist nu sunt scurgeri.
 
 ### C12. Constructorul de rapoarte și preambul
 
@@ -657,7 +646,7 @@ Pentru prototip, vocabularul și seiful stau local, în fișiere. În ținta Rus
 | D2 | DSH are invariantul „ce vede modelul ⟺ ce e în jurnal”. Redactarea îl încalcă intenționat. | Acceptat: jurnalul local păstrează originalele, doar firul spre cloud e redactat. |
 | D3 | Alte apeluri LLM din DSH (titlul sesiunii, compactarea, subagenții) | **Rezolvat:** toate trec prin `llm/stream`, deci toate sunt redactate. Apelurile fără `sessionId` primesc o sesiune efemeră. |
 | D4 | Persistența seifului la reluarea sesiunii DSH | **Prototip: seif doar în memorie.** Istoricul e retrimis complet la fiecare cerere, deci un seif pierdut se reconstruiește identic: typed numerotează în ordinea apariției, iar greek folosește o permutare derivată din `sessionId` și dintr-un secret per proces. După o repornire, literele grecești pot fi altele. Persistența criptată rămâne pentru ținta finală. |
-| D5 | `warn` în DSH: confirmare de la utilizator sau tokenizare automată? | **Rezolvat prin setarea `warnHandling`:** `tokenize` (implicit: înlocuiește și raportează) sau `keep` (trimite neschimbat). |
+| D5 | `warn` în DSH: confirmare de la utilizator sau tokenizare automată? | **Rezolvat prin eliminare (15.11.2026):** nu mai există scor, prag sau `warn`; orice găsire e înlocuită (vezi C7). |
 | D6 | Flexiuni lipite de simboluri (`⟦COMPANY_1⟧-ului`, `β-ului`) | Lăsate ca atare. Măsurate în evaluare. |
 | D7 | Offset-uri: unități UTF-16 (TS) vs octeți UTF-8 (Rust) | Vectorii de test folosesc **indici de caractere Unicode** (code points). Fiecare implementare convertește. |
 
@@ -687,7 +676,7 @@ Codul stă în checkout-ul Alterego-DSH, ca pachete experimentale:
 | `packages/experimental/sai` (`@deepseek-ai/dsh-experimental-sai`) | `src/core/`: nucleul pur (C0–C15, `RedactionBatch` pentru C16), fără importuri din DSH. `src/request.ts`: C16 pe tipurile DSH. `src/index.ts`: C17 (Config, interceptarea `llm/stream`). `src/client/`: pagina de setări cu previzualizare locală. |
 | `packages/experimental/sai-bundle` | Bundle-ul opțional care apare în **Plugins → Experimental plugins**. Adaugă rândul `sai` în compoziție. |
 
-Setările (`SaiSettings`) sunt câmpuri „volatile” ale pluginului, editate de pe pagina bundle-ului și salvate în profil. Câmpurile sunt `enabled`, `strategy`, `preamble`, `preambleTexts`, `warnHandling`, `vocabulary`, `patterns`, `actions`, `minConfidence`, `allowlist`, `languages`, `images`, `externalTools`. Câmpul `names` (detectorul de nume din liste) a fost eliminat pe 15.11.2026; dacă apare într-o configurație salvată, e ignorat. Pagina rulează nucleul și în browser, ca să arate pe loc cum ar fi redactat un text de test cu setările curente, inclusiv cele nesalvate.
+Setările (`SaiSettings`) sunt câmpuri „volatile” ale pluginului, editate de pe pagina bundle-ului și salvate în profil. Câmpurile sunt `enabled`, `strategy`, `preamble`, `preambleTexts`, `vocabulary`, `patterns`, `actions`, `allowlist`, `languages`, `images`, `externalTools`. Câmpurile `names` (detectorul de nume din liste), `warnHandling` și `minConfidence` au fost eliminate pe 15.11.2026; dacă apar într-o configurație salvată, sunt ignorate. Pagina rulează nucleul și în browser, ca să arate pe loc cum ar fi redactat un text de test cu setările curente, inclusiv cele nesalvate.
 
 Numele claselor sunt în engleză. Clasele sunt deschise: orice nume format din A–Z, cifre și `_` e valid. Pagina propune un set predefinit (`SUGGESTED_CLASSES`): `PERSON`, `COMPANY`, `ORGANIZATION`, `LOCATION`, `ADDRESS`, `PROJECT`, `PRODUCT`, `CONTRACT` și clasele detectorilor (`PHONE`, `EMAIL`, `IDNP`, `CNP`, `IBAN`, `CARD`, `IP`). Opțiunea „Other” permite o clasă nouă.
 

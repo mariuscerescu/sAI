@@ -38,7 +38,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 
 ## Rezultate
 
-- **808 teste automate.** Ele acoperă:
+- **815 teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.

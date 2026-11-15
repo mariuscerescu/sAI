@@ -298,10 +298,12 @@ confidence = { base = 0.9, with_context = 1.0 }
 - **Ieșire:** `Span[]` sortate după `start`, **fără suprapuneri**.
 - **Reguli (în ordine):**
   1. eliminare dacă textul normalizat al candidatului e în allowlist (excepție: `LITERAL` nu se elimină niciodată);
-  2. `priority` mai mare câștigă;
-  3. potrivirea mai lungă câștigă;
-  4. `confidence` mai mare câștigă;
-  5. `start` mai mic câștigă.
+  2. `LITERAL` câștigă întotdeauna;
+  3. **conținerea:** un candidat aflat complet în interiorul altuia, mai lung, pierde, indiferent de prioritate. Astfel „acme” din `ion.rusu@acme.md` nu mai rupe e-mailul: toată adresa devine `⟦EMAIL_1⟧`. Același lucru e valabil pentru IBAN și telefoane. Dacă cel care conține pierde la rândul lui o suprapunere parțială, cei dinăuntru sunt reluați, ca textul lor să rămână acoperit (decizie 15.11.2026);
+  4. la suprapuneri parțiale, `priority` mai mare câștigă;
+  5. potrivirea mai lungă câștigă;
+  6. `confidence` mai mare câștigă;
+  7. `start` mai mic câștigă.
 
 ### C7. Motorul de politici
 

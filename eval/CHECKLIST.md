@@ -64,10 +64,11 @@
 
 ## B. Restaurare: rezultate stricate fără semnal
 
-- [ ] **B1 · P1 · E-mailul (sau IBAN-ul) e tăiat de termenii din vocabular** — *scos din plan, caz rar (decizie 2026-11-11)*
-  - Caz: E1 (`ion.Ion Popescu@Acme Logistic.md`)
-  - Corecție: în rezolvator, o potrivire care o conține complet pe alta câștigă indiferent de prioritate (e-mailul întreg devine `⟦EMAIL_n⟧`).
+- [x] **B1 · P0 · E-mailul (sau IBAN-ul) e tăiat de termenii din vocabular** — *readus în plan pe 15.11.2026: lăsa restul adresei în clar, deci e scurgere, nu doar restaurare stricată*
+  - Caz: E1 (`ion.Ion Popescu@Acme Logistic.md`); `ion.rusu@acme.md` pleca drept `ion.rusu@⟦COMPANY_1⟧.md`.
+  - Corecție: în rezolvator, o potrivire care o conține complet pe alta câștigă indiferent de prioritate (e-mailul întreg devine `⟦EMAIL_n⟧`). `LITERAL` rămâne singura excepție.
   - Gata când: E1 restaurează exact `ion.popescu@acme.md`.
+  - **Rezolvat:** `tests/overlaps.spec.ts` acoperă e-mail, IBAN, telefon, excepția `LITERAL` și o suprapunere parțială. Suita are 815 teste, toate trec. Viteza nu se schimbă (50.000 de cuvinte în ~0,33 s).
 
 - [ ] **B2 · P1 · Simbol inserat în identificator, deci cod invalid** — *scos din plan, caz rar (decizie 2026-11-11)*
   - Cazuri: E2 (`self.Ion Popescu_id`), K5 (`bv_total` devine `BV_total`)

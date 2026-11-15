@@ -41,18 +41,29 @@ const ENGLISH_INVARIANT = new Set([
 
 /**
  * English names barely inflect: the possessive ("Smith's") is already split off at the
- * apostrophe, so only the family plural is generated ("the Smiths", "the Joneses",
- * and with it the plural possessive "the Smiths' house").
+ * apostrophe, so only the plural is generated ("the Smiths", "the Joneses", and with it
+ * the plural possessive "the Smiths' house"). Regular plurals and four spelling rules that
+ * cannot turn one name into another are covered; Latin and Greek plurals are left out, since
+ * they would ("Francis" → "Frances", "Simon" → "Sima"), and are declared when needed.
  * @param word - one normalized word.
  * @param singular - no plural (a first name found alone: "Marks", "Bills" are other words).
- * @returns the word and its plural.
+ * @returns the word and its plurals.
  */
 export function englishWordForms(word: string, singular = false): string[] {
   if (singular || word.length < 3 || !/^\p{L}+$/u.test(word) || ENGLISH_INVARIANT.has(word)) return [word]
   const forms = [word, /(?:s|x|z|ch|sh)$/.test(word) ? `${word}es` : `${word}s`]
+  // -ch said "k" takes -s: Czech → Czechs, Monarch → Monarchs (Church → Churches above).
+  if (word.endsWith('ch')) forms.push(`${word}s`)
   // A consonant + y: Industry → Industries, University → Universities. Family names keep -ys
   // ("the Kennedys"), so both plurals are kept.
   if (/[^aeiou]y$/.test(word)) forms.push(`${word.slice(0, -1)}ies`)
+  // -f, -fe → -ves: Wolf → Wolves, Knife → Knives (Chiefs, Roofs keep the -s above).
+  if (word.endsWith('fe')) forms.push(`${word.slice(0, -2)}ves`)
+  else if (word.endsWith('f')) forms.push(`${word.slice(0, -1)}ves`)
+  // A consonant + o: Hero → Heroes, Potato → Potatoes (Photos keeps the -s above).
+  if (/[^aeiou]o$/.test(word)) forms.push(`${word}es`)
+  // -man → -men: Congressman → Congressmen, Chairman → Chairmen (Germans keeps the -s above).
+  if (word.endsWith('man')) forms.push(`${word.slice(0, -3)}men`)
   return forms
 }
 

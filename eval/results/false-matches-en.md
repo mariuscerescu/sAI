@@ -1,6 +1,6 @@
 # Test de potriviri false (Wikipedia în engleză; limbi: ro, en)
 
-Fișiere: 29 · cuvinte: 254062 · spellings căutate: 1014 · potriviri: 695 (declarate: 0, generate: 695)
+Fișiere: 29 · cuvinte: 254062 · spellings căutate: 1041 · potriviri: 695 (declarate: 0, generate: 695)
 
 ## Rezumat pe text găsit
 

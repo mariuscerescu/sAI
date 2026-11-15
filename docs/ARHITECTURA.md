@@ -276,7 +276,23 @@ Formatul fiecărei secțiuni: **Rol, Intrare, Ieșire, Erori, Puncte de extensie
 
 **Acoperirea măsurată** pe 339.212 cuvinte din Wikipedia (`scripts/wiki-inflection-coverage.ts`, rezultate în `eval/results/inflection-coverage-wiki.md`): 92,4% din aparițiile formelor flexionate ale numelor proprii sunt generate direct din bază, alte 4,0% din baza corectă. Restul de 3,6% sunt mai ales nume străine, cuvinte diferite și forme neregulate (Munți → Munte, Mâncare → Mâncăruri).
 
-**Engleza** flexionează puțin numele: pachetul generează pluralul (+s, +es, iar consoană + y → -ies: Industries, Universities, păstrând și -ys: „the Kennedys”). Posesivul („Smith's”) e prins fără o formă generată, pentru că apostroful e graniță de cuvânt. Pe 251.322 de cuvinte din Wikipedia (`scripts/wiki-inflection-coverage-en.ts`): +s 100%, -ies 100%, posesivul 100%. Neregulatele (Men, Lives, Wolves) se declară.
+**Comparația cu dexonline** (`scripts/dexonline-compare.ts`, rezultate în `eval/results/dexonline-compare.md`). Sursa e independentă de reguli: exportul dicționarului, cu toate substantivele și adjectivele dintr-un cuvânt (152.734 de leme, 1.420.777 de forme, fără vocativ). Fiecare cuvânt pornește de la forma în care l-ar declara un nume: substantivul nearticulat sau articulat, adjectivul în genul lui. Rezultat: **99,0%** din forme sunt generate; singularul aproape 100%, pluralul 96–99,5%. Pluralele adăugate după prima comparație (97,4%) sunt:
+- neutrele cu o → oa (Abator → Abatoare);
+- -ământ → -ăminte;
+- masculinele în -el (Alunel → Alunei) și în vocală + u (Abagiu → Abagii, Aculeu → Aculei);
+- femininele în -a/-ea accentuat (Acadea → Acadele);
+- ea → e înainte de -ele/-elor (Agheasmă → Aghesmele);
+- cuvintele terminate doar în -ul (Aerovehicul → Aerovehicule).
+
+Datele dexonline (licență GNU GPL) nu sunt în repo și nici în aplicație; scriptul arată cum se descarcă.
+
+**Engleza** flexionează puțin numele: pachetul generează pluralul (+s, +es, iar consoană + y → -ies: Industries, Universities, păstrând și -ys: „the Kennedys”). Posesivul („Smith's”) e prins fără o formă generată, pentru că apostroful e graniță de cuvânt. Pe 251.322 de cuvinte din Wikipedia (`scripts/wiki-inflection-coverage-en.ts`), +s, -ies, -men, -ves și posesivul sunt acoperite 100%. Față de dicționarul AGID (`scripts/agid-compare.ts`, 77.178 de plurale de substantive), acoperirea e **97,5%**, iar la numele proprii din dicționar 98,2%. Pe lângă +s, +es și -ies, se generează:
+- -ch → și +s (Czechs);
+- -f/-fe → -ves (Wolves);
+- consoană + o → +es (Heroes);
+- -man → -men (Congressmen).
+
+Pluralele latine și grecești (-us → -i, -is → -es, -um/-on → -a) sunt lăsate deoparte intenționat. Ar transforma un nume declarat în alt nume real („Francis” → „Frances”, „Simon” → „Sima”), iar sAI ar confunda persoane. Când e nevoie, se declară.
 
 Un termen din mai multe cuvinte se caută **cuvânt cu cuvânt**: fiecare cuvânt din text poate fi oricare formă a cuvântului de pe aceeași poziție („Băncii Verzi”, „Cooperativei Agricole Prut”). Combinațiile nu se mai enumeră, deci nu mai există o limită de combinații pe termen. Vechea limită de 96 tăia exact formele acordate corect.
 

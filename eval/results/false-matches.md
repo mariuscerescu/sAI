@@ -1,6 +1,6 @@
 # Test de potriviri false (jumătatea B a corpusului românesc; limbi: ro, en)
 
-Fișiere: 15 · cuvinte: 108659 · spellings căutate: 1630 · potriviri: 566 (declarate: 401, generate: 165)
+Fișiere: 15 · cuvinte: 108659 · spellings căutate: 1758 · potriviri: 566 (declarate: 401, generate: 165)
 
 ## Rezumat pe text găsit
 

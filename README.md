@@ -38,12 +38,14 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 
 ## Rezultate
 
-- **855 de teste automate.** Ele acoperă:
+- **878 de teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.
 - **Testul de potriviri false** pe ~360.000 de cuvinte din Wikipedia (română și engleză): niciun cuvânt scris cu literă mică nu e mascat greșit.
 - **Acoperirea flexiunilor** pe 339.212 cuvinte din Wikipedia: 92,4% din formele flexionate ale numelor proprii sunt generate direct, încă 4% din baza corectă (vezi [eval/results/inflection-coverage-wiki.md](eval/results/inflection-coverage-wiki.md)). În engleză, pe 251.322 de cuvinte: pluralul și posesivul sunt acoperite 100% ([eval/results/inflection-coverage-wiki-en.md](eval/results/inflection-coverage-wiki-en.md)).
+- **Comparația cu dexonline**, o sursă independentă de reguli: din 1.420.777 de forme flexionate ale celor 152.734 de substantive și adjective din dicționar, generatorul produce **99,0%**. Vezi [eval/results/dexonline-compare.md](eval/results/dexonline-compare.md); datele dexonline (GPL) nu sunt în repo.
+- **Comparația cu AGID** pentru engleză: din 77.178 de plurale de substantive, generatorul produce **97,5%**. Pluralele latine și grecești sunt lăsate deoparte intenționat. Vezi [eval/results/agid-compare.md](eval/results/agid-compare.md).
 - **Evaluarea cu un model real,** în română și engleză: zero scurgeri ale numelor declarate. Vezi:
   - [eval/RAPORT-flexiuni.md](eval/RAPORT-flexiuni.md)
   - [eval/RAPORT-engleza.md](eval/RAPORT-engleza.md)

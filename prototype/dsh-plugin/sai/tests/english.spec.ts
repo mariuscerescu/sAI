@@ -80,6 +80,19 @@ describe('language packs', () => {
     expect(engine.settings.languages).toEqual(['ro', 'en'])
   })
 
+  it.each([
+    ['czech', 'czechs'], ['church', 'churches'], ['wolf', 'wolves'], ['knife', 'knives'], ['chief', 'chiefs'],
+    ['hero', 'heroes'], ['photo', 'photos'], ['congressman', 'congressmen'], ['german', 'germans'],
+  ])('forms the plural of %s: %s', (word, plural) => {
+    expect(englishWordForms(word)).toContain(plural)
+  })
+
+  it('never turns a name into another name with a Latin or Greek plural', () => {
+    expect(englishWordForms('francis')).not.toContain('frances')
+    expect(englishWordForms('simon')).not.toContain('sima')
+    expect(englishWordForms('marcus')).not.toContain('marci')
+  })
+
   it('forms the -ies plural of a consonant + y, and keeps the family -ys', () => {
     expect(englishWordForms('industry')).toEqual(['industry', 'industrys', 'industries'])
     expect(englishWordForms('kennedy')).toContain('kennedys')

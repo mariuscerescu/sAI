@@ -60,6 +60,8 @@ export function wordForms(word: string, singular = false): string[] {
     // The form without the article: Universitatea → Universitate · Curtea → Curte
     add(`${base}i`, `${base.slice(0, -1)}ii`, `${base}o`, base)
     iPlural(base.slice(0, -1), singular ? ['ii'] : I_PLURAL)
+    // A stressed -ea: Acadea → Acadele, Acadelei, Acadelele, Acadelelor
+    if (!singular) add(`${base}le`, `${base}lei`, `${base}lele`, `${base}lelor`)
   } else if (word.endsWith('a')) {
     // Maria → Mariei · Banca → Băncii · Olga → Olgăi · Tehnica → Tehnice · Maria → Mario
     const stem = word.slice(0, -1)
@@ -71,7 +73,10 @@ export function wordForms(word: string, singular = false): string[] {
     iPlural(stem, singular ? ['ii'] : I_PLURAL)
     if (!singular) {
       add(`${stem}ele`, `${stem}elor`)
-      for (const reading of alternations(stem).slice(1)) add(`${reading}e`)
+      // The -e plurals alternate too: Neagra → Negre · Agheasma → Aghesmele, Aghesmelor
+      for (const reading of alternations(stem).slice(1)) add(`${reading}e`, `${reading}ele`, `${reading}elor`)
+      // A stressed -a: Aga → Agale, Agalei, Agalele, Agalelor
+      add(`${word}le`, `${word}lei`, `${word}lele`, `${word}lelor`)
     }
   } else if (word.endsWith('ul')) {
     // Proiectul → Proiectului · plural: Grupul → Grupurile, Grupurilor · Proiectul → Proiectele · Lupul → Lupii
@@ -81,6 +86,8 @@ export function wordForms(word: string, singular = false): string[] {
     if (!singular) {
       add(`${base}uri`, `${base}urile`, `${base}urilor`, `${base}ele`, `${base}elor`)
       iPlural(base, ['ii', 'ilor'])
+      // A word that merely ends in -ul: Aerovehicul → Aerovehicule · Acicul → Aciculi
+      add(`${word}e`, `${word}ele`, `${word}elor`, `${word}i`, `${word}ii`, `${word}ilor`)
     }
   } else if (word.endsWith('u')) {
     // Popescu → Popescul, Popescului, Popescule · Petru, Dumitru, Alexandru → Petre, Dumitre, Alexandre (vocative)
@@ -88,6 +95,11 @@ export function wordForms(word: string, singular = false): string[] {
     if (/[dt]ru$/.test(word)) add(`${word.slice(0, -1)}e`)
     // The family by name: Popescu → Popeștii, Popeștilor · Rusu → Rușii
     if (!singular) iPlural(word.slice(0, -1), ['ii', 'ilor'])
+    if (!singular && /[aeiou]u$/.test(word)) {
+      // A vowel before -u: Abagiu → Abagii · Aculeu → Aculei · Acvariu → Acvariile · Acațiu → Acați
+      iPlural(word.slice(0, -1), I_PLURAL)
+      if (word.endsWith('iu')) iPlural(word.slice(0, -2), ['i', 'ii', 'ilor'])
+    }
   } else if (word.endsWith('e')) {
     // Vrabie → Vrabiei · Sandule (vocative) has no rule here
     add(`${word}i`, `${word}lui`)
@@ -120,6 +132,13 @@ export function wordForms(word: string, singular = false): string[] {
     if (!singular) {
       iPlural(word, ['i', 'ii', 'ilor'])
       add(`${word}uri`, `${word}urile`, `${word}urilor`, `${word}ele`, `${word}elor`)
+      // Neuter plurals with o → oa: Abator → Abatoare · Acordeon → Acordeoane · Sector → Sectoarele
+      const oa = word.replace(/o([^aeiou]+)$/, 'oa$1')
+      if (oa !== word) add(`${oa}e`, `${oa}ele`, `${oa}elor`)
+      // -ământ → -ăminte: Acoperământ → Acoperăminte
+      if (word.endsWith('mant')) add(...['e', 'ele', 'elor'].map(ending => `${word.slice(0, -3)}int${ending}`))
+      // -el drops its l: Alunel → Alunei, Aluneii, Aluneilor
+      if (word.endsWith('el')) add(`${word.slice(0, -1)}i`, `${word.slice(0, -1)}ii`, `${word.slice(0, -1)}ilor`)
     }
   }
   return [...forms]

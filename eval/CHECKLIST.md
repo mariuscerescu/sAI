@@ -238,6 +238,26 @@
     - după adăugarea regulii: 38 din 38;
     - potrivirile false au rămas neschimbate; suita are 855 de teste.
 
+- [x] **G5 · Comparația cu dexonline (15.11.2026)**
+  - Sursa: exportul oficial dexonline (v5, 14.11.2026, licență GNU GPL), folosit doar local. Au intrat toate substantivele și adjectivele dintr-un cuvânt: 152.734 de leme, 1.420.777 de forme, fără vocativ. Script: `scripts/dexonline-compare.ts`; în repo rămân doar cifrele.
+  - Prima comparație: 97,4% din forme. Singularul era ~100%, pluralul 83–97%.
+  - Golurile găsite și corectate, cinci familii de plurale:
+    - neutrele cu o → oa (abator → abatoare), plus -ământ → -ăminte;
+    - masculinele în -iu, -eu, -el (abagiu → abagii, alunel → alunei);
+    - femininele în -a/-ea accentuat (acadea → acadele);
+    - ea → e înainte de -ele/-elor (agheasmă → aghesmele);
+    - cuvintele terminate doar în -ul (aerovehicul → aerovehicule).
+  - După: **99,0%** din forme și 96,5% din leme complet acoperite; pluralul 96–99,5%. Testul de potriviri false a rămas neschimbat (566 / 695). Pe Wikipedia: 92,5% generate direct. Suita are 868 de teste.
+  - Rămase, mici: -tor → -toare la feminin articulat (abductoarea), -ru → -ri (arbitri), -eu → -ee (alizee), -oi → -oaie (altoaie), -ancă → -ence (arădence).
+  - 100% nu e un obiectiv (decizie 15.11.2026). Cele 13.577 de forme rămase se împart în 1.308 tipare, dintre care 705 apar la un singur cuvânt. Ar fi nevoie de un lexicon, nu de reguli.
+
+- [x] **G6 · Pluralele englezești comparate cu AGID (15.11.2026)**
+  - Sursa: AGID (SCOWL, Kevin Atkinson, licență permisivă), folosit doar local. Au intrat 77.069 de substantive cu 77.178 de plurale sigure. Script: `scripts/agid-compare.ts`; în repo rămân doar cifrele.
+  - Prima comparație: 96,3%. Pluralele regulate erau ~100%. Exista o eroare la cuvintele în -ch citit „k” (Czech dădea doar „Czeches”).
+  - Corecție: -ch → și +s, -f/-fe → -ves, consoană + o → +es, -man → -men.
+  - După: **97,5%**; numele proprii din dicționar 98,2%. Potrivirile false au rămas neschimbate (695 în engleză, 566 în română). Suita are 878 de teste.
+  - Lăsate deoparte intenționat: pluralele latine și grecești, pentru că ar transforma un nume în alt nume real (Francis → Frances, Simon → Sima).
+
 ---
 
 ## Ordinea de lucru propusă

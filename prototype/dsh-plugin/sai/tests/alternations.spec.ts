@@ -31,6 +31,29 @@ describe('stem alternations', () => {
     expect(alternations(stem)).toEqual(readings)
   })
 
+  // The plural families found missing by the comparison with dexonline.
+  it.each([
+    ['abator', ['abatoare', 'abatoarele', 'abatoarelor']],
+    ['acordeon', ['acordeoane', 'acordeoanele']],
+    ['acoperamant', ['acoperaminte', 'acoperamintele']],
+    ['alunel', ['alunei', 'aluneii', 'aluneilor']],
+    ['abagiu', ['abagii', 'abagiii', 'abagiilor']],
+    ['aculeu', ['aculei', 'aculeilor']],
+    ['acvariu', ['acvarii', 'acvariile', 'acvariilor']],
+    ['acatiu', ['acati', 'acatilor']],
+    ['acadea', ['acadele', 'acadelei', 'acadelele', 'acadelelor']],
+    ['aga', ['agale', 'agalei', 'agalelor']],
+    ['agheasma', ['aghesme', 'aghesmele', 'aghesmelor']],
+    ['aerovehicul', ['aerovehicule', 'aerovehiculele', 'aerovehiculelor']],
+  ] as const)('%s → %j', (word, expected) => {
+    expect(wordForms(word)).toEqual(expect.arrayContaining([...expected]))
+  })
+
+  it('gives a first name found alone none of these plurals', () => {
+    expect(wordForms('ion', true)).not.toContain('ioni')
+    expect(wordForms('costel', true)).not.toContain('costei')
+  })
+
   it('keeps the plain reading for words that do not alternate', () => {
     expect(wordForms('ioana')).toContain('ioanei')
     expect(wordForms('verde')).toEqual(expect.arrayContaining(['verdei', 'verzi', 'verzile', 'verzilor']))

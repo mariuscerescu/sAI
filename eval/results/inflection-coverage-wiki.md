@@ -4,9 +4,9 @@ Cuvinte: 339212 · cuvinte distincte cu majusculă în mijlocul propoziției: 98
 
 | | Perechi | Apariții |
 |---|---:|---:|
-| Generate din baza perechii | 1065 | 4500 (92.4%) |
-| Generate din alt cuvânt al corpusului (baza aleasă greșit de extragere) | 95 | 196 (4.0%) |
-| Negenerate (de verificat manual: multe nu sunt flexiuni) | 123 | 173 (3.6%) |
+| Generate din baza perechii | 1069 | 4504 (92.5%) |
+| Generate din alt cuvânt al corpusului (baza aleasă greșit de extragere) | 93 | 194 (4.0%) |
+| Negenerate (de verificat manual: multe nu sunt flexiuni) | 121 | 171 (3.5%) |
 
 ## Negenerate
 
@@ -104,7 +104,6 @@ Cuvinte: 339212 · cuvinte distincte cu majusculă în mijlocul propoziției: 98
 | Momente | Momentul | 1 |
 | Paré | Perì | 1 |
 | Olaru | Olari | 1 |
-| Geniu | Genii | 1 |
 | Portrete | Portretul | 1 |
 | Stirbu | Știrbei | 1 |
 | Pan | Pene | 1 |
@@ -123,7 +122,6 @@ Cuvinte: 339212 · cuvinte distincte cu majusculă în mijlocul propoziției: 98
 | Règne | Regno | 1 |
 | Descoperiri | Descoperire | 1 |
 | Cât | Ceti | 1 |
-| Conciliu | Concilii | 1 |
 | Dacă | Deci | 1 |
 | Conrad | Conrado | 1 |
 | Stăpâne | Stăpânul | 1 |

@@ -1,6 +1,6 @@
 # Test de potriviri false (jumătatea B a corpusului românesc; limbi: ro, en)
 
-Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (declarate: 401, generate: 164)
+Fișiere: 15 · cuvinte: 108659 · spellings căutate: 1448 · potriviri: 566 (declarate: 401, generate: 165)
 
 ## Rezumat pe text găsit
 
@@ -13,7 +13,7 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | Petre | ? () | generat din „Petru” | 15 |
 | Gheorghe | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | 11 |
 | Marinei | p52 (Laura Marin · Marin) | generat din „Marin” | 7 |
-| Andrei | ? () | generat din „Andrei” | 5 |
+| Andrei | ? () | generat din „Andreea” | 5 |
 | Angela | p46 (Angela Gheorghiu · Gheorghiu) | generat din „Angela” | 4 |
 | Ana | p9 (Ana Moraru · Moraru) | generat din „Ana” | 3 |
 | Iulia | p26 (Iulia Spînu · Spînu) | generat din „Iulia” | 3 |
@@ -40,6 +40,7 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | Cristina | p11 (Cristina Munteanu · Munteanu) | generat din „Cristina” | 1 |
 | Alina | p58 (Alina Preda · Preda) | generat din „Alina” | 1 |
 | Anii | p9 (Ana Moraru · Moraru) | generat din „Ana” | 1 |
+| Bulgarii | p38 (Ina Bulgaru · Bulgaru) | generat din „Bulgaru” | 1 |
 | Gabriele | p53 (Gabriela Dobre · Dobre) | generat din „Gabriela” | 1 |
 | Victoriei | p6 (Victoria Bostan · Bostan) | generat din „Victoria” | 1 |
 | Radului | p51 (Monica Radu · Radu) | generat din „Radu” | 1 |
@@ -111,7 +112,7 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | 13 | Biserica_Ortodoxă_Română | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …amentale ale multor trăitori ortodocși. Părintele Ilie Cleopa a izbutit să aducă teologia patristică în … |
 | 14 | Biserica_Ortodoxă_Română | **Dumitru** | ? () | declarat | …ioși încât s-au găsit – ca și în cazul părintelui Dumitru Stăniloaie și al altor teologi – „făcători” de sc… |
 | 15 | Biserica_Ortodoxă_Română | **Popa** | p33 (Adriana Popa · Popa) | declarat | … și patriarh al Bisericii Ortodoxe Române; Irineu Popa, Arhiepiscop al Craiovei și Mitropolit al Oltenie… |
-| 16 | Biserica_Ortodoxă_Română | **Andrei** | ? () | generat din „Andrei” | …tropolit al Banatului, Arhiepiscop al Timișoarei; Andrei Andreicuț, Mitropolit al Clujului, Maramureșului … |
+| 16 | Biserica_Ortodoxă_Română | **Andrei** | ? () | generat din „Andreea” | …tropolit al Banatului, Arhiepiscop al Timișoarei; Andrei Andreicuț, Mitropolit al Clujului, Maramureșului … |
 | 17 | Biserica_Ortodoxă_Română | **Petru** | ? () | declarat | …, Arhiepiscop al Vadului, Feleacului și Clujului; Petru Păduraru, Mitropolit al Basarabiei; Iosif Pop, Mi… |
 | 18 | Biserica_Ortodoxă_Română | **Păduraru** | p19 (Corina Păduraru · Păduraru) | declarat | …episcop al Vadului, Feleacului și Clujului; Petru Păduraru, Mitropolit al Basarabiei; Iosif Pop, Mitropolit … |
 | 19 | Biserica_Ortodoxă_Română | **Iuliei** | p26 (Iulia Spînu · Spînu) | generat din „Iulia” | …și Luxemburgului; Irineu Pop, Arhiepiscop al Alba Iuliei; Timotei Seviciu, Arhiepiscop al Aradului; Ioachi… |
@@ -121,7 +122,7 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | 23 | Biserica_Ortodoxă_Română | **Munteanu** | p11 (Cristina Munteanu · Munteanu) | declarat | …n România) a cerut sprijinul Patriarhului Nicodim Munteanu și a rămas impresionat de înțelegerea și compasiu… |
 | 24 | Biserica_Ortodoxă_Română | **Gheorghe** | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | …ropria viață în pericol. Dintre aceștia părintele Gheorghe Petre-Govora a fost răsplătit de statul evreu pen… |
 | 25 | Biserica_Ortodoxă_Română | **Petre** | ? () | generat din „Petru” | …ață în pericol. Dintre aceștia părintele Gheorghe Petre-Govora a fost răsplătit de statul evreu pentru aj… |
-| 26 | Biserica_Ortodoxă_Română | **Andrei** | ? () | generat din „Andrei” | …omunist. Între ierarhii deconspirați s-au numărat Andrei Andreicuț, Calinic Argatu, Nicolae Corneanu, Casi… |
+| 26 | Biserica_Ortodoxă_Română | **Andrei** | ? () | generat din „Andreea” | …omunist. Între ierarhii deconspirați s-au numărat Andrei Andreicuț, Calinic Argatu, Nicolae Corneanu, Casi… |
 | 27 | Biserica_Ortodoxă_Română | **Plămădeală** | p65 (Alexandru Plămădeală · Alexandru · Plămădeală) | declarat | …iun, Epifanie Norocel, Teodosie Petrescu, Antonie Plămădeală și Pimen Zainea. Mitropolitul Nicolae Corneanu și… |
 | 28 | Biserica_Ortodoxă_Română | **Plămădeală** | p65 (Alexandru Plămădeală · Alexandru · Plămădeală) | declarat | …există o scrisoare prin care mitropolitul Antonie Plămădeală i-a cerut lui Nicolae Ceaușescu avansarea de la g… |
 | 29 | Biserica_Ortodoxă_Română | **Irina** | p20 (Irina Ciobanu · Ciobanu) | generat din „Irina” | …aniel Corogeanu și patru călugărițe au supus-o pe Irina Cornici la un ritual de exorcizare, imobilizând-o… |
@@ -135,7 +136,7 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | 37 | Biserica_Ortodoxă_Română | **Ramona** | p55 (Ramona Florea · Florea) | generat din „Ramona” | …România, Ierom. Marcu Petcu, Pr. Adrian Pintilie, Ramona Anca Crețu și Nicolaie Lihănceanu, Editura Biblio… |
 | 38 | Biserica_Ortodoxă_Română | **Petre** | ? () | generat din „Petru” | …nia, spiritualitate și cultură, Getta Marculescu, Petre Baron, Editura Royal Company, 2008 - recenzie Arh… |
 | 39 | Biserica_Ortodoxă_Română | **Tudor** | ? () | declarat | …lor bisericești, 1925. Autocefalie si Patriarhie, Tudor Ghideanu, Editura Mușatinia, Roman, 2011 - recenz… |
-| 40 | Biserica_Ortodoxă_Română | **Andrei** | ? () | generat din „Andrei” | …man, 2011 - recenzie Ortodoxie și naționalitate - Andrei Șaguna și românii din Transilvania, 1846-1873, Ke… |
+| 40 | Biserica_Ortodoxă_Română | **Andrei** | ? () | generat din „Andreea” | …man, 2011 - recenzie Ortodoxie și naționalitate - Andrei Șaguna și românii din Transilvania, 1846-1873, Ke… |
 | 41 | Biserica_Ortodoxă_Română | **Gheorghe** | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | …nciclopedic, București, 1995. ISBN 973-96989-1-3. Gheorghe Gelu Păcurar. The Making of a Holy Nation: Pastor… |
 | 42 | Bucătăria_românească | **Ciorba** | p62 (Ion Ciorbă · Ion · Ciorbă) | declarat | …e a început să fie afectată de influențe externe. Ciorba din legume și carne, împrumutată de la bulgari și… |
 | 43 | Bucătăria_românească | **Ciorba** | p62 (Ion Ciorbă · Ion · Ciorbă) | declarat | …n, Zacusca à la Manuc, Salata bizantină de limbă, Ciorba domnească de burtă (denumită și schembea) etc. Or… |
@@ -229,7 +230,7 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | 131 | Istoria_României | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ovitura de stat dată de Ion Iliescu, Petre Roman, Vasile Milea, Victor Stănculescu și alții pe 22 decembri… |
 | 132 | Istoria_României | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …t dată de Ion Iliescu, Petre Roman, Vasile Milea, Victor Stănculescu și alții pe 22 decembrie. Ceaușescu a… |
 | 133 | Istoria_României | **Ion** | ? () | declarat | …ă. O coaliție de guvernare improvizată condusă de Ion Iliescu a format atunci Frontul Salvării Național… |
-| 134 | Istoria_României | **Andrei** | ? () | generat din „Andrei” | …în care mai mulți intelectuali (Gabriel Liiceanu, Andrei Pleșu) și lideri politici (Corneliu Coposu din Pa… |
+| 134 | Istoria_României | **Andrei** | ? () | generat din „Andreea” | …în care mai mulți intelectuali (Gabriel Liiceanu, Andrei Pleșu) și lideri politici (Corneliu Coposu din Pa… |
 | 135 | Istoria_României | **Radu** | p51 (Monica Radu · Radu) | declarat | …Corneliu Coposu din Partidul Național Țărănesc și Radu Câmpeanu din Partidului Național Liberal), precum… |
 | 136 | Istoria_României | **Ion** | ? () | declarat | … a persoanelor implicate în dictatură, în timp ce Ion Iliescu, candidatul Frontului Salvării Naționale … |
 | 137 | Istoria_României | **Ion** | ? () | declarat | …le comuniste pentru a supraviețui, a votat pentru Ion Iliescu, care a câștigat 85% din voturi, FSN prim… |
@@ -330,334 +331,335 @@ Fișiere: 15 · cuvinte: 108659 · spellings căutate: 5303 · potriviri: 565 (d
 | 232 | Primul_Război_Mondial | **Marinei** | p52 (Laura Marin · Marin) | generat din „Marin” | …einhard Scheer⁠(d), a luptat cu Marea Flotă⁠(d) a Marinei Regale, condusă de amiralul Sir John Jellicoe . L… |
 | 233 | Primul_Război_Mondial | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …lor Centrale. Cu toate acestea, regele pro-german Constantin I a demis guvernul pro-Antanta al lui Eleftherios… |
 | 234 | Primul_Război_Mondial | **Alexandru** | ? () | declarat | …regele Greciei a abdicat și al doilea fiu al său, Alexandru, i-a luat locul; Grecia s-a alăturat oficial răzb… |
-| 235 | Primul_Război_Mondial | **preda** | p58 (Alina Preda · Preda) | declarat | … în timpul asediului Medinei⁠(d), înainte de a se preda în ianuarie 1919. Tribul Senussi⁠(d), ce trăia de… |
-| 236 | Primul_Război_Mondial | **Marinei** | p52 (Laura Marin · Marin) | generat din „Marin” | …cnit Revoluția Germană din 1918–1919. Unități ale Marinei Germane au refuzat să ridice ancora pentru o ulti… |
-| 237 | Primul_Război_Mondial | **Gabriele** | p53 (Gabriela Dobre · Dobre) | generat din „Gabriela” | …i războiului dintre naționaliștii italieni a fost Gabriele D'Annunzio, care promova iredentismul italian⁠(d)… |
-| 238 | Primul_Război_Mondial | **Angela** | p46 (Angela Gheorghiu · Gheorghiu) | generat din „Angela” | …tele francez Emmanuel Macron și cancelarul german Angela Merkel au vizitat locul semnării Armistițiului de… |
-| 239 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …Român (PCR), Nicolae Ceaușescu, și a soției sale, Elena Ceaușescu, precum și cu încheierea regimului comu… |
-| 240 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …escu, Frontul Salvării Naționale (FSN), condus de Ion Iliescu și format în mare parte din foști membri … |
-| 241 | Revoluția_română_din_1989 | **Gheorghe** | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | …mpusă de Ceaușescu. Principalii semnatari au fost Gheorghe Apostol, Alexandru Bârlădeanu, Corneliu Mănescu, … |
-| 242 | Revoluția_română_din_1989 | **Alexandru** | ? () | declarat | …. Principalii semnatari au fost Gheorghe Apostol, Alexandru Bârlădeanu, Corneliu Mănescu, Grigore Ion Răceanu… |
-| 243 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …, Alexandru Bârlădeanu, Corneliu Mănescu, Grigore Ion Răceanu, Constantin Pârvulescu și Silviu Brucan. … |
-| 244 | Revoluția_română_din_1989 | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …ârlădeanu, Corneliu Mănescu, Grigore Ion Răceanu, Constantin Pârvulescu și Silviu Brucan. La scurt timp după d… |
-| 245 | Revoluția_română_din_1989 | **Mihail** | p68 (Mihail Racu · Mihail · Racu) | declarat | …e la Varșovia și a avut o întrevedere separată cu Mihail Gorbaciov. În cadrul acesteia, liderul sovietic a… |
-| 246 | Revoluția_română_din_1989 | **Maria** | ? () | generat din „Maria” | …i orașului au vegheat în fața bisericii din Piața Maria. În acea seară, lucrători ai Securității, în civi… |
-| 247 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …enit evident că mulțimea nu va dispărea, primarul Petre Moț a făcut câteva declarații, sugerând că s-ar f… |
-| 248 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …mp, mulțimea crescuse amenințător— și de vreme ce Petre Moț a refuzat să-și confirme în scris declarația … |
-| 249 | Revoluția_română_din_1989 | **Maria** | ? () | generat din „Maria” | …omuniste. Au fost oprite tramvaie în Piața Sfânta Maria de pe care s-au ținut discursuri anticomuniste de… |
-| 250 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …au ținut discursuri anticomuniste de către poetul Ion Monoran, Daniel Zăgănescu, Laszlo Borbely. Daniel… |
-| 251 | Revoluția_română_din_1989 | **Radu** | p51 (Monica Radu · Radu) | declarat | …hidă focul împotriva civililor. ==== Timișoara: Radu cel Frumos ==== Protestele s-au amplificat în da… |
-| 252 | Revoluția_română_din_1989 | **Radu** | p51 (Monica Radu · Radu) | declarat | …mate din Timișoara primesc ordinul cu indicativul Radu cel Frumos, semnal pentru înarmarea militarilor c… |
-| 253 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …zona. După miezul nopții protestele s-au domolit. Ion Coman, Ilie Matei și Ștefan Gușă au inspectat ora… |
-| 254 | Revoluția_română_din_1989 | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …miezul nopții protestele s-au domolit. Ion Coman, Ilie Matei și Ștefan Gușă au inspectat orașul. === 1… |
-| 255 | Revoluția_română_din_1989 | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …protestele s-au domolit. Ion Coman, Ilie Matei și Ștefan Gușă au inspectat orașul. === 18 decembrie === … |
-| 256 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …i agenți ai Securității în haine civile. Primarul Petre Moț a cerut organizarea unei adunări de partid la… |
-| 257 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | …de stat, cu care se întâlnește pe rând: generalul Marin Neagoe, șeful Direcției a V-a din cadrul Securită… |
-| 258 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ei 8:30 se prezintă ministrul apărării, generalul Vasile Milea, urmat de ministrul de interne Tudor Postel… |
-| 259 | Revoluția_română_din_1989 | **Tudor** | ? () | declarat | …ralul Vasile Milea, urmat de ministrul de interne Tudor Postelnicu și directorul Securității, generalul I… |
-| 260 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | … decembrie. Ceaușescu a fost însoțit de generalul Marin Neagoe și de ministrul de externe Ion Stoian. =… |
-| 261 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …generalul Marin Neagoe și de ministrul de externe Ion Stoian. ==== Câteva sfaturi pentru cei aflați î… |
-| 262 | Revoluția_română_din_1989 | **Preda** | p58 (Alina Preda · Preda) | declarat | … au acționat în perioada imediat următoare. Sorin Preda, autorul articolului din Scînteia Tineretului, a … |
-| 263 | Revoluția_română_din_1989 | **Radu** | p51 (Monica Radu · Radu) | declarat | …mișoara: retragerea armatei ==== Pe 19 decembrie, Radu Bălan și Ștefan Gușă au vizitat muncitorii din fa… |
-| 264 | Revoluția_română_din_1989 | **Bălan** | p41 (Nadejda Bălan · Bălan) | declarat | …ra: retragerea armatei ==== Pe 19 decembrie, Radu Bălan și Ștefan Gușă au vizitat muncitorii din fabricil… |
-| 265 | Revoluția_română_din_1989 | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …gerea armatei ==== Pe 19 decembrie, Radu Bălan și Ștefan Gușă au vizitat muncitorii din fabricile timișore… |
-| 266 | Revoluția_română_din_1989 | **Victoriei** | p6 (Victoria Bostan · Bostan) | generat din „Victoria” | …rotestatari au ocupat Piața Operei (astăzi „Piața Victoriei”), scandând sloganuri precum „Noi suntem poporul!… |
-| 267 | Revoluția_română_din_1989 | **Maria** | ? () | generat din „Maria” | …are Lorin Fortuna, Claudiu Iordache, Ioan Chiș și Maria Traistariu, au constituit Frontul Democratic Româ… |
-| 268 | Revoluția_română_din_1989 | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …nifestanților din piață. Între timp, Emil Bobu și Constantin Dăscălescu au fost trimiși de conducerea de parti… |
-| 269 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …uții cu o delegație a protestatarilor (Ioan Savu, Petre Petrișor și alte persoane). În contextul vizitei … |
-| 270 | Revoluția_română_din_1989 | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …ii, Piața Rosetti și Piața Romană. Pe statuia lui Mihai Viteazul din apropierea Universității București u… |
-| 271 | Revoluția_română_din_1989 | **Lungu** | ? () | declarat | …-Napoca, iar primul-secretar al județului Brăila, Lungu, a raportat militărește: „Tovarășe secretar gener… |
+| 235 | Primul_Război_Mondial | **Bulgarii** | p38 (Ina Bulgaru · Bulgaru) | generat din „Bulgaru” | …trupelor germane și austro-ungare se retrăseseră. Bulgarii au fost înfrânți în bătălia de la Dobro Pole, iar… |
+| 236 | Primul_Război_Mondial | **preda** | p58 (Alina Preda · Preda) | declarat | … în timpul asediului Medinei⁠(d), înainte de a se preda în ianuarie 1919. Tribul Senussi⁠(d), ce trăia de… |
+| 237 | Primul_Război_Mondial | **Marinei** | p52 (Laura Marin · Marin) | generat din „Marin” | …cnit Revoluția Germană din 1918–1919. Unități ale Marinei Germane au refuzat să ridice ancora pentru o ulti… |
+| 238 | Primul_Război_Mondial | **Gabriele** | p53 (Gabriela Dobre · Dobre) | generat din „Gabriela” | …i războiului dintre naționaliștii italieni a fost Gabriele D'Annunzio, care promova iredentismul italian⁠(d)… |
+| 239 | Primul_Război_Mondial | **Angela** | p46 (Angela Gheorghiu · Gheorghiu) | generat din „Angela” | …tele francez Emmanuel Macron și cancelarul german Angela Merkel au vizitat locul semnării Armistițiului de… |
+| 240 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …Român (PCR), Nicolae Ceaușescu, și a soției sale, Elena Ceaușescu, precum și cu încheierea regimului comu… |
+| 241 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …escu, Frontul Salvării Naționale (FSN), condus de Ion Iliescu și format în mare parte din foști membri … |
+| 242 | Revoluția_română_din_1989 | **Gheorghe** | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | …mpusă de Ceaușescu. Principalii semnatari au fost Gheorghe Apostol, Alexandru Bârlădeanu, Corneliu Mănescu, … |
+| 243 | Revoluția_română_din_1989 | **Alexandru** | ? () | declarat | …. Principalii semnatari au fost Gheorghe Apostol, Alexandru Bârlădeanu, Corneliu Mănescu, Grigore Ion Răceanu… |
+| 244 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …, Alexandru Bârlădeanu, Corneliu Mănescu, Grigore Ion Răceanu, Constantin Pârvulescu și Silviu Brucan. … |
+| 245 | Revoluția_română_din_1989 | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …ârlădeanu, Corneliu Mănescu, Grigore Ion Răceanu, Constantin Pârvulescu și Silviu Brucan. La scurt timp după d… |
+| 246 | Revoluția_română_din_1989 | **Mihail** | p68 (Mihail Racu · Mihail · Racu) | declarat | …e la Varșovia și a avut o întrevedere separată cu Mihail Gorbaciov. În cadrul acesteia, liderul sovietic a… |
+| 247 | Revoluția_română_din_1989 | **Maria** | ? () | generat din „Maria” | …i orașului au vegheat în fața bisericii din Piața Maria. În acea seară, lucrători ai Securității, în civi… |
+| 248 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …enit evident că mulțimea nu va dispărea, primarul Petre Moț a făcut câteva declarații, sugerând că s-ar f… |
+| 249 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …mp, mulțimea crescuse amenințător— și de vreme ce Petre Moț a refuzat să-și confirme în scris declarația … |
+| 250 | Revoluția_română_din_1989 | **Maria** | ? () | generat din „Maria” | …omuniste. Au fost oprite tramvaie în Piața Sfânta Maria de pe care s-au ținut discursuri anticomuniste de… |
+| 251 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …au ținut discursuri anticomuniste de către poetul Ion Monoran, Daniel Zăgănescu, Laszlo Borbely. Daniel… |
+| 252 | Revoluția_română_din_1989 | **Radu** | p51 (Monica Radu · Radu) | declarat | …hidă focul împotriva civililor. ==== Timișoara: Radu cel Frumos ==== Protestele s-au amplificat în da… |
+| 253 | Revoluția_română_din_1989 | **Radu** | p51 (Monica Radu · Radu) | declarat | …mate din Timișoara primesc ordinul cu indicativul Radu cel Frumos, semnal pentru înarmarea militarilor c… |
+| 254 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …zona. După miezul nopții protestele s-au domolit. Ion Coman, Ilie Matei și Ștefan Gușă au inspectat ora… |
+| 255 | Revoluția_română_din_1989 | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …miezul nopții protestele s-au domolit. Ion Coman, Ilie Matei și Ștefan Gușă au inspectat orașul. === 1… |
+| 256 | Revoluția_română_din_1989 | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …protestele s-au domolit. Ion Coman, Ilie Matei și Ștefan Gușă au inspectat orașul. === 18 decembrie === … |
+| 257 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …i agenți ai Securității în haine civile. Primarul Petre Moț a cerut organizarea unei adunări de partid la… |
+| 258 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | …de stat, cu care se întâlnește pe rând: generalul Marin Neagoe, șeful Direcției a V-a din cadrul Securită… |
+| 259 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ei 8:30 se prezintă ministrul apărării, generalul Vasile Milea, urmat de ministrul de interne Tudor Postel… |
+| 260 | Revoluția_română_din_1989 | **Tudor** | ? () | declarat | …ralul Vasile Milea, urmat de ministrul de interne Tudor Postelnicu și directorul Securității, generalul I… |
+| 261 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | … decembrie. Ceaușescu a fost însoțit de generalul Marin Neagoe și de ministrul de externe Ion Stoian. =… |
+| 262 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …generalul Marin Neagoe și de ministrul de externe Ion Stoian. ==== Câteva sfaturi pentru cei aflați î… |
+| 263 | Revoluția_română_din_1989 | **Preda** | p58 (Alina Preda · Preda) | declarat | … au acționat în perioada imediat următoare. Sorin Preda, autorul articolului din Scînteia Tineretului, a … |
+| 264 | Revoluția_română_din_1989 | **Radu** | p51 (Monica Radu · Radu) | declarat | …mișoara: retragerea armatei ==== Pe 19 decembrie, Radu Bălan și Ștefan Gușă au vizitat muncitorii din fa… |
+| 265 | Revoluția_română_din_1989 | **Bălan** | p41 (Nadejda Bălan · Bălan) | declarat | …ra: retragerea armatei ==== Pe 19 decembrie, Radu Bălan și Ștefan Gușă au vizitat muncitorii din fabricil… |
+| 266 | Revoluția_română_din_1989 | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …gerea armatei ==== Pe 19 decembrie, Radu Bălan și Ștefan Gușă au vizitat muncitorii din fabricile timișore… |
+| 267 | Revoluția_română_din_1989 | **Victoriei** | p6 (Victoria Bostan · Bostan) | generat din „Victoria” | …rotestatari au ocupat Piața Operei (astăzi „Piața Victoriei”), scandând sloganuri precum „Noi suntem poporul!… |
+| 268 | Revoluția_română_din_1989 | **Maria** | ? () | generat din „Maria” | …are Lorin Fortuna, Claudiu Iordache, Ioan Chiș și Maria Traistariu, au constituit Frontul Democratic Româ… |
+| 269 | Revoluția_română_din_1989 | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …nifestanților din piață. Între timp, Emil Bobu și Constantin Dăscălescu au fost trimiși de conducerea de parti… |
+| 270 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …uții cu o delegație a protestatarilor (Ioan Savu, Petre Petrișor și alte persoane). În contextul vizitei … |
+| 271 | Revoluția_română_din_1989 | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …ii, Piața Rosetti și Piața Romană. Pe statuia lui Mihai Viteazul din apropierea Universității București u… |
 | 272 | Revoluția_română_din_1989 | **Lungu** | ? () | declarat | …-Napoca, iar primul-secretar al județului Brăila, Lungu, a raportat militărește: „Tovarășe secretar gener… |
-| 273 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …put spre miezul nopții sub conducerea generalului Vasile Milea, ministrul Apărării Naționale. Se trăgea as… |
-| 274 | Revoluția_română_din_1989 | **Gheorghe** | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | …l Colțea și secția de neurochirurgie a Spitalului Gheorghe Marinescu. Procuratura Generală și Direcția Sanit… |
-| 275 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | … transportate la penitenciarul Jilava. Nicolae și Elena Ceaușescu au rămas în acea noapte în dormitorul s… |
-| 276 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ii privind modul de acțiune. Cam pe la 1 noaptea, Vasile Milea și Iulian Vlad l-au informat pe Nicolae Cea… |
-| 277 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …le împotriva regimului. Pe la ora 7:00 dimineața, Elena Ceaușescu a fost informată că un mare număr de mu… |
-| 278 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | … dimineață, în jurul orei 9:30 ministrul apărării Vasile Milea s-a sinucis (dar unii susțin și acum că ar … |
-| 279 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …șescu l-a numit verbal ca ministru al apărării pe Victor Stănculescu. Generalii și ceilalți ofițeri din co… |
-| 280 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | … situației concrete.” La rândul său, ex-generalul Victor Stănculescu a declarat următoarele: „M-am aflat î… |
-| 281 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | …ul sediului Comitetului Central al PCR, generalul Marin Neagoe, comandantul Direcției a V-a a Securității… |
-| 282 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …ere pentru evacuarea soților Ceaușescu. Generalul Victor Stănculescu a luat legătura cu generalul Iosif Ru… |
-| 283 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | … pe terasa clădirii CC. În elicopterul pilotat de Vasile Maluțan s-au îmbarcat Nicolae Ceaușescu și Elena … |
-| 284 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …Vasile Maluțan s-au îmbarcat Nicolae Ceaușescu și Elena Ceaușescu, însoțiți de garda de corp, precum și d… |
-| 285 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …iziunea Română își reia emisia. Mircea Dinescu și Ion Caramitru apar în fruntea unui grup de revoluțion… |
-| 286 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …ție. Câțiva lucrători de miliție au fost linșați. Petre Roman citește de pe balconul CC al PCR Declarația… |
-| 287 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …e: La Televiziune, unde se aflau Mircea Dinescu, Ion Caramitru și personajul cel mai important, sosit … |
-| 288 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …rsonajul cel mai important, sosit după ora 14:00, Ion Iliescu; La sediul CC al PCR, unde erau pe de o p… |
-| 289 | Revoluția_română_din_1989 | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …ționarii pătrunși, și pe de altă parte grupul lui Ilie Verdeț, care a încercat să formeze un nou guvern,… |
-| 290 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …!” La Ministerul Apărării, unde se afla generalul Victor Stănculescu În cele din urmă, grupul lui Iliescu … |
-| 291 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …ducere politică, prin intervenții publice ale lui Ion Iliescu, a făcut apel la populație să sprijine au… |
-| 292 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …esul și execuția soților Ceaușescu === Generalul Vasile Ionel a fost însărcinat cu organizarea procesului… |
-| 293 | Revoluția_română_din_1989 | **Ionel** | p77 (Ionel Popov · Ionel · Popov) | declarat | … execuția soților Ceaușescu === Generalul Vasile Ionel a fost însărcinat cu organizarea procesului soțil… |
-| 294 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | … cu care Silviu Brucan, Gelu Voican Voiculescu și Ion Iliescu i-au cerut să-i suprime pe Elena și Nicol… |
-| 295 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …culescu și Ion Iliescu i-au cerut să-i suprime pe Elena și Nicolae Ceaușescu. Procesul a început pe 25 de… |
-| 296 | Revoluția_română_din_1989 | **Mihail** | p68 (Mihail Racu · Mihail · Racu) | declarat | …eședintele George H. W. Bush), URSS (președintele Mihail Gorbaciov), Ungaria (Partidul Socialist Ungar), n… |
-| 297 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …izgrațiile dictatorului la începutul anilor 1980, Ion Iliescu s-a impus ca președinte al Frontului Salv… |
-| 298 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …tă, fiind doar împotriva lui Ceaușescu. În 1990, Ion Iliescu a reușit să devină primul președinte ales… |
-| 299 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …vării Naționale. === Integrarea europeană === Ion Iliescu a rămas o figură centrală a politicii rom… |
-| 300 | Revoluția_română_din_1989 | **Laura** | p52 (Laura Marin · Marin) | generat din „Laura” | …icat el însuși de Procurorul General al României, Laura Codruța Kovesi, care a cerut destituirea lui din … |
-| 301 | Revoluția_română_din_1989 | **Dumitru** | ? () | declarat | …lui Ceaușescu, locotenentul-colonel de Securitate Dumitru Burlan, îi acuză pe generalii care erau implicați… |
-| 302 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …mplicați în lovitura de stat condusă de generalul Victor Stănculescu că ei încercau să creeze scenarii fic… |
-| 303 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …te de Casație și Justiție a trimis în judecată pe Ion Iliescu, Petre Roman, Gelu Voican Voiculescu, Vir… |
-| 304 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | … și Justiție a trimis în judecată pe Ion Iliescu, Petre Roman, Gelu Voican Voiculescu, Virgil Măgureanu, … |
-| 305 | Revoluția_română_din_1989 | **Cozma** | p8 (Tatiana Cozma · Cozma) | declarat | …, Gelu Voican Voiculescu, Virgil Măgureanu, Miron Cozma și alții pentru infracțiuni contra umanității săv… |
-| 306 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …a în mișcare a acțiunii penale față de inculpații Ion Iliescu, Gelu Voican Voiculescu, Iosif Rus și Emi… |
-| 307 | Revoluția_română_din_1989 | **Dumitrescu** | p49 (Simona Dumitrescu · Dumitrescu) | declarat | …liescu, Gelu Voican Voiculescu, Iosif Rus și Emil Dumitrescu, sub aspectul săvârșirii infracțiunilor contra um… |
-| 308 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …nea penală a fost împiedicată împotriva acestora: Vasile Milea, Nicolae Militaru, Victor Atanasie Stăncule… |
-| 309 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …potriva acestora: Vasile Milea, Nicolae Militaru, Victor Atanasie Stănculescu, Emil Dumitrescu, Nicolae Ef… |
-| 310 | Revoluția_română_din_1989 | **Dumitrescu** | p49 (Simona Dumitrescu · Dumitrescu) | declarat | …colae Militaru, Victor Atanasie Stănculescu, Emil Dumitrescu, Nicolae Eftimescu, Silviu Brucan și Ion Hortopan… |
-| 311 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …l Dumitrescu, Nicolae Eftimescu, Silviu Brucan și Ion Hortopan. În octombrie 2019, se anunță că dosarul… |
-| 312 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …opan. În octombrie 2019, se anunță că dosarul lui Petre Roman va fi trimis judecătorului. === Institutu… |
-| 313 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | …l eroilor. Decembrie 1989, Editura Tribuna, 1998. Marin, Valentin: Martirii Revoluției în date statistice… |
-| 314 | Revoluția_română_din_1989 | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …utului Revoluției Române, București, 2010. Răduț, Bogdan Emanuel: „Revoluția română din 1989: determinare,… |
-| 315 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …fost răniți”, spune jurnalistul. Un dialog al lui Ion Cristoiu cu Malgosha Gago, autoarea cărții „Revol… |
-| 316 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …agazin De ce nu au fluierat generalii în fața lui Ion Iliescu?, 11 decembrie 2011, Adrian Pătrușcă, Eve… |
-| 317 | Revoluția_română_din_1989 | **Laura** | p52 (Laura Marin · Marin) | generat din „Laura” | …dosarului Revoluției din 1989, 24 noiembrie 2015, Laura Mitran, gandul.info Oameni-cheie ai Revoluției au… |
-| 318 | Revoluția_română_din_1989 | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Revoluția: 15 decembrie 1989, 15 decembrie 2009, Ștefan Both, Adevărul București Înregistrarea video cu … |
-| 319 | Sistemul_solar | **Orion** | j1 (Proiectul Orion · Orion) | declarat | …e ale galaxiei Calea Lactee (mai precis în Brațul Orion), galaxie care are cca. 200 de miliarde de stele.… |
-| 320 | Sistemul_solar | **Orion** | eval_prj_orion (Proiectul Orion · Orion) | declarat | …e ale galaxiei Calea Lactee (mai precis în Brațul Orion), galaxie care are cca. 200 de miliarde de stele.… |
-| 321 | Sistemul_solar | **Orion** | j1 (Proiectul Orion · Orion) | declarat | …e) exterioare ale Căii Lactee, cunoscut ca Brațul Orion, sau „Pintenul Local”. Soarele se află la aproxim… |
-| 322 | Sistemul_solar | **Orion** | eval_prj_orion (Proiectul Orion · Orion) | declarat | …e) exterioare ale Căii Lactee, cunoscut ca Brațul Orion, sau „Pintenul Local”. Soarele se află la aproxim… |
-| 323 | Sistemul_solar | **Ana** | p9 (Ana Moraru · Moraru) | generat din „Ana” | …coordonator [...], Traducere din limba engleză de Ana-Maria Negrilă-Chisega, Liana Stan, Enciclopedia R… |
-| 324 | Sistemul_solar | **Maria** | ? () | generat din „Maria” | …donator [...], Traducere din limba engleză de Ana-Maria Negrilă-Chisega, Liana Stan, Enciclopedia RAO 200… |
-| 325 | Sistemul_solar | **Stan** | p50 (Florin Stan · Stan) | declarat | …limba engleză de Ana-Maria Negrilă-Chisega, Liana Stan, Enciclopedia RAO 2008, București, 512 de pagini.… |
-| 326 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …Ștefan al III-lea (n. 1438-1439, Borzești – d. 2 iulie 1… |
-| 327 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Borzești – d. 2 iulie 1504, Suceava), supranumit Ștefan cel Mare sau, după canonizarea sa de către Biseri… |
-| 328 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …canonizarea sa de către Biserica Ortodoxă Română, Ștefan cel Mare și Sfânt, a fost domnul (sau domnitorul)… |
-| 329 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …Moldovei între anii 1457 și 1504. A fost fiul lui Bogdan al II-lea, domnind timp de 47 de ani, cea mai lun… |
-| 330 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ngă domnie din epoca medievală din Țările Române. Ștefan cel Mare este considerat o personalitate marcantă… |
-| 331 | Ștefan_cel_Mare | **Nova** | j4 (Platforma Nova · Nova) | declarat | …malul Stâng al Siretului, cetatea Pudna sau Pudna Nova(Pudna noua). Mărturie stă faptul că după dobândir… |
-| 332 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ult de un deceniu de la zidirea Mănăstirii Putna, Ștefan cel Mare zidește o biserică, aici la graniță, cu … |
-| 333 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …în bătălia de la Valea Albă-Războieni. După 1476, Ștefan a fost nevoit să accepte suzeranitatea Imperiului… |
-| 334 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tacte instituțiile și autonomia politică internă. Ștefan cel Mare a fost un mare sprijinitor al culturii ș… |
-| 335 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …nonizat de Biserica Ortodoxă Română, cu numele de Ștefan cel Mare și Sfânt, la 20 iunie 1992. A fost căsăt… |
-| 336 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …i ori, cu Evdochia - fiica marelui cneaz de Kiev, Maria din Mangop - din familia imperială bizantină și M… |
-| 337 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …a din Mangop - din familia imperială bizantină și Maria Voichița - fiica lui Radu cel Frumos, căsătorii î… |
-| 338 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | …imperială bizantină și Maria Voichița - fiica lui Radu cel Frumos, căsătorii în care s-au născut șapte c… |
-| 339 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …cepând cu 1497, l-a asociat la domnie pe fiul său Bogdan al III-lea, care-i va succeda la tron. A murit la… |
-| 340 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … == Biografie și familie == Conform tradiției, Ștefan cel Mare s-a născut la moșia tatălui său de la Bo… |
-| 341 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … ca fiu nelegitim al viitorului domn al Moldovei, Bogdan al II-lea și al Oltei. Bogdan era, la rândul său,… |
-| 342 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …i domn al Moldovei, Bogdan al II-lea și al Oltei. Bogdan era, la rândul său, fiu nelegitim al lui Alexandr… |
-| 343 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …. Bogdan era, la rândul său, fiu nelegitim al lui Alexandru cel Bun, iar soția sa, Oltea, provenea dintr-o fa… |
-| 344 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … Bacău, cei doi cunoscându-se în perioada în care Bogdan s-a aflat în exil la curtea lui Vlad Dracul. Fami… |
-| 345 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …ul. Familia a mai avut încă trei băieți: Ioachim, Ion și Crâstea și două fete: Maria și Sora. Data nașt… |
-| 346 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …rei băieți: Ioachim, Ion și Crâstea și două fete: Maria și Sora. Data nașterii nu este cunoscută cu certi… |
-| 347 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …te fiind anii 1438 sau 1439. Despre copilăria lui Ștefan cel Mare nu sunt date cunoscute; cel mai probabil… |
-| 348 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …dința familiei. În toamna anului 1449, tatăl său, Bogdan, sprijinit cu un corp de oaste trimis de Iancu de… |
-| 349 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … trimis de Iancu de Hunedoara, învinge armata lui Alexandru al II-lea la Tămășeni, lângă apa Moldovei, la 12 … |
-| 350 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …dovei, la 12 octombrie 1449 și se proclamă domn. Alexandru se refugiază în Transilvania, de unde va încerca … |
-| 351 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …va încerca să își recapete tronul. La rândul său, Bogdan, după o încercare nereușită de a căpăta sprijinul… |
-| 352 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … diplomatice către Ungaria. La 11 februarie 1450, Bogdan emite în „târgul de jos” – Roman – un hrisov de… |
-| 353 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …, imediat după domn, „credința iubitului meu fiu, Ștefan Voevod”. Actul reprezintă prima atestare document… |
-| 354 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … către tatăl său ca asociat la domnie, rezultă că Ștefan împlinise în 1450 cel puțin unsprezece ani, vârst… |
-| 355 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … de cutumele vremii pentru o astfel de demnitate. Bogdan avea să fie asasinat, la 15 octombrie 1451, la Re… |
-| 356 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …rie 1451, la Reuseni, de către fratele său vitreg Petru, alt fiu nelegitim al lui Alexandru cel Bun și ca… |
-| 357 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …ratele său vitreg Petru, alt fiu nelegitim al lui Alexandru cel Bun și care va domni ulterior sub numele de P… |
-| 358 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …u cel Bun și care va domni ulterior sub numele de Petru Aron. Cronicarul polonez Jan Długosz relata astf… |
-| 359 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …ez Jan Długosz relata astfel scena: „Un oarecare Petru, care pretindea că are drept la domnia Moldovei ș… |
-| 360 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … are drept la domnia Moldovei și se înțelesese cu Alexandru ca să împărțească toate deopotrivă, alegând prile… |
-| 361 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …părțească toate deopotrivă, alegând prilejul când Bogdan, poftit la țară, la un unchi de frate al aceluiaș… |
-| 362 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …poftit la țară, la un unchi de frate al aceluiași Petru, era beat, pe o noapte urâtă, sosind numai cu o s… |
-| 363 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …numai cu o sută de moldoveni, înșelă străjile lui Bogdan și, prinzându-l, îi tăie capul.” _____ Jan Długo… |
-| 364 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …an Długosz, Historiae Polonicae După omorârea lui Bogdan, familia sa, inclusiv tânărul Ștefan vor pleca în… |
-| 365 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …omorârea lui Bogdan, familia sa, inclusiv tânărul Ștefan vor pleca în exil în Transilvania și apoi în Țara… |
-| 366 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …Mama sa, Oltea avea să moară la 4 noiembrie 1465. Ștefan cel Mare a fost căsătorit de trei ori. Dacă prede… |
-| 367 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ii Ungariei și Poloniei, politica dinastică a lui Ștefan cel Mare privind căsătoriile a fost diferită – du… |
-| 368 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …Evdochia, fiica lui Simeon Olelkovici de la Kiev, Maria din Paleologii de la Mangup, în Crimeea, Maria, f… |
-| 369 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …v, Maria din Paleologii de la Mangup, în Crimeea, Maria, fiica lui Radu cel Frumos din Țara Românească. C… |
-| 370 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | …ologii de la Mangup, în Crimeea, Maria, fiica lui Radu cel Frumos din Țara Românească. Căsătoria cu Evdo… |
-| 371 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …ătorie au rezultat doi băieți și o fată. Băieții, Bogdan-Vlad născut în 1466 și Petru născut în 1467, au m… |
-| 372 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …și o fată. Băieții, Bogdan-Vlad născut în 1466 și Petru născut în 1467, au murit amândoi de tineri în anu… |
-| 373 | Ștefan_cel_Mare | **Elena** | ? () | declarat | …iind îngropați împreună în același mormânt. Fata, Elena, avea să se mărite cu fiul țarului Ivan al III-le… |
-| 374 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …chia moare și ea în 1467, posibil la nașterea lui Petru, fiind înmormântată în Biserica Mirăuți din Sucea… |
-| 375 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …serica Mirăuți din Suceava. La 14 septembrie 1472 Ștefan se căsătorește din nou cu Maria, din familia domn… |
-| 376 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | … septembrie 1472 Ștefan se căsătorește din nou cu Maria, din familia domnitoare din micul regat grecesc p… |
-| 377 | Ștefan_cel_Mare | **Mariei** | ? () | generat din „Maria” | …e „domn de Theodoro și al întregii Khazarii”, iar Mariei înseși i se atribuie o multiplă obârșie împărătea… |
-| 378 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …luată de turci, Mangopul intră în stăpânirea lor, Ștefan cel Mare ne mai având nici un interes a păstra ca… |
-| 379 | Ștefan_cel_Mare | **Marie** | ? () | generat din „Maria” | …e odrasla Comnenilor și duce la altar pe cealaltă Marie sau Vochița, fata lui Radu Vodă.” _____ A. D. Xe… |
-| 380 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | … la altar pe cealaltă Marie sau Vochița, fata lui Radu Vodă.” _____ A. D. Xenopol, Istoria românilor di… |
-| 381 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …. D. Xenopol, Istoria românilor din Dacia Traiană Maria va mai trăi puțin după divorț, la 19 decembrie 14… |
-| 382 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …pă cum nota Grigore Ureche pristăvitu-s-au doamna Maria ce era de la Mangop, fiind înmormântată la Mănăst… |
-| 383 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | … Mănăstirea Putna. În anul 1475, după divorțul de Maria de Mangop, Ștefan s-a încununat cu doamna Voichiț… |
-| 384 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …. În anul 1475, după divorțul de Maria de Mangop, Ștefan s-a încununat cu doamna Voichița, fata Radului Vo… |
-| 385 | Ștefan_cel_Mare | **Radului** | p51 (Monica Radu · Radu) | generat din „Radu” | …op, Ștefan s-a încununat cu doamna Voichița, fata Radului Vodă.. Căsătoria avea să dureze până la moartea d… |
-| 386 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …ăsătoria avea să dureze până la moartea domnului, Maria Voichița supraviețuindu-i încă șapte ani. A murit… |
-| 387 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …or au rezultat doi copii, un băiat, viitorul domn Bogdan al III-lea și o fată, Maria, decedată în 1518 și … |
-| 388 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …băiat, viitorul domn Bogdan al III-lea și o fată, Maria, decedată în 1518 și înmormântată la Mănăstirea P… |
-| 389 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …dată în 1518 și înmormântată la Mănăstirea Putna. Ștefan a avut și un număr de concubine, cea mai cunoscut… |
-| 390 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …și un număr de concubine, cea mai cunoscută fiind Maria Rareș din Hârlău, mama viitorului domn Petru Rare… |
-| 391 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …iind Maria Rareș din Hârlău, mama viitorului domn Petru Rareș. Un alt posibil fiu nelegitim, a cărui mamă… |
-| 392 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ărui mamă nu este cunoscută, a fost viitorul domn Ștefan Lăcustă. Ștefan cel Mare a murit la 2 iulie 1504 … |
-| 393 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …e cunoscută, a fost viitorul domn Ștefan Lăcustă. Ștefan cel Mare a murit la 2 iulie 1504 în urma infectăr… |
-| 394 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …cterului și trăsăturilor de personalitate ale lui Ștefan cel Mare este o întreprindere dificilă, având în … |
-| 395 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …te probabil, din dorința vădită de a-l linguși pe Ștefan, în vederea obținerii unor foloase. Alte caracter… |
-| 396 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …câteva izvoare scrise păstrate, se poate spune că Ștefan era un bărbat de înălțime medie spre mică (probab… |
-| 397 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … cel puțin în ultimii ani, să șchiopăteze.” _____ Ștefan S. Gorovei, Maria Magdalena Székely, Princeps omn… |
-| 398 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …ii ani, să șchiopăteze.” _____ Ștefan S. Gorovei, Maria Magdalena Székely, Princeps omni laude maior. O i… |
-| 399 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ékely, Princeps omni laude maior. O istorie a lui Ștefan cel Mare Din relatările păstrate, se poate deduce… |
-| 400 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Mare Din relatările păstrate, se poate deduce că Ștefan cel Mare a avut multe trăsături specifice unui te… |
-| 401 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …e, imprudența etc. „Dacă cercetam caracterul lui Ștefan, îl videm de la început cuprins de un mare neastâ… |
-| 402 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …t cugetate.” _____ A.D. Xenopol, Caracterul lui Ștefan cel Mare Referindu-se la caracterul lui Ștefan, c… |
-| 403 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ui Ștefan cel Mare Referindu-se la caracterul lui Ștefan, cronicarul maghiar Nicolaus Isthuanffius (Miklós… |
-| 404 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …edință se referea la presupusa încălcare de către Ștefan a jurământului de suzeranitate față de regele Ung… |
-| 405 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Sigismund I al Poloniei, îl caracteriza astfel: „Ștefan era din fire abil, viclean, nestatornic, viteaz ș… |
-| 406 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … sintetiza personalitatea domnului, subliniind că Ștefan cel Mare răsfrânge în el caracterul obștesc al ti… |
-| 407 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ul maghiar Nicolaus Isthuanffius, referindu-se la Ștefan spunea că era mândru și cruzimea neobișnuit a fir… |
-| 408 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …erea la tron == La începutul lunii aprilie 1457, Ștefan a intrat în Moldova, înaintând spre Suceava, de-a… |
-| 409 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …Vlad Țepeș, iar restul moldoveni din Țara de Jos. Petru Aron a fost surprins de această acțiune, reușind … |
-| 410 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ă strângă în grabă o armată cu care l-a atacat pe Ștefan la Doljești, pe Siret, la 12 aprilie. Petru Aron … |
-| 411 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …t pe Ștefan la Doljești, pe Siret, la 12 aprilie. Petru Aron a fost învins și a părăsit câmpul de luptă. … |
-| 412 | Ștefan_cel_Mare | **Stefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rilie, în săptămâna mare dinaintea Paștilor, veni Stefan Vodă, fiul lui Bogdan Vodă, cu o mică oaste. Și v… |
-| 413 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …re dinaintea Paștilor, veni Stefan Vodă, fiul lui Bogdan Vodă, cu o mică oaste. Și veniră asupra lor Aron … |
-| 414 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …sau apă cu numele Hreasca, la Doljești. Așa, goni Ștefan Vodă pe Aron Vodă din țară și rămase însuși domn … |
-| 415 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …se însuși domn prin silnicie.” _____ Cronica lui Ștefan cel Mare Despre locul exact al luptei au existat … |
-| 416 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …l vremii. Majoritatea istoricilor (Nicolae Iorga, Constantin C. Giurescu, Ilie Minea Minea ș.a.) au propus ca … |
-| 417 | Ștefan_cel_Mare | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …toricilor (Nicolae Iorga, Constantin C. Giurescu, Ilie Minea Minea ș.a.) au propus ca loc al bătăliei lo… |
-| 418 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … Botoșani. Cea mai plauzibilă pare a fi cea a lui Alexandru I. Gonța, care identifică drept loc al bătăliei l… |
-| 419 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …evei. După câștigarea bătăliilor și alungarea lui Petru Aron, Ștefan va organiza o mare ceremonie publică… |
-| 420 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …âștigarea bătăliilor și alungarea lui Petru Aron, Ștefan va organiza o mare ceremonie publică de încoronar… |
-| 421 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …loc numit Direptate, pe valea Siretului. „Deciia Ștefan vodă strâns-au boierii țării și mari și mici și a… |
-| 422 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … domnie mitropolitul Theoctistu. Și de acolea luo Ștefan vodă steagul țărâi Moldovei și să duse la scaunul… |
-| 423 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …area bazei politico-sociale === Politica dusă de Ștefan cel Mare pe plan intern de-a lungul domniei avea … |
-| 424 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …o contrapondere politică la clasa marilor boieri, Ștefan a manifestat o preocupare constantă pentru dezvol… |
-| 425 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …l. Din acest motiv, până la urcarea pe tron a lui Ștefan, țăranii liberi nu erau obligați să presteze serv… |
-| 426 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ul pe care îl stăpâneau nu era primit de la domn. Ștefan avea să facă o reformă radicală în sistemul relaț… |
-| 427 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …opolul obligațiilor militare. În momentul în care Ștefan a implicat în chestiunile de apărare a țării și a… |
-| 428 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … țării s-a diminuat în mod esențial. Puterea lui Ștefan vodă a stat în «curtea» lui, în această oaste de … |
-| 429 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ui, înăuntru și în afară. _____ P. P. Panaitescu, Ștefan cel Mare. O încercare de caracterizare Acest fapt… |
-| 430 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ului se întărea. Astfel, în primii ani de domnie, Ștefan a căutat să țină sub control puterea boierilor pr… |
-| 431 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …privilegiilor, iertarea celor care l-au slujit pe Petru Aron și trimiterea de cărți de iertare și rechema… |
-| 432 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ră a boierilor fugari, în frunte cu boierul Mihu. Ștefan a schimbat de asemenea și ierarhia boierească, cr… |
-| 433 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rte, cu excepția marelui vornic. În aceeași idee, Ștefan a asigurat o stabilitate mare pe funcții a marilo… |
-| 434 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …administrației țării. Ca urmare a acestor măsuri, Ștefan a avut de înfruntat doar două conspirații boiereș… |
-| 435 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … de moartea sa, care viza îndepărtarea fiului său Bogdan de la tron, terminată identic cu omorârea capilor… |
-| 436 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ura de transport a Moldovei în timpul domniei lui Ștefan cel Mare era slab dezvoltată, neexistând drumuri … |
-| 437 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …a boierii condamnați pentru „hiclenie” (trădare). Ștefan cel Mare a fost unul dintre puținii domni ai Mold… |
-| 438 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Politica externă == În politica externă a lui Ștefan cel Mare pot fi identificate trei mari perioade, … |
-| 439 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … cu obiective specifice. La urcarea pe tron a lui Ștefan, contextul geopolitic făcea ca Moldova să fie obi… |
-| 440 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …erată de luptele pentru domnie dintre urmașii lui Alexandru cel Bun, poziția ei față de cei doi vecini rivali… |
-| 441 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ce o politică externă realistă și echilibrată. „Ștefan urmări încă din tinerețea lui un principiu, care … |
-| 442 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tru transpunerea în practică a politicii externe, Ștefan va acorda o atenție deosebită dezvoltării institu… |
-| 443 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ea să devină cel mai important dregător al țării. Ștefan și-a ales cu grijă colaboratorii din acest domeni… |
-| 444 | Ștefan_cel_Mare | **Toma** | p78 (Vadim Toma · Vadim · Toma) | declarat | …oan Dobru (8 septembrie 1457 – 5 februarie 1468), Toma (28 iulie 1468 – 26 august 1474) și Ioan Tăutu (1… |
-| 445 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …că după rezultate, și rezultatele diplomației lui Ștefan sunt minunate. La 1462–1465 se luptă cu muntenii … |
-| 446 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ungurii, turcii și rușii intervin în favoarea lui Ștefan. Chiar cu tătarii lui Mengli Ghirei a avut mult t… |
-| 447 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … mult timp relații bune. _______P.P. Panaitescu, Ștefan cel Mare === 1457–1469 === Prima perioadă, într… |
-| 448 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …au loc ciocnirile cu polonii care-l adăposteau pe Petru Aron și cu care avea să încheie pace în 1459. Urm… |
-| 449 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …oman. O primă constantă a politicii externe a lui Ștefan în această perioadă a fost atragerea Țării Române… |
-| 450 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | …mană. Primul episod l-a reprezentat conflictul cu Radu cel Frumos, concretizat în patru campanii militar… |
-| 451 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ășurate între 1469-1473, încheiat cu victoria lui Ștefan. În același context, Ștefan a intervenit și a num… |
-| 452 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …heiat cu victoria lui Ștefan. În același context, Ștefan a intervenit și a numit patru domni în Țara Român… |
-| 453 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …otriva stăpânului său, sultanul Mehmet al II-lea, Ștefan a început să urzească fel de fel de planuri. Pe a… |
-| 454 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …en Elkana Capsali - Istoria Otomană În acest sens Ștefan a renunțat la plata tributului către Poartă în 14… |
-| 455 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Cetății Albe și în noul context extern european, Ștefan decide în 1487 să încheie pace cu Imperiul Otoman… |
-| 456 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rea frontierei sudice, în ultima parte a domniei, Ștefan își va focaliza politica externă pe rezolvarea ch… |
-| 457 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …iei, negocieri rămase fără succes. La moartea sa, Ștefan lăsa țara într-o situație politică favorabilă, av… |
-| 458 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …. Ultimul sfat de politică externă dat fiului său Bogdan al III-lea înainte de a muri a fost de a menține … |
-| 459 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …or un altul.” _______Nicolae Iorga, Istoria lui Ștefan cel Mare == Puterea armată == === Arta mil… |
-| 460 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ategiei și artei militare în perioada domniei lui Ștefan derivă din obiectivul politic pe termen lung al d… |
-| 461 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …teristica esențială a acțiunilor militare duse de Ștefan a fost astfel că acestea au urmărit nimicirea arm… |
-| 462 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ncipală a acțiunilor militare la nivel strategic, Ștefan a utilizat atât defensiva strategică, cât și ofen… |
-| 463 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … bătălia decisivă și urmărirea, fiind adoptată de Ștefan în marile campanii din 1475, 1476, 1497, când a a… |
-| 464 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ălia decisivă și urmărirea. Ea a fost adoptată de Ștefan în campaniile din 1473 și 1481 care au avut ca ob… |
-| 465 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ontinuarea acțiunilor militare. În aceste bătălii Ștefan a utilizat cu precădere manevra de forțe, adaptat… |
-| 466 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …i s-au întors rușinați.” _______P.P. Panaitescu, Ștefan cel Mare === Organizarea armatei === Armata Mol… |
-| 467 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …. Marea majoritate a acțiunilor militare ale lui Ștefan au fost duse de „oastea cea mică”, formată din ce… |
-| 468 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …oierești și mănăstirești, străjerii și călărașii. Ștefan a mobilizat oastea cea mare doar de două ori, în … |
-| 469 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ctiv a Nistrului. === Armamentul === Oastea lui Ștefan cel Mare utiliza toate categoriile principale de … |
-| 470 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …armată corespunzător. După cum arăta Jan Duglosz, Ștefan dacă prindea pe vre-un țăran fără săgeți, arc și … |
-| 471 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …oldovenilor. === Sistemul de fortificații === Ștefan cel Mare a acordat o atenție deosebită realizării… |
-| 472 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … determinat retragerea regelui polon Ioan Albert. Ștefan a conceput sistemul de cetăți urmărind trei mari … |
-| 473 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ânt și lemn – cea a Romanului. În timpul domniei, Ștefan a cucerit cetățile de zid de la Chilia și Cetatea… |
-| 474 | Ștefan_cel_Mare | **Nova** | j4 (Platforma Nova · Nova) | declarat | …malul Stâng al Siretului, cetatea Pudna sau Pudna Nova(Pudna noua). Mărturie stă faptul că după dobândir… |
-| 475 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ult de un deceniu de la zidirea Mănăstirii Putna, Ștefan cel Mare zidește o biserică, aici la graniță, cu … |
-| 476 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ctelor armate („bătăliilor”) la care a participat Ștefan cel Mare este de 36. Cifra este bazată chiar pe m… |
-| 477 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …m pierdut 2”. Într-o analiză detaliată, istoricul Alexandru Boldur mai identifică suplimentar alte patru incu… |
-| 478 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … suplimentar alte patru incursiuni armate la care Ștefan nu a participat, acestea fiind conduse de alți co… |
-| 479 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …a participat oastea moldoveană sub conducerea lui Ștefan cel Mare este prezentată în tabelul alăturat. Ce… |
-| 480 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …patru acțiuni militare care nu au fost conduse de Ștefan personal au fost: incursiunea din Transilvania, s… |
-| 481 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …către regele ungar a unor pretendenți la tron, ca Petru Aron sau Berindei. Cauza imediată a constituit-o … |
-| 482 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … imediată a constituit-o sprijinul direct pe care Ștefan îl acordase răscoalei ardelenilor împotriva regel… |
-| 483 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ent ca inamicul să atace capitala țării, Suceava, Ștefan decide să execute o lovitură decisivă, prin surpr… |
-| 484 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …a Baia reprezintă o mare victorie politică pentru Ștefan, care și-a consolidat domnia, punând capăt, prin … |
-| 485 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …n extern. „Obiectivele acesteia - înlocuirea lui Ștefan de pe tron, instalarea unui nou domn la Suceava, … |
-| 486 | Ștefan_cel_Mare | **Petre** | ? () | generat din „Petru” | …frângere de proporții pentru regele ungar.” ______Petre Otu, Baia ==== Bătălia de la Vaslui-Podu Înalt … |
-| 487 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …. Bătălia a opus oastea Moldovei, sub comanda lui Ștefan cel Mare și oastea Uniunii Polono-Lituaniene, com… |
-| 488 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ta, cultura și religia == Perioada domniei lui Ștefan cel Mare a constituit și în planul realizărilor d… |
-| 489 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …turii. Din creațiile artistice care s-au păstrat, Ștefan se prezintă atât ca un tradiționalist, continuato… |
-| 490 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …centist, animat de un puternic spirit înnoitor. „Ștefan moștenește de la înaintașii săi în primul rând re… |
-| 491 | Ștefan_cel_Mare | **Corina** | p19 (Corina Păduraru · Păduraru) | generat din „Corina” | … Bisericii, legislația, cultura și arta.” ______ Corina Nicolescu, ''Arta epocii lui Ștefan cel Mare =… |
-| 492 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rta.” ______ Corina Nicolescu, ''Arta epocii lui Ștefan cel Mare === Arhitectura === Din epoca lui Șt… |
-| 493 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …an cel Mare === Arhitectura === Din epoca lui Ștefan cel Mare s-au păstrat doar elemente de arhitectur… |
-| 494 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …, preluată de multe surse scrise, îi atribuie lui Ștefan construcția câte unei biserici după fiecare dintr… |
-| 495 | Ștefan_cel_Mare | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …ilișăuți-Bădeuți (1487), Pătrăuți (1487), Sfântul Ilie-Suceava (1488), Voroneț (1488), Vaslui (1490), Ia… |
-| 496 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …u, lângă Cluj. Bisericile construite în epoca lui Ștefan cel Mare au fost concepute în general în stilul a… |
-| 497 | Ștefan_cel_Mare | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …sce interioare: Putna, Pătrăuți, Voroneț, Sfântul Ilie - Suceava, Popăuți, Bălinești „Din îmbinarea ar… |
-| 498 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rici și mănăstiri ctitorite în timpul domniei lui Ștefan cel Mare a generat o creștere semnificativă a cer… |
-| 499 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …ță de singurul atelier de acest fel, înființat de Alexandru cel Bun la mănăstirea Neamț. Cel mai important a … |
-| 500 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … lucrat la Mănăstirea Putna în timpul domniei lui Ștefan cel Mare: Nicodim, Evrasie, Casian, Chiriac, Vas… |
-| 501 | Ștefan_cel_Mare | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …fan cel Mare: Nicodim, Evrasie, Casian, Chiriac, Vasile și Iacov - veniți de la mănăstirea Neamț, Paladie… |
-| 502 | Ștefan_cel_Mare | **Stanciul** | p15 (Veronica Stanciu · Stanciu) | generat din „Stanciu” | …erii orfevrari cei mai cunoscuți au fost Antonie, Stanciul și Gligorie, care, pe lângă obiectele de cult, au… |
-| 503 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ip, în 1502 (Viena); Tetraevanghelul anonim de la Ștefan cel Mare și Bogdan al III-lea, lucrat în 1504-150… |
-| 504 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …; Tetraevanghelul anonim de la Ștefan cel Mare și Bogdan al III-lea, lucrat în 1504-1507 la Putna; Tetraev… |
-| 505 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ă prezintă practic un consens în a-l considera pe Ștefan cel Mare ca inițiatorul istoriografiei moldovene … |
-| 506 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …în românește și atribuit lui Eustratie logofătul. Ștefan a avut inițiativa începerii redactării istoriei d… |
-| 507 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …upă 1473, când a avut loc prima intervenție a lui Ștefan cel Mare pentru a instala pe tronul Țării Româneș… |
-| 508 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …reluată și completată până la finele anului 1496. Ștefan cel Mare a impus un stil istoriografic plin de so… |
-| 509 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ațiunilor === Arta decorațiunilor din timpul lui Ștefan cel Mare este ilustrată prin două mari categorii:… |
-| 510 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tică a unei cădelnițe din argint aurit dăruită de Ștefan, datată 12 aprilie 6978 (1470) și păstrată la măn… |
-| 511 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …14 ianuarie 7005 (1497) executate din ordinul lui Ștefan cel Mare în mănăstirea Putna și aflate în prezent… |
-| 512 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rie a României și cealaltă în muzeul de la Putna. Ștefan cel Mare înființează, la Mănăstirea Putna, cel ma… |
-| 513 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rtistice cele mai reprezentative pentru epoca lui Ștefan cel Mare. Broderia medievală din epoca lui Ștefan… |
-| 514 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …Ștefan cel Mare. Broderia medievală din epoca lui Ștefan îmbină tradițiile autohtone cu cele bizantine și … |
-| 515 | Ștefan_cel_Mare | **Mariei** | ? () | generat din „Maria” | …aloare istorică și artistică, este „Acoperământul Mariei de Mangop”. Aflată într-o stare avansată de degra… |
-| 516 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ul căruia a fost expusă la Vatican, în expoziția „Ștefan cel Mare și Sfânt – Punte între Occident și Orien… |
-| 517 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ent”, din luna septembrie 2004. == Moldova după Ștefan cel Mare == == Controverse, neclarități și ince… |
-| 518 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tăți și incertitudini == == Figura și epoca lui Ștefan cel Mare reflectate în literatură și artă == Cerc… |
-| 519 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …veche cronică moldovenească în slavonă păstrată – Ștefan cel Mare este de regulă intitulat voievod și domn… |
-| 520 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …Referințe și note == == Bibliografie == Boldur, Alexandru, Ștefan cel Mare, voievod al Moldovei, Editura „C… |
-| 521 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …i note == == Bibliografie == Boldur, Alexandru, Ștefan cel Mare, voievod al Moldovei, Editura „Carpații”… |
-| 522 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …adrid, 1970. Centrul de Cercetare și Documentare „Ștefan cel Mare” al Mănăstirii Putna, Ștefan cel Mare și… |
-| 523 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ocumentare „Ștefan cel Mare” al Mănăstirii Putna, Ștefan cel Mare și Sfânt. 1504–2004: Portret în istorie,… |
-| 524 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …orie, Editura „Mușatinii”, Putna, 2003. Chițimia, Ion Constantin, Cronica lui Ștefan cel Mare (versiune… |
-| 525 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …, Editura „Mușatinii”, Putna, 2003. Chițimia, Ion Constantin, Cronica lui Ștefan cel Mare (versiunea germană a… |
-| 526 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …utna, 2003. Chițimia, Ion Constantin, Cronica lui Ștefan cel Mare (versiunea germană a lui Schedel), Bucur… |
-| 527 | Ștefan_cel_Mare | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …l), București, Casa Școalelor, 1942. Costăchescu, Mihai, Documente moldovenești de la Ștefan cel Mare, In… |
-| 528 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Costăchescu, Mihai, Documente moldovenești de la Ștefan cel Mare, Institutul de arte grafice „Brawo”, Iaș… |
-| 529 | Ștefan_cel_Mare | **Andrei** | ? () | generat din „Andrei” | …tutul de arte grafice „Brawo”, Iași, 1933. Eșanu, Andrei (coord.), Ștefan cel Mare și Sfânt (1457–1504). B… |
-| 530 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …fice „Brawo”, Iași, 1933. Eșanu, Andrei (coord.), Ștefan cel Mare și Sfânt (1457–1504). Bibliografie, Bibl… |
-| 531 | Ștefan_cel_Mare | **Valentina** | p22 (Valentina Lupu · Lupu) | generat din „Valentina” | …nală a Republicii Moldova, Chișinău, 2004. Eșanu, Valentina, Marii demnitari ai Țării Moldovei în domnia lui … |
-| 532 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …, Marii demnitari ai Țării Moldovei în domnia lui Ștefan cel Mare (1457–1504), teză de doctorat, Academia … |
-| 533 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | … Institutul de Istorie, Chișinău, 2015. Giurescu, Constantin C., Istoria românilor. Volumul II, Partea I, de l… |
-| 534 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … Volumul II, Partea I, de la Mircea cel Bătrân și Alexandru cel Bun până la Mihai Viteazul, Fundația Regală p… |
-| 535 | Ștefan_cel_Mare | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …la Mircea cel Bătrân și Alexandru cel Bun până la Mihai Viteazul, Fundația Regală pentru Literatură și Ar… |
-| 536 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …ru Literatură și Artă, București, 1943. Giurescu, Constantin C.; Giurescu, Dinu C., Istoria Românilor. Volumul… |
-| 537 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ică, București, 1976. Iorga, Nicolae, Istoria lui Ștefan cel Mare, Institutul de arte grafice și editură „… |
-| 538 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …lui de Război, București, 1929. Kirileanu, G. T., Ștefan Vodă cel Mare și Sfânt. Istorisiri și cântece pop… |
-| 539 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …afia „Aurora”, Focșani, 1904. Papacostea, Șerban, Ștefan cel Mare domn al Moldovei (1457–1504), Editura En… |
-| 540 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | … Editura Enciclopedică, București, 1990. Rosetti, Radu R. (general), Istoria artei militare a românilor … |
-| 541 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …ra Litera Internațional, Chișinău, 1997. Xenopol, Alexandru D., Istoria românilor din Dacia Traiană, vol. II,… |
-| 542 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …onicile slavo-române din sec. XV-XVI publicate de Ion Bogdan, Editura Academiei Republicii Populare Rom… |
-| 543 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …ile slavo-române din sec. XV-XVI publicate de Ion Bogdan, Editura Academiei Republicii Populare Române, Bu… |
-| 544 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … când s-a început Țara Moldovei - letopisețul lui Ștefan cel Mare, Editura Academiei Române, București, 20… |
-| 545 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …7-1290-2. == Lectură suplimentară == Ursu Ioan. Ștefan cel Mare. Între sânge și credință. București, Pau… |
-| 546 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …itura Politica, București, 1962–1966 Rezachevici, Constantin: Enciclopedia domnilor Români: a. 1324–1881: cron… |
-| 547 | Ștefan_cel_Mare | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ldova, Editura Enciclopedică, București, 2001 [1] Vasile Mărculeț – Alexandru V. Ștefănescu – Stănel Ion –… |
-| 548 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …iclopedică, București, 2001 [1] Vasile Mărculeț – Alexandru V. Ștefănescu – Stănel Ion – Gherghina Boda – Geo… |
-| 549 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …asile Mărculeț – Alexandru V. Ștefănescu – Stănel Ion – Gherghina Boda – George Marcu – Mihai Chiriac –… |
-| 550 | Ștefan_cel_Mare | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …cu – Stănel Ion – Gherghina Boda – George Marcu – Mihai Chiriac – Elena Gabriela Maximciuc – Ioan Mărcule… |
-| 551 | Ștefan_cel_Mare | **Elena** | ? () | declarat | …– Gherghina Boda – George Marcu – Mihai Chiriac – Elena Gabriela Maximciuc – Ioan Mărculeț – Stan Stoica:… |
-| 552 | Ștefan_cel_Mare | **Gabriela** | p53 (Gabriela Dobre · Dobre) | generat din „Gabriela” | …ghina Boda – George Marcu – Mihai Chiriac – Elena Gabriela Maximciuc – Ioan Mărculeț – Stan Stoica: Dicționa… |
-| 553 | Ștefan_cel_Mare | **Stan** | p50 (Florin Stan · Stan) | declarat | …riac – Elena Gabriela Maximciuc – Ioan Mărculeț – Stan Stoica: Dicționarul domnilor Țării Românești și a… |
-| 554 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | … [2] Arhivat în 8 iulie 2024, la Wayback Machine. Radu Lungu: Domnitori și Principi ai Tărilor Române, E… |
-| 555 | Ștefan_cel_Mare | **Lungu** | ? () | declarat | …Arhivat în 8 iulie 2024, la Wayback Machine. Radu Lungu: Domnitori și Principi ai Tărilor Române, Editura… |
+| 273 | Revoluția_română_din_1989 | **Lungu** | ? () | declarat | …-Napoca, iar primul-secretar al județului Brăila, Lungu, a raportat militărește: „Tovarășe secretar gener… |
+| 274 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …put spre miezul nopții sub conducerea generalului Vasile Milea, ministrul Apărării Naționale. Se trăgea as… |
+| 275 | Revoluția_română_din_1989 | **Gheorghe** | p29 (Gheorghe Tabacaru · Tabacaru) | generat din „Gheorghe” | …l Colțea și secția de neurochirurgie a Spitalului Gheorghe Marinescu. Procuratura Generală și Direcția Sanit… |
+| 276 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | … transportate la penitenciarul Jilava. Nicolae și Elena Ceaușescu au rămas în acea noapte în dormitorul s… |
+| 277 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ii privind modul de acțiune. Cam pe la 1 noaptea, Vasile Milea și Iulian Vlad l-au informat pe Nicolae Cea… |
+| 278 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …le împotriva regimului. Pe la ora 7:00 dimineața, Elena Ceaușescu a fost informată că un mare număr de mu… |
+| 279 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | … dimineață, în jurul orei 9:30 ministrul apărării Vasile Milea s-a sinucis (dar unii susțin și acum că ar … |
+| 280 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …șescu l-a numit verbal ca ministru al apărării pe Victor Stănculescu. Generalii și ceilalți ofițeri din co… |
+| 281 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | … situației concrete.” La rândul său, ex-generalul Victor Stănculescu a declarat următoarele: „M-am aflat î… |
+| 282 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | …ul sediului Comitetului Central al PCR, generalul Marin Neagoe, comandantul Direcției a V-a a Securității… |
+| 283 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …ere pentru evacuarea soților Ceaușescu. Generalul Victor Stănculescu a luat legătura cu generalul Iosif Ru… |
+| 284 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | … pe terasa clădirii CC. În elicopterul pilotat de Vasile Maluțan s-au îmbarcat Nicolae Ceaușescu și Elena … |
+| 285 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …Vasile Maluțan s-au îmbarcat Nicolae Ceaușescu și Elena Ceaușescu, însoțiți de garda de corp, precum și d… |
+| 286 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …iziunea Română își reia emisia. Mircea Dinescu și Ion Caramitru apar în fruntea unui grup de revoluțion… |
+| 287 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …ție. Câțiva lucrători de miliție au fost linșați. Petre Roman citește de pe balconul CC al PCR Declarația… |
+| 288 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …e: La Televiziune, unde se aflau Mircea Dinescu, Ion Caramitru și personajul cel mai important, sosit … |
+| 289 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …rsonajul cel mai important, sosit după ora 14:00, Ion Iliescu; La sediul CC al PCR, unde erau pe de o p… |
+| 290 | Revoluția_română_din_1989 | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …ționarii pătrunși, și pe de altă parte grupul lui Ilie Verdeț, care a încercat să formeze un nou guvern,… |
+| 291 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …!” La Ministerul Apărării, unde se afla generalul Victor Stănculescu În cele din urmă, grupul lui Iliescu … |
+| 292 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …ducere politică, prin intervenții publice ale lui Ion Iliescu, a făcut apel la populație să sprijine au… |
+| 293 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …esul și execuția soților Ceaușescu === Generalul Vasile Ionel a fost însărcinat cu organizarea procesului… |
+| 294 | Revoluția_română_din_1989 | **Ionel** | p77 (Ionel Popov · Ionel · Popov) | declarat | … execuția soților Ceaușescu === Generalul Vasile Ionel a fost însărcinat cu organizarea procesului soțil… |
+| 295 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | … cu care Silviu Brucan, Gelu Voican Voiculescu și Ion Iliescu i-au cerut să-i suprime pe Elena și Nicol… |
+| 296 | Revoluția_română_din_1989 | **Elena** | ? () | declarat | …culescu și Ion Iliescu i-au cerut să-i suprime pe Elena și Nicolae Ceaușescu. Procesul a început pe 25 de… |
+| 297 | Revoluția_română_din_1989 | **Mihail** | p68 (Mihail Racu · Mihail · Racu) | declarat | …eședintele George H. W. Bush), URSS (președintele Mihail Gorbaciov), Ungaria (Partidul Socialist Ungar), n… |
+| 298 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …izgrațiile dictatorului la începutul anilor 1980, Ion Iliescu s-a impus ca președinte al Frontului Salv… |
+| 299 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …tă, fiind doar împotriva lui Ceaușescu. În 1990, Ion Iliescu a reușit să devină primul președinte ales… |
+| 300 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …vării Naționale. === Integrarea europeană === Ion Iliescu a rămas o figură centrală a politicii rom… |
+| 301 | Revoluția_română_din_1989 | **Laura** | p52 (Laura Marin · Marin) | generat din „Laura” | …icat el însuși de Procurorul General al României, Laura Codruța Kovesi, care a cerut destituirea lui din … |
+| 302 | Revoluția_română_din_1989 | **Dumitru** | ? () | declarat | …lui Ceaușescu, locotenentul-colonel de Securitate Dumitru Burlan, îi acuză pe generalii care erau implicați… |
+| 303 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …mplicați în lovitura de stat condusă de generalul Victor Stănculescu că ei încercau să creeze scenarii fic… |
+| 304 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …te de Casație și Justiție a trimis în judecată pe Ion Iliescu, Petre Roman, Gelu Voican Voiculescu, Vir… |
+| 305 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | … și Justiție a trimis în judecată pe Ion Iliescu, Petre Roman, Gelu Voican Voiculescu, Virgil Măgureanu, … |
+| 306 | Revoluția_română_din_1989 | **Cozma** | p8 (Tatiana Cozma · Cozma) | declarat | …, Gelu Voican Voiculescu, Virgil Măgureanu, Miron Cozma și alții pentru infracțiuni contra umanității săv… |
+| 307 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …a în mișcare a acțiunii penale față de inculpații Ion Iliescu, Gelu Voican Voiculescu, Iosif Rus și Emi… |
+| 308 | Revoluția_română_din_1989 | **Dumitrescu** | p49 (Simona Dumitrescu · Dumitrescu) | declarat | …liescu, Gelu Voican Voiculescu, Iosif Rus și Emil Dumitrescu, sub aspectul săvârșirii infracțiunilor contra um… |
+| 309 | Revoluția_română_din_1989 | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …nea penală a fost împiedicată împotriva acestora: Vasile Milea, Nicolae Militaru, Victor Atanasie Stăncule… |
+| 310 | Revoluția_română_din_1989 | **Victor** | p69 (Victor Botezatu · Victor · Botezatu) | declarat | …potriva acestora: Vasile Milea, Nicolae Militaru, Victor Atanasie Stănculescu, Emil Dumitrescu, Nicolae Ef… |
+| 311 | Revoluția_română_din_1989 | **Dumitrescu** | p49 (Simona Dumitrescu · Dumitrescu) | declarat | …colae Militaru, Victor Atanasie Stănculescu, Emil Dumitrescu, Nicolae Eftimescu, Silviu Brucan și Ion Hortopan… |
+| 312 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …l Dumitrescu, Nicolae Eftimescu, Silviu Brucan și Ion Hortopan. În octombrie 2019, se anunță că dosarul… |
+| 313 | Revoluția_română_din_1989 | **Petre** | ? () | generat din „Petru” | …opan. În octombrie 2019, se anunță că dosarul lui Petre Roman va fi trimis judecătorului. === Institutu… |
+| 314 | Revoluția_română_din_1989 | **Marin** | p52 (Laura Marin · Marin) | declarat | …l eroilor. Decembrie 1989, Editura Tribuna, 1998. Marin, Valentin: Martirii Revoluției în date statistice… |
+| 315 | Revoluția_română_din_1989 | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …utului Revoluției Române, București, 2010. Răduț, Bogdan Emanuel: „Revoluția română din 1989: determinare,… |
+| 316 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …fost răniți”, spune jurnalistul. Un dialog al lui Ion Cristoiu cu Malgosha Gago, autoarea cărții „Revol… |
+| 317 | Revoluția_română_din_1989 | **Ion** | ? () | declarat | …agazin De ce nu au fluierat generalii în fața lui Ion Iliescu?, 11 decembrie 2011, Adrian Pătrușcă, Eve… |
+| 318 | Revoluția_română_din_1989 | **Laura** | p52 (Laura Marin · Marin) | generat din „Laura” | …dosarului Revoluției din 1989, 24 noiembrie 2015, Laura Mitran, gandul.info Oameni-cheie ai Revoluției au… |
+| 319 | Revoluția_română_din_1989 | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Revoluția: 15 decembrie 1989, 15 decembrie 2009, Ștefan Both, Adevărul București Înregistrarea video cu … |
+| 320 | Sistemul_solar | **Orion** | j1 (Proiectul Orion · Orion) | declarat | …e ale galaxiei Calea Lactee (mai precis în Brațul Orion), galaxie care are cca. 200 de miliarde de stele.… |
+| 321 | Sistemul_solar | **Orion** | eval_prj_orion (Proiectul Orion · Orion) | declarat | …e ale galaxiei Calea Lactee (mai precis în Brațul Orion), galaxie care are cca. 200 de miliarde de stele.… |
+| 322 | Sistemul_solar | **Orion** | j1 (Proiectul Orion · Orion) | declarat | …e) exterioare ale Căii Lactee, cunoscut ca Brațul Orion, sau „Pintenul Local”. Soarele se află la aproxim… |
+| 323 | Sistemul_solar | **Orion** | eval_prj_orion (Proiectul Orion · Orion) | declarat | …e) exterioare ale Căii Lactee, cunoscut ca Brațul Orion, sau „Pintenul Local”. Soarele se află la aproxim… |
+| 324 | Sistemul_solar | **Ana** | p9 (Ana Moraru · Moraru) | generat din „Ana” | …coordonator [...], Traducere din limba engleză de Ana-Maria Negrilă-Chisega, Liana Stan, Enciclopedia R… |
+| 325 | Sistemul_solar | **Maria** | ? () | generat din „Maria” | …donator [...], Traducere din limba engleză de Ana-Maria Negrilă-Chisega, Liana Stan, Enciclopedia RAO 200… |
+| 326 | Sistemul_solar | **Stan** | p50 (Florin Stan · Stan) | declarat | …limba engleză de Ana-Maria Negrilă-Chisega, Liana Stan, Enciclopedia RAO 2008, București, 512 de pagini.… |
+| 327 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …Ștefan al III-lea (n. 1438-1439, Borzești – d. 2 iulie 1… |
+| 328 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Borzești – d. 2 iulie 1504, Suceava), supranumit Ștefan cel Mare sau, după canonizarea sa de către Biseri… |
+| 329 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …canonizarea sa de către Biserica Ortodoxă Română, Ștefan cel Mare și Sfânt, a fost domnul (sau domnitorul)… |
+| 330 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …Moldovei între anii 1457 și 1504. A fost fiul lui Bogdan al II-lea, domnind timp de 47 de ani, cea mai lun… |
+| 331 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ngă domnie din epoca medievală din Țările Române. Ștefan cel Mare este considerat o personalitate marcantă… |
+| 332 | Ștefan_cel_Mare | **Nova** | j4 (Platforma Nova · Nova) | declarat | …malul Stâng al Siretului, cetatea Pudna sau Pudna Nova(Pudna noua). Mărturie stă faptul că după dobândir… |
+| 333 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ult de un deceniu de la zidirea Mănăstirii Putna, Ștefan cel Mare zidește o biserică, aici la graniță, cu … |
+| 334 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …în bătălia de la Valea Albă-Războieni. După 1476, Ștefan a fost nevoit să accepte suzeranitatea Imperiului… |
+| 335 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tacte instituțiile și autonomia politică internă. Ștefan cel Mare a fost un mare sprijinitor al culturii ș… |
+| 336 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …nonizat de Biserica Ortodoxă Română, cu numele de Ștefan cel Mare și Sfânt, la 20 iunie 1992. A fost căsăt… |
+| 337 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …i ori, cu Evdochia - fiica marelui cneaz de Kiev, Maria din Mangop - din familia imperială bizantină și M… |
+| 338 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …a din Mangop - din familia imperială bizantină și Maria Voichița - fiica lui Radu cel Frumos, căsătorii î… |
+| 339 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | …imperială bizantină și Maria Voichița - fiica lui Radu cel Frumos, căsătorii în care s-au născut șapte c… |
+| 340 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …cepând cu 1497, l-a asociat la domnie pe fiul său Bogdan al III-lea, care-i va succeda la tron. A murit la… |
+| 341 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … == Biografie și familie == Conform tradiției, Ștefan cel Mare s-a născut la moșia tatălui său de la Bo… |
+| 342 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … ca fiu nelegitim al viitorului domn al Moldovei, Bogdan al II-lea și al Oltei. Bogdan era, la rândul său,… |
+| 343 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …i domn al Moldovei, Bogdan al II-lea și al Oltei. Bogdan era, la rândul său, fiu nelegitim al lui Alexandr… |
+| 344 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …. Bogdan era, la rândul său, fiu nelegitim al lui Alexandru cel Bun, iar soția sa, Oltea, provenea dintr-o fa… |
+| 345 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … Bacău, cei doi cunoscându-se în perioada în care Bogdan s-a aflat în exil la curtea lui Vlad Dracul. Fami… |
+| 346 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …ul. Familia a mai avut încă trei băieți: Ioachim, Ion și Crâstea și două fete: Maria și Sora. Data nașt… |
+| 347 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …rei băieți: Ioachim, Ion și Crâstea și două fete: Maria și Sora. Data nașterii nu este cunoscută cu certi… |
+| 348 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …te fiind anii 1438 sau 1439. Despre copilăria lui Ștefan cel Mare nu sunt date cunoscute; cel mai probabil… |
+| 349 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …dința familiei. În toamna anului 1449, tatăl său, Bogdan, sprijinit cu un corp de oaste trimis de Iancu de… |
+| 350 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … trimis de Iancu de Hunedoara, învinge armata lui Alexandru al II-lea la Tămășeni, lângă apa Moldovei, la 12 … |
+| 351 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …dovei, la 12 octombrie 1449 și se proclamă domn. Alexandru se refugiază în Transilvania, de unde va încerca … |
+| 352 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …va încerca să își recapete tronul. La rândul său, Bogdan, după o încercare nereușită de a căpăta sprijinul… |
+| 353 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … diplomatice către Ungaria. La 11 februarie 1450, Bogdan emite în „târgul de jos” – Roman – un hrisov de… |
+| 354 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …, imediat după domn, „credința iubitului meu fiu, Ștefan Voevod”. Actul reprezintă prima atestare document… |
+| 355 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … către tatăl său ca asociat la domnie, rezultă că Ștefan împlinise în 1450 cel puțin unsprezece ani, vârst… |
+| 356 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … de cutumele vremii pentru o astfel de demnitate. Bogdan avea să fie asasinat, la 15 octombrie 1451, la Re… |
+| 357 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …rie 1451, la Reuseni, de către fratele său vitreg Petru, alt fiu nelegitim al lui Alexandru cel Bun și ca… |
+| 358 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …ratele său vitreg Petru, alt fiu nelegitim al lui Alexandru cel Bun și care va domni ulterior sub numele de P… |
+| 359 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …u cel Bun și care va domni ulterior sub numele de Petru Aron. Cronicarul polonez Jan Długosz relata astf… |
+| 360 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …ez Jan Długosz relata astfel scena: „Un oarecare Petru, care pretindea că are drept la domnia Moldovei ș… |
+| 361 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … are drept la domnia Moldovei și se înțelesese cu Alexandru ca să împărțească toate deopotrivă, alegând prile… |
+| 362 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …părțească toate deopotrivă, alegând prilejul când Bogdan, poftit la țară, la un unchi de frate al aceluiaș… |
+| 363 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …poftit la țară, la un unchi de frate al aceluiași Petru, era beat, pe o noapte urâtă, sosind numai cu o s… |
+| 364 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …numai cu o sută de moldoveni, înșelă străjile lui Bogdan și, prinzându-l, îi tăie capul.” _____ Jan Długo… |
+| 365 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …an Długosz, Historiae Polonicae După omorârea lui Bogdan, familia sa, inclusiv tânărul Ștefan vor pleca în… |
+| 366 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …omorârea lui Bogdan, familia sa, inclusiv tânărul Ștefan vor pleca în exil în Transilvania și apoi în Țara… |
+| 367 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …Mama sa, Oltea avea să moară la 4 noiembrie 1465. Ștefan cel Mare a fost căsătorit de trei ori. Dacă prede… |
+| 368 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ii Ungariei și Poloniei, politica dinastică a lui Ștefan cel Mare privind căsătoriile a fost diferită – du… |
+| 369 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …Evdochia, fiica lui Simeon Olelkovici de la Kiev, Maria din Paleologii de la Mangup, în Crimeea, Maria, f… |
+| 370 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …v, Maria din Paleologii de la Mangup, în Crimeea, Maria, fiica lui Radu cel Frumos din Țara Românească. C… |
+| 371 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | …ologii de la Mangup, în Crimeea, Maria, fiica lui Radu cel Frumos din Țara Românească. Căsătoria cu Evdo… |
+| 372 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …ătorie au rezultat doi băieți și o fată. Băieții, Bogdan-Vlad născut în 1466 și Petru născut în 1467, au m… |
+| 373 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …și o fată. Băieții, Bogdan-Vlad născut în 1466 și Petru născut în 1467, au murit amândoi de tineri în anu… |
+| 374 | Ștefan_cel_Mare | **Elena** | ? () | declarat | …iind îngropați împreună în același mormânt. Fata, Elena, avea să se mărite cu fiul țarului Ivan al III-le… |
+| 375 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …chia moare și ea în 1467, posibil la nașterea lui Petru, fiind înmormântată în Biserica Mirăuți din Sucea… |
+| 376 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …serica Mirăuți din Suceava. La 14 septembrie 1472 Ștefan se căsătorește din nou cu Maria, din familia domn… |
+| 377 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | … septembrie 1472 Ștefan se căsătorește din nou cu Maria, din familia domnitoare din micul regat grecesc p… |
+| 378 | Ștefan_cel_Mare | **Mariei** | ? () | generat din „Maria” | …e „domn de Theodoro și al întregii Khazarii”, iar Mariei înseși i se atribuie o multiplă obârșie împărătea… |
+| 379 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …luată de turci, Mangopul intră în stăpânirea lor, Ștefan cel Mare ne mai având nici un interes a păstra ca… |
+| 380 | Ștefan_cel_Mare | **Marie** | ? () | generat din „Maria” | …e odrasla Comnenilor și duce la altar pe cealaltă Marie sau Vochița, fata lui Radu Vodă.” _____ A. D. Xe… |
+| 381 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | … la altar pe cealaltă Marie sau Vochița, fata lui Radu Vodă.” _____ A. D. Xenopol, Istoria românilor di… |
+| 382 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …. D. Xenopol, Istoria românilor din Dacia Traiană Maria va mai trăi puțin după divorț, la 19 decembrie 14… |
+| 383 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …pă cum nota Grigore Ureche pristăvitu-s-au doamna Maria ce era de la Mangop, fiind înmormântată la Mănăst… |
+| 384 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | … Mănăstirea Putna. În anul 1475, după divorțul de Maria de Mangop, Ștefan s-a încununat cu doamna Voichiț… |
+| 385 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …. În anul 1475, după divorțul de Maria de Mangop, Ștefan s-a încununat cu doamna Voichița, fata Radului Vo… |
+| 386 | Ștefan_cel_Mare | **Radului** | p51 (Monica Radu · Radu) | generat din „Radu” | …op, Ștefan s-a încununat cu doamna Voichița, fata Radului Vodă.. Căsătoria avea să dureze până la moartea d… |
+| 387 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …ăsătoria avea să dureze până la moartea domnului, Maria Voichița supraviețuindu-i încă șapte ani. A murit… |
+| 388 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …or au rezultat doi copii, un băiat, viitorul domn Bogdan al III-lea și o fată, Maria, decedată în 1518 și … |
+| 389 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …băiat, viitorul domn Bogdan al III-lea și o fată, Maria, decedată în 1518 și înmormântată la Mănăstirea P… |
+| 390 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …dată în 1518 și înmormântată la Mănăstirea Putna. Ștefan a avut și un număr de concubine, cea mai cunoscut… |
+| 391 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …și un număr de concubine, cea mai cunoscută fiind Maria Rareș din Hârlău, mama viitorului domn Petru Rare… |
+| 392 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …iind Maria Rareș din Hârlău, mama viitorului domn Petru Rareș. Un alt posibil fiu nelegitim, a cărui mamă… |
+| 393 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ărui mamă nu este cunoscută, a fost viitorul domn Ștefan Lăcustă. Ștefan cel Mare a murit la 2 iulie 1504 … |
+| 394 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …e cunoscută, a fost viitorul domn Ștefan Lăcustă. Ștefan cel Mare a murit la 2 iulie 1504 în urma infectăr… |
+| 395 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …cterului și trăsăturilor de personalitate ale lui Ștefan cel Mare este o întreprindere dificilă, având în … |
+| 396 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …te probabil, din dorința vădită de a-l linguși pe Ștefan, în vederea obținerii unor foloase. Alte caracter… |
+| 397 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …câteva izvoare scrise păstrate, se poate spune că Ștefan era un bărbat de înălțime medie spre mică (probab… |
+| 398 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … cel puțin în ultimii ani, să șchiopăteze.” _____ Ștefan S. Gorovei, Maria Magdalena Székely, Princeps omn… |
+| 399 | Ștefan_cel_Mare | **Maria** | ? () | generat din „Maria” | …ii ani, să șchiopăteze.” _____ Ștefan S. Gorovei, Maria Magdalena Székely, Princeps omni laude maior. O i… |
+| 400 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ékely, Princeps omni laude maior. O istorie a lui Ștefan cel Mare Din relatările păstrate, se poate deduce… |
+| 401 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Mare Din relatările păstrate, se poate deduce că Ștefan cel Mare a avut multe trăsături specifice unui te… |
+| 402 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …e, imprudența etc. „Dacă cercetam caracterul lui Ștefan, îl videm de la început cuprins de un mare neastâ… |
+| 403 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …t cugetate.” _____ A.D. Xenopol, Caracterul lui Ștefan cel Mare Referindu-se la caracterul lui Ștefan, c… |
+| 404 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ui Ștefan cel Mare Referindu-se la caracterul lui Ștefan, cronicarul maghiar Nicolaus Isthuanffius (Miklós… |
+| 405 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …edință se referea la presupusa încălcare de către Ștefan a jurământului de suzeranitate față de regele Ung… |
+| 406 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Sigismund I al Poloniei, îl caracteriza astfel: „Ștefan era din fire abil, viclean, nestatornic, viteaz ș… |
+| 407 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … sintetiza personalitatea domnului, subliniind că Ștefan cel Mare răsfrânge în el caracterul obștesc al ti… |
+| 408 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ul maghiar Nicolaus Isthuanffius, referindu-se la Ștefan spunea că era mândru și cruzimea neobișnuit a fir… |
+| 409 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …erea la tron == La începutul lunii aprilie 1457, Ștefan a intrat în Moldova, înaintând spre Suceava, de-a… |
+| 410 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …Vlad Țepeș, iar restul moldoveni din Țara de Jos. Petru Aron a fost surprins de această acțiune, reușind … |
+| 411 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ă strângă în grabă o armată cu care l-a atacat pe Ștefan la Doljești, pe Siret, la 12 aprilie. Petru Aron … |
+| 412 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …t pe Ștefan la Doljești, pe Siret, la 12 aprilie. Petru Aron a fost învins și a părăsit câmpul de luptă. … |
+| 413 | Ștefan_cel_Mare | **Stefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rilie, în săptămâna mare dinaintea Paștilor, veni Stefan Vodă, fiul lui Bogdan Vodă, cu o mică oaste. Și v… |
+| 414 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …re dinaintea Paștilor, veni Stefan Vodă, fiul lui Bogdan Vodă, cu o mică oaste. Și veniră asupra lor Aron … |
+| 415 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …sau apă cu numele Hreasca, la Doljești. Așa, goni Ștefan Vodă pe Aron Vodă din țară și rămase însuși domn … |
+| 416 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …se însuși domn prin silnicie.” _____ Cronica lui Ștefan cel Mare Despre locul exact al luptei au existat … |
+| 417 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …l vremii. Majoritatea istoricilor (Nicolae Iorga, Constantin C. Giurescu, Ilie Minea Minea ș.a.) au propus ca … |
+| 418 | Ștefan_cel_Mare | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …toricilor (Nicolae Iorga, Constantin C. Giurescu, Ilie Minea Minea ș.a.) au propus ca loc al bătăliei lo… |
+| 419 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … Botoșani. Cea mai plauzibilă pare a fi cea a lui Alexandru I. Gonța, care identifică drept loc al bătăliei l… |
+| 420 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …evei. După câștigarea bătăliilor și alungarea lui Petru Aron, Ștefan va organiza o mare ceremonie publică… |
+| 421 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …âștigarea bătăliilor și alungarea lui Petru Aron, Ștefan va organiza o mare ceremonie publică de încoronar… |
+| 422 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …loc numit Direptate, pe valea Siretului. „Deciia Ștefan vodă strâns-au boierii țării și mari și mici și a… |
+| 423 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … domnie mitropolitul Theoctistu. Și de acolea luo Ștefan vodă steagul țărâi Moldovei și să duse la scaunul… |
+| 424 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …area bazei politico-sociale === Politica dusă de Ștefan cel Mare pe plan intern de-a lungul domniei avea … |
+| 425 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …o contrapondere politică la clasa marilor boieri, Ștefan a manifestat o preocupare constantă pentru dezvol… |
+| 426 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …l. Din acest motiv, până la urcarea pe tron a lui Ștefan, țăranii liberi nu erau obligați să presteze serv… |
+| 427 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ul pe care îl stăpâneau nu era primit de la domn. Ștefan avea să facă o reformă radicală în sistemul relaț… |
+| 428 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …opolul obligațiilor militare. În momentul în care Ștefan a implicat în chestiunile de apărare a țării și a… |
+| 429 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … țării s-a diminuat în mod esențial. Puterea lui Ștefan vodă a stat în «curtea» lui, în această oaste de … |
+| 430 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ui, înăuntru și în afară. _____ P. P. Panaitescu, Ștefan cel Mare. O încercare de caracterizare Acest fapt… |
+| 431 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ului se întărea. Astfel, în primii ani de domnie, Ștefan a căutat să țină sub control puterea boierilor pr… |
+| 432 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …privilegiilor, iertarea celor care l-au slujit pe Petru Aron și trimiterea de cărți de iertare și rechema… |
+| 433 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ră a boierilor fugari, în frunte cu boierul Mihu. Ștefan a schimbat de asemenea și ierarhia boierească, cr… |
+| 434 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rte, cu excepția marelui vornic. În aceeași idee, Ștefan a asigurat o stabilitate mare pe funcții a marilo… |
+| 435 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …administrației țării. Ca urmare a acestor măsuri, Ștefan a avut de înfruntat doar două conspirații boiereș… |
+| 436 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | … de moartea sa, care viza îndepărtarea fiului său Bogdan de la tron, terminată identic cu omorârea capilor… |
+| 437 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ura de transport a Moldovei în timpul domniei lui Ștefan cel Mare era slab dezvoltată, neexistând drumuri … |
+| 438 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …a boierii condamnați pentru „hiclenie” (trădare). Ștefan cel Mare a fost unul dintre puținii domni ai Mold… |
+| 439 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Politica externă == În politica externă a lui Ștefan cel Mare pot fi identificate trei mari perioade, … |
+| 440 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … cu obiective specifice. La urcarea pe tron a lui Ștefan, contextul geopolitic făcea ca Moldova să fie obi… |
+| 441 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …erată de luptele pentru domnie dintre urmașii lui Alexandru cel Bun, poziția ei față de cei doi vecini rivali… |
+| 442 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ce o politică externă realistă și echilibrată. „Ștefan urmări încă din tinerețea lui un principiu, care … |
+| 443 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tru transpunerea în practică a politicii externe, Ștefan va acorda o atenție deosebită dezvoltării institu… |
+| 444 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ea să devină cel mai important dregător al țării. Ștefan și-a ales cu grijă colaboratorii din acest domeni… |
+| 445 | Ștefan_cel_Mare | **Toma** | p78 (Vadim Toma · Vadim · Toma) | declarat | …oan Dobru (8 septembrie 1457 – 5 februarie 1468), Toma (28 iulie 1468 – 26 august 1474) și Ioan Tăutu (1… |
+| 446 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …că după rezultate, și rezultatele diplomației lui Ștefan sunt minunate. La 1462–1465 se luptă cu muntenii … |
+| 447 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ungurii, turcii și rușii intervin în favoarea lui Ștefan. Chiar cu tătarii lui Mengli Ghirei a avut mult t… |
+| 448 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … mult timp relații bune. _______P.P. Panaitescu, Ștefan cel Mare === 1457–1469 === Prima perioadă, într… |
+| 449 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …au loc ciocnirile cu polonii care-l adăposteau pe Petru Aron și cu care avea să încheie pace în 1459. Urm… |
+| 450 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …oman. O primă constantă a politicii externe a lui Ștefan în această perioadă a fost atragerea Țării Române… |
+| 451 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | …mană. Primul episod l-a reprezentat conflictul cu Radu cel Frumos, concretizat în patru campanii militar… |
+| 452 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ășurate între 1469-1473, încheiat cu victoria lui Ștefan. În același context, Ștefan a intervenit și a num… |
+| 453 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …heiat cu victoria lui Ștefan. În același context, Ștefan a intervenit și a numit patru domni în Țara Român… |
+| 454 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …otriva stăpânului său, sultanul Mehmet al II-lea, Ștefan a început să urzească fel de fel de planuri. Pe a… |
+| 455 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …en Elkana Capsali - Istoria Otomană În acest sens Ștefan a renunțat la plata tributului către Poartă în 14… |
+| 456 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Cetății Albe și în noul context extern european, Ștefan decide în 1487 să încheie pace cu Imperiul Otoman… |
+| 457 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rea frontierei sudice, în ultima parte a domniei, Ștefan își va focaliza politica externă pe rezolvarea ch… |
+| 458 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …iei, negocieri rămase fără succes. La moartea sa, Ștefan lăsa țara într-o situație politică favorabilă, av… |
+| 459 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …. Ultimul sfat de politică externă dat fiului său Bogdan al III-lea înainte de a muri a fost de a menține … |
+| 460 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …or un altul.” _______Nicolae Iorga, Istoria lui Ștefan cel Mare == Puterea armată == === Arta mil… |
+| 461 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ategiei și artei militare în perioada domniei lui Ștefan derivă din obiectivul politic pe termen lung al d… |
+| 462 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …teristica esențială a acțiunilor militare duse de Ștefan a fost astfel că acestea au urmărit nimicirea arm… |
+| 463 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ncipală a acțiunilor militare la nivel strategic, Ștefan a utilizat atât defensiva strategică, cât și ofen… |
+| 464 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … bătălia decisivă și urmărirea, fiind adoptată de Ștefan în marile campanii din 1475, 1476, 1497, când a a… |
+| 465 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ălia decisivă și urmărirea. Ea a fost adoptată de Ștefan în campaniile din 1473 și 1481 care au avut ca ob… |
+| 466 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ontinuarea acțiunilor militare. În aceste bătălii Ștefan a utilizat cu precădere manevra de forțe, adaptat… |
+| 467 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …i s-au întors rușinați.” _______P.P. Panaitescu, Ștefan cel Mare === Organizarea armatei === Armata Mol… |
+| 468 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …. Marea majoritate a acțiunilor militare ale lui Ștefan au fost duse de „oastea cea mică”, formată din ce… |
+| 469 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …oierești și mănăstirești, străjerii și călărașii. Ștefan a mobilizat oastea cea mare doar de două ori, în … |
+| 470 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ctiv a Nistrului. === Armamentul === Oastea lui Ștefan cel Mare utiliza toate categoriile principale de … |
+| 471 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …armată corespunzător. După cum arăta Jan Duglosz, Ștefan dacă prindea pe vre-un țăran fără săgeți, arc și … |
+| 472 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …oldovenilor. === Sistemul de fortificații === Ștefan cel Mare a acordat o atenție deosebită realizării… |
+| 473 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … determinat retragerea regelui polon Ioan Albert. Ștefan a conceput sistemul de cetăți urmărind trei mari … |
+| 474 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ânt și lemn – cea a Romanului. În timpul domniei, Ștefan a cucerit cetățile de zid de la Chilia și Cetatea… |
+| 475 | Ștefan_cel_Mare | **Nova** | j4 (Platforma Nova · Nova) | declarat | …malul Stâng al Siretului, cetatea Pudna sau Pudna Nova(Pudna noua). Mărturie stă faptul că după dobândir… |
+| 476 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ult de un deceniu de la zidirea Mănăstirii Putna, Ștefan cel Mare zidește o biserică, aici la graniță, cu … |
+| 477 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ctelor armate („bătăliilor”) la care a participat Ștefan cel Mare este de 36. Cifra este bazată chiar pe m… |
+| 478 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …m pierdut 2”. Într-o analiză detaliată, istoricul Alexandru Boldur mai identifică suplimentar alte patru incu… |
+| 479 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … suplimentar alte patru incursiuni armate la care Ștefan nu a participat, acestea fiind conduse de alți co… |
+| 480 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …a participat oastea moldoveană sub conducerea lui Ștefan cel Mare este prezentată în tabelul alăturat. Ce… |
+| 481 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …patru acțiuni militare care nu au fost conduse de Ștefan personal au fost: incursiunea din Transilvania, s… |
+| 482 | Ștefan_cel_Mare | **Petru** | ? () | declarat | …către regele ungar a unor pretendenți la tron, ca Petru Aron sau Berindei. Cauza imediată a constituit-o … |
+| 483 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … imediată a constituit-o sprijinul direct pe care Ștefan îl acordase răscoalei ardelenilor împotriva regel… |
+| 484 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ent ca inamicul să atace capitala țării, Suceava, Ștefan decide să execute o lovitură decisivă, prin surpr… |
+| 485 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …a Baia reprezintă o mare victorie politică pentru Ștefan, care și-a consolidat domnia, punând capăt, prin … |
+| 486 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …n extern. „Obiectivele acesteia - înlocuirea lui Ștefan de pe tron, instalarea unui nou domn la Suceava, … |
+| 487 | Ștefan_cel_Mare | **Petre** | ? () | generat din „Petru” | …frângere de proporții pentru regele ungar.” ______Petre Otu, Baia ==== Bătălia de la Vaslui-Podu Înalt … |
+| 488 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …. Bătălia a opus oastea Moldovei, sub comanda lui Ștefan cel Mare și oastea Uniunii Polono-Lituaniene, com… |
+| 489 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ta, cultura și religia == Perioada domniei lui Ștefan cel Mare a constituit și în planul realizărilor d… |
+| 490 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …turii. Din creațiile artistice care s-au păstrat, Ștefan se prezintă atât ca un tradiționalist, continuato… |
+| 491 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …centist, animat de un puternic spirit înnoitor. „Ștefan moștenește de la înaintașii săi în primul rând re… |
+| 492 | Ștefan_cel_Mare | **Corina** | p19 (Corina Păduraru · Păduraru) | generat din „Corina” | … Bisericii, legislația, cultura și arta.” ______ Corina Nicolescu, ''Arta epocii lui Ștefan cel Mare =… |
+| 493 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rta.” ______ Corina Nicolescu, ''Arta epocii lui Ștefan cel Mare === Arhitectura === Din epoca lui Șt… |
+| 494 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …an cel Mare === Arhitectura === Din epoca lui Ștefan cel Mare s-au păstrat doar elemente de arhitectur… |
+| 495 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …, preluată de multe surse scrise, îi atribuie lui Ștefan construcția câte unei biserici după fiecare dintr… |
+| 496 | Ștefan_cel_Mare | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …ilișăuți-Bădeuți (1487), Pătrăuți (1487), Sfântul Ilie-Suceava (1488), Voroneț (1488), Vaslui (1490), Ia… |
+| 497 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …u, lângă Cluj. Bisericile construite în epoca lui Ștefan cel Mare au fost concepute în general în stilul a… |
+| 498 | Ștefan_cel_Mare | **Ilie** | p54 (Teodora Ilie · Ilie) | declarat | …sce interioare: Putna, Pătrăuți, Voroneț, Sfântul Ilie - Suceava, Popăuți, Bălinești „Din îmbinarea ar… |
+| 499 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rici și mănăstiri ctitorite în timpul domniei lui Ștefan cel Mare a generat o creștere semnificativă a cer… |
+| 500 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …ță de singurul atelier de acest fel, înființat de Alexandru cel Bun la mănăstirea Neamț. Cel mai important a … |
+| 501 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … lucrat la Mănăstirea Putna în timpul domniei lui Ștefan cel Mare: Nicodim, Evrasie, Casian, Chiriac, Vas… |
+| 502 | Ștefan_cel_Mare | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …fan cel Mare: Nicodim, Evrasie, Casian, Chiriac, Vasile și Iacov - veniți de la mănăstirea Neamț, Paladie… |
+| 503 | Ștefan_cel_Mare | **Stanciul** | p15 (Veronica Stanciu · Stanciu) | generat din „Stanciu” | …erii orfevrari cei mai cunoscuți au fost Antonie, Stanciul și Gligorie, care, pe lângă obiectele de cult, au… |
+| 504 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ip, în 1502 (Viena); Tetraevanghelul anonim de la Ștefan cel Mare și Bogdan al III-lea, lucrat în 1504-150… |
+| 505 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …; Tetraevanghelul anonim de la Ștefan cel Mare și Bogdan al III-lea, lucrat în 1504-1507 la Putna; Tetraev… |
+| 506 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ă prezintă practic un consens în a-l considera pe Ștefan cel Mare ca inițiatorul istoriografiei moldovene … |
+| 507 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …în românește și atribuit lui Eustratie logofătul. Ștefan a avut inițiativa începerii redactării istoriei d… |
+| 508 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …upă 1473, când a avut loc prima intervenție a lui Ștefan cel Mare pentru a instala pe tronul Țării Româneș… |
+| 509 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …reluată și completată până la finele anului 1496. Ștefan cel Mare a impus un stil istoriografic plin de so… |
+| 510 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ațiunilor === Arta decorațiunilor din timpul lui Ștefan cel Mare este ilustrată prin două mari categorii:… |
+| 511 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tică a unei cădelnițe din argint aurit dăruită de Ștefan, datată 12 aprilie 6978 (1470) și păstrată la măn… |
+| 512 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …14 ianuarie 7005 (1497) executate din ordinul lui Ștefan cel Mare în mănăstirea Putna și aflate în prezent… |
+| 513 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rie a României și cealaltă în muzeul de la Putna. Ștefan cel Mare înființează, la Mănăstirea Putna, cel ma… |
+| 514 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …rtistice cele mai reprezentative pentru epoca lui Ștefan cel Mare. Broderia medievală din epoca lui Ștefan… |
+| 515 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …Ștefan cel Mare. Broderia medievală din epoca lui Ștefan îmbină tradițiile autohtone cu cele bizantine și … |
+| 516 | Ștefan_cel_Mare | **Mariei** | ? () | generat din „Maria” | …aloare istorică și artistică, este „Acoperământul Mariei de Mangop”. Aflată într-o stare avansată de degra… |
+| 517 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ul căruia a fost expusă la Vatican, în expoziția „Ștefan cel Mare și Sfânt – Punte între Occident și Orien… |
+| 518 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ent”, din luna septembrie 2004. == Moldova după Ștefan cel Mare == == Controverse, neclarități și ince… |
+| 519 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …tăți și incertitudini == == Figura și epoca lui Ștefan cel Mare reflectate în literatură și artă == Cerc… |
+| 520 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …veche cronică moldovenească în slavonă păstrată – Ștefan cel Mare este de regulă intitulat voievod și domn… |
+| 521 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …Referințe și note == == Bibliografie == Boldur, Alexandru, Ștefan cel Mare, voievod al Moldovei, Editura „C… |
+| 522 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …i note == == Bibliografie == Boldur, Alexandru, Ștefan cel Mare, voievod al Moldovei, Editura „Carpații”… |
+| 523 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …adrid, 1970. Centrul de Cercetare și Documentare „Ștefan cel Mare” al Mănăstirii Putna, Ștefan cel Mare și… |
+| 524 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ocumentare „Ștefan cel Mare” al Mănăstirii Putna, Ștefan cel Mare și Sfânt. 1504–2004: Portret în istorie,… |
+| 525 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …orie, Editura „Mușatinii”, Putna, 2003. Chițimia, Ion Constantin, Cronica lui Ștefan cel Mare (versiune… |
+| 526 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …, Editura „Mușatinii”, Putna, 2003. Chițimia, Ion Constantin, Cronica lui Ștefan cel Mare (versiunea germană a… |
+| 527 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …utna, 2003. Chițimia, Ion Constantin, Cronica lui Ștefan cel Mare (versiunea germană a lui Schedel), Bucur… |
+| 528 | Ștefan_cel_Mare | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …l), București, Casa Școalelor, 1942. Costăchescu, Mihai, Documente moldovenești de la Ștefan cel Mare, In… |
+| 529 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … Costăchescu, Mihai, Documente moldovenești de la Ștefan cel Mare, Institutul de arte grafice „Brawo”, Iaș… |
+| 530 | Ștefan_cel_Mare | **Andrei** | ? () | generat din „Andreea” | …tutul de arte grafice „Brawo”, Iași, 1933. Eșanu, Andrei (coord.), Ștefan cel Mare și Sfânt (1457–1504). B… |
+| 531 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …fice „Brawo”, Iași, 1933. Eșanu, Andrei (coord.), Ștefan cel Mare și Sfânt (1457–1504). Bibliografie, Bibl… |
+| 532 | Ștefan_cel_Mare | **Valentina** | p22 (Valentina Lupu · Lupu) | generat din „Valentina” | …nală a Republicii Moldova, Chișinău, 2004. Eșanu, Valentina, Marii demnitari ai Țării Moldovei în domnia lui … |
+| 533 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …, Marii demnitari ai Țării Moldovei în domnia lui Ștefan cel Mare (1457–1504), teză de doctorat, Academia … |
+| 534 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | … Institutul de Istorie, Chișinău, 2015. Giurescu, Constantin C., Istoria românilor. Volumul II, Partea I, de l… |
+| 535 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | … Volumul II, Partea I, de la Mircea cel Bătrân și Alexandru cel Bun până la Mihai Viteazul, Fundația Regală p… |
+| 536 | Ștefan_cel_Mare | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …la Mircea cel Bătrân și Alexandru cel Bun până la Mihai Viteazul, Fundația Regală pentru Literatură și Ar… |
+| 537 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …ru Literatură și Artă, București, 1943. Giurescu, Constantin C.; Giurescu, Dinu C., Istoria Românilor. Volumul… |
+| 538 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ică, București, 1976. Iorga, Nicolae, Istoria lui Ștefan cel Mare, Institutul de arte grafice și editură „… |
+| 539 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …lui de Război, București, 1929. Kirileanu, G. T., Ștefan Vodă cel Mare și Sfânt. Istorisiri și cântece pop… |
+| 540 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …afia „Aurora”, Focșani, 1904. Papacostea, Șerban, Ștefan cel Mare domn al Moldovei (1457–1504), Editura En… |
+| 541 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | … Editura Enciclopedică, București, 1990. Rosetti, Radu R. (general), Istoria artei militare a românilor … |
+| 542 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …ra Litera Internațional, Chișinău, 1997. Xenopol, Alexandru D., Istoria românilor din Dacia Traiană, vol. II,… |
+| 543 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …onicile slavo-române din sec. XV-XVI publicate de Ion Bogdan, Editura Academiei Republicii Populare Rom… |
+| 544 | Ștefan_cel_Mare | **Bogdan** | p66 (Bogdan Țîcu · Bogdan · Țîcu) | declarat | …ile slavo-române din sec. XV-XVI publicate de Ion Bogdan, Editura Academiei Republicii Populare Române, Bu… |
+| 545 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … când s-a început Țara Moldovei - letopisețul lui Ștefan cel Mare, Editura Academiei Române, București, 20… |
+| 546 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …7-1290-2. == Lectură suplimentară == Ursu Ioan. Ștefan cel Mare. Între sânge și credință. București, Pau… |
+| 547 | Ștefan_cel_Mare | **Constantin** | p48 (Constantin Georgescu · Georgescu) | generat din „Constantin” | …itura Politica, București, 1962–1966 Rezachevici, Constantin: Enciclopedia domnilor Români: a. 1324–1881: cron… |
+| 548 | Ștefan_cel_Mare | **Vasile** | p13 (Vasile Cojocaru · Cojocaru) | generat din „Vasile” | …ldova, Editura Enciclopedică, București, 2001 [1] Vasile Mărculeț – Alexandru V. Ștefănescu – Stănel Ion –… |
+| 549 | Ștefan_cel_Mare | **Alexandru** | ? () | declarat | …iclopedică, București, 2001 [1] Vasile Mărculeț – Alexandru V. Ștefănescu – Stănel Ion – Gherghina Boda – Geo… |
+| 550 | Ștefan_cel_Mare | **Ion** | ? () | declarat | …asile Mărculeț – Alexandru V. Ștefănescu – Stănel Ion – Gherghina Boda – George Marcu – Mihai Chiriac –… |
+| 551 | Ștefan_cel_Mare | **Mihai** | p12 (Mihai Țurcanu · Țurcanu) | generat din „Mihai” | …cu – Stănel Ion – Gherghina Boda – George Marcu – Mihai Chiriac – Elena Gabriela Maximciuc – Ioan Mărcule… |
+| 552 | Ștefan_cel_Mare | **Elena** | ? () | declarat | …– Gherghina Boda – George Marcu – Mihai Chiriac – Elena Gabriela Maximciuc – Ioan Mărculeț – Stan Stoica:… |
+| 553 | Ștefan_cel_Mare | **Gabriela** | p53 (Gabriela Dobre · Dobre) | generat din „Gabriela” | …ghina Boda – George Marcu – Mihai Chiriac – Elena Gabriela Maximciuc – Ioan Mărculeț – Stan Stoica: Dicționa… |
+| 554 | Ștefan_cel_Mare | **Stan** | p50 (Florin Stan · Stan) | declarat | …riac – Elena Gabriela Maximciuc – Ioan Mărculeț – Stan Stoica: Dicționarul domnilor Țării Românești și a… |
+| 555 | Ștefan_cel_Mare | **Radu** | p51 (Monica Radu · Radu) | declarat | … [2] Arhivat în 8 iulie 2024, la Wayback Machine. Radu Lungu: Domnitori și Principi ai Tărilor Române, E… |
 | 556 | Ștefan_cel_Mare | **Lungu** | ? () | declarat | …Arhivat în 8 iulie 2024, la Wayback Machine. Radu Lungu: Domnitori și Principi ai Tărilor Române, Editura… |
-| 557 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ilor Române, Editura Paideia, București, 2010 [3] Ștefan cel Mare și Sfânt - 500 evocări băcăuane, Bacău, … |
-| 558 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …04 == Vezi și == Lista bisericilor ctitorite de Ștefan cel Mare Lista bătăliilor lui Ștefan cel Mare =… |
-| 559 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ctitorite de Ștefan cel Mare Lista bătăliilor lui Ștefan cel Mare == Legături externe == Centrul de Cer… |
-| 560 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … externe == Centrul de Cercetare și Documentare „Ștefan cel Mare” al Mănăstirii Putna, Sfântul voievod Șt… |
-| 561 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …an cel Mare” al Mănăstirii Putna, Sfântul voievod Ștefan cel Mare. Izvoare Ștefan al III-lea (Ștefan cel M… |
-| 562 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …i Putna, Sfântul voievod Ștefan cel Mare. Izvoare Ștefan al III-lea (Ștefan cel Mare și Sfînt), domn al Mo… |
-| 563 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ievod Ștefan cel Mare. Izvoare Ștefan al III-lea (Ștefan cel Mare și Sfînt), domn al Moldovei (1433 - 1504… |
-| 564 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …la Wayback Machine., la „Istoria.md” Marius Teja, Ștefan cel Mare Arhivat în 24 septembrie 2015, la Waybac… |
-| 565 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … „Historia”, 13 mai 2010 Copilăria neștiută a lui Ștefan cel Mare 514 ani de la moartea domnitorului - 42 … |
+| 557 | Ștefan_cel_Mare | **Lungu** | ? () | declarat | …Arhivat în 8 iulie 2024, la Wayback Machine. Radu Lungu: Domnitori și Principi ai Tărilor Române, Editura… |
+| 558 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ilor Române, Editura Paideia, București, 2010 [3] Ștefan cel Mare și Sfânt - 500 evocări băcăuane, Bacău, … |
+| 559 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …04 == Vezi și == Lista bisericilor ctitorite de Ștefan cel Mare Lista bătăliilor lui Ștefan cel Mare =… |
+| 560 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ctitorite de Ștefan cel Mare Lista bătăliilor lui Ștefan cel Mare == Legături externe == Centrul de Cer… |
+| 561 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … externe == Centrul de Cercetare și Documentare „Ștefan cel Mare” al Mănăstirii Putna, Sfântul voievod Șt… |
+| 562 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …an cel Mare” al Mănăstirii Putna, Sfântul voievod Ștefan cel Mare. Izvoare Ștefan al III-lea (Ștefan cel M… |
+| 563 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …i Putna, Sfântul voievod Ștefan cel Mare. Izvoare Ștefan al III-lea (Ștefan cel Mare și Sfînt), domn al Mo… |
+| 564 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …ievod Ștefan cel Mare. Izvoare Ștefan al III-lea (Ștefan cel Mare și Sfînt), domn al Moldovei (1433 - 1504… |
+| 565 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | …la Wayback Machine., la „Istoria.md” Marius Teja, Ștefan cel Mare Arhivat în 24 septembrie 2015, la Waybac… |
+| 566 | Ștefan_cel_Mare | **Ștefan** | p61 (Ștefan Bodrug · Ștefan · Bodrug) | declarat | … „Historia”, 13 mai 2010 Copilăria neștiută a lui Ștefan cel Mare 514 ani de la moartea domnitorului - 42 … |

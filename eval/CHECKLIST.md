@@ -216,6 +216,16 @@
   - Mascările greșite sunt prevenite de regulile de majusculă și de lista de excepții, care rămân.
   - Teste: 817 trec. Testul de potriviri false dă aceleași rezultate ca înainte.
 
+- [x] **G3 · Alternanțele din rădăcină și pluralul (15.11.2026)**
+  - Problemă: un test pe 23 de forme dificile a arătat că scăpau forme gramatical corecte. „Contul Băncii Verzi” pleca integral în clar (verde → verzi), iar Florii (Floarea), Băncile și Grupurilor nu erau găsite.
+  - Corecție:
+    - alternanțele d → z, sc → șt, oa → o, ea → e dinaintea terminațiilor -i, -ii, -ile, -ilor, -e;
+    - pluralul (-i, -ile, -ilor, -ele, -elor, -uri, -urile, -urilor), dar nu pentru prenumele găsite singure;
+    - termenii din mai multe cuvinte se caută cuvânt cu cuvânt, fără limita veche de 96 de combinații pe termen.
+  - Teste: `tests/alternations.spec.ts`; suita are 840 de teste, toate trec. Testul de potriviri false: în română o singură potrivire nouă („Bulgarii”, pluralul numelui de familie Bulgaru, cu majusculă); în engleză 695 de potriviri în loc de 703; niciun cuvânt scris cu literă mică.
+  - Viteză: compilarea a 1.000 de intrări durează 25 ms (1,4 MB); un mesaj de 50 de cuvinte, 0,3–0,6 ms.
+  - Se declară explicit (nu se generează): diminutivele (Ionel, Gheorghiță), derivatele (Ruseștilor), pluralele neregulate englezești (Wolves).
+
 ---
 
 ## Ordinea de lucru propusă

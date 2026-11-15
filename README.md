@@ -14,7 +14,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 ## Ce face
 
 - **Vocabular** de entități, cu toate formele lor:
-  - flexiuni românești: Popescului, Cebanei, Băncii Verde, vocativul Ioane / Ștefane;
+  - flexiuni românești: Popescului, Cebanei, Băncii Verzi, vocativul Ioane / Ștefane, alternanțele (Florii, Popeștii) și pluralul (Băncile, Grupurilor);
   - forme englezești: Smith's, the Smiths;
   - prenumele și numele de familie găsite singure;
   - numele firmei fără forma juridică și numele ei scurt.
@@ -38,7 +38,7 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 
 ## Rezultate
 
-- **817 teste automate.** Ele acoperă:
+- **840 de teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.

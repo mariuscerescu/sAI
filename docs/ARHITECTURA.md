@@ -268,6 +268,15 @@ Formatul fiecărei secțiuni: **Rol, Intrare, Ieșire, Erori, Puncte de extensie
 | `SessionDetector` | formele deja înlocuite în sesiune (din seif), căutate din nou, cu granițe de cuvânt | 250 | cheia intrării din seif |
 | `LiteralDetector` (furnizat de strategie, vezi C3) | formatul simbolurilor strategiei | 400 | `literal` |
 
+**Formele flexionate (15.11.2026).** Pachetul de limbă generează, prin reguli (fără dicționar), formele fiecărui cuvânt dintr-un termen declarat:
+- **singular:** genitiv/dativ, articol hotărât, vocativ (Popescului, Mariei, Băncii, Ioane, Ștefane, Petre);
+- **alternanțele din rădăcină** dinaintea terminațiilor -i, -ii, -ile, -ilor, -e: d → z (Verde → Verzi), sc → șt (Popescu → Popeștii), oa → o (Floarea → Florii, Școala → Școlii), ea → e (Neagră → Negre). t → ț și s → ș nu au nevoie de regulă, pentru că căutarea ignoră diacriticele;
+- **pluralul:** Băncile, Băncilor, Grupurile, Grupurilor, Proiectele, Casele, Cebanii. Un prenume găsit singur primește doar formele de singular, pentru că pluralele lui sunt de obicei alte cuvinte („Mării” de la „Marea Neagră” pentru Maria, „Stelele” pentru Stela).
+
+Un termen din mai multe cuvinte se caută **cuvânt cu cuvânt**: fiecare cuvânt din text poate fi oricare formă a cuvântului de pe aceeași poziție („Băncii Verzi”, „Cooperativei Agricole Prut”). Combinațiile nu se mai enumeră, deci nu mai există o limită de combinații pe termen. Vechea limită de 96 tăia exact formele acordate corect.
+
+Nu sunt generate, deci se declară ca scrieri ale aceleiași intrări: diminutivele (Ionel, Gheorghiță), derivatele (Ruseștilor), pluralele neregulate (Wolves) și greșelile de scriere.
+
 **Fără detector de nume nedeclarate (decizie 15.11.2026).** Un prototip anterior avea un `NameDetector` bazat pe liste publice de prenume și nume (725 de nume, RO/MD și EN). A fost eliminat, împreună cu listele: prindea doar numele frecvente, iar un detector care lasă să treacă numele rare dă o siguranță falsă. Promisiunea sAI e acum una pe care o poate ține integral:
 
 - **protejat garantat:** tot ce e declarat în vocabular, cu formele lui regulate, plus identificatorii în formatele standard ale tiparelor activate;

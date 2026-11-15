@@ -49,6 +49,8 @@ export function resolveOverlaps(candidates: readonly Candidate[], isAllowed: (ca
   const order = (a: Candidate, b: Candidate): number => Number(isLiteral(b)) - Number(isLiteral(a))
     || b.priority - a.priority
     || (b.end - b.start) - (a.end - a.start)
+    // On the same text, a spelling as declared wins over another entity's generated form.
+    || Number(a.baseForm !== undefined) - Number(b.baseForm !== undefined)
     || a.start - b.start
   const contained = (candidate: Candidate): boolean => !isLiteral(candidate) && inContainer(candidate.start, candidate.end)
   const accepted: Candidate[] = []

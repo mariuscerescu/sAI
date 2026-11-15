@@ -17,32 +17,77 @@ const MAX_FREE_WORDS = 4
 const MAX_FORMS_PER_TERM = 96
 
 /**
+ * A stem as it reads before the endings -i, -ii, -ile, -ilor, where Romanian changes the
+ * last syllable: d → z (verde → verzi), sc → șt (Popescu → Popeștii), oa → o (Floarea →
+ * Florii, școala → școlii), ea → e (seara → serii). t → ț and s → ș need no rule: the
+ * search view drops diacritics. Both readings are kept, since not every word alternates
+ * (Ioana → Ioanei keeps oa).
+ * @param stem - normalized stem without its ending.
+ * @returns the stem, then its alternated reading when different.
+ */
+export function alternations(stem: string): string[] {
+  const changed = stem
+    .replace(/sc$/, 'st')
+    .replace(/d$/, 'z')
+    .replace(/oa([^aeiou]+)$/, 'o$1')
+    .replace(/ea([^aeiou]+)$/, 'e$1')
+  return changed === stem ? [stem] : [stem, changed]
+}
+
+/** Plural and plural-genitive endings after an alternating stem: Bănci, Băncile, Băncilor. */
+const I_PLURAL = ['i', 'ii', 'ile', 'ilor'] as const
+
+/**
  * Inflected spellings of one normalized word (lowercase, no diacritics).
+ * The singular forms come first, then plurals.
  * @param word - one word of a normalized term.
+ * @param singular - only singular forms: a first name found alone has no plural, and its
+ *   plurals are mostly other words ("Mării" of the sea for Maria, "Stelele" for Stela).
  * @returns the word itself first, then its generated forms.
  */
-export function wordForms(word: string): string[] {
+export function wordForms(word: string, singular = false): string[] {
   const forms = new Set([word])
   if (word.length < MIN_WORD || /\d/.test(word) || INVARIANT.has(word)) return [...forms]
   const add = (...items: string[]): void => { for (const item of items) forms.add(item) }
+  /** The `-i` endings after every reading of a stem. */
+  const iPlural = (stem: string, endings: readonly string[] = I_PLURAL): void => {
+    for (const reading of alternations(stem)) add(...endings.map(ending => `${reading}${ending}`))
+  }
   if (word.endsWith('ea')) {
-    // Andreea → Andreei, Andreeo (vocative) · Universitatea → Universității
+    // Andreea → Andreei, Andreeo (vocative) · Universitatea → Universității, Universitățile · Floarea → Florii
     const base = word.slice(0, -1)
     add(`${base}i`, `${base.slice(0, -1)}ii`, `${base}o`)
+    iPlural(base.slice(0, -1), singular ? ['ii'] : I_PLURAL)
   } else if (word.endsWith('a')) {
     // Maria → Mariei · Banca → Băncii · Olga → Olgăi · Tehnica → Tehnice · Maria → Mario
     const stem = word.slice(0, -1)
     add(`${stem}ei`, `${stem}ii`, `${stem}ai`, `${stem}e`, `${stem}o`)
+    // Plural: Banca → Bănci, Băncile, Băncilor · Școala → Școlii, Școlile · Casa → Casele, Caselor
+    // · Neagra → Negre (the -e ending alternates too)
+    iPlural(stem, singular ? ['ii'] : I_PLURAL)
+    if (!singular) {
+      add(`${stem}ele`, `${stem}elor`)
+      for (const reading of alternations(stem).slice(1)) add(`${reading}e`)
+    }
   } else if (word.endsWith('ul')) {
-    // Proiectul → Proiectului
+    // Proiectul → Proiectului · plural: Grupul → Grupurile, Grupurilor · Proiectul → Proiectele · Lupul → Lupii
+    const base = word.slice(0, -2)
     add(`${word}ui`)
+    if (!singular) {
+      add(`${base}uri`, `${base}urile`, `${base}urilor`, `${base}ele`, `${base}elor`)
+      iPlural(base, ['ii', 'ilor'])
+    }
   } else if (word.endsWith('u')) {
     // Popescu → Popescul, Popescului, Popescule · Petru, Dumitru, Alexandru → Petre, Dumitre, Alexandre (vocative)
     add(`${word}l`, `${word}lui`, `${word}le`)
     if (/[dt]ru$/.test(word)) add(`${word.slice(0, -1)}e`)
+    // The family by name: Popescu → Popeștii, Popeștilor · Rusu → Rușii
+    if (!singular) iPlural(word.slice(0, -1), ['ii', 'ilor'])
   } else if (word.endsWith('e')) {
     // Vrabie → Vrabiei · Sandule (vocative) has no rule here
     add(`${word}i`, `${word}lui`)
+    // Plural and feminine genitive: Verde → Verzi · Mare → Mari · Floare → Flori, Florile · Carte → Cărți
+    if (!singular) iPlural(word.slice(0, -1), ['i', 'ile', 'ilor'])
   } else if (word.endsWith('i') || word.endsWith('o')) {
     // Ursachi, Mario: only the analytic genitive ("lui Ursachi") exists
   } else {
@@ -51,6 +96,11 @@ export function wordForms(word: string): string[] {
     // Vocative: Ștefan → Ștefane, Pavel → Pavele; with o → oa in the last syllable: Ion → Ioane
     add(`${word}e`)
     if (/o[^aeiou]+$/.test(word)) add(word.replace(/o([^aeiou]+)$/, 'oa$1e'))
+    // Plural: Ceban → Cebanii, Cebanilor · Grup → Grupuri, Grupurile, Grupurilor
+    if (!singular) {
+      iPlural(word, ['ii', 'ilor'])
+      add(`${word}uri`, `${word}urile`, `${word}urilor`)
+    }
   }
   return [...forms]
 }

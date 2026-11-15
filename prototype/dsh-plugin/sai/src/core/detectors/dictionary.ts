@@ -21,6 +21,14 @@ export interface CompiledTerm {
   readonly classId: ClassId
   readonly key: EntityKey
   readonly priority: number
+  /**
+   * A multi-word term matched word by word: every text word may be any form of the term's
+   * word at that position ("Băncii Verzi" for "Banca Verde"), so no combination is ever
+   * enumerated. `norm` is then the term as declared.
+   */
+  readonly words?: readonly (readonly string[])[]
+  /** With `words`: an exact match keeps the text as written, an inflected one restores `baseForm`. */
+  readonly exactKeepsSurface?: boolean
   /** Declared spelling this form was generated from; restored instead of the form. */
   readonly baseForm?: string
   /**
@@ -58,6 +66,33 @@ export function capitalizesNames(original: string): boolean {
   return false
 }
 
+/**
+ * End of the longest word-by-word match of a multi-word term at `at`: each word of the
+ * text is one of the forms of the term's word at that position, words separated by one
+ * space. Forms are tried directly, so a term costs a few prefix checks, not a list of
+ * every combination of its words' forms.
+ * @param norm - normalized text.
+ * @param at - start of the first word.
+ * @param words - forms of each word of the term.
+ * @returns the end of the match, or -1.
+ */
+function phraseEnd(norm: string, at: number, words: readonly (readonly string[])[]): number {
+  let best = -1
+  const step = (index: number, position: number): void => {
+    for (const form of words[index]!) {
+      if (!norm.startsWith(form, position)) continue
+      const next = position + form.length
+      if (index === words.length - 1) {
+        if (next > best && isWordBounded(norm, at, next)) best = next
+      } else if (norm[next] === ' ') {
+        step(index + 1, next + 1)
+      }
+    }
+  }
+  step(0, at)
+  return best
+}
+
 /** A compiled term list searched with word boundaries. */
 export class TermDetector {
   private readonly byFirstWord = new Map<string, CompiledTerm[]>()
@@ -71,19 +106,21 @@ export class TermDetector {
   constructor(readonly id: string, terms: readonly CompiledTerm[], readonly owners: ReadonlyMap<string, ReadonlySet<string>> = new Map()) {
     for (const term of terms) {
       if (term.norm.length === 0) continue
-      const first = FIRST_WORD.exec(term.norm)?.[0]
-      if (first === undefined) { this.other.push(term); continue }
-      const list = this.byFirstWord.get(first) ?? []
-      list.push(term)
-      this.byFirstWord.set(first, list)
+      const firsts = new Set((term.words?.[0] ?? [term.norm]).map(form => FIRST_WORD.exec(form)?.[0]))
+      if (firsts.has(undefined)) { this.other.push(term); continue }
+      for (const first of firsts as Set<string>) {
+        const list = this.byFirstWord.get(first) ?? []
+        list.push(term)
+        this.byFirstWord.set(first, list)
+      }
     }
   }
 
-  /** @returns how many spellings the detector searches for. */
+  /** @returns how many terms the detector searches for (a word-by-word term counts once). */
   get size(): number {
-    let size = this.other.length
-    for (const list of this.byFirstWord.values()) size += list.length
-    return size
+    const all = new Set<CompiledTerm>(this.other)
+    for (const list of this.byFirstWord.values()) for (const term of list) all.add(term)
+    return all.size
   }
 
   /**
@@ -96,20 +133,26 @@ export class TermDetector {
   detect(text: NormalizedText, hints: DetectHints = {}): Candidate[] {
     const found: Candidate[] = []
     const capitalized = hints.capitalized ?? capitalizesNames(text.original)
-    const push = (term: CompiledTerm, at: number): void => {
-      const range = toOriginalRange(text, at, at + term.norm.length)
+    const push = (term: CompiledTerm, at: number, end = at + term.norm.length): void => {
+      const range = toOriginalRange(text, at, end)
       if ((term.capital === 'required' || (term.capital === 'expected' && capitalized))
         && !/^\p{Lu}/u.test(text.original.slice(range.start, range.start + 2))) return
+      const baseForm = term.exactKeepsSurface === true && text.norm.slice(at, end) === term.norm ? undefined : term.baseForm
       found.push({
         ...range, classId: term.classId, detector: this.id, priority: term.priority, key: term.key,
-        ...term.baseForm === undefined ? {} : { baseForm: term.baseForm },
+        ...baseForm === undefined ? {} : { baseForm },
       })
     }
     for (const match of text.norm.matchAll(WORD)) {
       const at = match.index
       if (at > 0 && /[\p{L}\p{N}]/u.test(text.norm[at - 1]!)) continue
       for (const term of this.byFirstWord.get(match[0]) ?? []) {
-        if (text.norm.startsWith(term.norm, at) && isWordBounded(text.norm, at, at + term.norm.length)) push(term, at)
+        if (term.words !== undefined) {
+          const end = phraseEnd(text.norm, at, term.words)
+          if (end > at) push(term, at, end)
+        } else if (text.norm.startsWith(term.norm, at) && isWordBounded(text.norm, at, at + term.norm.length)) {
+          push(term, at)
+        }
       }
     }
     for (const term of this.other) {
@@ -169,8 +212,17 @@ export function compileDictionary(vocabulary: readonly VocabularyEntry[], langua
    */
   const generated = new Map<string, { term: CompiledTerm; baseLength: number } | null>()
   for (const { entry, norm, spelling, key, derived, firstName } of sources) {
+    if (norm.includes(' ')) {
+      // A multi-word term matches word by word, each word in any of its forms ("Băncii Verzi").
+      terms.push({
+        norm, classId: entry.class, key, priority: DICTIONARY_PRIORITY, baseForm: spelling, exactKeepsSurface: !derived,
+        words: norm.split(' ').map(word => language.wordForms(word)),
+      })
+      continue
+    }
     if (!derived) terms.push({ norm, classId: entry.class, key, priority: DICTIONARY_PRIORITY })
-    for (const form of termForms(norm, language.wordForms)) {
+    // A first name found alone takes only singular forms: its plurals are other words ("Mării" for Maria).
+    for (const form of termForms(norm, word => language.wordForms(word, firstName === true))) {
       if ((form === norm && !derived) || declared.has(form)) continue
       const claimed = generated.get(form)
       if (claimed === null) continue

@@ -19,8 +19,9 @@ export interface LanguagePack {
   /**
    * Spellings of one normalized word in running text, the word itself first.
    * @param word - one word of a normalized term (lowercase, no diacritics).
+   * @param singular - only singular forms (a first name found alone has no plural).
    */
-  readonly wordForms: (word: string) => readonly string[]
+  readonly wordForms: (word: string, singular?: boolean) => readonly string[]
   /** Titles, particles, and salutations written next to names that are not name parts (normalized, no dots). */
   readonly notNames: readonly string[]
   /** Legal-form words of company names (normalized, no dots): "Acme Corp" also protects "Acme". */
@@ -43,10 +44,11 @@ const ENGLISH_INVARIANT = new Set([
  * apostrophe, so only the family plural is generated ("the Smiths", "the Joneses",
  * and with it the plural possessive "the Smiths' house").
  * @param word - one normalized word.
+ * @param singular - no plural (a first name found alone: "Marks", "Bills" are other words).
  * @returns the word and its plural.
  */
-export function englishWordForms(word: string): string[] {
-  if (word.length < 3 || !/^\p{L}+$/u.test(word) || ENGLISH_INVARIANT.has(word)) return [word]
+export function englishWordForms(word: string, singular = false): string[] {
+  if (singular || word.length < 3 || !/^\p{L}+$/u.test(word) || ENGLISH_INVARIANT.has(word)) return [word]
   return [word, /(?:s|x|z|ch|sh)$/.test(word) ? `${word}es` : `${word}s`]
 }
 
@@ -98,9 +100,9 @@ export const DEFAULT_LANGUAGES: readonly LanguageId[] = ['ro', 'en']
 export function combineLanguages(ids: readonly string[]): Omit<LanguagePack, 'id'> {
   const packs = ids.flatMap(id => (LANGUAGE_IDS as readonly string[]).includes(id) ? [LANGUAGES[id as LanguageId]] : [])
   return {
-    wordForms: (word) => {
+    wordForms: (word, singular) => {
       const forms = new Set([word])
-      for (const pack of packs) for (const form of pack.wordForms(word)) forms.add(form)
+      for (const pack of packs) for (const form of pack.wordForms(word, singular)) forms.add(form)
       return [...forms]
     },
     notNames: [...new Set(packs.flatMap(pack => pack.notNames))],

@@ -17,7 +17,7 @@ export const SAI_NS = 'sai'
 /** Every edited field. */
 export const SAI_FIELDS = [
   'enabled', 'strategy', 'preamble', 'preambleTexts', 'vocabulary', 'patterns', 'actions',
-  'allowlist', 'languages', 'images', 'externalTools',
+  'allowlist', 'languages', 'images', 'externalTools', 'verifier',
 ] as const
 
 /** One edited field name. */
@@ -87,6 +87,7 @@ const SPECS: SettingsFieldSpec[] = [
   jsonField('languages', isStringArray),
   choiceField('images', ['block', 'allow']),
   jsonField('externalTools', isStringArray),
+  jsonField('verifier', value => value !== null && typeof value === 'object' && !Array.isArray(value)),
 ]
 
 /** Stages sAI edits until the user saves them. */

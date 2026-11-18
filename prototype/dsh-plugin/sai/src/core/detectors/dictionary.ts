@@ -47,6 +47,11 @@ const WORD = /[\p{L}\p{N}]+/gu
 export interface DetectHints {
   /** Whether the text writes names with capitals (see {@link capitalizesNames}). */
   readonly capitalized?: boolean
+  /**
+   * With the verifier on: a lowercase one-word form is never accepted on the text's style alone
+   * ("i talked to price" in a text with no capitalized name); it is unconfirmed, for the verifier.
+   */
+  readonly verifyLowercase?: boolean
 }
 
 /**
@@ -131,14 +136,27 @@ export class TermDetector {
    * @returns candidates in the original text, possibly overlapping.
    */
   detect(text: NormalizedText, hints: DetectHints = {}): Candidate[] {
+    return this.split(text, hints).found
+  }
+
+  /**
+   * Find every bounded occurrence, keeping apart the ones the capital-letter rule drops.
+   * @param text - normalized view.
+   * @param hints - as for {@link detect}.
+   * @returns `found`: what {@link detect} returns; `unconfirmed`: lowercase one-word forms the
+   *   capital-letter rule drops ("bill" for Bill Turner), which a verifier may still confirm, and,
+   *   with `verifyLowercase`, also those it would accept only because the text has no capitalized name.
+   */
+  split(text: NormalizedText, hints: DetectHints = {}): { found: Candidate[]; unconfirmed: Candidate[] } {
     const found: Candidate[] = []
+    const unconfirmed: Candidate[] = []
     const capitalized = hints.capitalized ?? capitalizesNames(text.original)
     const push = (term: CompiledTerm, at: number, end = at + term.norm.length): void => {
       const range = toOriginalRange(text, at, end)
-      if ((term.capital === 'required' || (term.capital === 'expected' && capitalized))
-        && !/^\p{Lu}/u.test(text.original.slice(range.start, range.start + 2))) return
+      const dropped = (term.capital === 'required' || (term.capital === 'expected' && (capitalized || hints.verifyLowercase === true)))
+        && !/^\p{Lu}/u.test(text.original.slice(range.start, range.start + 2))
       const baseForm = term.exactKeepsSurface === true && text.norm.slice(at, end) === term.norm ? undefined : term.baseForm
-      found.push({
+      ;(dropped ? unconfirmed : found).push({
         ...range, classId: term.classId, detector: this.id, priority: term.priority, key: term.key,
         ...baseForm === undefined ? {} : { baseForm },
       })
@@ -160,7 +178,7 @@ export class TermDetector {
         if (isWordBounded(text.norm, at, at + term.norm.length)) push(term, at)
       }
     }
-    return found
+    return { found, unconfirmed }
   }
 }
 

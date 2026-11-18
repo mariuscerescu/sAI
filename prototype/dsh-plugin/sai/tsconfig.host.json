@@ -9,6 +9,7 @@
     "src/index.ts",
     "src/request.ts",
     "src/egress.ts",
+    "src/verifier-client.ts",
     "src/remote.ts",
     "src/view.ts",
     "src/view-types.ts",

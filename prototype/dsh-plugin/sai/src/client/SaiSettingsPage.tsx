@@ -33,6 +33,7 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
   const patterns = draft.patterns ?? DEFAULT_SETTINGS.patterns
   const languages = draft.languages ?? DEFAULT_SETTINGS.languages
   const actions = draft.actions ?? DEFAULT_SETTINGS.actions
+  const verifier: Partial<SaiSettings['verifier']> = draft.verifier ?? {}
   const classes = useMemo(() => policyClasses(vocabulary, actions, patterns), [vocabulary, actions, patterns])
   const [newClass, setNewClass] = useState('')
   const invalid = (Object.keys(state.fields) as SaiField[]).filter(field => state.fields[field].invalid)
@@ -110,6 +111,17 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
       <p className={css.notice}>{t('allowlistHint')}</p>
       <LinesInput className={css.textarea} value={draft.allowlist ?? []} disabled={disabled}
         onChange={(lines) => { edit('allowlist', lines) }} />
+    </section>
+
+    <section className={css.section}>
+      <h3>{t('verifierTitle')}</h3>
+      <Checkbox label={t('verifierEnabled')} checked={verifier.enabled === true} disabled={disabled}
+        onChange={(next) => { edit('verifier', { ...verifier, enabled: next }) }} />
+      <p className={css.notice}>{t('verifierHint')}</p>
+      <label className={css.cellWide}><span className={css.label}>{t('verifierUrl')}</span>
+        <input className={css.input} value={verifier.url ?? DEFAULT_SETTINGS.verifier.url} disabled={disabled || verifier.enabled !== true}
+          onChange={(event) => { edit('verifier', { ...verifier, url: event.target.value }) }} />
+      </label>
     </section>
 
     <section className={css.section}>

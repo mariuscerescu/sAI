@@ -15,6 +15,7 @@ import type {
   RestoreReport, Verdict, VaultEntry,
 } from './types.ts'
 import { Vault } from './vault.ts'
+import { questionFor, questionKey, type VerifierQuestion } from './verifier.ts'
 
 /** Priority of findings that repeat a spelling already in the session vault. */
 export const SESSION_PRIORITY = 250
@@ -22,6 +23,8 @@ export const SESSION_PRIORITY = 250
 export const LITERAL_PRIORITY = 400
 /** Largest text one redaction accepts, in UTF-16 code units. */
 export const MAX_INPUT_CHARS = 2_000_000
+/** Verifier answers one session remembers; the oldest are forgotten first (and asked again if needed). */
+const MAX_ANSWERS = 20_000
 
 interface Detector { readonly id: string; detect(text: NormalizedText, hints?: DetectHints): Candidate[] }
 
@@ -43,6 +46,7 @@ export class Engine {
   /** @internal */ readonly allowlist: ReadonlySet<string>
   /** @internal */ readonly restoreAs: ReadonlyMap<string, string>
   /** @internal Titles and particles of the enabled languages, never a first name. */ readonly notNames: ReadonlySet<string>
+  /** @internal Declared spelling of each entry, named in verifier questions. */ readonly entryTerms: ReadonlyMap<string, string>
 
   /**
    * @param input - stored settings, possibly partial.
@@ -59,6 +63,7 @@ export class Engine {
     this.allowlist = new Set(settings.allowlist.map(normalizeTerm))
     this.restoreAs = new Map(settings.vocabulary.flatMap(entry => entry.restoreAs ? [[entry.id!, entry.restoreAs] as const] : []))
     this.notNames = new Set(combineLanguages(settings.languages).notNames)
+    this.entryTerms = new Map(settings.vocabulary.map(entry => [entry.id!, entry.terms[0]!] as const))
   }
 
   /**
@@ -74,6 +79,8 @@ export class Engine {
 /** Mutable per-conversation state: the vault and the strategy state. */
 export class Session {
   readonly vault = new Vault()
+  /** Verifier answers by question: true when the word is replaced. In memory only, never logged. */
+  private readonly answers = new Map<string, boolean>()
 
   /** @internal */
   constructor(private readonly engine: Engine, readonly strategy: TokenStrategy) {}
@@ -95,14 +102,12 @@ export class Session {
     if (original.length === 0) return { text: '', verdict: { kind: 'proceed' }, report: this.report([]), decisions: [] }
     const unsuitable = this.strategy.observe(original, this.vault)
     if (unsuitable !== undefined) return empty({ kind: 'blocked', code: unsuitable })
-    const text = normalize(original)
-    // Decided once on the original text, so the leak check reads the rewritten text the same way.
-    const hints: DetectHints = { capitalized: capitalizesNames(original) }
-    const candidates: Candidate[] = [
-      ...this.literalCandidates(original),
-      ...this.sessionDetector().detect(text, hints),
-      ...this.engine.detectors.flatMap(detector => detector.detect(text, hints)),
-    ]
+    const { text, hints, candidates, unconfirmed } = this.gather(original)
+    // With the verifier on, an unconfirmed lowercase form is replaced unless the model called it an ordinary word.
+    const cleared: Candidate[] = []
+    if (this.engine.settings.verifier.enabled) {
+      for (const span of unconfirmed) (this.answers.get(questionKey(this.questionOf(original, span))) === false ? cleared : candidates).push(span)
+    }
     const resolve = (): ReturnType<typeof decide> => decide(
       this.withFirstNames(text, this.joinNameParts(text, resolveOverlaps(candidates, candidate => this.isAllowed(text, candidate)))),
       this.engine.settings,
@@ -117,12 +122,47 @@ export class Session {
       ({ decisions, verdict } = resolve())
     }
     if (verdict.kind === 'blocked') return { ...empty(verdict), report: this.report(decisions) }
+    // A word the verifier called ordinary is sent as written, on purpose: the leak check must not count it.
+    if (cleared.length > 0) decisions = withCleared(decisions, cleared)
     const { output, kept, tokenRanges } = this.rewrite(original, decisions)
     const leak = this.findLeak(output, [...kept, ...tokenRanges], hints)
     if (leak !== undefined) {
       return { ...empty({ kind: 'blocked', code: 'LEAK_DETECTED', classId: leak.classId, detector: leak.detector }), report: this.report(decisions) }
     }
     return { text: output, verdict, report: this.report(decisions), decisions }
+  }
+
+  /**
+   * Questions the verifier must answer before this text is redacted: one per lowercase one-word
+   * form of a declared name (a name part or a generated form) that nothing else covers, both the
+   * ones the capital-letter rule drops and the ones it would accept only because the text has no
+   * capitalized name. Capitalized forms are replaced as before and never asked about. Questions
+   * this session already answered are left out. Empty when the verifier is off.
+   * @param original - text bound for the model.
+   * @returns the unanswered questions.
+   */
+  questions(original: string): VerifierQuestion[] {
+    if (!this.engine.settings.verifier.enabled || original.length === 0 || original.length > MAX_INPUT_CHARS) return []
+    return this.gather(original).unconfirmed.map(span => this.questionOf(original, span))
+      .filter(question => !this.answers.has(questionKey(question)))
+  }
+
+  /**
+   * Record the verifier's answers: a word is replaced when its probability of being a name
+   * reaches the threshold. A missing or invalid probability is not recorded, so the word is replaced.
+   * @param questions - questions asked.
+   * @param probabilities - for each question, the probability that the word is a name.
+   */
+  answer(questions: readonly VerifierQuestion[], probabilities: readonly number[]): void {
+    const { threshold } = this.engine.settings.verifier
+    questions.forEach((question, index) => {
+      const probability = probabilities[index]
+      if (typeof probability !== 'number' || !Number.isFinite(probability)) return
+      const key = questionKey(question)
+      this.answers.delete(key)
+      this.answers.set(key, probability >= threshold)
+    })
+    while (this.answers.size > MAX_ANSWERS) this.answers.delete(this.answers.keys().next().value!)
   }
 
   /**
@@ -166,6 +206,38 @@ export class Session {
       if (preferred !== undefined) return preferred
     }
     return entry.surfaceForms[0] ?? entry.token
+  }
+
+  /**
+   * Every finding of one text, and apart from them the lowercase forms the capital-letter
+   * rule drops that no finding covers and the allowlist does not exempt.
+   */
+  private gather(original: string): { text: NormalizedText; hints: DetectHints; candidates: Candidate[]; unconfirmed: Candidate[] } {
+    const text = normalize(original)
+    // Decided once on the original text, so the leak check reads the rewritten text the same way.
+    const hints: DetectHints = { capitalized: capitalizesNames(original) }
+    const dictionary = this.engine.dictionary.split(text, { ...hints, verifyLowercase: this.engine.settings.verifier.enabled })
+    const candidates: Candidate[] = [
+      ...this.literalCandidates(original),
+      ...this.sessionDetector().detect(text, hints),
+      ...this.engine.detectors.flatMap(detector => detector === this.engine.dictionary ? dictionary.found : detector.detect(text, hints)),
+    ]
+    const seen = new Set<string>()
+    const unconfirmed = dictionary.unconfirmed.filter((span) => {
+      const at = `${span.start}:${span.end}`
+      if (seen.has(at)) return false
+      seen.add(at)
+      return !this.isAllowed(text, span) && !candidates.some(other => other.start < span.end && span.start < other.end)
+    })
+    return { text, hints, candidates, unconfirmed }
+  }
+
+  /** The verifier question for one dropped form, naming the declared spelling it may stand for. */
+  private questionOf(original: string, span: Candidate): VerifierQuestion {
+    const owners = span.key.kind === 'entry' ? [span.key.entryId]
+      : span.key.kind === 'canonical' ? [...this.engine.dictionary.owners.get(span.key.value) ?? []] : []
+    const terms = owners.flatMap(id => this.engine.entryTerms.get(id) ?? [])
+    return questionFor(original, span, terms.length > 0 ? terms.join(' or ') : span.baseForm ?? original.slice(span.start, span.end))
   }
 
   private literalCandidates(original: string): Candidate[] {
@@ -374,6 +446,23 @@ export class StreamRestorer {
     this.reports.push(restored.report)
     return restored.text
   }
+}
+
+/**
+ * Add the words the verifier called ordinary as decisions to send them as written, unless a
+ * decision already covers them (a spelling replaced elsewhere in the text is replaced everywhere).
+ * @param decisions - decisions in text order.
+ * @param cleared - words the verifier called ordinary.
+ * @returns all decisions in text order.
+ */
+function withCleared(decisions: readonly Decision[], cleared: readonly Candidate[]): Decision[] {
+  const taken = decisions.map(({ span }) => span)
+  const added: Decision[] = []
+  for (const span of [...cleared].sort((a, b) => a.start - b.start)) {
+    if (overlapsAny(taken, span) || (added.length > 0 && added.at(-1)!.span.end > span.start)) continue
+    added.push({ span: { ...span, detector: 'verifier' }, action: 'ignore' })
+  }
+  return [...decisions, ...added].sort((a, b) => a.span.start - b.span.start)
 }
 
 /**

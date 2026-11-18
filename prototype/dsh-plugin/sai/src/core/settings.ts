@@ -6,6 +6,7 @@
 
 import { DEFAULT_LANGUAGES, LANGUAGE_IDS } from './languages.ts'
 import type { Action, ClassId } from './types.ts'
+import { DEFAULT_VERIFIER, isLoopbackUrl, type VerifierSettings } from './verifier.ts'
 
 /** One protected entity declared by the user. */
 export interface VocabularyEntry {
@@ -51,6 +52,11 @@ export interface SaiSettings {
    * matches a name prefix.
    */
   externalTools: readonly string[]
+  /**
+   * Local model that decides whether a lowercase form of a declared name is used as a name
+   * ("Reply to bill") or as an ordinary word ("paid the bill"). Off: as without a verifier.
+   */
+  verifier: VerifierSettings
 }
 
 /** Tools whose arguments leave the computer, protected when the user has not chosen. */
@@ -97,6 +103,7 @@ export const DEFAULT_SETTINGS: SaiSettings = {
   languages: [...DEFAULT_LANGUAGES],
   images: 'block',
   externalTools: [...DEFAULT_EXTERNAL_TOOLS],
+  verifier: { ...DEFAULT_VERIFIER },
 }
 
 /** Known languages from the stored list; an empty or unusable list falls back to the defaults. */
@@ -106,6 +113,24 @@ function resolveLanguages(raw: readonly string[] | undefined, problems: Settings
   for (const id of raw) if (!known.includes(id)) problems.push(`unknown language "${id}"`)
   if (known.length === 0) { problems.push('no language selected; using the defaults'); return [...DEFAULT_LANGUAGES] }
   return [...new Set(known)]
+}
+
+/** Verifier settings with defaults; a non-local address or an out-of-range number is refused. */
+function resolveVerifier(raw: Partial<VerifierSettings> | undefined, problems: SettingsProblems): VerifierSettings {
+  const settings = { ...DEFAULT_VERIFIER, enabled: raw?.enabled === true }
+  if (raw?.url !== undefined && raw.url.trim() !== '') {
+    if (isLoopbackUrl(raw.url.trim())) settings.url = raw.url.trim()
+    else problems.push('the verifier address must be on this computer (127.0.0.1, ::1, or localhost); using the default')
+  }
+  if (raw?.threshold !== undefined) {
+    if (typeof raw.threshold === 'number' && raw.threshold > 0 && raw.threshold <= 1) settings.threshold = raw.threshold
+    else problems.push('the verifier threshold must be above 0 and at most 1; using the default')
+  }
+  if (raw?.timeoutMs !== undefined) {
+    if (typeof raw.timeoutMs === 'number' && raw.timeoutMs > 0) settings.timeoutMs = raw.timeoutMs
+    else problems.push('the verifier timeout must be positive; using the default')
+  }
+  return settings
 }
 
 const ACTIONS: readonly Action[] = ['tokenize', 'mask', 'ignore', 'block']
@@ -158,6 +183,7 @@ export function resolveSettings(input: Partial<SaiSettings> | undefined): { sett
       languages: resolveLanguages(raw.languages, problems),
       images: raw.images === 'allow' ? 'allow' : 'block',
       externalTools: (raw.externalTools ?? DEFAULT_SETTINGS.externalTools).map(name => name.trim()).filter(name => name.length > 0),
+      verifier: resolveVerifier(raw.verifier, problems),
     },
     problems,
   }

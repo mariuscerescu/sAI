@@ -86,11 +86,25 @@ export class RedactionBatch {
     }
   }
 
-  private absorb(output: RedactOutput): string {
+  /** @internal Counts one redacted field into the verdict and report. */
+  protected absorb(output: RedactOutput): string {
     this.fields++
     for (const [classId, count] of Object.entries(output.report.countsByClass)) this.counts[classId] = (this.counts[classId] ?? 0) + count
     for (const token of output.report.tokensUsed) this.tokens.add(token)
     if (output.verdict.kind === 'blocked') this.verdict = output.verdict
     return output.text
+  }
+}
+
+/**
+ * Walks a structured value like {@link RedactionBatch}, but only collects its texts and
+ * returns them unchanged: every text of a request, to ask the verifier once before redacting it.
+ */
+export class TextCollector extends RedactionBatch {
+  readonly texts: string[] = []
+
+  override text(text: string): string {
+    this.texts.push(text)
+    return text
   }
 }

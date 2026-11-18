@@ -14,16 +14,18 @@ import z from '@deepseek-ai/schemastery'
 import { isAgentLoopRequest, type GenerateOptions, type LlmFailure, type StreamChunk } from '@deepseek-ai/dsh-llm'
 import type {} from '@deepseek-ai/dsh-settings'
 import {
-  DEFAULT_PATTERNS, DEFAULT_SETTINGS, Engine, type Action, type SaiSettings, type Session,
-  type StrategyId, type VocabularyEntry,
+  DEFAULT_PATTERNS, DEFAULT_SETTINGS, Engine, verifyTexts, type Action, type SaiSettings, type Session,
+  type StrategyId, type VerifierSettings, type VocabularyEntry,
 } from './core/index.ts'
 import { guardEgress } from './egress.ts'
-import { redactRequest, restoreStream } from './request.ts'
+import { redactRequest, requestTexts, restoreStream, type FileTextOf } from './request.ts'
+import { httpVerifier } from './verifier-client.ts'
 import { SaiModelViewRemote } from './remote.ts'
 import { ModelViewStore } from './view.ts'
 
 export * from './core/index.ts'
-export { redactRequest, restoreStream } from './request.ts'
+export { redactRequest, requestTexts, restoreStream } from './request.ts'
+export { httpVerifier } from './verifier-client.ts'
 export { SaiModelViewRemote } from './remote.ts'
 export type { SaiModelView, SaiViewBlock, SaiViewMessage } from './view-types.ts'
 
@@ -46,6 +48,7 @@ export interface Config {
   languages: Volatile<string[]>
   images: Volatile<'block' | 'allow'>
   externalTools: Volatile<string[]>
+  verifier: Volatile<Partial<VerifierSettings>>
   /** Sessions whose vaults are kept in memory; the least recently used are forgotten first. */
   maxSessions: number
 }
@@ -70,6 +73,12 @@ export const Config = z.object({
   languages: z.array(z.string()).default([...DEFAULT_SETTINGS.languages]).volatile(),
   images: z.union(['block', 'allow'] as const).default(DEFAULT_SETTINGS.images).volatile(),
   externalTools: z.array(z.string()).default([...DEFAULT_SETTINGS.externalTools]).volatile(),
+  verifier: z.object({
+    enabled: z.boolean(),
+    url: z.string(),
+    threshold: z.number(),
+    timeoutMs: z.natural(),
+  }).default({ ...DEFAULT_SETTINGS.verifier }).volatile(),
   maxSessions: z.natural().min(1).default(200),
 })
 
@@ -91,6 +100,8 @@ function snapshot(config: Config): SaiSettings {
     languages: config.languages.get(),
     images: config.images.get(),
     externalTools: config.externalTools.get(),
+    // Partial values are completed and checked when the Engine resolves these settings.
+    verifier: config.verifier.get() as VerifierSettings,
   }
 }
 
@@ -183,10 +194,24 @@ export function apply(ctx: Context, config: Config): void {
       return refusal(`sAI settings are invalid (${engineError ?? 'unknown error'}); the request was not sent`)
     }
     const session = sessionFor(active, options.sessionId)
+    const fileText: FileTextOf = block => ctx.llm.fileRequestText(block.attachment)
+    const verifier = active.settings.verifier
+    if (!verifier.enabled) return send(options, session, settings, fileText)
+    // Every lowercase form of a declared name in the request goes to the local model in one call first.
+    return (async function* verified(): AsyncIterable<StreamChunk> {
+      const report = await verifyTexts(session, requestTexts(options, session, fileText), httpVerifier(verifier))
+      if (report.failed) ctx.logger.warn('sAI verifier failed for %d words; they are replaced', report.asked)
+      else if (report.asked > 0) ctx.logger.debug('sAI verifier answered %d words in one call', report.asked)
+      yield* send(options, session, settings, fileText)
+    })()
+  })
+
+  /** Redact one request with the session's verifier answers, send it, and restore the answer. */
+  const send = (options: GenerateOptions, session: Session, settings: SaiSettings, fileText: FileTextOf): AsyncIterable<StreamChunk> => {
     const redacted = redactRequest(
       options,
       session,
-      block => ctx.llm.fileRequestText(block.attachment),
+      fileText,
       settings.preamble ? session.preamble() : undefined,
       { images: settings.images },
     )
@@ -212,7 +237,7 @@ export function apply(ctx: Context, config: Config): void {
         )
       }
     }, settings.externalTools)
-  })
+  }
 
   // Conversation content also leaves through feedback telemetry and the DeepSeek session-log field.
   guardEgress(ctx, (sessionId) => {

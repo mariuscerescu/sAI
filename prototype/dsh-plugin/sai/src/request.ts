@@ -9,7 +9,7 @@ import type {
   ContentBlock, FileBlock, GenerateOptions, RequestMessage, StreamChunk, ToolHistory, ToolSchema,
 } from '@deepseek-ai/dsh-llm'
 import {
-  isExternalTool, RedactionBatch, type RedactReport, type RestoreReport, type Session, type StreamRestorer, type Verdict,
+  isExternalTool, RedactionBatch, TextCollector, type RedactReport, type RestoreReport, type Session, type StreamRestorer, type Verdict,
 } from './core/index.ts'
 
 /** Projects a durable file reference to the text adapters would send for it. */
@@ -51,19 +51,38 @@ export function redactRequest(
   if (policy.images === 'block' && options.messages.some(message => message.content.some(block => block.type === 'image' && block.offloaded !== true))) {
     batch.refuse('IMAGE_NOT_INSPECTABLE')
   }
+  const redacted = project(options, batch, fileText)
+  const { verdict, report } = batch.result()
+  return { options: preamble === undefined ? redacted : withPreamble(redacted, preamble), verdict, report }
+}
+
+/**
+ * Every text {@link redactRequest} would redact, in the same order, so the verifier can be
+ * asked about all of them in one call first.
+ * @param options - the request as the harness built it.
+ * @param session - session the request will be redacted with.
+ * @param fileText - file-reference projection.
+ * @returns the texts.
+ */
+export function requestTexts(options: GenerateOptions, session: Session, fileText: FileTextOf): string[] {
+  const collector = new TextCollector(session)
+  project(options, collector, fileText)
+  return collector.texts
+}
+
+/** Pass every text field of a request through a batch, keeping the rest of the request. */
+function project(options: GenerateOptions, batch: RedactionBatch, fileText: FileTextOf): GenerateOptions {
   const system = options.system === undefined ? undefined : batch.text(options.system)
   const messages = options.messages.map(message => redactMessage(message, batch, fileText))
   // Tool descriptions are prose a deployment or an MCP server writes, and may name people or clients.
   const tools = options.tools?.map(tool => redactTool(tool, batch))
   const toolHistory = options.toolHistory === undefined ? undefined : redactToolHistory(options.toolHistory, batch)
-  const { verdict, report } = batch.result()
-  const redacted: GenerateOptions = {
+  return {
     ...options, messages,
     ...system === undefined ? {} : { system },
     ...tools === undefined ? {} : { tools },
     ...toolHistory === undefined ? {} : { toolHistory },
   }
-  return { options: preamble === undefined ? redacted : withPreamble(redacted, preamble), verdict, report }
 }
 
 function redactMessage(message: RequestMessage, batch: RedactionBatch, fileText: FileTextOf): RequestMessage {

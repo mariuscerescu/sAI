@@ -5,7 +5,7 @@
  * @module @deepseek-ai/dsh-experimental-sai/core
  */
 
-export { RedactionBatch } from './batch.ts'
+export { RedactionBatch, TextCollector } from './batch.ts'
 export { Engine, Session, StreamRestorer, mask, MAX_INPUT_CHARS } from './engine.ts'
 export type { SessionOptions } from './engine.ts'
 export { checksum731, checksumCnp, ibanMod97, luhn, PATTERNS } from './detectors/patterns.ts'
@@ -20,5 +20,9 @@ export {
 export type { SaiSettings, StrategyId, VocabularyEntry } from './settings.ts'
 export { GreekStrategy, TypedStrategy, createStrategy, defaultPreamble } from './strategies.ts'
 export type { TokenHit, TokenStrategy } from './strategies.ts'
+export {
+  CONTEXT_CHARS, DEFAULT_VERIFIER, isLoopbackUrl, questionFor, questionKey, verifyTexts,
+} from './verifier.ts'
+export type { Verifier, VerifierQuestion, VerifierSettings, VerifyReport } from './verifier.ts'
 export { Vault, keyString } from './vault.ts'
 export type * from './types.ts'

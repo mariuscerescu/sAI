@@ -1,0 +1,19 @@
+{
+  "case": "A3",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»",
+      "raw": "`ζ`'s contract with `λ` was signed by the `ο` at `δ`",
+      "rawReasoning": "The user wants me to rewrite a sentence with correct capitalization and grammar. The sentence uses Greek letters as placeholders for confidential terms. I need to treat each Greek letter as a real term and write them exactly as given, including inside code formatting.\n\nThe sentence is: «ζ's contract with λ were signed by the ο at δ»\n\nIssues to fix:\n1. Capitalization: First word should be capitalized\n2. Subject-verb agreement: \"contract\" is singular, so \"were\" should be \"was\"\n3. The Greek letters need to be written exactly as given, in code formatting\n\nLet me rewrite: \"ζ's contract with λ was signed by the ο at δ\"\n\nBut wait - I need to put the Greek letters in code formatting as per instructions: \"write the letter exactly as given, also inside code\". So each Greek letter should be in backticks.\n\nLet me format it properly: `ζ`'s contract with `λ` was signed by the `ο` at `δ`\n\nAnd capitalize the first letter: `ζ`'s contract with `λ` was signed by the `ο` at `δ`\n\nActually, the first character is a Greek letter in code, so the sentence starts with a code block. That should be fine.",
+      "restored": "`smith`'s contract with `acme` was signed by the `Johnson` at `project orion`",
+      "flagged": [],
+      "ms": 5044,
+      "sent": "Rewrite this sentence with correct capitalization and grammar: «ζ's contract with λ were signed by the ο at δ»"
+    }
+  ]
+}

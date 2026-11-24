@@ -1,0 +1,19 @@
+{
+  "case": "R4",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Return only JSON with the keys full_name, first_name and last_name for this contact: The contact is Elias Brandt. Colleagues call this person Elias, and the contract says Brandt.",
+      "raw": "{\n  \"full_name\": \"ψ\",\n  \"first_name\": \"ψ′\",\n  \"last_name\": \"ψ′′\"\n}",
+      "rawReasoning": "The user wants me to return JSON with keys full_name, first_name, and last_name for a contact represented by ψ. They mention colleagues call this person ψ′, and the contract says ψ′′. They want me to treat these Greek letters as the real terms they stand for, and write them exactly as given, including in code, file paths, and tool-call arguments. I must not translate or spell out these letters, and not use them with any other meaning. A letter with a prime is another written form of the same term as the original (e.g., first name and surname of one person). I should not mention or explain this relation unless asked.\n\nSo I need to output JSON with full_name, first_name, last_name. The contact is ψ. Colleagues call this person ψ′. Contract says ψ′′. The primes indicate different forms of the same term. Likely ψ is the full name? Or maybe ψ is the full name, ψ′ is first name, ψ′′ is last name? The instruction: \"A letter with a prime, such as β′, is another written form of the same term as β, for example the first name and the surname of one person.\" That suggests β is the full name? Actually \"first name and the surname of one person\" - β could be the full name, β′ could be first name, β′′ could be surname? Or β is the person, β′ is first name, β′′ is last name. The user says: \"The contact is ψ. Colleagues call this person ψ′, and the contract says ψ′′.\" So ψ is the contact (maybe full name), ψ′ is what colleagues call them (maybe first name), ψ′′ is what the contract says (maybe last name). But the instruction says \"Treat each such letter as the real term it stands for.\" So I should output JSON with the actual terms? But they are represented by Greek letters. I must write the letter exactly as given. So I should output something like:\n\n{\n  \"full_name\": \"ψ\",\n  \"first_name\": \"ψ′\",\n  \"last_name\": \"ψ′′\"\n}\n\nBut note: the primes are part of the letter representation. They said \"write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" So I should include the primes as part of the string. The JSON values should be strings containing those Greek letters with primes.\n\nThus the answer is simply JSON with those keys and those Greek letters as values.\n\nI must not add any explanation, just the JSON.\n\nLet's produce that.",
+      "restored": "{\n  \"full_name\": \"Elias Brandt\",\n  \"first_name\": \"Elias\",\n  \"last_name\": \"Brandt\"\n}",
+      "flagged": [],
+      "ms": 9454,
+      "sent": "Return only JSON with the keys full_name, first_name and last_name for this contact: The contact is ψ. Colleagues call this person ψ′, and the contract says ψ′′."
+    }
+  ]
+}

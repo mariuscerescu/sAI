@@ -36,9 +36,12 @@ describe('inflected forms coverage', () => {
       return
     }
     expect(decision.span.key).toEqual({ kind: 'entry', entryId: entry.id })
-    expect(out.text).toContain(token)
+    // Another written form of a name has its own symbol, related to the symbol of its entry.
+    const symbol = out.report.tokensUsed[0]!
+    expect(session.vault.byToken(symbol)!.token).toBe(token)
+    expect(out.text).toContain(symbol)
     // Only a hyphenated ending may stay next to the symbol.
-    expect(out.text.replace(token, '').replace(/-[\p{L}]+/u, '')).toBe(`${lead}  a fost semnat.`)
+    expect(out.text.replace(symbol, '').replace(/-[\p{L}]+/u, '')).toBe(`${lead}  a fost semnat.`)
   })
 
   it('masks a spelling two entries share, giving it to the closer one', () => {

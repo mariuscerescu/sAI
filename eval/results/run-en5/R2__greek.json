@@ -1,0 +1,19 @@
+{
+  "case": "R2",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: Nadia\nLast Name: Vantoor\nCompany: Quillon Systems",
+      "raw": "| Field | Value |\n|-------|-------|\n| First Name | `ε` |\n| Last Name | `ε′` |\n| Company | `ν` |",
+      "rawReasoning": "The user wants a Markdown table with columns Field and Value, keeping values exactly as written. The values include Greek letters: ε, ε′, ν. They should be written exactly as given, including the prime. Also they want them inside code? The instruction says: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" That seems to be a general instruction for the assistant: when referring to these letters, write them exactly as given, also inside code, file paths, and tool-call arguments. But the user wants a Markdown table with columns Field and Value. Should the values be in code formatting? The instruction says \"write the letter exactly as given, also inside code\". That suggests that when we output the letters, we should put them in code formatting (backticks). But the user says \"Keep every value exactly as written.\" That could mean keep the exact characters, not necessarily code formatting. However the system instruction says \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" This is a bit ambiguous. It might be a rule for the assistant: when you refer to these letters in your response, you should write them exactly as given, and also inside code (i.e., backticks). But the user wants a Markdown table. The values are the letters. Should we put them in code blocks? The instruction says \"also inside code\". That could mean that when we write the letters, we should enclose them in backticks. But the user didn't explicitly ask for code formatting. However the system instruction overrides: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" So we must output the letters inside code formatting (backticks). Also we must not translate or spell out these letters. So we should output something like:\n\n| Field | Value |\n|-------|-------|\n| First Name | `ε` |\n| Last Name | `ε′` |\n| Company | `ν` |\n\nBut note: the prime symbol is a Unicode prime (′). The user wrote \"ε′\". That's epsilon followed by prime. We must keep exactly that. In code formatting, it will appear as `ε′`. That's fine.\n\nWe need to ensure the table is Markdown. The columns: Field and Value. Keep every value exactly as written. So we should not add extra spaces. The values are exactly the letters. We'll put them in backticks as per system instruction.\n\nThus final answer: a Markdown table with three rows.",
+      "restored": "| Field | Value |\n|-------|-------|\n| First Name | `Nadia` |\n| Last Name | `Vantoor` |\n| Company | `Quillon Systems` |",
+      "flagged": [],
+      "ms": 10386,
+      "sent": "Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: ε\nLast Name: ε′\nCompany: ν"
+    }
+  ]
+}

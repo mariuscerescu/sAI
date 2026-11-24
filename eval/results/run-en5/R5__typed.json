@@ -1,0 +1,28 @@
+{
+  "case": "R5",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Nadia joined Quillon in March. Later, Vantoor was promoted.",
+      "raw": "Got it — ⟦PERSON_1⟧ started at ⟦COMPANY_1⟧ in March and was later promoted. Let me know if you’d like to add any details or need help with something related!",
+      "rawReasoning": "The user states: \"⟦PERSON_1⟧ joined ⟦COMPANY_1⟧ in March. Later, ⟦PERSON_1_2⟧ was promoted.\" They want me to respond. There's no question, just a statement. I should probably acknowledge or ask if they need something. Since they gave info with placeholders, I can respond acknowledging the info. Keep it concise.",
+      "restored": "Got it — Nadia started at Quillon in March and was later promoted. Let me know if you’d like to add any details or need help with something related!",
+      "flagged": [],
+      "ms": 4167,
+      "sent": "⟦PERSON_1⟧ joined ⟦COMPANY_1⟧ in March. Later, ⟦PERSON_1_2⟧ was promoted."
+    },
+    {
+      "user": "Who was promoted? Answer with only that name, written the way I wrote it.",
+      "raw": "⟦PERSON_1_2⟧",
+      "rawReasoning": "The user asks: \"Who was promoted? Answer with only that name, written the way I wrote it.\"\n\nThe conversation: \"⟦PERSON_1⟧ joined ⟦COMPANY_1⟧ in March. Later, ⟦PERSON_1_2⟧ was promoted.\"\n\nThe user wants the name of who was promoted, written the way they wrote it. They wrote \"⟦PERSON_1_2⟧\". So answer should be exactly \"⟦PERSON_1_2⟧\". No extra text.",
+      "restored": "Vantoor",
+      "flagged": [],
+      "ms": 3406,
+      "sent": "Who was promoted? Answer with only that name, written the way I wrote it."
+    }
+  ]
+}

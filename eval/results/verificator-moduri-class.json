@@ -1,0 +1,367 @@
+{
+ "wording": "class",
+ "date": "2026-11-19",
+ "verifierSet": {
+  "off": {
+   "names": 420,
+   "ordinary": 402,
+   "leaked": 164,
+   "leakedCapital": 0,
+   "overMasked": 177,
+   "overCapital": 29,
+   "calls": 0,
+   "questions": 0,
+   "byKind": {},
+   "medianMs": 0,
+   "p95Ms": 0,
+   "failed": 0
+  },
+  "lowercase": {
+   "names": 420,
+   "ordinary": 402,
+   "leaked": 0,
+   "leakedCapital": 0,
+   "overMasked": 29,
+   "overCapital": 29,
+   "calls": 572,
+   "questions": 608,
+   "byKind": {
+    "name": 608
+   },
+   "medianMs": 206,
+   "p95Ms": 251,
+   "failed": 0
+  },
+  "all": {
+   "names": 420,
+   "ordinary": 402,
+   "leaked": 0,
+   "leakedCapital": 0,
+   "overMasked": 2,
+   "overCapital": 2,
+   "calls": 822,
+   "questions": 1117,
+   "byKind": {
+    "name": 876,
+    "part": 241
+   },
+   "medianMs": 185,
+   "p95Ms": 231,
+   "failed": 0
+  }
+ },
+ "extraSet": {
+  "off": {
+   "groups": {
+    "classes": {
+     "title": "Proiecte, produse, locuri, o clasă proprie, firme",
+     "checks": 17,
+     "correct": 8,
+     "failures": [
+      "c01 „falcon” în „The falcon dived toward the river.”: așteptat nemascat, obținut mascat; trimis: „The ⟦PRODUCT_1⟧ dived toward the river.”",
+      "c03 „Falcon” în „Falcon populations are recovering in the north.”: așteptat nemascat, obținut mascat; trimis: „⟦PRODUCT_1⟧ populations are recovering in the north.”",
+      "c05 „bluebird” în „A bluebird landed on the fence.”: așteptat nemascat, obținut mascat; trimis: „A ⟦PROJECT_1⟧ landed on the fence.”",
+      "c07 „bluebird” în „The bluebird cutover starts on Monday.”: așteptat mascat, obținut nemascat; trimis: „The bluebird cutover starts on Monday.”",
+      "c08 „riverside” în „We had lunch at a riverside cafe.”: așteptat nemascat, obținut mascat; trimis: „We had lunch at a ⟦LOCATION_1⟧ cafe.”",
+      "c10 „riverside” în „Ship the pallets to riverside before Friday.”: așteptat mascat, obținut nemascat; trimis: „Ship the pallets to riverside before Friday.”",
+      "c11 „nightjar” în „A nightjar called at dusk over the field.”: așteptat nemascat, obținut mascat; trimis: „A ⟦CODENAME_1⟧ called at dusk over the field.”",
+      "c14 „summit” în „We reached the summit at noon.”: așteptat nemascat, obținut mascat; trimis: „We reached the ⟦COMPANY_1⟧ at noon.”",
+      "c16 „Summit” în „Summit meetings are held every year in Geneva.”: așteptat nemascat, obținut mascat; trimis: „⟦COMPANY_1⟧ meetings are held every year in Geneva.”"
+     ]
+    },
+    "declared": {
+     "title": "Scrieri declarate dintr-un singur cuvânt",
+     "checks": 8,
+     "correct": 4,
+     "failures": [
+      "d01 „bill” în „Please pay the bill today.”: așteptat nemascat, obținut mascat; trimis: „Please pay the ⟦PERSON_1⟧ today.”",
+      "d04 „Bill” în „Bill payments are due on Friday.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ payments are due on Friday.”",
+      "d05 „rose” în „Prices rose sharply in October.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ sharply in October.”",
+      "d07 „pinecone” în „A pinecone fell on the car.”: așteptat nemascat, obținut mascat; trimis: „A ⟦COMPANY_1⟧ fell on the car.”"
+     ]
+    },
+    "capitals": {
+     "title": "Majuscula de la începutul propoziției",
+     "checks": 8,
+     "correct": 4,
+     "failures": [
+      "k01 „Mark” în „Mark the date in your calendar.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ the date in your calendar.”",
+      "k03 „Price” în „Price changes take effect in May.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ changes take effect in May.”",
+      "k05 „Grant” în „Grant applications close on Friday.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ applications close on Friday.”",
+      "k07 „Will” în „Will you send the file today?”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ you send the file today?”"
+     ]
+    },
+    "attached": {
+     "title": "Cuvânt cu majusculă înaintea unui nume de familie (Q2)",
+     "checks": 16,
+     "correct": 11,
+     "failures": [
+      "a02 „Ask” în „Ask Robinson about the contract.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ about the contract.”",
+      "a03 „Then” în „Then Robinson left the office.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ left the office.”",
+      "a05 „Yesterday” în „Yesterday Munteanu called twice.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ called twice.”",
+      "a06 „Contact” în „Contact Munteanu before noon.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ before noon.”",
+      "a08 „Thanks” în „Thanks Robinson, see you on Monday.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧, see you on Monday.”"
+     ]
+    },
+    "shared": {
+     "title": "Același prenume la două persoane (Q3)",
+     "checks": 3,
+     "correct": 1,
+     "failures": [
+      "s01 „Bill” în „Bill Turner reviewed the draft. Later Bill sent his notes.”: așteptat mascat (entry:turner), obținut mascat, cheia canonical; trimis: „⟦PERSON_1⟧ reviewed the draft. ⟦PERSON_2⟧ sent his notes.”",
+      "s02 „Bill” în „Bill Smith joined late, and then Bill apologized to everyone.”: așteptat mascat (entry:smith), obținut mascat, cheia canonical; trimis: „⟦PERSON_1⟧ joined late, and then ⟦PERSON_2⟧ apologized to everyone.”"
+     ]
+    },
+    "romanian": {
+     "title": "Română: forme generate care sunt și cuvinte obișnuite",
+     "checks": 21,
+     "correct": 12,
+     "failures": [
+      "r01 „Lupul” în „Lupul a ieșit din pădure noaptea trecută.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ a ieșit din pădure noaptea trecută.”",
+      "r03 „Popa” în „Popa din sat a ținut slujba de duminică.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ din sat a ținut slujba de duminică.”",
+      "r05 „Florile” în „Florile din birou trebuie udate.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ din birou trebuie udate.”",
+      "r09 „Anii” în „Anii trecuți am avut pierderi mari.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ trecuți am avut pierderi ⟦PERSON_1⟧.”",
+      "r09 „mari” în „Anii trecuți am avut pierderi mari.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ trecuți am avut pierderi ⟦PERSON_1⟧.”",
+      "r10 „Soarele” în „Soarele a apus devreme azi.”: așteptat nemascat, obținut mascat; trimis: „⟦COMPANY_1⟧ a apus devreme azi.”",
+      "r12 „Marile” în „Marile companii au raportat profituri.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ companii au raportat profituri.”",
+      "r14 „Rușii” în „Rușii au semnat acordul comercial.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ au semnat acordul comercial.”",
+      "r18 „Ieri” în „Ieri Rusu a sunat de două ori.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ a sunat de două ori.”"
+     ]
+    }
+   },
+   "calls": 0,
+   "questions": 0,
+   "byKind": {},
+   "medianMs": 0,
+   "p95Ms": 0,
+   "failed": 0
+  },
+  "lowercase": {
+   "groups": {
+    "classes": {
+     "title": "Proiecte, produse, locuri, o clasă proprie, firme",
+     "checks": 17,
+     "correct": 13,
+     "failures": [
+      "c03 „Falcon” în „Falcon populations are recovering in the north.”: așteptat nemascat, obținut mascat; trimis: „⟦PRODUCT_1⟧ populations are recovering in the north.”",
+      "c08 „riverside” în „We had lunch at a riverside cafe.”: așteptat nemascat, obținut mascat; trimis: „We had lunch at a ⟦LOCATION_1⟧ cafe.”",
+      "c11 „nightjar” în „A nightjar called at dusk over the field.”: așteptat nemascat, obținut mascat; trimis: „A ⟦CODENAME_1⟧ called at dusk over the field.”",
+      "c16 „Summit” în „Summit meetings are held every year in Geneva.”: așteptat nemascat, obținut mascat; trimis: „⟦COMPANY_1⟧ meetings are held every year in Geneva.”"
+     ]
+    },
+    "declared": {
+     "title": "Scrieri declarate dintr-un singur cuvânt",
+     "checks": 8,
+     "correct": 4,
+     "failures": [
+      "d01 „bill” în „Please pay the bill today.”: așteptat nemascat, obținut mascat; trimis: „Please pay the ⟦PERSON_1⟧ today.”",
+      "d04 „Bill” în „Bill payments are due on Friday.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ payments are due on Friday.”",
+      "d05 „rose” în „Prices rose sharply in October.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ sharply in October.”",
+      "d07 „pinecone” în „A pinecone fell on the car.”: așteptat nemascat, obținut mascat; trimis: „A ⟦COMPANY_1⟧ fell on the car.”"
+     ]
+    },
+    "capitals": {
+     "title": "Majuscula de la începutul propoziției",
+     "checks": 8,
+     "correct": 4,
+     "failures": [
+      "k01 „Mark” în „Mark the date in your calendar.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ the date in your calendar.”",
+      "k03 „Price” în „Price changes take effect in May.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ changes take effect in May.”",
+      "k05 „Grant” în „Grant applications close on Friday.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ applications close on Friday.”",
+      "k07 „Will” în „Will you send the file today?”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ you send the file today?”"
+     ]
+    },
+    "attached": {
+     "title": "Cuvânt cu majusculă înaintea unui nume de familie (Q2)",
+     "checks": 16,
+     "correct": 11,
+     "failures": [
+      "a02 „Ask” în „Ask Robinson about the contract.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ about the contract.”",
+      "a03 „Then” în „Then Robinson left the office.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ left the office.”",
+      "a05 „Yesterday” în „Yesterday Munteanu called twice.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ called twice.”",
+      "a06 „Contact” în „Contact Munteanu before noon.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ before noon.”",
+      "a08 „Thanks” în „Thanks Robinson, see you on Monday.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧, see you on Monday.”"
+     ]
+    },
+    "shared": {
+     "title": "Același prenume la două persoane (Q3)",
+     "checks": 3,
+     "correct": 1,
+     "failures": [
+      "s01 „Bill” în „Bill Turner reviewed the draft. Later Bill sent his notes.”: așteptat mascat (entry:turner), obținut mascat, cheia canonical; trimis: „⟦PERSON_1⟧ reviewed the draft. ⟦PERSON_2⟧ sent his notes.”",
+      "s02 „Bill” în „Bill Smith joined late, and then Bill apologized to everyone.”: așteptat mascat (entry:smith), obținut mascat, cheia canonical; trimis: „⟦PERSON_1⟧ joined late, and then ⟦PERSON_2⟧ apologized to everyone.”"
+     ]
+    },
+    "romanian": {
+     "title": "Română: forme generate care sunt și cuvinte obișnuite",
+     "checks": 21,
+     "correct": 12,
+     "failures": [
+      "r01 „Lupul” în „Lupul a ieșit din pădure noaptea trecută.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ a ieșit din pădure noaptea trecută.”",
+      "r03 „Popa” în „Popa din sat a ținut slujba de duminică.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ din sat a ținut slujba de duminică.”",
+      "r05 „Florile” în „Florile din birou trebuie udate.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ din birou trebuie udate.”",
+      "r09 „Anii” în „Anii trecuți am avut pierderi mari.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ trecuți am avut pierderi mari.”",
+      "r10 „Soarele” în „Soarele a apus devreme azi.”: așteptat nemascat, obținut mascat; trimis: „⟦COMPANY_1⟧ a apus devreme azi.”",
+      "r12 „Marile” în „Marile companii au raportat profituri.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ companii au raportat profituri.”",
+      "r14 „Rușii” în „Rușii au semnat acordul comercial.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ au semnat acordul comercial.”",
+      "r16 „rusu” în „Am vorbit cu rusu despre factură.”: așteptat mascat, obținut nemascat; trimis: „Am vorbit cu rusu despre factură.”",
+      "r18 „Ieri” în „Ieri Rusu a sunat de două ori.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ a sunat de două ori.”"
+     ]
+    }
+   },
+   "calls": 10,
+   "questions": 10,
+   "byKind": {
+    "name": 10
+   },
+   "medianMs": 136,
+   "p95Ms": 162,
+   "failed": 0
+  },
+  "all": {
+   "groups": {
+    "classes": {
+     "title": "Proiecte, produse, locuri, o clasă proprie, firme",
+     "checks": 17,
+     "correct": 16,
+     "failures": [
+      "c08 „riverside” în „We had lunch at a riverside cafe.”: așteptat nemascat, obținut mascat; trimis: „We had lunch at a ⟦LOCATION_1⟧ cafe.”"
+     ]
+    },
+    "declared": {
+     "title": "Scrieri declarate dintr-un singur cuvânt",
+     "checks": 8,
+     "correct": 8,
+     "failures": []
+    },
+    "capitals": {
+     "title": "Majuscula de la începutul propoziției",
+     "checks": 8,
+     "correct": 8,
+     "failures": []
+    },
+    "attached": {
+     "title": "Cuvânt cu majusculă înaintea unui nume de familie (Q2)",
+     "checks": 16,
+     "correct": 16,
+     "failures": []
+    },
+    "shared": {
+     "title": "Același prenume la două persoane (Q3)",
+     "checks": 3,
+     "correct": 3,
+     "failures": []
+    },
+    "romanian": {
+     "title": "Română: forme generate care sunt și cuvinte obișnuite",
+     "checks": 21,
+     "correct": 18,
+     "failures": [
+      "r03 „Popa” în „Popa din sat a ținut slujba de duminică.”: așteptat nemascat, obținut mascat; trimis: „⟦PERSON_1⟧ din sat a ținut slujba de duminică.”",
+      "r11 „Soare” în „Soare a plătit factura ieri.”: așteptat mascat, obținut nemascat; trimis: „Soare a plătit factura ieri.”",
+      "r16 „rusu” în „Am vorbit cu rusu despre factură.”: așteptat mascat, obținut nemascat; trimis: „Am vorbit cu rusu despre factură.”"
+     ]
+    }
+   },
+   "calls": 61,
+   "questions": 78,
+   "byKind": {
+    "name": 62,
+    "part": 13,
+    "which": 3
+   },
+   "medianMs": 177,
+   "p95Ms": 235,
+   "failed": 0
+  }
+ },
+ "wikipedia": {
+  "off": {
+   "articles": 29,
+   "masked": 619,
+   "capital": 614,
+   "lowercase": 5,
+   "cleared": 0,
+   "calls": 0,
+   "questions": 0,
+   "byKind": {},
+   "medianMs": 0,
+   "p95Ms": 0,
+   "failed": 0
+  },
+  "lowercase": {
+   "articles": 29,
+   "masked": 619,
+   "capital": 614,
+   "lowercase": 5,
+   "cleared": 99,
+   "calls": 20,
+   "questions": 101,
+   "byKind": {
+    "name": 101
+   },
+   "medianMs": 555,
+   "p95Ms": 2085,
+   "failed": 0
+  },
+  "all": {
+   "articles": 29,
+   "masked": 561,
+   "capital": 556,
+   "lowercase": 5,
+   "cleared": 157,
+   "calls": 29,
+   "questions": 911,
+   "byKind": {
+    "name": 785,
+    "part": 80,
+    "which": 46
+   },
+   "medianMs": 2155,
+   "p95Ms": 15004,
+   "failed": 0
+  }
+ },
+ "conversations": {
+  "off": {
+   "turns": 22,
+   "changed": 0,
+   "changedTexts": [],
+   "calls": 0,
+   "questions": 0,
+   "byKind": {},
+   "medianMs": 0,
+   "p95Ms": 0,
+   "failed": 0
+  },
+  "lowercase": {
+   "turns": 22,
+   "changed": 0,
+   "changedTexts": [],
+   "calls": 2,
+   "questions": 7,
+   "byKind": {
+    "name": 7
+   },
+   "medianMs": 263,
+   "p95Ms": 263,
+   "failed": 0
+  },
+  "all": {
+   "turns": 22,
+   "changed": 1,
+   "changedTexts": [
+    "K5: ⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧. ⟦COMPANY_1⟧ stands for ⟦COMPANY_1⟧. Separately, in code, the variable gb_total holds the amount. What did ⟦COMPANY_1⟧ approve?"
+   ],
+   "calls": 10,
+   "questions": 33,
+   "byKind": {
+    "name": 32,
+    "part": 1
+   },
+   "medianMs": 249,
+   "p95Ms": 433,
+   "failed": 0
+  }
+ }
+}

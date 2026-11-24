@@ -50,7 +50,7 @@ describe('request redaction', () => {
       { type: 'text', text: `\n\n${session.preamble()}` },
     ])
     expect(user!.content).toEqual([{ type: 'text', text: 'Trimite un SMS lui ⟦PERSON_1⟧ la ⟦PHONE_1⟧.' }])
-    expect(assistant!.content).toEqual([{ type: 'tool-call', id: callId, name: 'send_sms', arguments: '{"to":"⟦PHONE_1⟧","text":"Salut, ⟦PERSON_1⟧!"}' }])
+    expect(assistant!.content).toEqual([{ type: 'tool-call', id: callId, name: 'send_sms', arguments: '{"to":"⟦PHONE_1⟧","text":"Salut, ⟦PERSON_1_2⟧!"}' }])
     expect(tool!.content).toEqual([{ type: 'text', text: 'SMS trimis lui ⟦PERSON_1⟧.' }])
   })
 

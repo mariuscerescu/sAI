@@ -46,8 +46,9 @@ describe('name parts', () => {
   it('gives a part the symbol of its only owner', () => {
     const session = engine.session()
     const full = session.redact('Ion Rusu conduce.').report.tokensUsed[0]!
-    expect(session.redact('Rusu a plecat.').report.tokensUsed[0]).toBe(full)
-    expect(session.redact('Ioane, vino.').report.tokensUsed[0]).toBe(full)
+    // Another written form has its own symbol, which belongs to the same person.
+    expect(session.vault.byToken(session.redact('Rusu a plecat.').report.tokensUsed[0]!)!.token).toBe(full)
+    expect(session.vault.byToken(session.redact('Ioane, vino.').report.tokensUsed[0]!)!.token).toBe(full)
   })
 
   it('leaves ordinary words alone unless capitalized', () => {
@@ -80,7 +81,7 @@ describe('name parts', () => {
     expect(known).not.toContain(other.report.tokensUsed[0])
     expect(session.restore(other.text).text).toBe('Maria Popescu a sunat.')
     // Inverted order of one declared person is still that person.
-    expect(session.redact('Popescu Ion a sunat.').report.tokensUsed[0]).toBe(known[0])
+    expect(session.vault.byToken(session.redact('Popescu Ion a sunat.').report.tokensUsed[0]!)!.token).toBe(known[0])
   })
 
   it('does not split company names', () => {
@@ -108,7 +109,7 @@ describe('name parts', () => {
     it('keeps a part unique to one person on that person', () => {
       const session = shared.session()
       const full = session.redact('Ion Popescu').report.tokensUsed[0]!
-      expect(session.redact('Popescului').report.tokensUsed[0]).toBe(full)
+      expect(session.vault.byToken(session.redact('Popescului').report.tokensUsed[0]!)!.token).toBe(full)
     })
   })
 })

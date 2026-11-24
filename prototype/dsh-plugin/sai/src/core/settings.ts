@@ -117,7 +117,16 @@ function resolveLanguages(raw: readonly string[] | undefined, problems: Settings
 
 /** Verifier settings with defaults; a non-local address or an out-of-range number is refused. */
 function resolveVerifier(raw: Partial<VerifierSettings> | undefined, problems: SettingsProblems): VerifierSettings {
-  const settings = { ...DEFAULT_VERIFIER, enabled: raw?.enabled === true }
+  const settings: VerifierSettings = { ...DEFAULT_VERIFIER, enabled: raw?.enabled === true }
+  if (raw?.mode !== undefined) {
+    if (raw.mode === 'lowercase' || raw.mode === 'all') settings.mode = raw.mode
+    else problems.push(`unknown verifier mode "${String(raw.mode)}"; using "lowercase"`)
+  }
+  if (raw?.descriptions !== undefined && raw.descriptions !== null && typeof raw.descriptions === 'object') {
+    settings.descriptions = Object.fromEntries(Object.entries(raw.descriptions)
+      .filter(([classId, text]) => typeof text === 'string' && text.trim().length > 0 && /^[A-Za-z][A-Za-z0-9_]*$/.test(classId))
+      .map(([classId, text]) => [classId.toUpperCase(), (text as string).trim()]))
+  }
   if (raw?.url !== undefined && raw.url.trim() !== '') {
     if (isLoopbackUrl(raw.url.trim())) settings.url = raw.url.trim()
     else problems.push('the verifier address must be on this computer (127.0.0.1, ::1, or localhost); using the default')

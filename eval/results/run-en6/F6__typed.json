@@ -1,0 +1,19 @@
+{
+  "case": "F6",
+  "category": "F. Impossible",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Is the IBAN GB82 WEST 1234 5698 7654 32 valid? Check the check digits.",
+      "raw": "I cannot validate the IBAN because `⟦IBAN_1⟧` is a placeholder, not an actual IBAN string. To check the check digits, I need the full, real IBAN (e.g., \"DE89370400440532013000\").\n\nPlease provide the actual IBAN you'd like me to verify.",
+      "rawReasoning": "The user is asking me to validate an IBAN and check its check digits. The IBAN is given as a placeholder ⟦IBAN_1⟧. I need to treat this placeholder as the real value it stands for, but I don't know what the actual IBAN is. I cannot validate an IBAN without knowing the actual digits. I should explain that I need the actual IBAN to validate it, or ask the user to provide the real IBAN (not the placeholder). However, the instructions say: \"Treat each placeholder as the real value it stands for.\" That means I should assume ⟦IBAN_1⟧ is the actual IBAN string. But it's a placeholder, not a real IBAN. The user likely expects me to validate the IBAN that the placeholder represents. Since I don't have the actual value, I cannot compute the check digits. I should respond that I cannot validate without the actual IBAN, or ask for the real IBAN. But the system prompt says: \"Whenever you refer to it, write the placeholder exactly as given, including the ⟦ ⟧ brackets, also inside code, file paths, and tool-call arguments.\" So I should refer to the placeholder as ⟦IBAN_1⟧. I could say: \"To validate ⟦IBAN_1⟧, I would need the actual IBAN string. Please provide the full IBAN.\" However, the user might have provided the IBAN in a previous message? This is a new conversation, no previous context. The user just asked: \"Is the IBAN ⟦IBAN_1⟧ valid? Check the check digits.\" This seems like a test or a scenario where the placeholder is meant to be replaced with a real IBAN. Since I'm an AI, I should explain that I cannot validate a placeholder. I'll respond accordingly.",
+      "restored": "I cannot validate the IBAN because `GB82 WEST 1234 5698 7654 32` is a placeholder, not an actual IBAN string. To check the check digits, I need the full, real IBAN (e.g., \"DE89370400440532013000\").\n\nPlease provide the actual IBAN you'd like me to verify.",
+      "flagged": [],
+      "ms": 8988,
+      "sent": "Is the IBAN ⟦IBAN_1⟧ valid? Check the check digits."
+    }
+  ]
+}

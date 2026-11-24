@@ -1,0 +1,19 @@
+{
+  "case": "R2",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: Nadia\nLast Name: Vantoor\nCompany: Quillon Systems",
+      "raw": "| Field      | Value          |\n|------------|----------------|\n| First Name | ⟦PERSON_1⟧     |\n| Last Name  | ⟦PERSON_1_2⟧   |\n| Company    | ⟦COMPANY_1⟧    |",
+      "rawReasoning": "The user wants a Markdown table with columns Field and Value, keeping values exactly as written including placeholders. Provide table.",
+      "restored": "| Field      | Value          |\n|------------|----------------|\n| First Name | Nadia     |\n| Last Name  | Vantoor   |\n| Company    | Quillon Systems    |",
+      "flagged": [],
+      "ms": 2423,
+      "sent": "Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: ⟦PERSON_1⟧\nLast Name: ⟦PERSON_1_2⟧\nCompany: ⟦COMPANY_1⟧"
+    }
+  ]
+}

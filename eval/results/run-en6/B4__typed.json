@@ -1,0 +1,37 @@
+{
+  "case": "B4",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Remember: Emily Clark is Nordic Farms' lawyer, and David Walker is Greenfield Bank's auditor.",
+      "raw": "Understood. ⟦PERSON_1⟧ = ⟦COMPANY_1⟧'s lawyer, and ⟦PERSON_2⟧ = ⟦COMPANY_2⟧'s auditor. I'll use these placeholders exactly as given going forward.",
+      "rawReasoning": "The user is providing context about two people:\n- ⟦PERSON_1⟧ is ⟦COMPANY_1⟧'s lawyer\n- ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor\n\nI should acknowledge this information and be ready to use these placeholders correctly in future responses.",
+      "restored": "Understood. Emily Clark = Nordic Farms's lawyer, and David Walker = Greenfield Bank's auditor. I'll use these placeholders exactly as given going forward.",
+      "flagged": [],
+      "ms": 4574,
+      "sent": "Remember: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧' lawyer, and ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor."
+    },
+    {
+      "user": "Who is Nordic Farms' lawyer?",
+      "raw": "⟦PERSON_1⟧",
+      "rawReasoning": "The user is asking who is COMPANY_1's lawyer. According to the previous message, PERSON_1 is COMPANY_1's lawyer. So the answer is PERSON_1. I should use the placeholder exactly as given, including the brackets.",
+      "restored": "Emily Clark",
+      "flagged": [],
+      "ms": 2251,
+      "sent": "Who is ⟦COMPANY_1⟧' lawyer?"
+    },
+    {
+      "user": "And who audits Greenfield Bank? Answer with the full name.",
+      "raw": "⟦PERSON_2⟧",
+      "rawReasoning": "The user is asking for the full name of who audits COMPANY_2. According to the earlier instruction, PERSON_2 is COMPANY_2's auditor. The user wants the full name, but we only have the placeholder PERSON_2. We should answer with the placeholder exactly as given, including the brackets. The user said \"Answer with the full name.\" But the full name is represented by the placeholder. We must output the placeholder exactly. So answer: ⟦PERSON_2⟧.",
+      "restored": "David Walker",
+      "flagged": [],
+      "ms": 3727,
+      "sent": "And who audits ⟦COMPANY_2⟧? Answer with the full name."
+    }
+  ]
+}

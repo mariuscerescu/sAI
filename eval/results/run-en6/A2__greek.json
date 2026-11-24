@@ -1,0 +1,19 @@
+{
+  "case": "A2",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "John Smith and Mary Johnson work at Acme Logistics. Smith is the director, Johnson is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "raw": "**χ′** (the director) typically signs invoices, as they hold the authority to authorize payments. The accountant (**ρ′**) usually prepares them.",
+      "rawReasoning": "The user is asking about who signs invoices at a company η where χ and ρ work. χ′ is the director, ρ′ is the accountant. The question asks who signs invoices \"in your opinion\" and to answer using their names.\n\nTypically, invoices are signed by someone with authority - often the director or an authorized signatory. The accountant (ρ′) might prepare them, but the director (χ′) would typically sign/authorize them. However, this can vary by company policy.\n\nThe user wants me to answer using \"their names\" - meaning the Greek letters as given. So I should use χ′ and ρ′.\n\nI think the most reasonable answer is that the director (χ′) signs invoices, as they have the authority. But I should state it as my opinion.",
+      "restored": "**Smith** (the director) typically signs invoices, as they hold the authority to authorize payments. The accountant (**Johnson**) usually prepares them.",
+      "flagged": [],
+      "ms": 12046,
+      "sent": "χ and ρ work at η. χ′ is the director, ρ′ is the accountant. Who signs the invoices, in your opinion? Answer using their names."
+    }
+  ]
+}

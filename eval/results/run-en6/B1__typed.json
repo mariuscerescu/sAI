@@ -1,0 +1,19 @@
+{
+  "case": "B1",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Org chart: John Smith runs Acme. Mary Johnson reports to Smith. David Walker and Emily Clark report to Johnson. Victor Hale reports to Walker. Who is exactly two levels below Smith? Draw the org chart as text.",
+      "raw": "**Answer:** ⟦PERSON_3⟧ and ⟦PERSON_4⟧ are exactly two levels below ⟦PERSON_1_2⟧.\n\n**Org chart (text):**\n\n```\n⟦PERSON_1⟧ (runs ⟦COMPANY_1⟧)\n└── ⟦PERSON_2⟧ (reports to ⟦PERSON_1_2⟧)\n    ├── ⟦PERSON_3⟧ (reports to ⟦PERSON_2_2⟧)\n    │   └── Victor Hale (reports to ⟦PERSON_3_2⟧)\n    └── ⟦PERSON_4⟧ (reports to ⟦PERSON_2_2⟧)\n```",
+      "rawReasoning": "The user gives an org chart description with placeholders. I need to determine who is exactly two levels below ⟦PERSON_1_2⟧ (which is the same person as ⟦PERSON_1⟧). Then draw the org chart as text.\n\nLet's parse the relationships:\n\n- ⟦PERSON_1⟧ runs ⟦COMPANY_1⟧. So ⟦PERSON_1⟧ is the top (CEO/owner).\n- ⟦PERSON_2⟧ reports to ⟦PERSON_1_2⟧. Since ⟦PERSON_1_2⟧ is another written form of ⟦PERSON_1⟧, ⟦PERSON_2⟧ reports to ⟦PERSON_1⟧. So ⟦PERSON_2⟧ is one level below ⟦PERSON_1⟧.\n- ⟦PERSON_3⟧ and ⟦PERSON_4⟧ report to ⟦PERSON_2_2⟧. ⟦PERSON_2_2⟧ is another written form of ⟦PERSON_2⟧. So ⟦PERSON_3⟧ and ⟦PERSON_4⟧ report to ⟦PERSON_2⟧. They are two levels below ⟦PERSON_1⟧.\n- Victor Hale reports to ⟦PERSON_3_2⟧. ⟦PERSON_3_2⟧ is another written form of ⟦PERSON_3⟧. So Victor Hale reports to ⟦PERSON_3⟧. That makes Victor Hale three levels below ⟦PERSON_1⟧.\n\nThe question: \"Who is exactly two levels below ⟦PERSON_1_2⟧?\" That would be ⟦PERSON_3⟧ and ⟦PERSON_4⟧.\n\nNow draw the org chart as text. Use indentation or tree structure.\n\nI'll produce a text representation:\n\n⟦PERSON_1⟧ (runs ⟦COMPANY_1⟧)\n└── ⟦PERSON_2⟧ (reports to ⟦PERSON_1_2⟧)\n    ├── ⟦PERSON_3⟧ (reports to ⟦PERSON_2_2⟧)\n    │   └── Victor Hale (reports to ⟦PERSON_3_2⟧)\n    └── ⟦PERSON_4⟧ (reports to ⟦PERSON_2_2⟧)\n\nAlternatively, use simple lines.\n\nI'll answer: The people exactly two levels below ⟦PERSON_1_2⟧ are ⟦PERSON_3⟧ and ⟦PERSON_4⟧. Then provide the org chart.",
+      "restored": "**Answer:** David Walker and Emily Clark are exactly two levels below Smith.\n\n**Org chart (text):**\n\n```\nJohn Smith (runs Acme)\n└── Mary Johnson (reports to Smith)\n    ├── David Walker (reports to Johnson)\n    │   └── Victor Hale (reports to Walker)\n    └── Emily Clark (reports to Johnson)\n```",
+      "flagged": [],
+      "ms": 11664,
+      "sent": "Org chart: ⟦PERSON_1⟧ runs ⟦COMPANY_1⟧. ⟦PERSON_2⟧ reports to ⟦PERSON_1_2⟧. ⟦PERSON_3⟧ and ⟦PERSON_4⟧ report to ⟦PERSON_2_2⟧. Victor Hale reports to ⟦PERSON_3_2⟧. Who is exactly two levels below ⟦PERSON_1_2⟧? Draw the org chart as text."
+    }
+  ]
+}

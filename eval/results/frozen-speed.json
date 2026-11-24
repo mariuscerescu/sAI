@@ -1,0 +1,205 @@
+{
+ "part": "calibration",
+ "rule": "SPEC.md section 10",
+ "targetP95Ms": 1000,
+ "all": {
+  "messages": 2083,
+  "withCall": 2083,
+  "questions": 6436,
+  "failedCalls": 0,
+  "withCallMs": {
+   "count": 2083,
+   "medianMs": 346,
+   "p90Ms": 793,
+   "p95Ms": 1026,
+   "p99Ms": 1686,
+   "maxMs": 2973
+  },
+  "allMessagesMs": {
+   "count": 2083,
+   "medianMs": 346,
+   "p90Ms": 793,
+   "p95Ms": 1026,
+   "p99Ms": 1686,
+   "maxMs": 2973
+  },
+  "serviceCallMs": {
+   "count": 2083,
+   "medianMs": 345,
+   "p90Ms": 792,
+   "p95Ms": 1026,
+   "p99Ms": 1685,
+   "maxMs": 2971
+  },
+  "meetsTarget": false,
+  "byQuestions": {
+   "1": {
+    "count": 501,
+    "medianMs": 231,
+    "p90Ms": 282,
+    "p95Ms": 296,
+    "p99Ms": 379,
+    "maxMs": 406
+   },
+   "2-3": {
+    "count": 900,
+    "medianMs": 325,
+    "p90Ms": 466,
+    "p95Ms": 516,
+    "p99Ms": 580,
+    "maxMs": 682
+   },
+   "4-7": {
+    "count": 584,
+    "medianMs": 586,
+    "p90Ms": 896,
+    "p95Ms": 997,
+    "p99Ms": 1239,
+    "maxMs": 1509
+   },
+   "8-15": {
+    "count": 97,
+    "medianMs": 1351,
+    "p90Ms": 1945,
+    "p95Ms": 2155,
+    "p99Ms": 2574,
+    "maxMs": 2574
+   },
+   "16+": {
+    "count": 1,
+    "medianMs": 2973,
+    "p90Ms": 2973,
+    "p95Ms": 2973,
+    "p99Ms": 2973,
+    "maxMs": 2973
+   }
+  },
+  "slowest": [
+   {
+    "ms": 2973,
+    "questions": 22,
+    "chars": 1766
+   },
+   {
+    "ms": 2574,
+    "questions": 13,
+    "chars": 1769
+   },
+   {
+    "ms": 2357,
+    "questions": 14,
+    "chars": 1701
+   },
+   {
+    "ms": 2298,
+    "questions": 15,
+    "chars": 695
+   },
+   {
+    "ms": 2193,
+    "questions": 11,
+    "chars": 1542
+   }
+  ]
+ },
+ "lowercase": {
+  "messages": 2083,
+  "withCall": 1237,
+  "questions": 2608,
+  "failedCalls": 0,
+  "withCallMs": {
+   "count": 1237,
+   "medianMs": 301,
+   "p90Ms": 676,
+   "p95Ms": 923,
+   "p99Ms": 1405,
+   "maxMs": 2483
+  },
+  "allMessagesMs": {
+   "count": 2083,
+   "medianMs": 227,
+   "p90Ms": 539,
+   "p95Ms": 705,
+   "p99Ms": 1337,
+   "maxMs": 2483
+  },
+  "serviceCallMs": {
+   "count": 1237,
+   "medianMs": 301,
+   "p90Ms": 675,
+   "p95Ms": 922,
+   "p99Ms": 1404,
+   "maxMs": 2481
+  },
+  "meetsTarget": true,
+  "byQuestions": {
+   "1": {
+    "count": 648,
+    "medianMs": 245,
+    "p90Ms": 311,
+    "p95Ms": 329,
+    "p99Ms": 353,
+    "maxMs": 384
+   },
+   "2-3": {
+    "count": 410,
+    "medianMs": 378,
+    "p90Ms": 542,
+    "p95Ms": 575,
+    "p99Ms": 633,
+    "maxMs": 679
+   },
+   "4-7": {
+    "count": 148,
+    "medianMs": 705,
+    "p90Ms": 1058,
+    "p95Ms": 1105,
+    "p99Ms": 1155,
+    "maxMs": 1192
+   },
+   "8-15": {
+    "count": 31,
+    "medianMs": 1381,
+    "p90Ms": 1543,
+    "p95Ms": 2306,
+    "p99Ms": 2483,
+    "maxMs": 2483
+   },
+   "16+": {
+    "count": 0,
+    "medianMs": 0,
+    "p90Ms": 0,
+    "p95Ms": 0,
+    "p99Ms": 0,
+    "maxMs": 0
+   }
+  },
+  "slowest": [
+   {
+    "ms": 2483,
+    "questions": 14,
+    "chars": 1736
+   },
+   {
+    "ms": 2306,
+    "questions": 14,
+    "chars": 1766
+   },
+   {
+    "ms": 1624,
+    "questions": 8,
+    "chars": 1199
+   },
+   {
+    "ms": 1543,
+    "questions": 9,
+    "chars": 1538
+   },
+   {
+    "ms": 1534,
+    "questions": 9,
+    "chars": 1657
+   }
+  ]
+ }
+}

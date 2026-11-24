@@ -1,0 +1,19 @@
+{
+  "case": "A4",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write the possessive and the plural forms of: John Smith, Mary Johnson, Acme Logistics. Give an example sentence for each.",
+      "raw": "**ψ (psi)**  \n- Possessive: **ψ's**  \n- Plural: **ψs** (or **psis**)  \n- Example: *The **ψ's** wavefunction collapsed upon measurement.*  \n- Example: *The equation contains three **ψs** representing different states.*\n\n**ι (iota)**  \n- Possessive: **ι's**  \n- Plural: **ιs** (or **iotas**)  \n- Example: *The **ι's** dot was barely visible in the manuscript.*  \n- Example: *He didn't care an **ι** about the outcome, let alone two **ιs**.*\n\n**χ (chi)**  \n- Possessive: **χ's**  \n- Plural: **χs** (or **chis**)  \n- Example: *The **χ's** distribution has two degrees of freedom.*  \n- Example: *The fit yielded several **χs** with p‑values below 0.05.*",
+      "rawReasoning": "The user wants possessive and plural forms of three Greek letters: ψ, ι, χ. They want example sentences for each.\n\nI need to provide:\n1. Possessive form of ψ, ι, χ\n2. Plural form of ψ, ι, χ\n3. Example sentence for each form (so 6 sentences total? Or 3 sentences showing both? Let me re-read: \"Give an example sentence for each.\" Could mean for each form, or for each letter. I'll provide for each letter both forms in sentences.)\n\nFor Greek letters used as symbols/names, the possessive is typically formed with 's (apostrophe s) and plural with just s (or es for those ending in s sound).\n\nψ (psi) - ends in 'i' sound, plural: psis? Or psi's? Typically \"psis\" or \"ψs\". Possessive: ψ's.\nι (iota) - ends in 'a' sound, plural: iotas. Possessive: ι's.\nχ (chi) - ends in 'i' sound, plural: chis. Possessive: χ's.\n\nI'll write them with the Greek letters as requested.",
+      "restored": "**John Smith (psi)**  \n- Possessive: **John Smith's**  \n- Plural: **ψs** (or **psis**)  \n- Example: *The **John Smith's** wavefunction collapsed upon measurement.*  \n- Example: *The equation contains three **ψs** representing different states.*\n\n**Mary Johnson (iota)**  \n- Possessive: **Mary Johnson's**  \n- Plural: **ιs** (or **iotas**)  \n- Example: *The **Mary Johnson's** dot was barely visible in the manuscript.*  \n- Example: *He didn't care an **Mary Johnson** about the outcome, let alone two **ιs**.*\n\n**Acme Logistics (chi)**  \n- Possessive: **Acme Logistics's**  \n- Plural: **χs** (or **chis**)  \n- Example: *The **Acme Logistics's** distribution has two degrees of freedom.*  \n- Example: *The fit yielded several **χs** with p‑values below 0.05.*",
+      "flagged": [],
+      "ms": 9134,
+      "sent": "Write the possessive and the plural forms of: ψ, ι, χ. Give an example sentence for each."
+    }
+  ]
+}

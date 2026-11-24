@@ -1,0 +1,41 @@
+{
+ "part": "calibration",
+ "note": "Source labels judged wrong one by one after the calibration run. Leaks on them are reported apart. This list never applies to the final or reserve part.",
+ "cases": [
+  {
+   "id": "n-4373ca8ea715418190722466fe22159d",
+   "variant": "as-written",
+   "start": 159,
+   "word": "Recipient",
+   "reason": "field label or template placeholder ('Recipient Information', 'Recipient Name'), not a person"
+  },
+  {
+   "id": "n-4373ca8ea715418190722466fe22159d",
+   "variant": "as-written",
+   "start": 192,
+   "word": "Recipient",
+   "reason": "field label or template placeholder ('Recipient Information', 'Recipient Name'), not a person"
+  },
+  {
+   "id": "n-c88d2bd74fa14d50815be46cef5f836c",
+   "variant": "as-written",
+   "start": 74,
+   "word": "First",
+   "reason": "form field label ('First Name:'), not a person"
+  },
+  {
+   "id": "n-c88d2bd74fa14d50815be46cef5f836c",
+   "variant": "as-written",
+   "start": 94,
+   "word": "Last",
+   "reason": "form field label ('Last Name:'), not a person"
+  },
+  {
+   "id": "n-5a42bd6f45c14258a51d4c1069b1312c",
+   "variant": "as-written",
+   "start": 535,
+   "word": "Viewer",
+   "reason": "generic role in a comment list ('Viewer 1:'), not a person"
+  }
+ ]
+}

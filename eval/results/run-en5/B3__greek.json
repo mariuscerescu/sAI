@@ -1,0 +1,19 @@
+{
+  "case": "B3",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Smith lent Johnson $5,000, Johnson gave Walker $2,000, and Walker paid Smith back $1,500. Who owes whom, and how much, at the end? Make a table.",
+      "raw": "| Debtor | Creditor | Amount |\n| :--- | :--- | :--- |\n| ζ | κ | $3,500 |\n| β | ζ | $500 |",
+      "rawReasoning": "The user wants me to track the debts between three parties: κ, ζ, and β.\n\nInitial state: All balances are 0.\n\nTransaction 1: κ lent ζ $5,000.\n- κ is owed $5,000 by ζ.\n- ζ owes κ $5,000.\n- Balances: κ: +5000, ζ: -5000, β: 0.\n\nTransaction 2: ζ gave β $2,000.\n- This implies ζ lent β $2,000 (or paid β on behalf of someone, but usually \"gave\" in this context means a loan/transfer of debt). Let's assume ζ lent β $2,000.\n- ζ is owed $2,000 by β.\n- β owes ζ $2,000.\n- Balances: κ: +5000, ζ: -5000 + 2000 = -3000, β: -2000.\n\nTransaction 3: β paid κ back $1,500.\n- β gives $1,500 to κ.\n- This reduces β's debt (or increases β's balance) and reduces κ's credit (or decreases κ's balance).\n- Wait, β didn't originally owe κ directly. β owes ζ. κ is owed by ζ.\n- If β pays κ directly, this likely settles part of the chain.\n- Let's look at net positions.\n- κ net: +5000 (owed by ζ) - 1500 (received from β) = +3500 still owed to κ? No.\n- If β pays κ $1500, κ has received $1500 cash.\n- κ lent $5000 to ζ. κ received $1500 from β. Net cash flow for κ: -5000 + 1500 = -3500. So κ is down $3500 cash. Someone owes κ $3500.\n- ζ received $5000 from κ. ζ gave $2000 to β. Net cash flow for ζ: +5000 - 2000 = +3000. ζ is up $3000 cash. ζ owes someone $3000.\n- β received $2000 from ζ. β paid $1500 to κ. Net cash flow for β: +2000 - 1500 = +500. β is up $500 cash. β owes someone $500.\n\nLet's verify sum: -3500 (κ) + 3000 (ζ) + 500 (β) = 0. Correct.\n\nSo final obligations:\n- ζ owes κ $3,500? Wait.\n- κ is owed $3,500 total.\n- ζ owes $3,000 total.\n- β owes $500 total.\n- Total owed = 3500. Total owing = 3500.\n\nWho pays whom?\nζ originally owes κ $5000.\nβ originally owes ζ $2000.\nβ paid κ $1500.\n\nSimplify:\nβ paying κ $1500 effectively reduces ζ's debt to κ by $1500 (since β owed ζ, and ζ owed κ).\nSo ζ now owes κ: 5000 - 1500 = $3500.\nβ still owes ζ: $2000.\nBut β paid κ $1500 directly. That payment covers part of β's debt to ζ (which flows to κ).\nSo β's remaining debt to ζ is 2000 - 1500 = $500.\nζ's debt to κ is $3500.\n\nFinal state:\nζ owes κ $3,500.\nβ owes ζ $500.\n\nTable:\n| Debtor | Creditor | Amount |\n| :--- | :--- | :--- |\n| ζ | κ | $3,500 |\n| β | ζ | $500 |",
+      "restored": "| Debtor | Creditor | Amount |\n| :--- | :--- | :--- |\n| Johnson | Smith | $3,500 |\n| Walker | Johnson | $500 |",
+      "flagged": [],
+      "ms": 18186,
+      "sent": "κ lent ζ $5,000, ζ gave β $2,000, and β paid κ back $1,500. Who owes whom, and how much, at the end? Make a table."
+    }
+  ]
+}

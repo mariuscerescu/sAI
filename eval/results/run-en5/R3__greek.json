@@ -1,0 +1,19 @@
+{
+  "case": "R3",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write a two-sentence formal email to Ms. Vantoor from Elias Brandt at Pellham Energy Ltd about a delayed invoice. Greet the recipient by surname and sign with the full name.",
+      "raw": "Dear Ms. `ζ`,\n\nWe regret to inform you that invoice #12345 remains unpaid past its due date, and we kindly request prompt settlement. Please let us know if you require any additional documentation to facilitate payment.\n\n`μ`",
+      "rawReasoning": "The user wants a two-sentence formal email. They mention \"Ms. ζ from μ at λ\". So recipient is Ms. ζ (surname ζ). Sender is μ at λ (maybe name μ, organization λ). Need to greet by surname (Ms. ζ). Sign with full name (presumably μ's full name? But we only have μ as a term. Could be \"μ\" is the sender's name. Use that as full name. Probably \"μ\" is the sender's name. We'll write: \"Dear Ms. ζ,\" then two sentences: first about delayed invoice, second about next steps. Then sign \"μ\". Ensure formal tone. Use code formatting for the Greek letters? The instruction: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" So we need to write the Greek letters inside code formatting (backticks). So \"Ms. `ζ`\" and sign \"`μ`\". Also \"from `μ` at `λ`\" maybe not needed in email body. But we can mention sender's affiliation. Probably include \"from `μ` at `λ`\" in signature line? But they said sign with full name. So signature: \"`μ`\". Probably include title? But keep simple.\n\nWrite email:\n\nSubject: Delayed Invoice\n\nBut they didn't ask for subject. Just two-sentence email. Provide greeting and sign.\n\nWe'll produce:\n\nDear Ms. `ζ`,\n\nWe regret to inform you that invoice #12345 remains unpaid past its due date, and we kindly request prompt settlement. Please let us know if you require any additional documentation to facilitate payment.\n\n`μ`\n\nThat's two sentences. Ensure it's formal. Use proper punctuation. Provide as plain text.",
+      "restored": "Dear Ms. `Vantoor`,\n\nWe regret to inform you that invoice #12345 remains unpaid past its due date, and we kindly request prompt settlement. Please let us know if you require any additional documentation to facilitate payment.\n\n`Elias Brandt`",
+      "flagged": [],
+      "ms": 11731,
+      "sent": "Write a two-sentence formal email to Ms. ζ from μ at λ about a delayed invoice. Greet the recipient by surname and sign with the full name."
+    }
+  ]
+}

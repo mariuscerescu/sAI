@@ -1,0 +1,21 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirmation – Thursday Meeting with Mr. ⟦PERSON_1⟧ (⟦COMPANY_1⟧)  \n\nDear Mr. ⟦PERSON_1⟧,\n\nI’m writing to confirm our meeting on **Thursday** to discuss **⟦PROJECT_1⟧**.  \n\n**Date & Time:** Thursday, [insert date] at [insert time]  \n**Location / Link:** [office address or video‑call link]  \n\nPlease let me know if anything needs to be adjusted. I look forward to our conversation.\n\nBest regards,  \n[Your Name]  \n[Your Title]  \n[Your Company]  \n[Phone] | [Email]",
+      "rawReasoning": "The user wants a short, polite email confirming a Thursday meeting about PROJECT_1 with Mr. PERSON_1 from COMPANY_1. Use placeholders exactly as given. Should be concise. Write email with greeting, confirmation, details, closing. Ensure placeholders are kept with brackets.",
+      "restored": "Subject: Confirmation – Thursday Meeting with Mr. Smith (Acme)  \n\nDear Mr. Smith,\n\nI’m writing to confirm our meeting on **Thursday** to discuss **Project Orion**.  \n\n**Date & Time:** Thursday, [insert date] at [insert time]  \n**Location / Link:** [office address or video‑call link]  \n\nPlease let me know if anything needs to be adjusted. I look forward to our conversation.\n\nBest regards,  \n[Your Name]  \n[Your Title]  \n[Your Company]  \n[Phone] | [Email]",
+      "flagged": [
+        "PROJECT:Project Orion (project)"
+      ],
+      "ms": 6441,
+      "sent": "Write a short, polite email to Mr. ⟦PERSON_1⟧ from ⟦COMPANY_1⟧ confirming our Thursday meeting about ⟦PROJECT_1⟧."
+    }
+  ]
+}

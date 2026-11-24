@@ -1,0 +1,19 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "⟦PERSON_1⟧ picked the rose, and it was from Will Baker's garden.",
+      "rawReasoning": "The user is asking a straightforward question about who picked a rose and from whose garden, based on the sentence provided. The sentence states: \"⟦PERSON_1⟧ picked a red rose from Will Baker's garden.\"\n\nSo the answer is: ⟦PERSON_1⟧ picked the rose, and it was from Will Baker's garden.\n\nI should answer concisely.",
+      "restored": "Rose Walker picked the rose, and it was from Will Baker's garden.",
+      "flagged": [],
+      "ms": 3456,
+      "sent": "⟦PERSON_1⟧ picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?"
+    }
+  ]
+}

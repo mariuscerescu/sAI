@@ -1,0 +1,19 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirmation – Thursday Meeting Regarding σ\n\nDear Mr. ν,\n\nThis email confirms our meeting scheduled for Thursday to discuss σ. Please let me know if any adjustments are needed.\n\nBest regards,  \nω",
+      "rawReasoning": "The user wants a short, polite email to Mr. ν from ω confirming a Thursday meeting about σ. I need to use the Greek letters exactly as given: ν, ω, σ. They should be in code format when referred to. The email should be from ω to Mr. ν. I'll write a concise email.",
+      "restored": "Subject: Confirmation – Thursday Meeting Regarding Project Orion\n\nDear Mr. Smith,\n\nThis email confirms our meeting scheduled for Thursday to discuss Project Orion. Please let me know if any adjustments are needed.\n\nBest regards,  \nAcme",
+      "flagged": [],
+      "ms": 1932,
+      "sent": "Write a short, polite email to Mr. ν from ω confirming our Thursday meeting about σ."
+    }
+  ]
+}

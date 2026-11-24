@@ -1,0 +1,19 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "**Step‑by‑step calculation**\n\n1. **Direct ownership:**  \n   - ⟦COMPANY_1⟧ (which is the same entity as ⟦COMPANY_1_2⟧) owns **30 %** of ⟦COMPANY_2⟧.\n\n2. **Ownership of the subsidiary:**  \n   - ⟦COMPANY_2⟧ owns **60 %** of ⟦COMPANY_3⟧.\n\n3. **Indirect ownership:**  \n   - Multiply the two percentages:  \n     \\(0.30 \\times 0.60 = 0.18\\) → **18 %**.\n\n**Result:** ⟦COMPANY_1_2⟧ indirectly controls **18 %** of ⟦COMPANY_3⟧.",
+      "rawReasoning": "The user asks: \"⟦COMPANY_1⟧ bought 30% of ⟦COMPANY_2⟧. ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧. What share of ⟦COMPANY_3⟧ does ⟦COMPANY_1_2⟧ control indirectly? Explain step by step.\"\n\nWe need to compute indirect ownership. Company1 owns 30% of Company2. Company2 owns 60% of Company3. So Company1's indirect ownership in Company3 = 30% * 60% = 0.30 * 0.60 = 0.18 = 18%.\n\nBut note: The placeholder for Company1 is ⟦COMPANY_1⟧ and later they ask about ⟦COMPANY_1_2⟧. The instruction says: \"A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧\". So ⟦COMPANY_1_2⟧ is the same as ⟦COMPANY_1⟧. So answer: 18%.\n\nExplain step by step.\n\nWe must output in English, concisely. Use placeholders exactly as given.\n\nThus answer: ⟦COMPANY_1_2⟧ controls 18% of ⟦COMPANY_3⟧ indirectly.\n\nWe'll write step-by-step explanation.",
+      "restored": "**Step‑by‑step calculation**\n\n1. **Direct ownership:**  \n   - Acme Logistics (which is the same entity as Acme) owns **30 %** of Nordic Farms.\n\n2. **Ownership of the subsidiary:**  \n   - Nordic Farms owns **60 %** of Greenfield Bank.\n\n3. **Indirect ownership:**  \n   - Multiply the two percentages:  \n     \\(0.30 \\times 0.60 = 0.18\\) → **18 %**.\n\n**Result:** Acme indirectly controls **18 %** of Greenfield Bank.",
+      "flagged": [],
+      "ms": 8191,
+      "sent": "⟦COMPANY_1⟧ bought 30% of ⟦COMPANY_2⟧. ⟦COMPANY_2⟧ owns 60% of ⟦COMPANY_3⟧. What share of ⟦COMPANY_3⟧ does ⟦COMPANY_1_2⟧ control indirectly? Explain step by step."
+    }
+  ]
+}

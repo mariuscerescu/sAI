@@ -1,0 +1,19 @@
+{
+  "case": "R4",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Return only JSON with the keys full_name, first_name and last_name for this contact: The contact is Elias Brandt. Colleagues call this person Elias, and the contract says Brandt.",
+      "raw": "{\n  \"full_name\": \"⟦PERSON_1⟧\",\n  \"first_name\": \"⟦PERSON_1_2⟧\",\n  \"last_name\": \"⟦PERSON_1_3⟧\"\n}",
+      "rawReasoning": "The user wants me to return JSON with keys full_name, first_name, and last_name for a contact. The contact is given as ⟦PERSON_1⟧. Colleagues call this person ⟦PERSON_1_2⟧, and the contract says ⟦PERSON_1_3⟧. I need to infer which placeholder corresponds to full name, first name, last name. The user says \"The contact is ⟦PERSON_1⟧.\" That might be the full name. \"Colleagues call this person ⟦PERSON_1_2⟧\" - that could be a nickname or first name. \"the contract says ⟦PERSON_1_3⟧\" - that could be the legal name, maybe full name again. But we need to output JSON with full_name, first_name, last_name. Since we don't know the actual values, we must use the placeholders as given. The instruction: \"Treat each placeholder as the real value it stands for. Whenever you refer to it, write the placeholder exactly as given, including the ⟦ ⟧ brackets, also inside code, file paths, and tool-call arguments. Never guess what a placeholder stands for.\"\n\nThus we need to assign each placeholder to a key. But we don't know which is which. The user says: \"Return only JSON with the keys full_name, first_name and last_name for this contact: The contact is ⟦PERSON_1⟧. Colleagues call this person ⟦PERSON_1_2⟧, and the contract says ⟦PERSON_1_3⟧.\"\n\nWe need to decide mapping. Probably ⟦PERSON_1⟧ is the full name (as \"The contact is ...\"). ⟦PERSON_1_2⟧ is what colleagues call them, likely first name (or nickname). ⟦PERSON_1_3⟧ is what the contract says, likely full legal name (maybe same as full name). But we need first_name and last_name separately. Could be that ⟦PERSON_1_2⟧ is first name, and ⟦PERSON_1_3⟧ is last name? Or maybe ⟦PERSON_1⟧ is full name, ⟦PERSON_1_2⟧ is first name, ⟦PERSON_1_3⟧ is last name. The user didn't specify. However, typical pattern: \"The contact is John Doe. Colleagues call this person John, and the contract says John Doe.\" But here placeholders are different. The instruction: \"A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\" That suggests ⟦PERSON_1_2⟧ and ⟦PERSON_1_3⟧ are different written forms of the same value as ⟦PERSON_1⟧. For example, ⟦PERSON_1⟧ could be \"John Doe\", ⟦PERSON_1_2⟧ could be \"John\", ⟦PERSON_1_3⟧ could be \"Doe\". Or maybe ⟦PERSON_1_2⟧ is \"John Doe\" (full name) and ⟦PERSON_1_3⟧ is \"J. Doe\". But the description: \"another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\" This implies that ⟦PERSON_1_2⟧ and ⟦PERSON_1_3⟧ are components of ⟦PERSON_1⟧. So ⟦PERSON_1⟧ is the full name, ⟦PERSON_1_2⟧ is the first name, ⟦PERSON_1_3⟧ is the last name. That seems plausible.\n\nThus we can output JSON with full_name: ⟦PERSON_1⟧, first_name: ⟦PERSON_1_2⟧, last_name: ⟦PERSON_1_3⟧.\n\nWe must output only JSON, no extra text.\n\nLet's produce that.",
+      "restored": "{\n  \"full_name\": \"Elias Brandt\",\n  \"first_name\": \"Elias\",\n  \"last_name\": \"Brandt\"\n}",
+      "flagged": [],
+      "ms": 16474,
+      "sent": "Return only JSON with the keys full_name, first_name and last_name for this contact: The contact is ⟦PERSON_1⟧. Colleagues call this person ⟦PERSON_1_2⟧, and the contract says ⟦PERSON_1_3⟧."
+    }
+  ]
+}

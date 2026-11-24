@@ -1,0 +1,19 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "`ρ` picked the rose from Will Baker's garden.",
+      "rawReasoning": "The user is asking about a scenario where \"ρ picked a red rose from Will Baker's garden.\" They want to know who picked the rose and from whose garden.\n\nLooking at the text: \"ρ picked a red rose from Will Baker's garden.\"\n\nThe Greek letter ρ (rho) is used here as a placeholder for a name. According to the system prompt, I should treat each such letter as the real term it stands for, and write the letter exactly as given, also inside code.\n\nSo the answer should be: ρ picked the rose from Will Baker's garden.\n\nI need to write ρ exactly as given, and also put it in code formatting as per instructions: \"write the letter exactly as given, also inside code, file paths, and tool-call arguments.\"\n\nSo I should write `ρ` in code formatting.",
+      "restored": "`Rose Walker` picked the rose from Will Baker's garden.",
+      "flagged": [],
+      "ms": 2861,
+      "sent": "ρ picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?"
+    }
+  ]
+}

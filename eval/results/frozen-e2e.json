@@ -1,0 +1,67 @@
+{
+ "part": "calibration",
+ "rule": "SPEC.md section 11",
+ "mode": "all",
+ "threshold": 0.2,
+ "scenarios": [
+  {
+   "name": "every field of a request",
+   "pass": true,
+   "checks": 6
+  },
+  {
+   "name": "a conversation keeps its symbols",
+   "pass": true,
+   "checks": 5
+  },
+  {
+   "name": "a name and the same word as an ordinary word",
+   "pass": true,
+   "checks": 1
+  },
+  {
+   "name": "the answer is restored, tools included",
+   "pass": true,
+   "checks": 3
+  },
+  {
+   "name": "a blocked message never reaches the provider",
+   "pass": true,
+   "checks": 2
+  },
+  {
+   "name": "the verifier is not running",
+   "pass": true,
+   "checks": 3
+  },
+  {
+   "name": "the verifier is too slow",
+   "pass": true,
+   "checks": 3
+  },
+  {
+   "name": "the verifier is off in the settings",
+   "pass": true,
+   "checks": 4
+  }
+ ],
+ "set": {
+  "messages": 2083,
+  "sent": 2066,
+  "blocked": 17,
+  "blockedSent": 0,
+  "moreThanOneCall": 0,
+  "differentFromDirect": 0,
+  "names": 5739,
+  "leaked": 0,
+  "reviewedLeaks": 5,
+  "ordinary": 1456,
+  "overMasked": 23,
+  "symbolsLeftInAnswer": 0,
+  "answerIdentical": 2065,
+  "answerDiffers": 1,
+  "errors": 0,
+  "pass": true
+ },
+ "pass": true
+}

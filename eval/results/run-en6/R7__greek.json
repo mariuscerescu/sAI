@@ -1,0 +1,19 @@
+{
+  "case": "R7",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "i talked to vantoor yesterday about the quillon invoice. repeat my sentence exactly.",
+      "raw": "i talked to σ yesterday about the β invoice.",
+      "rawReasoning": "The user wants me to repeat their sentence exactly. The sentence is: \"i talked to σ yesterday about the β invoice.\"\n\nI need to repeat it exactly as given, including the Greek letters σ and β. The user said \"repeat my sentence exactly\" so I should output the exact same text.",
+      "restored": "i talked to vantoor yesterday about the quillon invoice.",
+      "flagged": [],
+      "ms": 1925,
+      "sent": "i talked to σ yesterday about the β invoice. repeat my sentence exactly."
+    }
+  ]
+}

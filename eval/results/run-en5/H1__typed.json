@@ -1,0 +1,19 @@
+{
+  "case": "H1",
+  "category": "H. Identifiers",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type.",
+      "raw": "| Type | Value |\n|------|-------|\n| SSN | ⟦SSN_1⟧ |\n| Phone (Contractor) | ⟦PHONE_1⟧ |\n| Phone (UK Office) | ⟦PHONE_2⟧ |\n| NI Number | ⟦NINO_1⟧ |",
+      "rawReasoning": "The user wants a table with one row per item and a column for its type. They provided four items: contractor's SSN, contractor's phone, UK office phone, and NI number. Each should be a row with type and value. I need to output a table. Should I include headers? Probably \"Type\" and \"Value\". Use markdown table. Ensure placeholders are kept exactly as given. Let's create.",
+      "restored": "| Type | Value |\n|------|-------|\n| SSN | 123-45-6789 |\n| Phone (Contractor) | (212) 555-0143 |\n| Phone (UK Office) | 020 7946 0958 |\n| NI Number | AB 12 34 56 C |",
+      "flagged": [],
+      "ms": 3175,
+      "sent": "Our contractor's SSN is ⟦SSN_1⟧ and his phone is ⟦PHONE_1⟧; the UK office is on ⟦PHONE_2⟧ and his NI number is ⟦NINO_1⟧. Put these into a table with one row per item and a column for its type."
+    }
+  ]
+}

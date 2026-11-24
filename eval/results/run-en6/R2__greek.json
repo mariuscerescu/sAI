@@ -1,0 +1,19 @@
+{
+  "case": "R2",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: Nadia\nLast Name: Vantoor\nCompany: Quillon Systems",
+      "raw": "| Field      | Value |\n|------------|-------|\n| First Name | ν |\n| Last Name  | ν′ |\n| Company    | τ |",
+      "rawReasoning": "The user wants a Markdown table with columns Field and Value, keeping values exactly as written. The values are Greek letters: ν, ν′, τ. Need to output a Markdown table. Ensure values are exactly as given, including the prime symbol. Use code formatting? They said \"write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" But they didn't ask to put in code blocks; just keep values exactly as written. Probably plain text in table cells. Should we escape pipe characters? No pipes in values. Just produce table.\n\n| Field | Value |\n|-------|-------|\n| First Name | ν |\n| Last Name | ν′ |\n| Company | τ |\n\nMake sure prime is the same character (′). Use the same Unicode. Provide as markdown.",
+      "restored": "| Field      | Value |\n|------------|-------|\n| First Name | Nadia |\n| Last Name  | Vantoor |\n| Company    | Quillon Systems |",
+      "flagged": [],
+      "ms": 6647,
+      "sent": "Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: ν\nLast Name: ν′\nCompany: τ"
+    }
+  ]
+}

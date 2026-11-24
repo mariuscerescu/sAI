@@ -1,0 +1,19 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "θ′ indirectly controls **18%** of α.\n\n**Step by step:**\n\n1. θ owns 30% of ψ.\n2. ψ owns 60% of α.\n3. Indirect ownership = (θ's stake in ψ) × (ψ's stake in α)  \n   = 30% × 60%  \n   = 0.30 × 0.60  \n   = 0.18 = **18%**.",
+      "rawReasoning": "The user is asking about indirect ownership/control through a chain of ownership. Let me break this down:\n\n1. θ bought 30% of ψ (so θ owns 30% of ψ)\n2. ψ owns 60% of α (so ψ owns 60% of α)\n3. The question asks what share of α does θ′ control indirectly\n\nSince θ′ is the same entity as θ (prime notation indicates same term), θ owns 30% of ψ, and ψ owns 60% of α.\n\nThe indirect ownership of α by θ would be: 30% × 60% = 0.30 × 0.60 = 0.18 = 18%\n\nSo θ′ controls 18% of α indirectly through ψ.",
+      "restored": "Acme indirectly controls **18%** of Greenfield Bank.\n\n**Step by step:**\n\n1. Acme Logistics owns 30% of Nordic Farms.\n2. Nordic Farms owns 60% of Greenfield Bank.\n3. Indirect ownership = (Acme Logistics's stake in Nordic Farms) × (Nordic Farms's stake in Greenfield Bank)  \n   = 30% × 60%  \n   = 0.30 × 0.60  \n   = 0.18 = **18%**.",
+      "flagged": [],
+      "ms": 4315,
+      "sent": "θ bought 30% of ψ. ψ owns 60% of α. What share of α does θ′ control indirectly? Explain step by step."
+    }
+  ]
+}

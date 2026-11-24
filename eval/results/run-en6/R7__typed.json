@@ -1,0 +1,19 @@
+{
+  "case": "R7",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "i talked to vantoor yesterday about the quillon invoice. repeat my sentence exactly.",
+      "raw": "i talked to ⟦PERSON_1⟧ yesterday about the ⟦COMPANY_1⟧ invoice.",
+      "rawReasoning": "The user wants me to repeat their sentence exactly. The sentence is: \"i talked to ⟦PERSON_1⟧ yesterday about the ⟦COMPANY_1⟧ invoice.\"\n\nI need to output that exact sentence, preserving the placeholders exactly as given, including the brackets. The user said \"repeat my sentence exactly.\" So I should just output the same sentence.",
+      "restored": "i talked to vantoor yesterday about the quillon invoice.",
+      "flagged": [],
+      "ms": 3612,
+      "sent": "i talked to ⟦PERSON_1⟧ yesterday about the ⟦COMPANY_1⟧ invoice. repeat my sentence exactly."
+    }
+  ]
+}

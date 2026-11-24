@@ -1,0 +1,19 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "⟦PERSON_1⟧ works at ⟦COMPANY_1⟧; ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧.",
+      "rawReasoning": "The user is asking about where each sibling works based on the given information. Let me parse this carefully.\n\nThe statement says: \"⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧.\"\n\nSo:\n- ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister\n- ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧\n- \"her brother\" refers to ⟦PERSON_2⟧ (since ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister)\n- ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧\n\nSo the siblings are ⟦PERSON_1⟧ and ⟦PERSON_2⟧.\n- ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧\n- ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧\n\nI should answer concisely.",
+      "restored": "Mary Smith works at Nordic Farms; John Smith works at Acme.",
+      "flagged": [],
+      "ms": 3401,
+      "sent": "⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Where does each sibling work?"
+    }
+  ]
+}

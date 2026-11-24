@@ -30,6 +30,8 @@ export interface TokenStrategy {
   observe(text: string, vault: Vault): BlockCode | undefined
   /** Produce the next unused symbol for a class. */
   assign(classId: ClassId, vault: Vault): string
+  /** The n-th (from 2) symbol for another written form of the value of `token`. */
+  related(token: string, n: number): string
   /** Ranges of input text that look like this strategy's symbols. */
   literals(text: string, vault: Vault): LiteralRange[]
   /** Symbol occurrences in model output; only hits with a vault entry are restorable. */
@@ -58,6 +60,10 @@ export class TypedStrategy implements TokenStrategy {
     while (vault.byToken(`⟦${classId}_${next}⟧`) !== undefined) next++
     this.counters.set(classId, next)
     return `⟦${classId}_${next}⟧`
+  }
+
+  related(token: string, n: number): string {
+    return `${token.slice(0, -1)}_${n}⟧`
   }
 
   literals(text: string): LiteralRange[] {
@@ -94,7 +100,9 @@ export class TypedStrategy implements TokenStrategy {
     return 'Some values in this conversation were replaced with placeholders of the form ⟦CLASS_N⟧ '
       + '(for example ⟦PERSON_1⟧) to protect confidential data. Treat each placeholder as the real value it stands for. '
       + 'Whenever you refer to it, write the placeholder exactly as given, including the ⟦ ⟧ brackets, '
-      + 'also inside code, file paths, and tool-call arguments. Never guess what a placeholder stands for.'
+      + 'also inside code, file paths, and tool-call arguments. Never guess what a placeholder stands for. '
+      + 'A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, '
+      + 'for example the first name and the surname of one person. Do not mention or explain this relation unless the user asks about it.'
   }
 }
 
@@ -105,7 +113,8 @@ const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉'
 const GREEK_LETTER = /\p{Script=Greek}/u
 const LETTER_OR_MARK = /[\p{L}\p{M}]/u
 const MATH_NEIGHBOR = /[=+*/^<>≤≥×÷∑∫\d]/u
-const GREEK_SCAN = /\p{Script=Greek}[₀-₉]*/gu
+const GREEK_SCAN = /\p{Script=Greek}[₀-₉]*′*/gu
+const PRIME = '′'
 const MIN_FREE_LETTERS = 4
 
 function subscript(n: number): string {
@@ -156,6 +165,10 @@ export class GreekStrategy implements TokenStrategy {
     }
   }
 
+  related(token: string, n: number): string {
+    return `${token}${PRIME.repeat(n - 1)}`
+  }
+
   literals(text: string, vault: Vault): LiteralRange[] {
     return this.isolated(text)
       .filter(found => vault.byToken(found.token) !== undefined)
@@ -175,7 +188,7 @@ export class GreekStrategy implements TokenStrategy {
 
   holdback(buffer: string): number {
     let i = buffer.length
-    while (i > 0 && SUBSCRIPTS.includes(buffer[i - 1]!)) i--
+    while (i > 0 && (SUBSCRIPTS.includes(buffer[i - 1]!) || buffer[i - 1] === PRIME)) i--
     if (i > 0 && GREEK_LETTER.test(buffer[i - 1]!)) return buffer.length - i + 1
     return 0
   }
@@ -184,7 +197,9 @@ export class GreekStrategy implements TokenStrategy {
     return 'Some confidential terms in this conversation were replaced with isolated Greek letters such as β or κ '
       + '(possibly with a subscript, such as α₂). Treat each such letter as the real term it stands for. '
       + 'Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments. '
-      + 'Do not translate or spell out these letters, and do not use them with any other meaning.'
+      + 'Do not translate or spell out these letters, and do not use them with any other meaning. '
+      + 'A letter with a prime, such as β′, is another written form of the same term as β, '
+      + 'for example the first name and the surname of one person. Do not mention or explain this relation unless the user asks about it.'
   }
 
   /** Greek letters (with optional subscripts) not touching other letters. */

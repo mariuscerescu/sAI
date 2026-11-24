@@ -1,0 +1,143 @@
+{
+  "note": "Fictitious, hand-written cases for the verifier modes, beyond the 822-case set: classes other than person and company, one-word declared spellings, capitals at the start of a sentence, a capitalized word before a surname (Q2), a first name shared by two people (Q3), and Romanian. Each check names a word (exact case), its occurrence in the text (1-based) and whether it must be masked; `key` is the expected vault key of a masked shared first name.",
+  "groups": [
+    {
+      "id": "classes",
+      "title": "Proiecte, produse, locuri, o clasă proprie, firme",
+      "languages": ["en"],
+      "vocabulary": [
+        { "id": "falcon", "class": "PRODUCT", "terms": ["Falcon Router"] },
+        { "id": "bluebird", "class": "PROJECT", "terms": ["Bluebird Migration"] },
+        { "id": "riverside", "class": "LOCATION", "terms": ["Riverside Depot"] },
+        { "id": "nightjar", "class": "CODENAME", "terms": ["Nightjar"] },
+        { "id": "summit", "class": "COMPANY", "terms": ["Summit Foods"] }
+      ],
+      "cases": [
+        { "id": "c01", "text": "The falcon dived toward the river.", "checks": [{ "word": "falcon", "masked": false }] },
+        { "id": "c02", "text": "Our Falcon keeps rebooting after the update.", "checks": [{ "word": "Falcon", "masked": true }] },
+        { "id": "c03", "text": "Falcon populations are recovering in the north.", "checks": [{ "word": "Falcon", "masked": false }] },
+        { "id": "c04", "text": "Order two more falcon units for the lab.", "checks": [{ "word": "falcon", "masked": true }] },
+        { "id": "c05", "text": "A bluebird landed on the fence.", "checks": [{ "word": "bluebird", "masked": false }] },
+        { "id": "c06", "text": "Bluebird is two weeks behind schedule.", "checks": [{ "word": "Bluebird", "masked": true }] },
+        { "id": "c07", "text": "The bluebird cutover starts on Monday.", "checks": [{ "word": "bluebird", "masked": true }] },
+        { "id": "c08", "text": "We had lunch at a riverside cafe.", "checks": [{ "word": "riverside", "masked": false }] },
+        { "id": "c09", "text": "Trucks leave Riverside at six every morning.", "checks": [{ "word": "Riverside", "masked": true }] },
+        { "id": "c10", "text": "Ship the pallets to riverside before Friday.", "checks": [{ "word": "riverside", "masked": true }] },
+        { "id": "c11", "text": "A nightjar called at dusk over the field.", "checks": [{ "word": "nightjar", "masked": false }] },
+        { "id": "c12", "text": "Nightjar must stay confidential until the launch.", "checks": [{ "word": "Nightjar", "masked": true }] },
+        { "id": "c13", "text": "Who has write access to the nightjar repository?", "checks": [{ "word": "nightjar", "masked": true }] },
+        { "id": "c14", "text": "We reached the summit at noon.", "checks": [{ "word": "summit", "masked": false }] },
+        { "id": "c15", "text": "Summit sent the invoice yesterday.", "checks": [{ "word": "Summit", "masked": true }] },
+        { "id": "c16", "text": "Summit meetings are held every year in Geneva.", "checks": [{ "word": "Summit", "masked": false }] },
+        { "id": "c17", "text": "Call summit about the late delivery.", "checks": [{ "word": "summit", "masked": true }] }
+      ]
+    },
+    {
+      "id": "declared",
+      "title": "Scrieri declarate dintr-un singur cuvânt",
+      "languages": ["en"],
+      "vocabulary": [
+        { "id": "bill", "class": "PERSON", "terms": ["Bill"] },
+        { "id": "rose", "class": "PERSON", "terms": ["Rose"] },
+        { "id": "pinecone", "class": "COMPANY", "terms": ["Pinecone"] }
+      ],
+      "cases": [
+        { "id": "d01", "text": "Please pay the bill today.", "checks": [{ "word": "bill", "masked": false }] },
+        { "id": "d02", "text": "Ask bill whether the draft is ready.", "checks": [{ "word": "bill", "masked": true }] },
+        { "id": "d03", "text": "Bill will join the call at three.", "checks": [{ "word": "Bill", "masked": true }] },
+        { "id": "d04", "text": "Bill payments are due on Friday.", "checks": [{ "word": "Bill", "masked": false }] },
+        { "id": "d05", "text": "Prices rose sharply in October.", "checks": [{ "word": "rose", "masked": false }] },
+        { "id": "d06", "text": "Rose approved the budget this morning.", "checks": [{ "word": "Rose", "masked": true }] },
+        { "id": "d07", "text": "A pinecone fell on the car.", "checks": [{ "word": "pinecone", "masked": false }] },
+        { "id": "d08", "text": "Pinecone renewed the contract for two years.", "checks": [{ "word": "Pinecone", "masked": true }] }
+      ]
+    },
+    {
+      "id": "capitals",
+      "title": "Majuscula de la începutul propoziției",
+      "languages": ["en"],
+      "vocabulary": [
+        { "id": "king", "class": "PERSON", "terms": ["Mark King"] },
+        { "id": "price", "class": "PERSON", "terms": ["Anna Price"] },
+        { "id": "lowe", "class": "PERSON", "terms": ["Grant Lowe"] },
+        { "id": "turner", "class": "PERSON", "terms": ["Will Turner"] }
+      ],
+      "cases": [
+        { "id": "k01", "text": "Mark the date in your calendar.", "checks": [{ "word": "Mark", "masked": false }] },
+        { "id": "k02", "text": "Mark called about the invoice.", "checks": [{ "word": "Mark", "masked": true }] },
+        { "id": "k03", "text": "Price changes take effect in May.", "checks": [{ "word": "Price", "masked": false }] },
+        { "id": "k04", "text": "Price signed the lease yesterday.", "checks": [{ "word": "Price", "masked": true }] },
+        { "id": "k05", "text": "Grant applications close on Friday.", "checks": [{ "word": "Grant", "masked": false }] },
+        { "id": "k06", "text": "Grant joined the meeting late.", "checks": [{ "word": "Grant", "masked": true }] },
+        { "id": "k07", "text": "Will you send the file today?", "checks": [{ "word": "Will", "masked": false }] },
+        { "id": "k08", "text": "Will sent the file this morning.", "checks": [{ "word": "Will", "masked": true }] }
+      ]
+    },
+    {
+      "id": "attached",
+      "title": "Cuvânt cu majusculă înaintea unui nume de familie (Q2)",
+      "languages": ["en"],
+      "vocabulary": [
+        { "id": "munteanu", "class": "PERSON", "terms": ["Ion Munteanu"] },
+        { "id": "robinson", "class": "PERSON", "terms": ["Daniel Robinson"] }
+      ],
+      "cases": [
+        { "id": "a01", "text": "Floare Munteanu came to the meeting.", "checks": [{ "word": "Floare", "masked": true }, { "word": "Munteanu", "masked": true }] },
+        { "id": "a02", "text": "Ask Robinson about the contract.", "checks": [{ "word": "Ask", "masked": false }, { "word": "Robinson", "masked": true }] },
+        { "id": "a03", "text": "Then Robinson left the office.", "checks": [{ "word": "Then", "masked": false }, { "word": "Robinson", "masked": true }] },
+        { "id": "a04", "text": "Emma Robinson signed the lease.", "checks": [{ "word": "Emma", "masked": true }, { "word": "Robinson", "masked": true }] },
+        { "id": "a05", "text": "Yesterday Munteanu called twice.", "checks": [{ "word": "Yesterday", "masked": false }, { "word": "Munteanu", "masked": true }] },
+        { "id": "a06", "text": "Contact Munteanu before noon.", "checks": [{ "word": "Contact", "masked": false }, { "word": "Munteanu", "masked": true }] },
+        { "id": "a07", "text": "Maria Munteanu is his sister.", "checks": [{ "word": "Maria", "masked": true }, { "word": "Munteanu", "masked": true }] },
+        { "id": "a08", "text": "Thanks Robinson, see you on Monday.", "checks": [{ "word": "Thanks", "masked": false }, { "word": "Robinson", "masked": true }] }
+      ]
+    },
+    {
+      "id": "shared",
+      "title": "Același prenume la două persoane (Q3)",
+      "languages": ["en"],
+      "vocabulary": [
+        { "id": "turner", "class": "PERSON", "terms": ["Bill Turner"] },
+        { "id": "smith", "class": "PERSON", "terms": ["Bill Smith"] }
+      ],
+      "cases": [
+        { "id": "s01", "text": "Bill Turner reviewed the draft. Later Bill sent his notes.", "checks": [{ "word": "Bill", "nth": 2, "masked": true, "key": "entry:turner" }] },
+        { "id": "s02", "text": "Bill Smith joined late, and then Bill apologized to everyone.", "checks": [{ "word": "Bill", "nth": 2, "masked": true, "key": "entry:smith" }] },
+        { "id": "s03", "text": "Bill sent the report on Friday.", "checks": [{ "word": "Bill", "masked": true, "key": "canonical" }] }
+      ]
+    },
+    {
+      "id": "romanian",
+      "title": "Română: forme generate care sunt și cuvinte obișnuite",
+      "languages": ["ro"],
+      "vocabulary": [
+        { "id": "rusu", "class": "PERSON", "terms": ["Ion Rusu"] },
+        { "id": "mare", "class": "PERSON", "terms": ["Ana Mare"] },
+        { "id": "lupu", "class": "PERSON", "terms": ["Vasile Lupu"] },
+        { "id": "popa", "class": "PERSON", "terms": ["Elena Popa"] },
+        { "id": "florea", "class": "PERSON", "terms": ["Dan Florea"] },
+        { "id": "soare", "class": "COMPANY", "terms": ["Soare Grup SRL"] }
+      ],
+      "cases": [
+        { "id": "r01", "text": "Lupul a ieșit din pădure noaptea trecută.", "checks": [{ "word": "Lupul", "masked": false }] },
+        { "id": "r02", "text": "Am vorbit ieri cu Lupu despre contract.", "checks": [{ "word": "Lupu", "masked": true }] },
+        { "id": "r03", "text": "Popa din sat a ținut slujba de duminică.", "checks": [{ "word": "Popa", "masked": false }] },
+        { "id": "r04", "text": "Am trimis factura doamnei Popa.", "checks": [{ "word": "Popa", "masked": true }] },
+        { "id": "r05", "text": "Florile din birou trebuie udate.", "checks": [{ "word": "Florile", "masked": false }] },
+        { "id": "r06", "text": "Florea a aprobat bugetul pe trimestrul doi.", "checks": [{ "word": "Florea", "masked": true }] },
+        { "id": "r07", "text": "Lucrez în această firmă de trei ani.", "checks": [{ "word": "ani", "masked": false }] },
+        { "id": "r08", "text": "Ana a trimis raportul aseară.", "checks": [{ "word": "Ana", "masked": true }] },
+        { "id": "r09", "text": "Anii trecuți am avut pierderi mari.", "checks": [{ "word": "Anii", "masked": false }, { "word": "mari", "masked": false }] },
+        { "id": "r10", "text": "Soarele a apus devreme azi.", "checks": [{ "word": "Soarele", "masked": false }] },
+        { "id": "r11", "text": "Soare a plătit factura ieri.", "checks": [{ "word": "Soare", "masked": true }] },
+        { "id": "r12", "text": "Marile companii au raportat profituri.", "checks": [{ "word": "Marile", "masked": false }] },
+        { "id": "r13", "text": "Am primit un email de la Mare azi-dimineață.", "checks": [{ "word": "Mare", "masked": true }] },
+        { "id": "r14", "text": "Rușii au semnat acordul comercial.", "checks": [{ "word": "Rușii", "masked": false }] },
+        { "id": "r15", "text": "Rusu a semnat contractul ieri.", "checks": [{ "word": "Rusu", "masked": true }] },
+        { "id": "r16", "text": "Am vorbit cu rusu despre factură.", "checks": [{ "word": "rusu", "masked": true }] },
+        { "id": "r17", "text": "Maria Rusu a sunat de două ori.", "checks": [{ "word": "Maria", "masked": true }, { "word": "Rusu", "masked": true }] },
+        { "id": "r18", "text": "Ieri Rusu a sunat de două ori.", "checks": [{ "word": "Ieri", "masked": false }, { "word": "Rusu", "masked": true }] }
+      ]
+    }
+  ]
+}

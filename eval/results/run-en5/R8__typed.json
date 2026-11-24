@@ -1,0 +1,19 @@
+{
+  "case": "R8",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Are Nadia and Vantoor in this note the same person or two people? Note: Nadia Vantoor runs sales. Nadia sent the offer, and Vantoor approved it. Answer in one short sentence.",
+      "raw": "⟦PERSON_1⟧ and ⟦PERSON_1_2⟧ are the same person.",
+      "rawReasoning": "The user asks: \"Are ⟦PERSON_1⟧ and ⟦PERSON_1_2⟧ in this note the same person or two people? Note: ⟦PERSON_1_3⟧ runs sales. ⟦PERSON_1⟧ sent the offer, and ⟦PERSON_1_2⟧ approved it. Answer in one short sentence.\"\n\nWe need to answer whether they are the same person or two people. The placeholders: PERSON_1, PERSON_1_2, PERSON_1_3. The note says PERSON_1_3 runs sales. PERSON_1 sent the offer, and PERSON_1_2 approved it. The question: Are PERSON_1 and PERSON_1_2 the same person or two people? The placeholders are distinct: PERSON_1 and PERSON_1_2. The note does not indicate they are the same person. Usually, different placeholders indicate different individuals. The user says \"Treat each placeholder as the real value it stands for. Whenever you refer to it, write the placeholder exactly as given, including the ⟦ ⟧ brackets, also inside code, file paths, and tool-call arguments. Never guess what a placeholder stands for. A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\"\n\nWait: The instruction says: \"A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\"\n\nThat is crucial: The placeholder with a second number (like PERSON_1_2) is another written form of the same value as PERSON_1. So PERSON_1_2 is the same person as PERSON_1? The instruction says: \"A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\"\n\nThus, PERSON_1_2 is another written form of the same value as PERSON_1. That means they refer to the same person. However, the note says \"PERSON_1 sent the offer, and PERSON_1_2 approved it.\" If they are the same person, then the same person sent and approved. But the question: \"Are ⟦PERSON_1⟧ and ⟦PERSON_1_2⟧ in this note the same person or two people?\" According to the instruction, they are the same person (since PERSON_1_2 is another written form of the same value as PERSON_1). But we need to be careful: The instruction says \"A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\" That suggests that PERSON_1_2 is not a different person, but a different representation of the same person (like first name vs full name). So they are the same person.\n\nThus answer: They are the same person.\n\nBut we must answer in one short sentence.\n\nThus: \"⟦PERSON_1⟧ and ⟦PERSON_1_2⟧ are the same person.\"\n\nWe should include placeholders exactly as given. So answer: \"⟦PERSON_1⟧ and ⟦PERSON_1_2⟧ are the same person.\"",
+      "restored": "Nadia and Vantoor are the same person.",
+      "flagged": [],
+      "ms": 20962,
+      "sent": "Are ⟦PERSON_1⟧ and ⟦PERSON_1_2⟧ in this note the same person or two people? Note: ⟦PERSON_1_3⟧ runs sales. ⟦PERSON_1⟧ sent the offer, and ⟦PERSON_1_2⟧ approved it. Answer in one short sentence."
+    }
+  ]
+}

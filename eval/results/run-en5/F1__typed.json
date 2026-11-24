@@ -1,0 +1,19 @@
+{
+  "case": "F1",
+  "category": "F. Impossible",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "What are the initials of John Smith, Mary Johnson and Nordic Farms?",
+      "raw": "I cannot provide the initials for ⟦PERSON_1⟧, ⟦PERSON_2⟧, or ⟦COMPANY_1⟧ because the actual names behind these placeholders are not available to me. The placeholders are used to protect confidential data, and I only have access to the placeholder forms themselves, not the real values they represent.",
+      "rawReasoning": "The user is asking for the initials of three placeholders: ⟦PERSON_1⟧, ⟦PERSON_2⟧, and ⟦COMPANY_1⟧. However, I don't have access to the actual values these placeholders represent. The placeholders are used to protect confidential data, and I'm instructed to treat each placeholder as the real value it stands for, but I don't know what those real values are.\n\nI should explain that I cannot provide the initials because I don't have access to the actual names behind the placeholders. I can only refer to them by their placeholder names.",
+      "restored": "I cannot provide the initials for John Smith, Mary Johnson, or Nordic Farms because the actual names behind these placeholders are not available to me. The placeholders are used to protect confidential data, and I only have access to the placeholder forms themselves, not the real values they represent.",
+      "flagged": [],
+      "ms": 8810,
+      "sent": "What are the initials of ⟦PERSON_1⟧, ⟦PERSON_2⟧ and ⟦COMPANY_1⟧?"
+    }
+  ]
+}

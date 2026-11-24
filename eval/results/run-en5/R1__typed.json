@@ -1,0 +1,19 @@
+{
+  "case": "R1",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Repeat this sentence exactly, change nothing: Nadia called, and then Vantoor replied about Quillon.",
+      "raw": "⟦PERSON_1⟧ called, and then ⟦PERSON_1_2⟧ replied about ⟦COMPANY_1⟧.",
+      "rawReasoning": "The user asks: \"Repeat this sentence exactly, change nothing: ⟦PERSON_1⟧ called, and then ⟦PERSON_1_2⟧ replied about ⟦COMPANY_1⟧.\"\n\nWe must output exactly that sentence, with placeholders unchanged. No modifications. So just repeat it.",
+      "restored": "Nadia called, and then Vantoor replied about Quillon.",
+      "flagged": [],
+      "ms": 7353,
+      "sent": "Repeat this sentence exactly, change nothing: ⟦PERSON_1⟧ called, and then ⟦PERSON_1_2⟧ replied about ⟦COMPANY_1⟧."
+    }
+  ]
+}

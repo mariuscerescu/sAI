@@ -1,0 +1,37 @@
+{
+  "case": "B4",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Remember: Emily Clark is Nordic Farms' lawyer, and David Walker is Greenfield Bank's auditor.",
+      "raw": "Understood. I'll remember that χ is ω' lawyer and ζ is μ's auditor.",
+      "rawReasoning": "The user is providing a reminder about two confidential term mappings:\n- χ is ω' lawyer\n- ζ is μ's auditor\n\nI need to remember these mappings for future reference. I'll acknowledge this.",
+      "restored": "Understood. I'll remember that Emily Clark is Nordic Farms' lawyer and David Walker is Greenfield Bank's auditor.",
+      "flagged": [],
+      "ms": 3431,
+      "sent": "Remember: χ is ω' lawyer, and ζ is μ's auditor."
+    },
+    {
+      "user": "Who is Nordic Farms' lawyer?",
+      "raw": "χ is ω' lawyer.",
+      "rawReasoning": "The user asks: \"Who is ω' lawyer?\" According to the previous instruction, χ is ω' lawyer. So answer: χ is ω' lawyer.",
+      "restored": "Emily Clark is Nordic Farms' lawyer.",
+      "flagged": [],
+      "ms": 2345,
+      "sent": "Who is ω' lawyer?"
+    },
+    {
+      "user": "And who audits Greenfield Bank? Answer with the full name.",
+      "raw": "ζ",
+      "rawReasoning": "The user is asking for the full name of μ's auditor. According to the information given, ζ is μ's auditor. The user wants the \"full name\" but ζ appears to be a single Greek letter representing a term. I should answer with ζ as that's the term given.",
+      "restored": "David Walker",
+      "flagged": [],
+      "ms": 1802,
+      "sent": "And who audits μ? Answer with the full name."
+    }
+  ]
+}

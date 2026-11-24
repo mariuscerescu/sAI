@@ -1,0 +1,19 @@
+{
+  "case": "F2",
+  "category": "F. Impossible",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "How many letters are in the name Acme Logistics Inc., without spaces and punctuation?",
+      "raw": "1",
+      "rawReasoning": "The user is asking about the name \"δ\" - this appears to be a Greek letter (delta). They want to know how many letters are in the name \"δ\" without spaces and punctuation.\n\nThe name \"δ\" is a single character - the Greek lowercase letter delta. So the answer would be 1 letter.",
+      "restored": "1",
+      "flagged": [],
+      "ms": 1655,
+      "sent": "How many letters are in the name δ, without spaces and punctuation?"
+    }
+  ]
+}

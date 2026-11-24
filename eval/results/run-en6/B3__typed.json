@@ -1,0 +1,19 @@
+{
+  "case": "B3",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Smith lent Johnson $5,000, Johnson gave Walker $2,000, and Walker paid Smith back $1,500. Who owes whom, and how much, at the end? Make a table.",
+      "raw": "| Person | Net Position | Meaning |\n|--------|--------------|---------|\n| ⟦PERSON_1⟧ | +$3,500 | Is owed $3,500 |\n| ⟦PERSON_2⟧ | –$3,000 | Owes $3,000 |\n| ⟦PERSON_3⟧ | –$500 | Owes $500 |\n\n**Simplest settlement:**  \n- ⟦PERSON_2⟧ pays ⟦PERSON_1⟧ **$3,000**  \n- ⟦PERSON_3⟧ pays ⟦PERSON_1⟧ **$500**  \n\n(After these two payments, everyone is square.)",
+      "rawReasoning": "Let's track the net financial position of each person.\n\nInitial state: Everyone at $0.\n\n1. ⟦PERSON_1⟧ lent ⟦PERSON_2⟧ $5,000\n   - ⟦PERSON_1⟧: +$5,000 (owed $5,000)\n   - ⟦PERSON_2⟧: -$5,000 (owes $5,000)\n\n2. ⟦PERSON_2⟧ gave ⟦PERSON_3⟧ $2,000\n   - ⟦PERSON_2⟧: -$2,000 more (now owes $7,000 total? Wait, \"gave\" could mean lent or paid. The phrasing \"gave\" is ambiguous. But in context of \"lent\" and \"paid back\", \"gave\" likely means lent or transferred. Let's assume it's a loan from ⟦PERSON_2⟧ to ⟦PERSON_3⟧.)\n   - ⟦PERSON_2⟧: +$2,000 (owed $2,000 by ⟦PERSON_3⟧)\n   - ⟦PERSON_3⟧: -$2,000 (owes $2,000 to ⟦PERSON_2⟧)\n\n   Net positions after step 2:\n   - ⟦PERSON_1⟧: +$5,000\n   - ⟦PERSON_2⟧: -$5,000 (to P1) + $2,000 (from P3) = -$3,000 net\n   - ⟦PERSON_3⟧: -$2,000 (to P2)\n\n3. ⟦PERSON_3⟧ paid ⟦PERSON_1⟧ back $1,500\n   - ⟦PERSON_3⟧: +$1,500 (reduces debt)\n   - ⟦PERSON_1⟧: -$1,500 (reduces credit)\n\n   Final net positions:\n   - ⟦PERSON_1⟧: +$5,000 - $1,500 = +$3,500 (is owed $3,500)\n   - ⟦PERSON_2⟧: -$5,000 + $2,000 = -$3,000 (owes $3,000 net)\n   - ⟦PERSON_3⟧: -$2,000 + $1,500 = -$500 (owes $500 net)\n\n   Check: Total owed = Total owing. $3,500 = $3,000 + $500. Yes.\n\n   But who owes whom directly? The net positions show the final settlement.\n   ⟦PERSON_2⟧ owes ⟦PERSON_1⟧ $3,000? Not necessarily directly. The transactions create a web.\n   - ⟦PERSON_2⟧ owes ⟦PERSON_1⟧ $5,000.\n   - ⟦PERSON_3⟧ owes ⟦PERSON_2⟧ $2,000.\n   - ⟦PERSON_3⟧ paid ⟦PERSON_1⟧ $1,500.\n\n   This payment from P3 to P1 is interesting. It could be a direct settlement on P2's behalf, or independent.\n   If we just look at final net positions:\n   - ⟦PERSON_1⟧ should receive $3,500 total.\n   - ⟦PERSON_2⟧ should pay $3,000 total.\n   - ⟦PERSON_3⟧ should pay $500 total.\n\n   The simplest settlement: ⟦PERSON_2⟧ pays ⟦PERSON_1⟧ $3,000, and ⟦PERSON_3⟧ pays ⟦PERSON_1⟧ $500.\n   Or: ⟦PERSON_3⟧ pays ⟦PERSON_2⟧ $500 (to settle P3->P2 debt partially), and ⟦PERSON_2⟧ pays ⟦PERSON_1⟧ $3,500.\n   Or: ⟦PERSON_3⟧ pays ⟦PERSON_1⟧ $500, ⟦PERSON_2⟧ pays ⟦PERSON_1⟧ $3,000.\n\n   The question asks \"Who owes whom, and how much, at the end?\" This usually implies the net pairwise obligations after all transactions, or the minimal set of payments to settle. A table of net positions is clearest.\n\n   Let's present a table of net position (positive = is owed, negative = owes). And then a settlement table.",
+      "restored": "| Person | Net Position | Meaning |\n|--------|--------------|---------|\n| Smith | +$3,500 | Is owed $3,500 |\n| Johnson | –$3,000 | Owes $3,000 |\n| Walker | –$500 | Owes $500 |\n\n**Simplest settlement:**  \n- Johnson pays Smith **$3,000**  \n- Walker pays Smith **$500**  \n\n(After these two payments, everyone is square.)",
+      "flagged": [],
+      "ms": 19799,
+      "sent": "⟦PERSON_1⟧ lent ⟦PERSON_2⟧ $5,000, ⟦PERSON_2⟧ gave ⟦PERSON_3⟧ $2,000, and ⟦PERSON_3⟧ paid ⟦PERSON_1⟧ back $1,500. Who owes whom, and how much, at the end? Make a table."
+    }
+  ]
+}

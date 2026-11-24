@@ -75,6 +75,8 @@ export const Config = z.object({
   externalTools: z.array(z.string()).default([...DEFAULT_SETTINGS.externalTools]).volatile(),
   verifier: z.object({
     enabled: z.boolean(),
+    mode: z.union(['lowercase', 'all'] as const),
+    descriptions: z.dict(z.string()),
     url: z.string(),
     threshold: z.number(),
     timeoutMs: z.natural(),

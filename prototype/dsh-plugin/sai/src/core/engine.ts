@@ -4,7 +4,7 @@
  */
 
 import { capitalizesNames, compileDictionary, type CompiledTerm, type DetectHints, TermDetector } from './detectors/dictionary.ts'
-import { combineLanguages } from './languages.ts'
+import { combineLanguages, looksRomanian } from './languages.ts'
 import { PATTERNS, PatternDetector } from './detectors/patterns.ts'
 import { isSentenceStart, normalize, normalizeTerm } from './normalize.ts'
 import { decide, resolveOverlaps } from './resolve.ts'
@@ -15,7 +15,9 @@ import type {
   RestoreReport, Verdict, VaultEntry,
 } from './types.ts'
 import { Vault } from './vault.ts'
-import { questionFor, questionKey, type VerifierQuestion } from './verifier.ts'
+import {
+  partQuestion, questionFor, questionKey, whichQuestion, WHICH_CONFIDENCE, type VerifierAnswer, type VerifierQuestion,
+} from './verifier.ts'
 
 /** Priority of findings that repeat a spelling already in the session vault. */
 export const SESSION_PRIORITY = 250
@@ -47,6 +49,7 @@ export class Engine {
   /** @internal */ readonly restoreAs: ReadonlyMap<string, string>
   /** @internal Titles and particles of the enabled languages, never a first name. */ readonly notNames: ReadonlySet<string>
   /** @internal Declared spelling of each entry, named in verifier questions. */ readonly entryTerms: ReadonlyMap<string, string>
+  /** @internal Whether Romanian is enabled: in Romanian texts the verifier may only add masks. */ readonly romanian: boolean
 
   /**
    * @param input - stored settings, possibly partial.
@@ -64,6 +67,7 @@ export class Engine {
     this.restoreAs = new Map(settings.vocabulary.flatMap(entry => entry.restoreAs ? [[entry.id!, entry.restoreAs] as const] : []))
     this.notNames = new Set(combineLanguages(settings.languages).notNames)
     this.entryTerms = new Map(settings.vocabulary.map(entry => [entry.id!, entry.terms[0]!] as const))
+    this.romanian = settings.languages.includes('ro')
   }
 
   /**
@@ -79,8 +83,11 @@ export class Engine {
 /** Mutable per-conversation state: the vault and the strategy state. */
 export class Session {
   readonly vault = new Vault()
-  /** Verifier answers by question: true when the word is replaced. In memory only, never logged. */
-  private readonly answers = new Map<string, boolean>()
+  /**
+   * Verifier answers by question, in memory only, never logged. `name` and `part`: true when
+   * the word is replaced (or joined to the name); `which`: the chosen entry id, or null.
+   */
+  private readonly answers = new Map<string, boolean | string | null>()
 
   /** @internal */
   constructor(private readonly engine: Engine, readonly strategy: TokenStrategy) {}
@@ -102,21 +109,28 @@ export class Session {
     if (original.length === 0) return { text: '', verdict: { kind: 'proceed' }, report: this.report([]), decisions: [] }
     const unsuitable = this.strategy.observe(original, this.vault)
     if (unsuitable !== undefined) return empty({ kind: 'blocked', code: unsuitable })
-    const { text, hints, candidates, unconfirmed } = this.gather(original)
-    // With the verifier on, an unconfirmed lowercase form is replaced unless the model called it an ordinary word.
+    const { text, hints, candidates, unconfirmed, rulesFloor } = this.gather(original)
+    // With the verifier on, an unconfirmed form is replaced unless the model called it an ordinary word.
     const cleared: Candidate[] = []
     if (this.engine.settings.verifier.enabled) {
-      for (const span of unconfirmed) (this.answers.get(questionKey(this.questionOf(original, span))) === false ? cleared : candidates).push(span)
+      for (const span of unconfirmed) {
+        if (this.answers.get(questionKey(this.questionOf(original, span))) === false) cleared.push(span)
+        else candidates.push(this.withChosenEntry(original, span))
+      }
     }
-    const resolve = (): ReturnType<typeof decide> => decide(
-      this.withFirstNames(text, this.joinNameParts(text, resolveOverlaps(candidates, candidate => this.isAllowed(text, candidate)))),
-      this.engine.settings,
-    )
+    // Q2 replaces the attached-first-name rule, except in Romanian texts, where the model may only add masks.
+    const asking = this.engine.settings.verifier.enabled && this.engine.settings.verifier.mode === 'all' && !rulesFloor
+    const resolve = (): ReturnType<typeof decide> => {
+      const joined = this.joinNameParts(text, resolveOverlaps(candidates, candidate => this.isAllowed(text, candidate)))
+      return decide(asking ? this.withAskedFirstNames(original, joined) : this.withFirstNames(text, joined), this.engine.settings)
+    }
     let { decisions, verdict } = resolve()
     // A spelling replaced somewhere in this text is replaced everywhere in it, as later texts of the
     // session already are: a name a detector recognized once ("dl. Mare") must not stay elsewhere.
+    // A word the verifier called ordinary keeps its own answer.
     const decided = decisions.map(({ span }) => span)
-    const repeats = this.repeatsOf(decisions, original).detect(text, hints).filter(repeat => !overlapsAny(decided, repeat))
+    const repeats = this.repeatsOf(decisions, original).detect(text, hints)
+      .filter(repeat => !overlapsAny(decided, repeat) && !cleared.some(span => span.start < repeat.end && repeat.start < span.end))
     if (repeats.length > 0) {
       for (const repeat of repeats) candidates.push(repeat);
       ({ decisions, verdict } = resolve())
@@ -124,43 +138,72 @@ export class Session {
     if (verdict.kind === 'blocked') return { ...empty(verdict), report: this.report(decisions) }
     // A word the verifier called ordinary is sent as written, on purpose: the leak check must not count it.
     if (cleared.length > 0) decisions = withCleared(decisions, cleared)
-    const { output, kept, tokenRanges } = this.rewrite(original, decisions)
+    const { output, kept, tokenRanges, symbols } = this.rewrite(original, decisions)
     const leak = this.findLeak(output, [...kept, ...tokenRanges], hints)
     if (leak !== undefined) {
-      return { ...empty({ kind: 'blocked', code: 'LEAK_DETECTED', classId: leak.classId, detector: leak.detector }), report: this.report(decisions) }
+      return { ...empty({ kind: 'blocked', code: 'LEAK_DETECTED', classId: leak.classId, detector: leak.detector }), report: this.report(decisions, symbols) }
     }
-    return { text: output, verdict, report: this.report(decisions), decisions }
+    return { text: output, verdict, report: this.report(decisions, symbols), decisions }
   }
 
   /**
-   * Questions the verifier must answer before this text is redacted: one per lowercase one-word
-   * form of a declared name (a name part or a generated form) that nothing else covers, both the
-   * ones the capital-letter rule drops and the ones it would accept only because the text has no
-   * capitalized name. Capitalized forms are replaced as before and never asked about. Questions
-   * this session already answered are left out. Empty when the verifier is off.
+   * Questions the verifier must answer before this text is redacted, leaving out those this
+   * session already answered. Empty when the verifier is off.
+   * - Q1 (`name`), one per unconfirmed one-word form that nothing else covers: in mode
+   *   `lowercase`, the lowercase forms the capital-letter rules would drop or accept on the text's
+   *   style alone; in mode `all`, every one-word form, in any case, declared or generated.
+   * - Mode `all` also asks Q2 (`part`) for a capitalized word right before a one-word person name
+   *   ("Floare Munteanu", "Ask bill"), and Q3 (`which`) for a one-word name several declared
+   *   people share.
    * @param original - text bound for the model.
    * @returns the unanswered questions.
    */
   questions(original: string): VerifierQuestion[] {
-    if (!this.engine.settings.verifier.enabled || original.length === 0 || original.length > MAX_INPUT_CHARS) return []
-    return this.gather(original).unconfirmed.map(span => this.questionOf(original, span))
-      .filter(question => !this.answers.has(questionKey(question)))
+    const verifier = this.engine.settings.verifier
+    if (!verifier.enabled || original.length === 0 || original.length > MAX_INPUT_CHARS) return []
+    const { candidates, unconfirmed, rulesFloor } = this.gather(original)
+    const questions: VerifierQuestion[] = unconfirmed.map(span => this.questionOf(original, span))
+    if (verifier.mode === 'all') {
+      for (const span of unconfirmed) {
+        const which = this.whichOf(original, span)
+        if (which !== undefined) questions.push(which)
+      }
+      const spans = [...candidates, ...unconfirmed]
+      for (const span of rulesFloor ? [] : spans) {
+        const word = this.attachedWord(original, span)
+        if (word !== undefined && !spans.some(other => other.start < word.end && word.start < other.end)) {
+          questions.push(partQuestion(original, word, span))
+        }
+      }
+    }
+    const unique = new Map(questions.map(question => [questionKey(question), question] as const))
+    return [...unique.values()].filter(question => !this.answers.has(questionKey(question)))
   }
 
   /**
-   * Record the verifier's answers: a word is replaced when its probability of being a name
-   * reaches the threshold. A missing or invalid probability is not recorded, so the word is replaced.
+   * Record the verifier's answers. Q1 and Q2: yes when the probability reaches the threshold
+   * (the word is replaced, or joined to the name). Q3: an entry is chosen only when the model is
+   * at least {@link WHICH_CONFIDENCE} sure; otherwise the shared symbol stays. A missing or invalid
+   * answer is not recorded, so the safe reading applies: replaced, joined, shared.
    * @param questions - questions asked.
-   * @param probabilities - for each question, the probability that the word is a name.
+   * @param answers - one answer per question.
    */
-  answer(questions: readonly VerifierQuestion[], probabilities: readonly number[]): void {
+  answer(questions: readonly VerifierQuestion[], answers: readonly VerifierAnswer[]): void {
     const { threshold } = this.engine.settings.verifier
     questions.forEach((question, index) => {
-      const probability = probabilities[index]
-      if (typeof probability !== 'number' || !Number.isFinite(probability)) return
+      const answer = answers[index]
+      let value: boolean | string | null
+      if (question.kind === 'which') {
+        if (!Array.isArray(answer) || answer.length !== question.options.length + 1 || !answer.every(p => Number.isFinite(p))) return
+        const best = answer.indexOf(Math.max(...answer))
+        value = best < question.options.length && answer[best]! >= WHICH_CONFIDENCE ? question.entries[best]! : null
+      } else {
+        if (typeof answer !== 'number' || !Number.isFinite(answer)) return
+        value = answer >= threshold
+      }
       const key = questionKey(question)
       this.answers.delete(key)
-      this.answers.set(key, probability >= threshold)
+      this.answers.set(key, value)
     })
     while (this.answers.size > MAX_ANSWERS) this.answers.delete(this.answers.keys().next().value!)
   }
@@ -179,7 +222,7 @@ export class Session {
     let at = 0
     for (const hit of hits) {
       const entry = this.vault.byToken(hit.token)!
-      parts.push(text.slice(at, hit.start), escape(this.surfaceOf(entry), context))
+      parts.push(text.slice(at, hit.start), escape(this.surfaceOf(entry, hit.token), context))
       at = hit.end
       if (hit.match === 'tolerant') tolerant.push(hit.token)
       if (hit.suspicious) suspicious.push(hit.token)
@@ -198,46 +241,124 @@ export class Session {
     return new StreamRestorer(this, context)
   }
 
-  /** Spelling used when a symbol is restored. */
-  private surfaceOf(entry: VaultEntry): string {
+  /** Spelling used when a symbol is restored: the entry's chosen spelling, or the form this symbol stands for. */
+  private surfaceOf(entry: VaultEntry, token: string): string {
     if (entry.key.kind === 'literal') return entry.key.value
     if (entry.key.kind === 'entry') {
       const preferred = this.engine.restoreAs.get(entry.key.entryId)
       if (preferred !== undefined) return preferred
     }
-    return entry.surfaceForms[0] ?? entry.token
+    return this.vault.formOf(token) ?? entry.surfaceForms[0] ?? entry.token
   }
 
   /**
    * Every finding of one text, and apart from them the lowercase forms the capital-letter
    * rule drops that no finding covers and the allowlist does not exempt.
    */
-  private gather(original: string): { text: NormalizedText; hints: DetectHints; candidates: Candidate[]; unconfirmed: Candidate[] } {
+  private gather(original: string): {
+    text: NormalizedText; hints: DetectHints; candidates: Candidate[]; unconfirmed: Candidate[]; rulesFloor: boolean
+  } {
     const text = normalize(original)
     // Decided once on the original text, so the leak check reads the rewritten text the same way.
     const hints: DetectHints = { capitalized: capitalizesNames(original) }
-    const dictionary = this.engine.dictionary.split(text, { ...hints, verifyLowercase: this.engine.settings.verifier.enabled })
+    const { enabled, mode } = this.engine.settings.verifier
+    const all = enabled && mode === 'all'
+    const verifying: DetectHints = { ...hints, verifyLowercase: enabled, verifyAll: all }
+    const dictionary = this.engine.dictionary.split(text, verifying)
+    // In mode `all`, a one-word spelling from the vault ("Bill", replaced earlier) is asked about too.
+    const session: { found: Candidate[]; unconfirmed: Candidate[] } = all
+      ? this.sessionDetector().split(text, verifying) : { found: this.sessionDetector().detect(text, hints), unconfirmed: [] }
+    // In a Romanian text the model may only add masks: what the capital-letter rules replace
+    // stays replaced (measured, the model let "cu rusu despre factură" through).
+    const rulesFloor = enabled && this.engine.romanian && looksRomanian(original)
+    if (rulesFloor) {
+      const byRules = new Set([...this.engine.dictionary.detect(text, hints), ...this.sessionDetector().detect(text, hints)]
+        .map(span => `${span.start}:${span.end}`))
+      for (const list of [dictionary, session]) {
+        const kept = list.unconfirmed.filter(span => !byRules.has(`${span.start}:${span.end}`))
+        list.found.push(...list.unconfirmed.filter(span => byRules.has(`${span.start}:${span.end}`)))
+        list.unconfirmed.splice(0, list.unconfirmed.length, ...kept)
+      }
+    }
     const candidates: Candidate[] = [
       ...this.literalCandidates(original),
-      ...this.sessionDetector().detect(text, hints),
+      ...session.found,
       ...this.engine.detectors.flatMap(detector => detector === this.engine.dictionary ? dictionary.found : detector.detect(text, hints)),
     ]
     const seen = new Set<string>()
-    const unconfirmed = dictionary.unconfirmed.filter((span) => {
+    const unconfirmed = [...dictionary.unconfirmed, ...session.unconfirmed].filter((span) => {
       const at = `${span.start}:${span.end}`
       if (seen.has(at)) return false
       seen.add(at)
       return !this.isAllowed(text, span) && !candidates.some(other => other.start < span.end && span.start < other.end)
     })
-    return { text, hints, candidates, unconfirmed }
+    return { text, hints, candidates, unconfirmed, rulesFloor }
   }
 
-  /** The verifier question for one dropped form, naming the declared spelling it may stand for. */
-  private questionOf(original: string, span: Candidate): VerifierQuestion {
-    const owners = span.key.kind === 'entry' ? [span.key.entryId]
+  /** Entries a found form may stand for: its own entry, or every entry sharing a one-word person name. */
+  private ownersOf(span: Candidate): string[] {
+    return span.key.kind === 'entry' ? [span.key.entryId]
       : span.key.kind === 'canonical' ? [...this.engine.dictionary.owners.get(span.key.value) ?? []] : []
-    const terms = owners.flatMap(id => this.engine.entryTerms.get(id) ?? [])
-    return questionFor(original, span, terms.length > 0 ? terms.join(' or ') : span.baseForm ?? original.slice(span.start, span.end))
+  }
+
+  /** Q1 for one unconfirmed form, naming the declared spelling it may stand for. */
+  private questionOf(original: string, span: Candidate): VerifierQuestion {
+    const terms = this.ownersOf(span).flatMap(id => this.engine.entryTerms.get(id) ?? [])
+    const description = this.engine.settings.verifier.descriptions[span.classId]
+    return questionFor(original, span, terms.length > 0 ? terms.join(' or ') : span.baseForm ?? original.slice(span.start, span.end), description)
+  }
+
+  /** Q3 for a one-word name several declared entries share, or nothing. */
+  private whichOf(original: string, span: Candidate): VerifierQuestion | undefined {
+    if (span.key.kind !== 'canonical') return undefined
+    const entries = this.ownersOf(span).flatMap(id => {
+      const term = this.engine.entryTerms.get(id)
+      return term === undefined ? [] : [{ id, term }]
+    })
+    return entries.length > 1 ? whichQuestion(original, span, entries) : undefined
+  }
+
+  /** The span with the entry Q3 chose, when the model was sure; otherwise unchanged (shared symbol). */
+  private withChosenEntry(original: string, span: Candidate): Candidate {
+    const which = this.whichOf(original, span)
+    const chosen = which === undefined ? undefined : this.answers.get(questionKey(which))
+    return typeof chosen === 'string' ? { ...span, key: { kind: 'entry', entryId: chosen } } : span
+  }
+
+  /**
+   * The capitalized word right before a one-word person name ("Floare" in "Floare Munteanu",
+   * "Ask" in "Ask bill"), unless it is a title or a particle.
+   */
+  private attachedWord(original: string, span: Candidate): { start: number; end: number } | undefined {
+    const surface = span.baseForm ?? original.slice(span.start, span.end)
+    if (span.classId !== 'PERSON' || (span.detector !== 'dictionary' && span.detector !== 'session') || surface.includes(' ')) return undefined
+    const word = /(?<![\p{L}\p{N}'’-])(\p{Lu}[\p{L}'’-]*) +$/u.exec(original.slice(Math.max(0, span.start - 60), span.start))
+    if (word === null || this.engine.notNames.has(normalizeTerm(word[1]!).replace(/\./g, ''))) return undefined
+    const start = span.start - word[0].length
+    return { start, end: start + word[1]!.length }
+  }
+
+  /**
+   * Mode `all`: a capitalized word right before a one-word person name joins it as a new person
+   * unless the model said it is not part of the name (Q2). Unanswered: joined, as without the model.
+   */
+  private withAskedFirstNames(original: string, spans: Candidate[]): Candidate[] {
+    const out: Candidate[] = []
+    for (const span of spans) {
+      const word = this.attachedWord(original, span)
+      const previous = out.at(-1)
+      if (word === undefined || (previous !== undefined && previous.end > word.start)
+        || this.answers.get(questionKey(partQuestion(original, word, span))) === false) {
+        out.push(span)
+        continue
+      }
+      const spelling = `${original.slice(word.start, word.end)} ${span.baseForm ?? original.slice(span.start, span.end)}`
+      out.push({
+        start: word.start, end: span.end, classId: 'PERSON', detector: span.detector, priority: span.priority,
+        key: { kind: 'canonical', classId: 'PERSON', value: normalizeTerm(spelling) }, baseForm: spelling,
+      })
+    }
+    return out
   }
 
   private literalCandidates(original: string): Candidate[] {
@@ -339,10 +460,12 @@ export class Session {
     output: string
     kept: { start: number; end: number }[]
     tokenRanges: { start: number; end: number }[]
+    symbols: string[]
   } {
     const parts: string[] = []
     const kept: { start: number; end: number }[] = []
     const tokenRanges: { start: number; end: number }[] = []
+    const symbols: string[] = []
     let at = 0
     let length = 0
     const emit = (text: string): void => { parts.push(text); length += text.length }
@@ -353,9 +476,12 @@ export class Session {
       switch (action) {
         case 'tokenize': {
           const entry = this.symbolFor(span)
-          // An inflected form is restored as the declared spelling it was generated from.
           this.vault.addSurfaceForm(entry, span.baseForm ?? value)
-          emit(entry.token)
+          // A name keeps each written form apart; a pattern value (an IBAN in groups or compact) is one value.
+          const named = span.key.kind === 'entry' || (span.key.kind === 'canonical' && span.classId === 'PERSON')
+          const symbol = named ? this.vault.formSymbol(entry, restoredForm(span, value), n => this.strategy.related(entry.token, n)) : entry.token
+          symbols.push(symbol)
+          emit(symbol)
           tokenRanges.push({ start, end: length })
           break
         }
@@ -373,7 +499,7 @@ export class Session {
       at = span.end
     }
     emit(original.slice(at))
-    return { output: parts.join(''), kept, tokenRanges }
+    return { output: parts.join(''), kept, tokenRanges, symbols }
   }
 
   /** Re-run the exact detectors on the outgoing text; any finding outside a replaced or kept range is a leak. */
@@ -384,13 +510,13 @@ export class Session {
     return findings.find(finding => !this.isAllowed(text, finding) && !overlapsAny(ranges, finding))
   }
 
-  private report(decisions: readonly Decision[]): RedactReport {
+  private report(decisions: readonly Decision[], symbols?: readonly string[]): RedactReport {
     const countsByClass: Record<ClassId, number> = {}
-    const tokens = new Set<string>()
+    const tokens = new Set<string>(symbols)
     for (const { span, action } of decisions) {
       if (action !== 'tokenize' && action !== 'mask') continue
       countsByClass[span.classId] = (countsByClass[span.classId] ?? 0) + 1
-      if (action === 'tokenize') {
+      if (action === 'tokenize' && symbols === undefined) {
         const entry = this.vault.get(span.key)
         if (entry !== undefined) tokens.add(entry.token)
       }
@@ -446,6 +572,17 @@ export class StreamRestorer {
     this.reports.push(restored.report)
     return restored.text
   }
+}
+
+/**
+ * The spelling a symbol brings back: the text as written, in its own case, except an inflected form,
+ * which returns as the declared spelling it was generated from ("Popescului" → "Popescu").
+ * @param span - the replaced occurrence.
+ * @param written - its text.
+ * @returns the form to restore.
+ */
+function restoredForm(span: Candidate, written: string): string {
+  return span.baseForm === undefined || normalizeTerm(written) === normalizeTerm(span.baseForm) ? written : span.baseForm
 }
 
 /**

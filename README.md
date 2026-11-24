@@ -32,13 +32,15 @@ Prototipul e un plugin pentru DeepSeek Harness (DSH), în fork-ul Alterego, scri
 | [docs/ARHITECTURA.md](docs/ARHITECTURA.md) | Arhitectura și componentele |
 | [docs/CERCETARE-FLEXIUNI.md](docs/CERCETARE-FLEXIUNI.md) | Cercetarea despre formele flexionate |
 | [docs/AUDIT-DSH.md](docs/AUDIT-DSH.md) | Auditul tuturor canalelor de date din DSH |
+| [docs/LIMITE.md](docs/LIMITE.md) | **Limitele cunoscute ale primei versiuni**, cu măsurătorile și ideile de reparație |
 | [eval/](eval/) | Setul de evaluare (română: `cases.json`; engleză: `cases-en.json`), rapoarte, checklist, rezultate |
 | [prototype/dsh-plugin/sai](prototype/dsh-plugin/sai) | Plugin-ul DSH: `src/core` (nucleul pur), `src/request.ts` și `src/egress.ts` (legătura cu DSH), `src/client` (setări și „Model view”), teste, scripturi |
 | [prototype/dsh-plugin/sai-bundle](prototype/dsh-plugin/sai-bundle) | Bundle-ul opțional care îl instalează |
 
 ## Rezultate
 
-- **878 de teste automate.** Ele acoperă:
+- **Verificatorul local (Decider-Flash v1.3, modul `all`), pe partea finală a setului înghețat în engleză:** 4 nume reale scăpate din 5.445 (0,073%) și 1,62% cuvinte obișnuite ascunse inutil. Vezi [eval/results/frozen-final.md](eval/results/frozen-final.md) și [docs/LIMITE.md](docs/LIMITE.md).
+- **947 de teste automate.** Ele acoperă:
   - ~200 de forme românești și 148 de propoziții englezești;
   - nume compuse, tipare și canale de date;
   - texte lungi.
@@ -61,6 +63,14 @@ npx vitest run packages/experimental/sai
 node --expose-gc --import tsx/esm packages/experimental/sai/scripts/benchmark.ts
 node --import tsx/esm packages/experimental/sai/scripts/false-match-test.ts --set en
 ```
+
+**Verificatorul local** este un proces separat. Se pornește cu Python 3.11, CUDA, `torch`, `transformers` și `bitsandbytes`, apoi se activează din setările sAI:
+
+```bash
+python -I packages/experimental/sai/verifier/decider_server.py --model "<folderul perplexity-ai__pplx-decider-flash-v1.3>" --port 8765
+```
+
+Dacă serviciul nu rulează, sAI maschează fiecare cuvânt pe care l-ar fi întrebat.
 
 Scripturile de evaluare au căi absolute spre acest folder. Corpusul Wikipedia se descarcă local; vezi [eval/corpus/README.md](eval/corpus/README.md).
 

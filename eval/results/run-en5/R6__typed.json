@@ -1,0 +1,19 @@
+{
+  "case": "R6",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Nadia Vantoor signed the deal. Later Vantoor called Elias Brandt. Who signed the deal, and who received the call? Answer in one sentence.",
+      "raw": "⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call.",
+      "rawReasoning": "The user asks: \"⟦PERSON_1⟧ signed the deal. Later ⟦PERSON_1_2⟧ called ⟦PERSON_2⟧. Who signed the deal, and who received the call? Answer in one sentence.\"\n\nWe have placeholders: ⟦PERSON_1⟧, ⟦PERSON_1_2⟧, ⟦PERSON_2⟧. The note says: \"A placeholder with a second number, such as ⟦PERSON_1_2⟧, is another written form of the same value as ⟦PERSON_1⟧, for example the first name and the surname of one person.\" So ⟦PERSON_1_2⟧ refers to the same person as ⟦PERSON_1⟧. So the person who signed the deal is ⟦PERSON_1⟧ (also known as ⟦PERSON_1_2⟧). That person later called ⟦PERSON_2⟧. So the call was received by ⟦PERSON_2⟧.\n\nThus answer: ⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call. Or \"⟦PERSON_1⟧ signed the deal and later called ⟦PERSON_2⟧, who received the call.\" But the question: \"Who signed the deal, and who received the call?\" So answer: ⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call.\n\nWe must answer in one sentence. So: \"⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call.\" That's one sentence.\n\nWe must treat placeholders exactly as given, including brackets. So we output that.",
+      "restored": "Nadia Vantoor signed the deal, and Elias Brandt received the call.",
+      "flagged": [],
+      "ms": 7446,
+      "sent": "⟦PERSON_1⟧ signed the deal. Later ⟦PERSON_1_2⟧ called ⟦PERSON_2⟧. Who signed the deal, and who received the call? Answer in one sentence."
+    }
+  ]
+}

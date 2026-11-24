@@ -1,0 +1,19 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I don't have access to your conversation with ο and κ about the λ deal, so I can't summarize what to tell θ. Could you share the key points or outcomes from that discussion?",
+      "rawReasoning": "The user is asking for a summary of what to tell θ about the λ deal, based on a conversation with ο and κ yesterday. However, I don't have access to that conversation or any context about what was discussed. The user mentions \"I talked to ο and κ yesterday about the λ deal\" but this appears to be a new conversation without prior context.\n\nI need to clarify that I don't have access to that conversation.",
+      "restored": "I don't have access to your conversation with smith and walker about the acme deal, so I can't summarize what to tell johnson. Could you share the key points or outcomes from that discussion?",
+      "flagged": [],
+      "ms": 2287,
+      "sent": "I talked to ο and κ yesterday about the λ deal. Can you summarize in two lines what I should tell θ?"
+    }
+  ]
+}

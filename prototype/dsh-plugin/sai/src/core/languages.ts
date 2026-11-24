@@ -107,6 +107,28 @@ export const LANGUAGES: Readonly<Record<LanguageId, LanguagePack>> = {
 /** The languages of a combined pack, for settings that name none. */
 export const DEFAULT_LANGUAGES: readonly LanguageId[] = ['ro', 'en']
 
+const RO_LETTERS = /[ăâîșşțţ]/giu
+const RO_WORDS = new Set(['și', 'si', 'în', 'că', 'este', 'sunt', 'pentru', 'despre', 'din', 'acest', 'această', 'aceasta',
+  'după', 'fost', 'cu', 'pe', 'la', 'nu', 'sau', 'mai', 'am', 'ai', 'au', 'iar', 'dar', 'care', 'un', 'o', 'ieri', 'azi'])
+const EN_WORDS = new Set(['the', 'and', 'of', 'is', 'are', 'was', 'were', 'for', 'with', 'on', 'at', 'by', 'this', 'that',
+  'you', 'from', 'have', 'has', 'to', 'it', 'be', 'will', 'an', 'yesterday', 'today'])
+
+/**
+ * Whether a text reads as Romanian rather than English: Romanian letters and common Romanian
+ * words outweigh common English words. Short texts decide on whatever they contain.
+ * @param text - the text as written.
+ * @returns true for a Romanian text.
+ */
+export function looksRomanian(text: string): boolean {
+  let ro = Math.min(10, text.match(RO_LETTERS)?.length ?? 0) * 2
+  let en = 0
+  for (const word of text.toLowerCase().match(/\p{L}+/gu) ?? []) {
+    if (RO_WORDS.has(word)) ro++
+    if (EN_WORDS.has(word)) en++
+  }
+  return ro > en
+}
+
 /**
  * Combine the packs of several languages.
  * @param ids - enabled languages; unknown ids are ignored.

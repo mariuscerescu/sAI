@@ -38,10 +38,14 @@ export interface CompiledTerm {
    * (someone who types "am vorbit cu popescului" writes every name in lowercase).
    */
   readonly capital?: 'required' | 'expected'
+  /** A two-letter part of a declared name ("Jo", "Le"): searched only with the verifier on, which decides each occurrence. */
+  readonly short?: boolean
 }
 
 const FIRST_WORD = /^[\p{L}\p{N}]+/u
 const WORD = /[\p{L}\p{N}]+/gu
+/** Lowercase function words never asked about as a two-letter name: "do" for Do Tran would mean a question per verb. */
+const COMMON_TWO_LETTER_WORDS = new Set('am an as at be by do go he if in is it me my no of on or so to up us we'.split(' '))
 
 /** Facts about the whole text that detectors may use. */
 export interface DetectHints {
@@ -52,6 +56,11 @@ export interface DetectHints {
    * ("i talked to price" in a text with no capitalized name); it is unconfirmed, for the verifier.
    */
   readonly verifyLowercase?: boolean
+  /**
+   * Verifier mode `all`: every one-word form is unconfirmed, in any case, declared or generated;
+   * only multi-word matches are found directly.
+   */
+  readonly verifyAll?: boolean
 }
 
 /**
@@ -96,6 +105,23 @@ function phraseEnd(norm: string, at: number, words: readonly (readonly string[])
   }
   step(0, at)
   return best
+}
+
+/**
+ * Whether an occurrence is glued to a code token: an underscore, slash, backslash, @, #, $ or =
+ * right next to it, or a dot between it and another letter or digit ("gb_total", "acme.com",
+ * "obj.bill"). A dot that ends a sentence does not count, and neither does a hyphen.
+ * @param original - the text as written.
+ * @param start - start of the occurrence.
+ * @param end - end of the occurrence.
+ * @returns true inside a code token.
+ */
+export function inCodeToken(original: string, start: number, end: number): boolean {
+  const before = original[start - 1] ?? ''
+  const after = original[end] ?? ''
+  if (/[_/\\@#$=]/.test(before) || /[_/\\@#$=]/.test(after)) return true
+  return (before === '.' && /[\p{L}\p{N}]/u.test(original[start - 2] ?? ''))
+    || (after === '.' && /[\p{L}\p{N}]/u.test(original[end + 1] ?? ''))
 }
 
 /** A compiled term list searched with word boundaries. */
@@ -153,8 +179,14 @@ export class TermDetector {
     const capitalized = hints.capitalized ?? capitalizesNames(text.original)
     const push = (term: CompiledTerm, at: number, end = at + term.norm.length): void => {
       const range = toOriginalRange(text, at, end)
-      const dropped = (term.capital === 'required' || (term.capital === 'expected' && (capitalized || hints.verifyLowercase === true)))
-        && !/^\p{Lu}/u.test(text.original.slice(range.start, range.start + 2))
+      const verifying = hints.verifyAll === true || hints.verifyLowercase === true
+      if (term.short === true && (!verifying || COMMON_TWO_LETTER_WORDS.has(text.original.slice(range.start, range.end)))) return
+      // A form inside a code token ("gb_total", "acme.com", "src/acme") is replaced without asking:
+      // measured, the model reads it as an ordinary word.
+      const dropped = !(verifying && inCodeToken(text.original, range.start, range.end)) && (term.short === true || (hints.verifyAll === true
+        ? term.words === undefined && !term.norm.includes(' ')
+        : (term.capital === 'required' || (term.capital === 'expected' && (capitalized || hints.verifyLowercase === true)))
+          && !/^\p{Lu}/u.test(text.original.slice(range.start, range.start + 2))))
       const baseForm = term.exactKeepsSurface === true && text.norm.slice(at, end) === term.norm ? undefined : term.baseForm
       ;(dropped ? unconfirmed : found).push({
         ...range, classId: term.classId, detector: this.id, priority: term.priority, key: term.key,
@@ -229,7 +261,7 @@ export function compileDictionary(vocabulary: readonly VocabularyEntry[], langua
    * belongs to "Răileanu" rather than "Railean". Two classes claiming it drop it.
    */
   const generated = new Map<string, { term: CompiledTerm; baseLength: number } | null>()
-  for (const { entry, norm, spelling, key, derived, firstName } of sources) {
+  for (const { entry, norm, spelling, key, derived, firstName, short } of sources) {
     if (norm.includes(' ')) {
       // A multi-word term matches word by word, each word in any of its forms ("Băncii Verzi").
       terms.push({
@@ -262,6 +294,7 @@ export function compileDictionary(vocabulary: readonly VocabularyEntry[], langua
           // A one-word generated form or name part counts only when capitalized, as names are:
           // "Iulie" may be Iulia, "în iulie" is the month; "Lungul" may be Lungu, "de-a lungul" is not.
           ...oneWord ? { capital: firstName === true ? 'required' : 'expected' } : {},
+          ...short === true ? { short } : {},
         },
       })
     }
@@ -349,6 +382,8 @@ interface Source {
   readonly derived: boolean
   /** A first name found alone. */
   readonly firstName?: boolean
+  /** A two-letter name part, see {@link CompiledTerm.short}. */
+  readonly short?: boolean
 }
 
 /**
@@ -384,6 +419,13 @@ function nameParts(vocabulary: readonly VocabularyEntry[], notNames: ReadonlySet
         seen.add(norm)
         const firstName = index < names.length - 1
         parts.push({ entry, norm, spelling, firstName })
+      }
+      // Two-letter parts ("Jo", "Le") are kept apart so the reading of the longer parts, and the verifier-off path, do not change.
+      // Only a capital followed by a lowercase letter counts: "II" and "de" are not names.
+      for (const { spelling, norm } of words.map(bareWord)) {
+        if (norm.length !== 2 || !/^\p{Lu}\p{Ll}$/u.test(spelling) || notNames.has(norm) || seen.has(norm)) continue
+        seen.add(norm)
+        parts.push({ entry, norm, spelling, firstName: true, short: true })
       }
     }
   }

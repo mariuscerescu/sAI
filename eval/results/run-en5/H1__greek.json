@@ -1,0 +1,19 @@
+{
+  "case": "H1",
+  "category": "H. Identifiers",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type.",
+      "raw": "| Type | Value |\n|------|-------|\n| SSN | `μ` |\n| Phone | `ω` |\n| UK office | `ψ` |\n| NI number | `κ` |",
+      "rawReasoning": "The user wants me to create a table with the confidential information they've provided. They've given me:\n- SSN: μ\n- Phone: ω\n- UK office: ψ\n- NI number: κ\n\nI need to create a table with one row per item and a column for its type. I'll use the Greek letters exactly as given, inside code formatting as instructed.",
+      "restored": "| Type | Value |\n|------|-------|\n| SSN | `123-45-6789` |\n| Phone | `(212) 555-0143` |\n| UK office | `020 7946 0958` |\n| NI number | `AB 12 34 56 C` |",
+      "flagged": [],
+      "ms": 2718,
+      "sent": "Our contractor's SSN is μ and his phone is ω; the UK office is on ψ and his NI number is κ. Put these into a table with one row per item and a column for its type."
+    }
+  ]
+}

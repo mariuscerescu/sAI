@@ -1,0 +1,19 @@
+{
+  "case": "A1",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write a short, polite email to Mr. Smith from Acme confirming our Thursday meeting about Project Orion.",
+      "raw": "Subject: Confirmation – Thursday Meeting Regarding γ  \n\nDear Mr. μ,  \n\nThis is to confirm our meeting on Thursday to discuss γ. Please let me know if any adjustments are needed.  \n\nBest regards,  \nρ",
+      "rawReasoning": "The user wants a short, polite email to Mr. μ from ρ confirming a Thursday meeting about γ. I need to treat μ, ρ, and γ as confidential terms and write them exactly as given, including in code if needed. The email should be professional and concise. I'll write it in plain text.",
+      "restored": "Subject: Confirmation – Thursday Meeting Regarding Project Orion  \n\nDear Mr. Smith,  \n\nThis is to confirm our meeting on Thursday to discuss Project Orion. Please let me know if any adjustments are needed.  \n\nBest regards,  \nAcme",
+      "flagged": [],
+      "ms": 2707,
+      "sent": "Write a short, polite email to Mr. μ from ρ confirming our Thursday meeting about γ."
+    }
+  ]
+}

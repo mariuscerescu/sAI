@@ -1,0 +1,28 @@
+{
+  "case": "R5",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Nadia joined Quillon in March. Later, Vantoor was promoted.",
+      "raw": "μ joined κ in March, and later μ′ was promoted.",
+      "rawReasoning": "The user states: \"μ joined κ in March. Later, μ′ was promoted.\"\nWe need to respond concisely in English. The user mentions confidential terms replaced with Greek letters. We must treat each such letter as the real term it stands for. When referring to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments. Do not translate or spell out these letters, and do not use them with any other meaning. A letter with a prime, such as μ′, is another written form of the same term as μ, for example the first name and the surname of one person. Do not mention or explain this relation unless the user asks about it.\n\nSo we have μ and κ. μ joined κ in March. Later, μ′ was promoted. μ′ is another written form of the same term as μ. So μ and μ′ refer to the same entity (maybe first name and surname). The user didn't ask a question, just stated facts. We should respond appropriately, perhaps acknowledging or summarizing. The user didn't ask a question, but we can respond with a brief acknowledgment or summary. Since the instruction: \"Answer in English, concisely, unless asked otherwise.\" So we can say something like: \"μ joined κ in March, and later μ′ was promoted.\" But we must not explain the relation between μ and μ′ unless asked. We can just restate or acknowledge.\n\nWe need to be concise. Probably: \"Noted: μ joined κ in March, and μ′ was later promoted.\" That's fine.\n\nWe must write the letters exactly as given, including prime. In code? The instruction: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" That suggests we should put them in code formatting? It says \"also inside code, file paths, and tool-call arguments.\" That might mean if we refer to them in code blocks, file paths, or tool-call arguments, we should write them exactly. But in normal text, we can just write them as μ and μ′? The instruction: \"Treat each such letter as the real term it stands for. Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" This could be interpreted as: when you refer to the term, write the letter exactly as given (including prime), and also if you put it inside code, file paths, or tool-call arguments, you should do the same. It doesn't require code formatting for all mentions. But to be safe, we can write them in plain text as μ and μ′. That's exactly as given.\n\nThus response: \"μ joined κ in March, and later μ′ was promoted.\" That's concise.\n\nI'll output that.",
+      "restored": "Nadia joined Quillon in March, and later Vantoor was promoted.",
+      "flagged": [],
+      "ms": 14354,
+      "sent": "μ joined κ in March. Later, μ′ was promoted."
+    },
+    {
+      "user": "Who was promoted? Answer with only that name, written the way I wrote it.",
+      "raw": "μ′",
+      "rawReasoning": "The user is asking who was promoted, and wants the answer written exactly as they wrote it. In their previous message, they wrote \"μ′ was promoted.\" So the name is μ′ (with the prime symbol). I should answer with just that.",
+      "restored": "Vantoor",
+      "flagged": [],
+      "ms": 3564,
+      "sent": "Who was promoted? Answer with only that name, written the way I wrote it."
+    }
+  ]
+}

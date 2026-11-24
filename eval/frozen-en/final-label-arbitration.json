@@ -1,0 +1,88 @@
+{
+ "part": "final",
+ "mode": "all",
+ "rule": "SPEC.md section 7",
+ "note": "The labels of the final part were not changed. The raw result is the one in frozen-final.json.",
+ "cases": [
+  {
+   "id": "p-chat-1-14",
+   "variant": "lowercase-chat",
+   "start": 32,
+   "word": "art",
+   "decision": "real-leak",
+   "reason": "a declared first name written in lowercase, used as the person a message is addressed to"
+  },
+  {
+   "id": "n-ccbdef0be6254e22adf6252054e7b104",
+   "variant": "lowercase-chat",
+   "start": 137,
+   "word": "user",
+   "decision": "label-error",
+   "reason": "part of the field label 'user name'"
+  },
+  {
+   "id": "n-edcd70611b92410787ea810c268defe6",
+   "variant": "as-written",
+   "start": 286,
+   "word": "company",
+   "decision": "label-error",
+   "reason": "the generic word 'company', standing where a company name would be"
+  },
+  {
+   "id": "n-e1f8d4eb25784c78b2521083a50d0c9e",
+   "variant": "as-written",
+   "start": 493,
+   "word": "Price",
+   "decision": "label-error",
+   "reason": "part of the ordinary heading 'purchase price'"
+  },
+  {
+   "id": "n-e1f8d4eb25784c78b2521083a50d0c9e",
+   "variant": "as-written",
+   "start": 512,
+   "word": "Price",
+   "decision": "label-error",
+   "reason": "part of the ordinary heading 'purchase price'"
+  },
+  {
+   "id": "p-chat-1-6",
+   "variant": "lowercase-chat",
+   "start": 32,
+   "word": "art",
+   "decision": "real-leak",
+   "reason": "a declared first name written in lowercase, used as the person a message is addressed to"
+  },
+  {
+   "id": "n-09f0268bf5ca484ea52e513fd00bbe38",
+   "variant": "as-written",
+   "start": 277,
+   "word": "Black",
+   "decision": "real-leak",
+   "reason": "a surname right after a courtesy title"
+  },
+  {
+   "id": "n-2b711891136b4144b11bf5d87cf6f2b3",
+   "variant": "as-written",
+   "start": 444,
+   "word": "Son",
+   "decision": "real-leak",
+   "reason": "the first name of the person speaking in the document, used to address that person"
+  },
+  {
+   "id": "n-679bd89f81fb48d0b0f5e7ce633c508d",
+   "variant": "as-written",
+   "start": 85,
+   "word": "First",
+   "decision": "label-error",
+   "reason": "part of the field label 'first name'"
+  },
+  {
+   "id": "n-679bd89f81fb48d0b0f5e7ce633c508d",
+   "variant": "as-written",
+   "start": 106,
+   "word": "Last",
+   "decision": "label-error",
+   "reason": "part of the field label 'last name'"
+  }
+ ]
+}

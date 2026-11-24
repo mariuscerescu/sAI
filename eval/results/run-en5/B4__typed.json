@@ -1,0 +1,37 @@
+{
+  "case": "B4",
+  "category": "B. Reasoning",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Remember: Emily Clark is Nordic Farms' lawyer, and David Walker is Greenfield Bank's auditor.",
+      "raw": "Understood. I'll keep in mind that:\n- ⟦PERSON_1⟧ is ⟦COMPANY_1⟧'s lawyer\n- ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor\n\nHow can I help you with this information?",
+      "rawReasoning": "The user is reminding me of the relationships: PERSON_1 is COMPANY_1's lawyer, and PERSON_2 is COMPANY_2's auditor. I should acknowledge this and remember it for future reference.",
+      "restored": "Understood. I'll keep in mind that:\n- Emily Clark is Nordic Farms's lawyer\n- David Walker is Greenfield Bank's auditor\n\nHow can I help you with this information?",
+      "flagged": [],
+      "ms": 2222,
+      "sent": "Remember: ⟦PERSON_1⟧ is ⟦COMPANY_1⟧' lawyer, and ⟦PERSON_2⟧ is ⟦COMPANY_2⟧'s auditor."
+    },
+    {
+      "user": "Who is Nordic Farms' lawyer?",
+      "raw": "⟦PERSON_1⟧ is ⟦COMPANY_1⟧'s lawyer.",
+      "rawReasoning": "The user is asking who is COMPANY_1's lawyer. According to the information provided in the previous message, PERSON_1 is COMPANY_1's lawyer. I should answer using the placeholder exactly as given.",
+      "restored": "Emily Clark is Nordic Farms's lawyer.",
+      "flagged": [],
+      "ms": 3344,
+      "sent": "Who is ⟦COMPANY_1⟧' lawyer?"
+    },
+    {
+      "user": "And who audits Greenfield Bank? Answer with the full name.",
+      "raw": "⟦PERSON_2⟧",
+      "rawReasoning": "The user is asking who audits COMPANY_2, and wants the full name. From the context, PERSON_2 is COMPANY_2's auditor. So the answer should be PERSON_2. I need to output the placeholder exactly as given, including the brackets. So: ⟦PERSON_2⟧.",
+      "restored": "David Walker",
+      "flagged": [],
+      "ms": 2409,
+      "sent": "And who audits ⟦COMPANY_2⟧? Answer with the full name."
+    }
+  ]
+}

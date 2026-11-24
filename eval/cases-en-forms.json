@@ -1,0 +1,19 @@
+{
+  "system": "You are a helpful assistant. Answer in English, concisely, unless asked otherwise.",
+  "vocabulary": [
+    { "id": "f_nadia", "class": "PERSON", "terms": ["Nadia Vantoor"] },
+    { "id": "f_elias", "class": "PERSON", "terms": ["Elias Brandt"] },
+    { "id": "f_quillon", "class": "COMPANY", "terms": ["Quillon Systems"] },
+    { "id": "f_pellham", "class": "COMPANY", "terms": ["Pellham Energy Ltd"] }
+  ],
+  "cases": [
+    { "id": "R1", "category": "R. Written forms", "turns": ["Repeat this sentence exactly, change nothing: Nadia called, and then Vantoor replied about Quillon."] },
+    { "id": "R2", "category": "R. Written forms", "turns": ["Format this as a Markdown table with the columns Field and Value. Keep every value exactly as written.\nFirst Name: Nadia\nLast Name: Vantoor\nCompany: Quillon Systems"] },
+    { "id": "R3", "category": "R. Written forms", "turns": ["Write a two-sentence formal email to Ms. Vantoor from Elias Brandt at Pellham Energy Ltd about a delayed invoice. Greet the recipient by surname and sign with the full name."] },
+    { "id": "R4", "category": "R. Written forms", "turns": ["Return only JSON with the keys full_name, first_name and last_name for this contact: The contact is Elias Brandt. Colleagues call this person Elias, and the contract says Brandt."] },
+    { "id": "R5", "category": "R. Written forms", "turns": ["Nadia joined Quillon in March. Later, Vantoor was promoted.", "Who was promoted? Answer with only that name, written the way I wrote it."] },
+    { "id": "R6", "category": "R. Written forms", "turns": ["Nadia Vantoor signed the deal. Later Vantoor called Elias Brandt. Who signed the deal, and who received the call? Answer in one sentence."] },
+    { "id": "R7", "category": "R. Written forms", "turns": ["i talked to vantoor yesterday about the quillon invoice. repeat my sentence exactly."] },
+    { "id": "R8", "category": "R. Written forms", "turns": ["Are Nadia and Vantoor in this note the same person or two people? Note: Nadia Vantoor runs sales. Nadia sent the offer, and Vantoor approved it. Answer in one short sentence."] }
+  ]
+}

@@ -19,7 +19,7 @@ export type ModelViewProps = PropsRuntime<'conversation.view'> & PropsLocale<typ
 const REFRESH_MS = 1500
 
 const TYPED_SYMBOL = /⟦[^⟧\n]{1,60}⟧/g
-const GREEK_SYMBOL = /(?<![\p{L}\p{M}])\p{Script=Greek}[₀-₉]*(?![\p{L}\p{M}])/gu
+const GREEK_SYMBOL = /(?<![\p{L}\p{M}])\p{Script=Greek}[₀-₉]*′*(?![\p{L}\p{M}])/gu
 
 /**
  * Render the last request and raw answer of the open Session.

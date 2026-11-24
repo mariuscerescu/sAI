@@ -1,0 +1,64 @@
+{
+ "version": 1,
+ "seed": "sai-frozen-en-v1-2026-11-23",
+ "builderSha256": "21084030c1ec849d2c08ed4c9d943fdde3da6fcf46dfa3788b56d3050f9a51d0",
+ "parts": {
+  "calibration": {
+   "file": "sai-model-bench/data/frozen-en/calibration.jsonl",
+   "sha256": "d40ecfab4e4d4ec2c3d37b3d5e30234360aa2173c60bb8c5103c06c029aa2368",
+   "messages": 2083,
+   "bySource": {
+    "nemotron": 1731,
+    "prompts": 352
+   },
+   "lowercaseChatMessages": 198,
+   "checks": 7243,
+   "namesOneWord": 3116,
+   "namesOneWordCapitalized": 2879,
+   "namesAlsoOrdinaryWords": 552,
+   "namesOther": 2665,
+   "ordinary": 1462,
+   "ordinaryCapitalized": 268,
+   "distinctOrdinaryWords": 71,
+   "domains": 46
+  },
+  "final": {
+   "file": "sai-model-bench/data/frozen-en/final.jsonl",
+   "sha256": "ed616bc8337d725255a65a2623b4ae19b593e98435bc76727d6db4617e20f4f9",
+   "messages": 3799,
+   "bySource": {
+    "prompts": 440,
+    "nemotron": 3359
+   },
+   "lowercaseChatMessages": 377,
+   "checks": 13195,
+   "namesOneWord": 5491,
+   "namesOneWordCapitalized": 4999,
+   "namesAlsoOrdinaryWords": 802,
+   "namesOther": 5220,
+   "ordinary": 2484,
+   "ordinaryCapitalized": 398,
+   "distinctOrdinaryWords": 78,
+   "domains": 50
+  },
+  "reserve": {
+   "file": "sai-model-bench/data/frozen-en/reserve.jsonl",
+   "sha256": "8bea89aa9ad6e3bf3685bab833221306f2611a98f9d959bddb2dce6b974ad29a",
+   "messages": 645,
+   "bySource": {
+    "nemotron": 557,
+    "prompts": 88
+   },
+   "lowercaseChatMessages": 59,
+   "checks": 2234,
+   "namesOneWord": 929,
+   "namesOneWordCapitalized": 877,
+   "namesAlsoOrdinaryWords": 149,
+   "namesOther": 843,
+   "ordinary": 462,
+   "ordinaryCapitalized": 93,
+   "distinctOrdinaryWords": 61,
+   "domains": 34
+  }
+ }
+}

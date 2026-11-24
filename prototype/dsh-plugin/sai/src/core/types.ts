@@ -106,4 +106,6 @@ export interface VaultEntry {
   readonly key: EntityKey
   /** Exact original spellings in order of first appearance. */
   readonly surfaceForms: string[]
+  /** For a name: the symbol of each form it is restored as; the first form uses {@link token}. */
+  readonly symbols: Map<string, string>
 }

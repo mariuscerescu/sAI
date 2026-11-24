@@ -1,0 +1,19 @@
+{
+  "case": "R1",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Repeat this sentence exactly, change nothing: Nadia called, and then Vantoor replied about Quillon.",
+      "raw": "ω called, and then ω′ replied about γ.",
+      "rawReasoning": "The user wants me to repeat the exact sentence: \"ω called, and then ω′ replied about γ.\" I need to output it exactly as given, with no changes.",
+      "restored": "Nadia called, and then Vantoor replied about Quillon.",
+      "flagged": [],
+      "ms": 1571,
+      "sent": "Repeat this sentence exactly, change nothing: ω called, and then ω′ replied about γ."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "case": "F3",
+  "category": "F. Impossible",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Is the SSN 123-45-6789 valid, and which state issued it?",
+      "raw": "I cannot validate **μ** or determine its issuing state because **μ** is a placeholder, not an actual Social Security Number. To check validity and origin, I would need the real 9‑digit SSN.\n\nIn general:\n- A valid SSN follows the format `XXX‑XX‑XXXX`.\n- Before 2011, the first three digits (area number) indicated the issuing state; since 2011, SSNs are randomized and no longer encode state information.\n\nIf you have the actual number, you can verify its format and (for pre‑2011 numbers) look up the area‑number range for the state. Never share real SSNs in unsecured channels.",
+      "rawReasoning": "The user is asking about an SSN (Social Security Number) represented by the Greek letter μ. They want to know if it's valid and which state issued it. \n\nFirst, I need to understand that μ is a placeholder for an actual SSN. The user wants validation and state information. \n\nSSN validation involves checking the format (9 digits, typically XXX-XX-XXXX), and the state of issuance can be determined from the first three digits (the area number). However, since μ is a placeholder, I don't have the actual number. \n\nI should explain that I cannot validate a placeholder or determine the state without the actual SSN. I can describe the general process: SSNs have a specific format, and the first three digits indicate the state of issuance (though this changed in 2011 with randomization). \n\nI need to respond concisely, noting that μ is a placeholder and I need the actual number to provide specific information. I should also mention privacy concerns with sharing SSNs.",
+      "restored": "I cannot validate **123-45-6789** or determine its issuing state because **123-45-6789** is a placeholder, not an actual Social Security Number. To check validity and origin, I would need the real 9‑digit SSN.\n\nIn general:\n- A valid SSN follows the format `XXX‑XX‑XXXX`.\n- Before 2011, the first three digits (area number) indicated the issuing state; since 2011, SSNs are randomized and no longer encode state information.\n\nIf you have the actual number, you can verify its format and (for pre‑2011 numbers) look up the area‑number range for the state. Never share real SSNs in unsecured channels.",
+      "flagged": [],
+      "ms": 6895,
+      "sent": "Is the SSN μ valid, and which state issued it?"
+    }
+  ]
+}

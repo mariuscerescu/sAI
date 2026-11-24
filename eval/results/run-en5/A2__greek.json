@@ -1,0 +1,19 @@
+{
+  "case": "A2",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "John Smith and Mary Johnson work at Acme Logistics. Smith is the director, Johnson is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "raw": "φ′ (the director) typically signs invoices as they hold the authority to approve payments.",
+      "rawReasoning": "The user is asking about who signs invoices at an organization ι, where φ and ψ work. φ′ is the director, ψ′ is the accountant.\n\nTypically, invoices are signed by someone with financial authority. The director (φ′) would typically have signing authority for invoices, though sometimes the accountant (ψ′) might prepare them but the director approves/signs. In many organizations, the director or a designated manager signs off on invoices.\n\nGiven the roles: φ′ = director, ψ′ = accountant. The director would typically be the one who signs invoices as they have the authority to approve payments. The accountant prepares and processes them.\n\nSo the answer should be φ′.",
+      "restored": "Smith (the director) typically signs invoices as they hold the authority to approve payments.",
+      "flagged": [],
+      "ms": 3998,
+      "sent": "φ and ψ work at ι. φ′ is the director, ψ′ is the accountant. Who signs the invoices, in your opinion? Answer using their names."
+    }
+  ]
+}

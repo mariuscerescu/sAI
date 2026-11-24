@@ -1,0 +1,19 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I need more details about the ω deal discussion with β and λ to give a concise two-line summary for ζ. What were the key decisions, action items, or points ζ needs to know?",
+      "rawReasoning": "The user mentions confidential terms replaced with Greek letters: β, λ, ω, ζ. They want a summary in two lines of what to tell ζ about the ω deal discussed with β and λ. Since I don't have context, I need to ask for clarification or provide a generic template? The user expects me to treat the Greek letters as placeholders for real terms. I should not translate them. I need to produce a concise two-line summary. However, I lack details about the deal. I could ask for more info, but the user might want a generic summary. Perhaps I can give a template: \"Update ζ on key points agreed with β and λ regarding ω deal. Highlight next steps and any decisions needed.\" But that's generic. The user likely expects me to infer from context? There's no prior context. I should ask for specifics. But the instruction: \"Answer in English, concisely, unless asked otherwise.\" I can ask for more details. However, the user might be testing if I treat Greek letters correctly. I'll respond with a request for clarification.",
+      "restored": "I need more details about the acme deal discussion with smith and walker to give a concise two-line summary for johnson. What were the key decisions, action items, or points johnson needs to know?",
+      "flagged": [],
+      "ms": 7318,
+      "sent": "I talked to β and λ yesterday about the ω deal. Can you summarize in two lines what I should tell ζ?"
+    }
+  ]
+}

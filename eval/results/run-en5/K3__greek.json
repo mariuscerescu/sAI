@@ -1,0 +1,21 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Yesterday I went to the Orion cinema, but I was only thinking about Project Orion. Where did I go, and what was I thinking about?",
+      "raw": "You went to the Orion cinema, and you were thinking about `φ`.",
+      "rawReasoning": "The user mentions \"Orion cinema\" and \"φ\" (phi). They ask where they went and what they were thinking about. According to the system prompt, confidential terms are replaced with isolated Greek letters like β or κ, possibly with subscripts. φ is a Greek letter. It says treat each such letter as the real term it stands for. So φ stands for some confidential term. The user says \"I went to the Orion cinema, but I was only thinking about φ.\" So the answer: They went to the Orion cinema, and they were thinking about φ (the confidential term). We should not translate or spell out φ. Just refer to it as φ. So answer: You went to the Orion cinema, and you were thinking about φ.",
+      "restored": "You went to the Orion cinema, and you were thinking about `Project Orion`.",
+      "flagged": [
+        "PROJECT:Project Orion (orion)"
+      ],
+      "ms": 5115,
+      "sent": "Yesterday I went to the Orion cinema, but I was only thinking about φ. Where did I go, and what was I thinking about?"
+    }
+  ]
+}

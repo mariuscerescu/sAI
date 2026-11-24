@@ -1,0 +1,21 @@
+{
+  "case": "A3",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Rewrite this sentence with correct capitalization and grammar: «smith's contract with acme were signed by the johnsons at project orion»",
+      "raw": "⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.",
+      "rawReasoning": "The user wants me to rewrite a sentence with correct capitalization and grammar. The sentence is: «⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»\n\nI need to fix grammar issues:\n1. \"were signed\" should be \"was signed\" because \"contract\" is singular\n2. \"the ⟦PERSON_2⟧\" - \"the\" might not be needed before a person's name/title, but could be kept if ⟦PERSON_2⟧ is a title like \"CEO\"\n3. Capitalization: The sentence should start with a capital letter, and proper nouns (which the placeholders represent) should be capitalized. The placeholders already have capital letters inside them.\n\nLet me rewrite: \"⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ was signed by ⟦PERSON_2⟧ at ⟦PROJECT_1⟧.\"\n\nI'll remove \"the\" before ⟦PERSON_2⟧ as it's more natural unless it's a title. But the user might want to keep the structure. I'll provide a clean version.",
+      "restored": "smith's contract with acme was signed by Johnson at project orion.",
+      "flagged": [
+        "PROJECT:Project Orion (project)"
+      ],
+      "ms": 9825,
+      "sent": "Rewrite this sentence with correct capitalization and grammar: «⟦PERSON_1⟧'s contract with ⟦COMPANY_1⟧ were signed by the ⟦PERSON_2⟧ at ⟦PROJECT_1⟧»"
+    }
+  ]
+}

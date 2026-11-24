@@ -1,0 +1,19 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "GB approved the loan for Acme. GB stands for Greenfield Bank. Separately, in code, the variable gb_total holds the amount. What did GB approve?",
+      "raw": "⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧.",
+      "rawReasoning": "The user is asking: \"What did ⟦COMPANY_1⟧ approve?\" The conversation states: \"⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧.\" So the answer is that ⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧. The user also mentions that ⟦COMPANY_1⟧ stands for ⟦COMPANY_1_2⟧, and in code, variable ⟦COMPANY_1_3⟧_total holds the amount. But the question is simply: \"What did ⟦COMPANY_1⟧ approve?\" So answer: ⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧.",
+      "restored": "GB approved the loan for Acme.",
+      "flagged": [],
+      "ms": 2915,
+      "sent": "⟦COMPANY_1⟧ approved the loan for ⟦COMPANY_2⟧. ⟦COMPANY_1⟧ stands for ⟦COMPANY_1_2⟧. Separately, in code, the variable ⟦COMPANY_1_3⟧_total holds the amount. What did ⟦COMPANY_1⟧ approve?"
+    }
+  ]
+}

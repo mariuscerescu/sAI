@@ -118,6 +118,11 @@ export function SaiSettingsPage(props: SaiSettingsPageProps) {
       <Checkbox label={t('verifierEnabled')} checked={verifier.enabled === true} disabled={disabled}
         onChange={(next) => { edit('verifier', { ...verifier, enabled: next }) }} />
       <p className={css.notice}>{t('verifierHint')}</p>
+      <SegmentedControl id="sai-verifier-mode" label={t('verifierMode')} value={verifier.mode ?? DEFAULT_SETTINGS.verifier.mode}
+        disabled={disabled || verifier.enabled !== true}
+        options={[{ value: 'all', label: t('verifierModeAll') }, { value: 'lowercase', label: t('verifierModeLowercase') }]}
+        onChange={(next) => { edit('verifier', { ...verifier, mode: next }) }} />
+      <p className={css.notice}>{t((verifier.mode ?? DEFAULT_SETTINGS.verifier.mode) === 'all' ? 'verifierModeAllHint' : 'verifierModeLowercaseHint')}</p>
       <label className={css.cellWide}><span className={css.label}>{t('verifierUrl')}</span>
         <input className={css.input} value={verifier.url ?? DEFAULT_SETTINGS.verifier.url} disabled={disabled || verifier.enabled !== true}
           onChange={(event) => { edit('verifier', { ...verifier, url: event.target.value }) }} />

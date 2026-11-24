@@ -1,0 +1,19 @@
+{
+  "case": "F3",
+  "category": "F. Impossible",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Is the SSN 123-45-6789 valid, and which state issued it?",
+      "raw": "I cannot validate Social Security Numbers (SSNs) or determine which state issued a specific SSN. SSNs are sensitive personal information, and I don't have access to SSA databases or validation systems.\n\nHistorically, the first three digits (area number) of an SSN corresponded to the state where the card was issued, but since **SSN randomization** (implemented June 25, 2011), area numbers no longer have geographic significance.\n\n**Important:** Never share real SSNs in chats or with AI systems. If you need to verify an SSN, use official channels like the Social Security Administration's verification services or consult with authorized personnel.",
+      "rawReasoning": "The user is asking about an SSN represented by the Greek letter γ. They want to know if it's valid and which state issued it. However, I don't have access to real SSN databases or validation tools. SSNs are sensitive personal information, and I shouldn't attempt to validate or look up specific SSNs. I need to explain that I can't validate SSNs or determine issuing states, and advise against sharing real SSNs. I should also mention that SSN structure includes area numbers that historically corresponded to states, but that's not something I can check for a specific SSN. I'll respond accordingly.",
+      "restored": "I cannot validate Social Security Numbers (SSNs) or determine which state issued a specific SSN. SSNs are sensitive personal information, and I don't have access to SSA databases or validation systems.\n\nHistorically, the first three digits (area number) of an SSN corresponded to the state where the card was issued, but since **SSN randomization** (implemented June 25, 2011), area numbers no longer have geographic significance.\n\n**Important:** Never share real SSNs in chats or with AI systems. If you need to verify an SSN, use official channels like the Social Security Administration's verification services or consult with authorized personnel.",
+      "flagged": [],
+      "ms": 5525,
+      "sent": "Is the SSN γ valid, and which state issued it?"
+    }
+  ]
+}

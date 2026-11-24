@@ -1,0 +1,19 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "GB approved the loan for Acme. GB stands for Greenfield Bank. Separately, in code, the variable gb_total holds the amount. What did GB approve?",
+      "raw": "`ζ` approved the loan for `λ`.",
+      "rawReasoning": "The user states: \"ζ approved the loan for λ. ζ stands for ζ′. Separately, in code, the variable ζ′′_total holds the amount. What did ζ approve?\"\n\nWe need to answer: ζ approved the loan for λ. So ζ approved the loan. The question: \"What did ζ approve?\" Answer: the loan for λ. But we must be concise. Also note the Greek letters: ζ, ζ′, ζ′′_total, λ. We must write them exactly as given, inside code formatting? The instruction: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" So we should write the letters in code formatting (backticks). The answer: ζ approved the loan for λ. So we can say: `ζ` approved the loan for `λ`. But the question: \"What did ζ approve?\" So answer: the loan for `λ`. We'll keep it concise.",
+      "restored": "`GB` approved the loan for `Acme`.",
+      "flagged": [],
+      "ms": 5929,
+      "sent": "ζ approved the loan for λ. ζ stands for ζ′. Separately, in code, the variable ζ′′_total holds the amount. What did ζ approve?"
+    }
+  ]
+}

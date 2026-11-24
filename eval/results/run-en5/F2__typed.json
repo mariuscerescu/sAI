@@ -1,0 +1,19 @@
+{
+  "case": "F2",
+  "category": "F. Impossible",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "How many letters are in the name Acme Logistics Inc., without spaces and punctuation?",
+      "raw": "I can't answer that because ⟦COMPANY_1⟧ is a placeholder — I don't have the actual company name it represents. If you provide the real name, I can count the letters (ignoring spaces and punctuation).",
+      "rawReasoning": "The user is asking how many letters are in the name ⟦COMPANY_1⟧, without spaces and punctuation. However, ⟦COMPANY_1⟧ is a placeholder, not the actual company name. The placeholder itself contains letters, but the user wants the count for the real value it stands for. Since I don't know the real company name, I cannot count its letters. I should explain that ⟦COMPANY_1⟧ is a placeholder and I don't have access to the actual name. I'll respond accordingly.",
+      "restored": "I can't answer that because Acme Logistics Inc. is a placeholder — I don't have the actual company name it represents. If you provide the real name, I can count the letters (ignoring spaces and punctuation).",
+      "flagged": [],
+      "ms": 5378,
+      "sent": "How many letters are in the name ⟦COMPANY_1⟧, without spaces and punctuation?"
+    }
+  ]
+}

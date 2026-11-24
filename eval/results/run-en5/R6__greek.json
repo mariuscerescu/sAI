@@ -1,0 +1,19 @@
+{
+  "case": "R6",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Nadia Vantoor signed the deal. Later Vantoor called Elias Brandt. Who signed the deal, and who received the call? Answer in one sentence.",
+      "raw": "α signed the deal, and τ received the call.",
+      "rawReasoning": "The user is asking about a scenario with confidential terms replaced by Greek letters. Let me parse this carefully:\n\n- α signed the deal\n- Later α′ called τ\n- α′ is described as \"another written form of the same term as α, for example the first name and the surname of one person\"\n\nSo α and α′ refer to the same person (just different written forms, like first name vs surname). Therefore:\n- α (and thus α′) signed the deal\n- α′ (which is the same person as α) called τ\n- τ received the call\n\nThe question asks: \"Who signed the deal, and who received the call?\"\n\nAnswer: α signed the deal, and τ received the call.",
+      "restored": "Nadia Vantoor signed the deal, and Elias Brandt received the call.",
+      "flagged": [],
+      "ms": 2255,
+      "sent": "α signed the deal. Later α′ called τ. Who signed the deal, and who received the call? Answer in one sentence."
+    }
+  ]
+}

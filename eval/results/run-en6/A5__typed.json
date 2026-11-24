@@ -1,0 +1,19 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "Please provide the key points discussed with ⟦PERSON_1⟧ and ⟦PERSON_2⟧ about the ⟦COMPANY_1⟧ deal so I can draft a two-line summary for ⟦PERSON_3⟧.",
+      "rawReasoning": "The user asks for a summary of what they should tell PERSON_3 about a deal discussed with PERSON_1 and PERSON_2. I don't have the details of the conversation, so I need to ask for clarification or provide a generic template. Since the user wants a two-line summary, I should ask for key points or provide a structure. However, the instruction says to answer concisely in English unless asked otherwise. I don't have the content of the conversation, so I cannot summarize. I should ask for the key points discussed. But the user might expect me to know? The placeholders are just anonymized; I don't have the actual conversation. I need to respond that I need more information. Let's answer: \"Please provide the key points discussed with ⟦PERSON_1⟧ and ⟦PERSON_2⟧ about the ⟦COMPANY_1⟧ deal so I can draft a two-line summary for ⟦PERSON_3⟧.\" That's concise and helpful.",
+      "restored": "Please provide the key points discussed with smith and walker about the acme deal so I can draft a two-line summary for johnson.",
+      "flagged": [],
+      "ms": 8310,
+      "sent": "I talked to ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal. Can you summarize in two lines what I should tell ⟦PERSON_3⟧?"
+    }
+  ]
+}

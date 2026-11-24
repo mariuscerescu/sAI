@@ -1,0 +1,19 @@
+{
+  "case": "H1",
+  "category": "H. Identifiers",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type.",
+      "raw": "| Value | Type |\n|-------|------|\n| ⟦SSN_1⟧ | Social Security Number (SSN) |\n| ⟦PHONE_1⟧ | Phone Number (Contractor) |\n| ⟦PHONE_2⟧ | Phone Number (UK Office) |\n| ⟦NINO_1⟧ | National Insurance Number (NI) |",
+      "rawReasoning": "The user wants a table with one row per item and a column for its type. They provided four items: contractor's SSN ⟦SSN_1⟧, phone ⟦PHONE_1⟧, UK office phone ⟦PHONE_2⟧, NI number ⟦NINO_1⟧. Need to create a table with columns: Item, Type (or maybe Value, Type). They said \"one row per item and a column for its type\". So each row includes the item value and its type. Probably include the placeholder as the value. Provide a markdown table.\n\nLet's produce:\n\n| Value | Type |\n|-------|------|\n| ⟦SSN_1⟧ | Social Security Number (SSN) |\n| ⟦PHONE_1⟧ | Phone Number (Contractor) |\n| ⟦PHONE_2⟧ | Phone Number (UK Office) |\n| ⟦NINO_1⟧ | National Insurance Number (NI) |\n\nThat's concise.",
+      "restored": "| Value | Type |\n|-------|------|\n| 123-45-6789 | Social Security Number (SSN) |\n| (212) 555-0143 | Phone Number (Contractor) |\n| 020 7946 0958 | Phone Number (UK Office) |\n| AB 12 34 56 C | National Insurance Number (NI) |",
+      "flagged": [],
+      "ms": 3303,
+      "sent": "Our contractor's SSN is ⟦SSN_1⟧ and his phone is ⟦PHONE_1⟧; the UK office is on ⟦PHONE_2⟧ and his NI number is ⟦NINO_1⟧. Put these into a table with one row per item and a column for its type."
+    }
+  ]
+}

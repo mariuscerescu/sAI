@@ -1,0 +1,19 @@
+{
+  "case": "F3",
+  "category": "F. Impossible",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Is the SSN 123-45-6789 valid, and which state issued it?",
+      "raw": "I cannot determine the validity or issuing state of ⟦SSN_1⟧ because:\n\n1. **Placeholder protection**: ⟦SSN_1⟧ is a masked value—the actual SSN is not visible to me.\n2. **No validation authority**: Even with the real number, I lack access to Social Security Administration records needed for official validation or state-of-issue lookup.\n3. **Privacy & security**: Verifying or disclosing details about real SSNs would violate privacy norms and legal protections.\n\nIf you have the actual SSN, you can check its format yourself (9 digits, not all zeros, not 123‑45‑6789, etc.), and the first three digits (area number) historically indicate the issuing state—but only the SSA can provide definitive, current validation.",
+      "rawReasoning": "The user is asking about the validity and issuing state of a Social Security Number (SSN) represented by the placeholder ⟦SSN_1⟧. \n\nFirst, I need to clarify that I cannot validate real SSNs or determine their issuing state because:\n1. I don't have access to the actual SSN value - it's been replaced with a placeholder for privacy\n2. Even if I had the real SSN, validating SSNs and determining issuing states requires access to Social Security Administration databases which I don't have\n3. Sharing or validating real SSNs would be a privacy and security violation\n\nThe placeholder ⟦SSN_1⟧ represents some real SSN value, but since it's masked, I cannot analyze it. I should explain this limitation to the user.\n\nI should also note that SSN validation typically involves checking the format (9 digits, not all zeros, not 123-45-6789, etc.) and the issuing state is determined by the first three digits (area number), but again, I can't do this with a placeholder.\n\nMy response should be clear that I cannot answer this question due to the placeholder and privacy/security reasons.",
+      "restored": "I cannot determine the validity or issuing state of 123-45-6789 because:\n\n1. **Placeholder protection**: 123-45-6789 is a masked value—the actual SSN is not visible to me.\n2. **No validation authority**: Even with the real number, I lack access to Social Security Administration records needed for official validation or state-of-issue lookup.\n3. **Privacy & security**: Verifying or disclosing details about real SSNs would violate privacy norms and legal protections.\n\nIf you have the actual SSN, you can check its format yourself (9 digits, not all zeros, not 123‑45‑6789, etc.), and the first three digits (area number) historically indicate the issuing state—but only the SSA can provide definitive, current validation.",
+      "flagged": [],
+      "ms": 11058,
+      "sent": "Is the SSN ⟦SSN_1⟧ valid, and which state issued it?"
+    }
+  ]
+}

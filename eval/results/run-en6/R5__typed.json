@@ -1,0 +1,28 @@
+{
+  "case": "R5",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Nadia joined Quillon in March. Later, Vantoor was promoted.",
+      "raw": "Got it — ⟦PERSON_1⟧ started at ⟦COMPANY_1⟧ in March and ⟦PERSON_1_2⟧ later earned a promotion. Anything else you’d like to add or ask about?",
+      "rawReasoning": "The user gave two sentences with placeholders. They likely want me to continue or respond appropriately. The placeholders: PERSON_1 and PERSON_1_2 refer to same person (maybe first name and surname). COMPANY_1 is a company. The user says \"⟦PERSON_1⟧ joined ⟦COMPANY_1⟧ in March. Later, ⟦PERSON_1_2⟧ was promoted.\" This is a statement. They might want me to acknowledge or ask follow-up. Since they didn't ask a question, maybe they want me to continue the narrative or confirm. I should respond briefly, acknowledging the info. Use placeholders as given.",
+      "restored": "Got it — Nadia started at Quillon in March and Vantoor later earned a promotion. Anything else you’d like to add or ask about?",
+      "flagged": [],
+      "ms": 6394,
+      "sent": "⟦PERSON_1⟧ joined ⟦COMPANY_1⟧ in March. Later, ⟦PERSON_1_2⟧ was promoted."
+    },
+    {
+      "user": "Who was promoted? Answer with only that name, written the way I wrote it.",
+      "raw": "⟦PERSON_1_2⟧",
+      "rawReasoning": "The user asks: \"Who was promoted? Answer with only that name, written the way I wrote it.\"\n\nFrom the conversation: \"⟦PERSON_1⟧ joined ⟦COMPANY_1⟧ in March. Later, ⟦PERSON_1_2⟧ was promoted.\"\n\nThe promoted person is ⟦PERSON_1_2⟧. The user wants the answer with only that name, written exactly as they wrote it. So output: ⟦PERSON_1_2⟧. No extra text.",
+      "restored": "Vantoor",
+      "flagged": [],
+      "ms": 2999,
+      "sent": "Who was promoted? Answer with only that name, written the way I wrote it."
+    }
+  ]
+}

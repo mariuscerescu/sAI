@@ -1,0 +1,19 @@
+{
+  "case": "A2",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "John Smith and Mary Johnson work at Acme Logistics. Smith is the director, Johnson is the accountant. Who signs the invoices, in your opinion? Answer using their names.",
+      "raw": "⟦PERSON_1⟧ (the director) typically signs invoices, as they have the authority to approve financial transactions.",
+      "rawReasoning": "The user is asking who signs invoices at a company where PERSON_1 is the director and PERSON_2 is the accountant. Typically, invoices are signed by someone with authority - often the director or an authorized signatory. The accountant might prepare them but the director usually signs. I should answer using their names with the placeholders.",
+      "restored": "John Smith (the director) typically signs invoices, as they have the authority to approve financial transactions.",
+      "flagged": [],
+      "ms": 2303,
+      "sent": "⟦PERSON_1⟧ and ⟦PERSON_2⟧ work at ⟦COMPANY_1⟧. ⟦PERSON_1_2⟧ is the director, ⟦PERSON_2_2⟧ is the accountant. Who signs the invoices, in your opinion? Answer using their names."
+    }
+  ]
+}

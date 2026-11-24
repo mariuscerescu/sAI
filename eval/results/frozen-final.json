@@ -1,0 +1,82 @@
+{
+ "part": "final",
+ "sha256": "ed616bc8337d725255a65a2623b4ae19b593e98435bc76727d6db4617e20f4f9",
+ "code": "ff19a0a67acba85a010e234e09a94592d5dbe8d1993f075b5354550a210bf8b8",
+ "rule": "SPEC.md section 12",
+ "threshold": 0.2,
+ "contextChars": 300,
+ "all": {
+  "messages": 3799,
+  "sent": 3767,
+  "blocked": 32,
+  "blockedSent": 0,
+  "moreThanOneCall": 0,
+  "differentFromDirect": 0,
+  "names": 10640,
+  "leaked": 10,
+  "oneWord": 5451,
+  "oneWordLeaked": 10,
+  "hard": 800,
+  "hardLeaked": 5,
+  "ordinary": 2462,
+  "overMasked": 40,
+  "ordinaryCapitalized": 396,
+  "overMaskedCapitalized": 20,
+  "symbolsLeftInAnswer": 0,
+  "answerIdentical": 3764,
+  "answerDiffers": 3,
+  "calls": 3797,
+  "questions": 11546,
+  "overMaskedPercent": 1.62,
+  "overMasked95": [
+   1.2,
+   2.2
+  ],
+  "leakRateUpper95Percent": 0.337,
+  "serviceCallMs": {
+   "calls": 3797,
+   "median": 279,
+   "p95": 862,
+   "max": 2342
+  },
+  "rawPass": false,
+  "integrity": true
+ },
+ "lowercase": {
+  "messages": 3799,
+  "sent": 3767,
+  "blocked": 32,
+  "blockedSent": 0,
+  "moreThanOneCall": 0,
+  "differentFromDirect": 0,
+  "names": 10640,
+  "leaked": 3,
+  "oneWord": 5451,
+  "oneWordLeaked": 3,
+  "hard": 800,
+  "hardLeaked": 2,
+  "ordinary": 2462,
+  "overMasked": 416,
+  "ordinaryCapitalized": 396,
+  "overMaskedCapitalized": 396,
+  "symbolsLeftInAnswer": 0,
+  "answerIdentical": 3764,
+  "answerDiffers": 3,
+  "calls": 2217,
+  "questions": 4796,
+  "overMaskedPercent": 16.9,
+  "overMasked95": [
+   15.47,
+   18.43
+  ],
+  "leakRateUpper95Percent": 0.162,
+  "serviceCallMs": {
+   "calls": 2217,
+   "median": 216,
+   "p95": 686,
+   "max": 1628
+  },
+  "rawPass": false,
+  "integrity": true
+ }
+}

@@ -1,0 +1,19 @@
+{
+  "case": "A5",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "I talked to smith and walker yesterday about the acme deal. Can you summarize in two lines what I should tell johnson?",
+      "raw": "I don't have the details of your conversations with ⟦PERSON_1⟧ and ⟦PERSON_2⟧ about the ⟦COMPANY_1⟧ deal. Could you share the key points discussed so I can draft a concise two-line summary for ⟦PERSON_3⟧?",
+      "rawReasoning": "The user wants a concise two-line summary of what they should tell PERSON_3 about the COMPANY_1 deal, based on conversations with PERSON_1 and PERSON_2 yesterday. However, I don't have the actual content of those conversations. The user hasn't provided any details about what was discussed. I need to ask for more information to provide a meaningful summary. I should respond by asking what was discussed with PERSON_1 and PERSON_2 regarding the COMPANY_1 deal.",
+      "restored": "I don't have the details of your conversations with smith and walker about the acme deal. Could you share the key points discussed so I can draft a concise two-line summary for johnson?",
+      "flagged": [],
+      "ms": 3599,
+      "sent": "I talked to ⟦PERSON_1⟧ and ⟦PERSON_2⟧ yesterday about the ⟦COMPANY_1⟧ deal. Can you summarize in two lines what I should tell ⟦PERSON_3⟧?"
+    }
+  ]
+}

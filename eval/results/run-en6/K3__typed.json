@@ -1,0 +1,22 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Yesterday I went to the Orion cinema, but I was only thinking about Project Orion. Where did I go, and what was I thinking about?",
+      "raw": "You went to the **Orion cinema**, and you were thinking about **⟦PROJECT_1⟧**.",
+      "rawReasoning": "The user asks: \"Yesterday I went to the Orion cinema, but I was only thinking about ⟦PROJECT_1⟧. Where did I go, and what was I thinking about?\" They want the answer: location = Orion cinema, thought = ⟦PROJECT_1⟧. Need to output placeholders exactly as given, including brackets. So answer: You went to the Orion cinema, and you were thinking about ⟦PROJECT_1⟧.",
+      "restored": "You went to the **Orion cinema**, and you were thinking about **Project Orion**.",
+      "flagged": [
+        "PROJECT:Project Orion (project)",
+        "PROJECT:Project Orion (orion)"
+      ],
+      "ms": 1685,
+      "sent": "Yesterday I went to the Orion cinema, but I was only thinking about ⟦PROJECT_1⟧. Where did I go, and what was I thinking about?"
+    }
+  ]
+}

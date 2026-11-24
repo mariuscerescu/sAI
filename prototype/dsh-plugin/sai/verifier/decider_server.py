@@ -4,9 +4,16 @@ word appears in it once.
 
 The service listens on 127.0.0.1 only and never writes the texts it receives to a log.
 
-  POST /verify  {"questions": [{"state": str, "word": str, "classId": str, "term": str}, ...]}
-             -> {"probabilities": [float, ...]}     one P(name) per question, in order
+  POST /verify  {"questions": [question, ...]}  ->  {"answers": [answer, ...]}   one answer per question, in order
+     kind "name":  {state, word, classId, term, description?}  -> P(the word is used as a name)
+     kind "part":  {state, word, name, classId}                -> P(the word is part of the same person's name)
+     kind "which": {state, word, classId, options: [str]}      -> [P(option 1), ..., P(someone else or cannot tell)]
+     A question without "kind" is a "name" question.
   GET  /health  -> {"ok": true, "model": ...}
+
+Every "name" question asks about a name of any kind (person, company, project, product or place), whatever the
+entry's class, unless the user described the class. Measured on 2026-11-19 against a question per class, the general
+one let fewer names through (eval/results/verificator-moduri.md).
 
 All the questions of one call go to the model in one decide() call. The Decider answers each question in its own
 sequence (mode "separate"), so an answer never depends on the other questions of the call.
@@ -25,13 +32,41 @@ from pathlib import Path
 
 MAX_BODY = 64 * 1024 * 1024
 MAX_QUESTIONS = 5000
-WHAT = {"PERSON": "a person's name", "COMPANY": "a company's name", "ORGANIZATION": "an organization's name"}
+ANY_NAME = "the name of a person, company, project, product or place"
+OTHER = "someone else, or the text does not say"
 
 
-def question_text(word: str, class_id: str, term: str) -> str:
-    """The question measured on the 822-case set. (Marking the word ⟪ ⟫ in the text made the answers worse.)"""
-    what = WHAT.get(class_id, "a name")
-    return f'In this text, is the word "{word}" used as {what} (like {term}), rather than as an ordinary word?'
+def question_text(q: dict) -> str:
+    """The question for one "name" question: a name of any kind, or the user's words for the class. Marking the word
+    ⟪ ⟫ in the text made the answers worse, so the text is cut instead (by sAI) to hold the word once. Naming the
+    dictionary meaning kept real names further from the threshold (eval/results/frozen-calibration.md)."""
+    word, term, description = q["word"], q["term"], q.get("description")
+    what = description if description else ANY_NAME
+    return f'In this text, is the word "{word}" used as {what} (like {term}), rather than as an ordinary dictionary word with its usual meaning?'
+
+
+def part_text(q: dict) -> str:
+    word, name = q["word"], q["name"]
+    return (f'In this text, is the word "{word}" part of the same person\'s name as "{name}" (together: "{word} {name}"), '
+            f"rather than a separate word?")
+
+
+def to_request(q: dict) -> dict:
+    """One Decider request per question: its own text, so answers never depend on each other."""
+    kind = q.get("kind", "name")
+    if kind == "which":
+        options = {option: None for option in q["options"]} | {OTHER: None}
+        question = {"type": "choice", "instructions": f'In this text, which person is "{q["word"]}"?', "criteria": options}
+    else:
+        question = {"type": "noul", "instructions": part_text(q) if kind == "part" else question_text(q)}
+    return {"state": q["state"], "questions": {"q": question}}
+
+
+def from_answer(q: dict, answer: dict):
+    if q.get("kind", "name") == "which":
+        probabilities = answer["probabilities"]
+        return [float(probabilities[option]) for option in [*q["options"], OTHER]]
+    return float(answer["noul"])
 
 
 class FileReader:
@@ -127,14 +162,24 @@ def parse(body: bytes) -> list[dict]:
     questions = data.get("questions") if isinstance(data, dict) else None
     if not isinstance(questions, list) or len(questions) > MAX_QUESTIONS:
         raise ValueError("questions must be a list of at most %d items" % MAX_QUESTIONS)
+    fields = {"name": ("state", "word", "classId", "term"), "part": ("state", "word", "name", "classId"), "which": ("state", "word", "classId")}
     for q in questions:
-        if not isinstance(q, dict) or not all(isinstance(q.get(k), str) for k in ("state", "word", "classId", "term")):
-            raise ValueError("each question needs string fields state, word, classId, term")
+        kind = q.get("kind", "name") if isinstance(q, dict) else None
+        if kind not in fields or not all(isinstance(q.get(k), str) for k in fields[kind]):
+            raise ValueError("each question needs a known kind and its string fields")
+        if kind == "which":
+            options = q.get("options")
+            if not isinstance(options, list) or not options or not all(isinstance(o, str) and o and o != OTHER for o in options) \
+                    or len(set(options)) != len(options):
+                raise ValueError("a which question needs distinct option strings")
     return questions
 
 
 def make_handler(decider, model_name: str):
     class Handler(BaseHTTPRequestHandler):
+        # Headers and body are two writes: with Nagle's algorithm the body can wait for the client's delayed ACK.
+        disable_nagle_algorithm = True
+
         def log_message(self, format, *args):  # noqa: A002  (no request lines: they are harmless, but keep logs quiet)
             pass
 
@@ -163,8 +208,7 @@ def make_handler(decider, model_name: str):
             except (ValueError, json.JSONDecodeError) as error:
                 return self.reply(400, {"error": str(error)})
             started = time.perf_counter()
-            requests = [{"state": q["state"], "questions": {"q": {"type": "noul", "instructions": question_text(
-                q["word"], q["classId"], q["term"])}}} for q in questions]
+            requests = [to_request(q) for q in questions]
             try:
                 answers = decider.decide(requests) if requests else []
             except Exception as error:  # noqa: BLE001  (the client masks every word when the call fails)
@@ -173,9 +217,9 @@ def make_handler(decider, model_name: str):
                 print(f"verify failed for {len(requests)} questions: {type(error).__name__}", flush=True)
                 print(frames, flush=True)
                 return self.reply(500, {"error": type(error).__name__})
-            probabilities = [float(a["answers"]["q"]["noul"]) for a in answers]
+            results = [from_answer(q, a["answers"]["q"]) for q, a in zip(questions, answers)]
             print(f"verify: {len(questions)} questions in {1000 * (time.perf_counter() - started):.0f} ms", flush=True)
-            self.reply(200, {"probabilities": probabilities})
+            self.reply(200, {"answers": results})
     return Handler
 
 

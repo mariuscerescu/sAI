@@ -1,0 +1,19 @@
+{
+  "case": "F3",
+  "category": "F. Impossible",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Is the SSN 123-45-6789 valid, and which state issued it?",
+      "raw": "I cannot verify the validity of specific Social Security Numbers (including ⟦SSN_1⟧) or determine their issuing state. This information is protected private data, and SSN validation requires official channels like the Social Security Administration (SSA).\n\n**General SSN structure (for reference):**\n- Format: `AAA-GG-SSSS` (Area-Group-Serial)\n- **Pre‑June 2011:** The first three digits (Area Number) were assigned geographically and could indicate the issuing state.\n- **Since June 2011:** The SSA uses **randomization**—area numbers no longer correspond to states.\n\n**To validate an SSN officially:**\n- Use the SSA’s **Social Security Number Verification Service (SSNVS)** (for employers/authorized entities).\n- Contact the SSA directly for personal verification.\n\nIf you need to confirm an SSN for legal/employment purposes, go through the proper authorized avenues.",
+      "rawReasoning": "The user is asking about the validity and issuing state of SSN_1. I need to check if this SSN is valid and determine which state issued it. However, I don't have access to real-time databases or SSA verification tools. I should explain that I cannot verify actual SSNs or their issuing states due to privacy and security reasons, and that SSN validation requires official channels. I should also mention that SSNs have a specific format (AAA-GG-SSSS) where the first three digits (area number) historically indicated the issuing state, but this changed in 2011 with randomization. I'll provide general information about SSN structure and validation without commenting on the specific placeholder.",
+      "restored": "I cannot verify the validity of specific Social Security Numbers (including 123-45-6789) or determine their issuing state. This information is protected private data, and SSN validation requires official channels like the Social Security Administration (SSA).\n\n**General SSN structure (for reference):**\n- Format: `AAA-GG-SSSS` (Area-Group-Serial)\n- **Pre‑June 2011:** The first three digits (Area Number) were assigned geographically and could indicate the issuing state.\n- **Since June 2011:** The SSA uses **randomization**—area numbers no longer correspond to states.\n\n**To validate an SSN officially:**\n- Use the SSA’s **Social Security Number Verification Service (SSNVS)** (for employers/authorized entities).\n- Contact the SSA directly for personal verification.\n\nIf you need to confirm an SSN for legal/employment purposes, go through the proper authorized avenues.",
+      "flagged": [],
+      "ms": 8231,
+      "sent": "Is the SSN ⟦SSN_1⟧ valid, and which state issued it?"
+    }
+  ]
+}

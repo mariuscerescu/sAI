@@ -1,0 +1,19 @@
+{
+  "case": "K5",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "GB approved the loan for Acme. GB stands for Greenfield Bank. Separately, in code, the variable gb_total holds the amount. What did GB approve?",
+      "raw": "ω approved the loan for ε.",
+      "rawReasoning": "The user is asking what ω approved. From the first sentence: \"ω approved the loan for ε.\" So ω approved the loan for ε. The rest about ω standing for ω′ and ω′′_total holding the amount seems like extra context but the direct answer is that ω approved the loan for ε. I should answer concisely.",
+      "restored": "GB approved the loan for Acme.",
+      "flagged": [],
+      "ms": 3032,
+      "sent": "ω approved the loan for ε. ω stands for ω′. Separately, in code, the variable ω′′_total holds the amount. What did ω approve?"
+    }
+  ]
+}

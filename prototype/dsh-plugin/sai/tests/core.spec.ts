@@ -45,11 +45,12 @@ describe('typed strategy', () => {
     expect(restored.report).toEqual({ restored: 3, tolerantMatches: ['⟦PHONE_1⟧'], unknownTokens: ['⟦PERSON_7⟧'], suspicious: [] })
   })
 
-  it('reuses symbols for other spellings of the same entity', () => {
+  it('relates the symbols of other spellings of the same name, and reuses the symbol of a pattern value', () => {
     const session = new Engine({ vocabulary: VOCABULARY }).session()
     session.redact(TEXT)
     const second = session.redact('Ion Popescu a trimis contractul la Acme Logistic SRL. Sună-l la +373 69 123 456.')
-    expect(second.text).toBe('⟦PERSON_1⟧ a trimis contractul la ⟦COMPANY_1⟧. Sună-l la ⟦PHONE_1⟧.')
+    expect(second.text).toBe('⟦PERSON_1_2⟧ a trimis contractul la ⟦COMPANY_1_2⟧. Sună-l la ⟦PHONE_1⟧.')
+    expect(session.restore('⟦PERSON_1_2⟧ de la ⟦COMPANY_1_2⟧').text).toBe('Ion Popescu de la Acme Logistic SRL')
   })
 
   it('redacts history identically on every request', () => {
@@ -62,7 +63,9 @@ describe('typed strategy', () => {
   it('finds a declared name again when written without capitals', () => {
     const session = new Engine({ vocabulary: VOCABULARY }).session()
     session.redact(TEXT)
-    expect(session.redact('am vorbit cu maria rusu ieri').text).toBe('am vorbit cu ⟦PERSON_2⟧ ieri')
+    const out = session.redact('am vorbit cu maria rusu ieri')
+    expect(out.text).toBe('am vorbit cu ⟦PERSON_2_2⟧ ieri')
+    expect(session.restore(out.text).text).toBe('am vorbit cu maria rusu ieri')
   })
 
   it('protects user text that already looks like a symbol', () => {
@@ -75,7 +78,9 @@ describe('typed strategy', () => {
 
   it('matches terms regardless of case and diacritics', () => {
     const session = new Engine({ vocabulary: [{ id: 's', class: 'PERSON', terms: ['Ștefan Ciobanu'] }] }).session()
-    expect(session.redact('STEFAN CIOBANU și ştefan ciobanu').text).toBe('⟦PERSON_1⟧ și ⟦PERSON_1⟧')
+    const out = session.redact('STEFAN CIOBANU și ştefan ciobanu')
+    expect(out.text).toBe('⟦PERSON_1⟧ și ⟦PERSON_1_2⟧')
+    expect(session.restore(out.text).text).toBe('STEFAN CIOBANU și ştefan ciobanu')
   })
 
   it('blocks a payment card and replaces every other finding', () => {

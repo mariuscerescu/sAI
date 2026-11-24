@@ -1,0 +1,19 @@
+{
+  "case": "R6",
+  "category": "R. Written forms",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Nadia Vantoor signed the deal. Later Vantoor called Elias Brandt. Who signed the deal, and who received the call? Answer in one sentence.",
+      "raw": "⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call.",
+      "rawReasoning": "The user asks: \"⟦PERSON_1⟧ signed the deal. Later ⟦PERSON_1_2⟧ called ⟦PERSON_2⟧. Who signed the deal, and who received the call? Answer in one sentence.\"\n\nWe need to answer: Who signed the deal? That's ⟦PERSON_1⟧. Who received the call? The call was from ⟦PERSON_1_2⟧ to ⟦PERSON_2⟧, so the recipient is ⟦PERSON_2⟧. The note says that ⟦PERSON_1_2⟧ is another written form of the same value as ⟦PERSON_1⟧ (e.g., first name and surname). So they are the same person. But the question: \"Who signed the deal, and who received the call?\" So answer: ⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call. Should we mention that ⟦PERSON_1_2⟧ is the same as ⟦PERSON_1⟧? The user didn't ask to explain the relation, just answer the question. So answer in one sentence: \"⟦PERSON_1⟧ signed the deal, and ⟦PERSON_2⟧ received the call.\" That's it.",
+      "restored": "Nadia Vantoor signed the deal, and Elias Brandt received the call.",
+      "flagged": [],
+      "ms": 4724,
+      "sent": "⟦PERSON_1⟧ signed the deal. Later ⟦PERSON_1_2⟧ called ⟦PERSON_2⟧. Who signed the deal, and who received the call? Answer in one sentence."
+    }
+  ]
+}

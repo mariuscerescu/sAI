@@ -1,0 +1,21 @@
+{
+  "case": "K3",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Yesterday I went to the Orion cinema, but I was only thinking about Project Orion. Where did I go, and what was I thinking about?",
+      "raw": "You went to the Orion cinema and were thinking about γ.",
+      "rawReasoning": "The user is asking me to answer based on the conversation. They mention \"Orion cinema\" and \"γ\". According to the system prompt, Greek letters like γ are confidential terms that stand for real terms. I should treat γ as the real term it represents, and when referring to it, write the letter exactly as given, including in code, file paths, and tool-call arguments. I should not translate or spell out these letters.\n\nThe user asks: \"Where did I go, and what was I thinking about?\" They state: \"Yesterday I went to the Orion cinema, but I was only thinking about γ.\" So the answer is: They went to the Orion cinema, and they were thinking about γ. I should output that, using γ exactly as given.\n\nI need to answer concisely in English. So: \"You went to the Orion cinema and were thinking about γ.\" I'll put γ in code formatting? The prompt says: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" It says \"also inside code\", but not necessarily always in code. It says \"write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" That suggests that when I refer to it, I should write it exactly as given, and if I put it in code, file paths, or tool-call arguments, I should do so. But for a normal answer, I can just write γ as is. I'll write it as γ.\n\nThus answer: \"You went to the Orion cinema and were thinking about γ.\"",
+      "restored": "You went to the Orion cinema and were thinking about Project Orion.",
+      "flagged": [
+        "PROJECT:Project Orion (orion)"
+      ],
+      "ms": 8487,
+      "sent": "Yesterday I went to the Orion cinema, but I was only thinking about γ. Where did I go, and what was I thinking about?"
+    }
+  ]
+}

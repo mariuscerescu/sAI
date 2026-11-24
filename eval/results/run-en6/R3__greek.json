@@ -1,0 +1,19 @@
+{
+  "case": "R3",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write a two-sentence formal email to Ms. Vantoor from Elias Brandt at Pellham Energy Ltd about a delayed invoice. Greet the recipient by surname and sign with the full name.",
+      "raw": "Dear Ms. ρ,\n\nI am writing to inform you that invoice #12345, due on [date], has been delayed due to unforeseen processing issues at ε. We apologize for the inconvenience and expect to resolve the matter by [new date].\n\nSincerely,  \nδ",
+      "rawReasoning": "The user wants a formal email with specific placeholders: Ms. ρ, from δ at ε. Need to greet by surname (so \"Dear Ms. ρ,\") and sign with full name (so \"δ\" is presumably the sender's full name? They said \"from δ at ε\". Probably δ is the sender's name, ε is the company. So sign with full name δ. Write two sentences. Should be formal. Use placeholders exactly as given: ρ, δ, ε. Keep them in code format? The instruction: \"Whenever you refer to it, write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" So we should write the Greek letters exactly as given, probably not in code but just as characters. But they said \"inside code, file paths, and tool-call arguments.\" Not necessary to put in code fences. Just write them as characters. So email:\n\n\"Dear Ms. ρ,\n\nI am writing to inform you that invoice #12345, due on [date], has been delayed due to unforeseen processing issues at ε. We apologize for any inconvenience and expect to resolve this by [new date].\n\nSincerely,\nδ\"\n\nBut that's three sentences. Need two sentences. Could combine: \"I am writing to inform you that invoice #12345, due on [date], has been delayed due to unforeseen processing issues at ε, and we apologize for any inconvenience while we work to resolve it by [new date].\" That's one sentence. Need two sentences total. Could do: \"I am writing to inform you that invoice #12345, due on [date], has been delayed due to unforeseen processing issues at ε. We apologize for the inconvenience and expect to resolve the matter by [new date].\" That's two sentences.\n\nMake sure greet by surname: \"Dear Ms. ρ,\" and sign with full name: \"δ\". Probably include \"Sincerely,\" before name. But that might add extra line but not a sentence. It's okay. The email body should be two sentences. The greeting and closing are not counted as sentences. So final answer: Provide email text.",
+      "restored": "Dear Ms. Vantoor,\n\nI am writing to inform you that invoice #12345, due on [date], has been delayed due to unforeseen processing issues at Pellham Energy Ltd. We apologize for the inconvenience and expect to resolve the matter by [new date].\n\nSincerely,  \nElias Brandt",
+      "flagged": [],
+      "ms": 6644,
+      "sent": "Write a two-sentence formal email to Ms. ρ from δ at ε about a delayed invoice. Greet the recipient by surname and sign with the full name."
+    }
+  ]
+}

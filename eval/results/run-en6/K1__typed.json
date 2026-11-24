@@ -1,0 +1,19 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "⟦PERSON_1⟧ works at ⟦COMPANY_1⟧; ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧.",
+      "rawReasoning": "The user is asking about where each sibling works based on the given information.\n\nFrom the prompt:\n- ⟦PERSON_1⟧ is ⟦PERSON_2⟧'s sister\n- ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧\n- ⟦PERSON_2⟧ (the brother) works at ⟦COMPANY_2⟧\n\nSo:\n- ⟦PERSON_1⟧ works at ⟦COMPANY_1⟧\n- ⟦PERSON_2⟧ works at ⟦COMPANY_2⟧",
+      "restored": "Mary Smith works at Nordic Farms; John Smith works at Acme.",
+      "flagged": [],
+      "ms": 6054,
+      "sent": "⟦PERSON_1⟧, ⟦PERSON_2⟧'s sister, works at ⟦COMPANY_1⟧, and her brother works at ⟦COMPANY_2⟧. Where does each sibling work?"
+    }
+  ]
+}

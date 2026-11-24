@@ -1,0 +1,19 @@
+{
+  "case": "H1",
+  "category": "H. Identifiers",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Our contractor's SSN is 123-45-6789 and his phone is (212) 555-0143; the UK office is on 020 7946 0958 and his NI number is AB 12 34 56 C. Put these into a table with one row per item and a column for its type.",
+      "raw": "| Type        | Value |\n|-------------|-------|\n| SSN         | `λ`   |\n| Phone       | `ξ`   |\n| UK Office   | `κ`   |\n| NI Number   | `χ`   |",
+      "rawReasoning": "The user wants a table with the contractor's information. They provided:\n- SSN: λ\n- Phone: ξ\n- UK office: κ\n- NI number: χ\n\nI need to create a table with one row per item and a column for its type. The types would be: SSN, Phone, UK Office, NI Number. Let me format this as a markdown table.",
+      "restored": "| Type        | Value |\n|-------------|-------|\n| SSN         | `123-45-6789`   |\n| Phone       | `(212) 555-0143`   |\n| UK Office   | `020 7946 0958`   |\n| NI Number   | `AB 12 34 56 C`   |",
+      "flagged": [],
+      "ms": 1994,
+      "sent": "Our contractor's SSN is λ and his phone is ξ; the UK office is on κ and his NI number is χ. Put these into a table with one row per item and a column for its type."
+    }
+  ]
+}

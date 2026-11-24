@@ -1,0 +1,19 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "- ζ works at γ\n- χ works at μ",
+      "rawReasoning": "The user is asking about siblings' workplaces. They mention:\n- ζ (zeta) is χ's (chi's) sister\n- ζ works at γ (gamma)\n- χ (zeta's brother) works at μ (mu)\n\nSo:\n- ζ works at γ\n- χ works at μ\n\nI should answer concisely.",
+      "restored": "- Mary Smith works at Nordic Farms\n- John Smith works at Acme",
+      "flagged": [],
+      "ms": 4306,
+      "sent": "ζ, χ's sister, works at γ, and her brother works at μ. Where does each sibling work?"
+    }
+  ]
+}

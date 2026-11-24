@@ -1,0 +1,19 @@
+{
+  "case": "B2",
+  "category": "B. Reasoning",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Acme Logistics bought 30% of Nordic Farms. Nordic Farms owns 60% of Greenfield Bank. What share of Greenfield Bank does Acme control indirectly? Explain step by step.",
+      "raw": "**Answer: 18%**\n\n**Step-by-step:**\n\n1. **ε owns 30% of λ** — this means ε has a 30% claim on λ's assets and earnings.\n\n2. **λ owns 60% of ν** — λ's 60% stake in ν is part of λ's assets.\n\n3. **ε's indirect share of ν** = (ε's share of λ) × (λ's share of ν)  \n   = 30% × 60%  \n   = 0.30 × 0.60  \n   = 0.18 = **18%**\n\nSince ε′ is the same entity as ε (per your convention), ε′ controls **18% of ν indirectly** through λ.",
+      "rawReasoning": "The user is asking about indirect ownership/control through a chain of ownership. Let me break this down:\n\n1. ε (epsilon) bought 30% of λ (lambda)\n2. λ (lambda) owns 60% of ν (nu)\n3. Question: What share of ν does ε′ (epsilon prime) control indirectly?\n\nThe note says \"A letter with a prime, such as β′, is another written form of the same term as β, for example the first name and the surname of one person.\" So ε′ is the same entity as ε.\n\nSo ε owns 30% of λ, and λ owns 60% of ν. The indirect ownership of ε in ν would be: 30% × 60% = 18%.\n\nLet me explain step by step.",
+      "restored": "**Answer: 18%**\n\n**Step-by-step:**\n\n1. **Acme Logistics owns 30% of Nordic Farms** — this means Acme Logistics has a 30% claim on Nordic Farms's assets and earnings.\n\n2. **Nordic Farms owns 60% of Greenfield Bank** — Nordic Farms's 60% stake in Greenfield Bank is part of Nordic Farms's assets.\n\n3. **Acme Logistics's indirect share of Greenfield Bank** = (Acme Logistics's share of Nordic Farms) × (Nordic Farms's share of Greenfield Bank)  \n   = 30% × 60%  \n   = 0.30 × 0.60  \n   = 0.18 = **18%**\n\nSince Acme is the same entity as Acme Logistics (per your convention), Acme controls **18% of Greenfield Bank indirectly** through Nordic Farms.",
+      "flagged": [],
+      "ms": 5925,
+      "sent": "ε bought 30% of λ. λ owns 60% of ν. What share of ν does ε′ control indirectly? Explain step by step."
+    }
+  ]
+}

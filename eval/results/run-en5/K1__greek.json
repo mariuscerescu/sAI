@@ -1,0 +1,19 @@
+{
+  "case": "K1",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Mary Smith, John Smith's sister, works at Nordic Farms, and her brother works at Acme. Where does each sibling work?",
+      "raw": "Based on the information given:\n\n- **ω** works at **ι**\n- **η's brother** works at **μ**\n- **η**'s workplace is not specified",
+      "rawReasoning": "The user is asking about siblings and their workplaces, using Greek letters as placeholders for confidential terms. Let me parse the question:\n\n- ω (omega) is η's sister\n- ω works at ι (iota)\n- η's brother works at μ (mu)\n\nThe question asks: \"Where does each sibling work?\"\n\nSo we have three siblings mentioned:\n1. ω (eta's sister) - works at ι\n2. η (eta) - workplace not directly stated\n3. η's brother - works at μ\n\nWait, let me re-read: \"ω, η's sister, works at ι, and her brother works at μ.\"\n\n\"Her\" could refer to ω or η. But since ω is η's sister, \"her brother\" most likely means η's brother (who would also be ω's brother). So:\n\n- ω works at ι\n- η's brother works at μ\n- η's workplace is not stated\n\nThe question asks \"Where does each sibling work?\" - but we only have workplace info for ω and η's brother. η's workplace isn't given.\n\nI should answer based on what's stated.",
+      "restored": "Based on the information given:\n\n- **Mary Smith** works at **Nordic Farms**\n- **John Smith's brother** works at **Acme**\n- **John Smith**'s workplace is not specified",
+      "flagged": [],
+      "ms": 5162,
+      "sent": "ω, η's sister, works at ι, and her brother works at μ. Where does each sibling work?"
+    }
+  ]
+}

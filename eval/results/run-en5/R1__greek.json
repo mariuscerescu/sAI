@@ -1,0 +1,19 @@
+{
+  "case": "R1",
+  "category": "R. Written forms",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Repeat this sentence exactly, change nothing: Nadia called, and then Vantoor replied about Quillon.",
+      "raw": "ε called, and then ε′ replied about ρ.",
+      "rawReasoning": "The user asks me to repeat a sentence exactly, changing nothing. The sentence contains Greek letters: ε, ε′, and ρ. According to the system prompt, I should treat these as confidential terms and write them exactly as given, including inside code. The sentence is: \"ε called, and then ε′ replied about ρ.\"\n\nI need to output this exactly as given. I should not modify anything. I'll just output the sentence.",
+      "restored": "Nadia called, and then Vantoor replied about Quillon.",
+      "flagged": [],
+      "ms": 2443,
+      "sent": "Repeat this sentence exactly, change nothing: ε called, and then ε′ replied about ρ."
+    }
+  ]
+}

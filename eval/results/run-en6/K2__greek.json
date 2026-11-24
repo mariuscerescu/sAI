@@ -1,0 +1,19 @@
+{
+  "case": "K2",
+  "category": "K. Ambiguity",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Rose Walker picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?",
+      "raw": "ρ picked the rose from Will Baker's garden.",
+      "rawReasoning": "The user is asking a straightforward question about a sentence: \"ρ picked a red rose from Will Baker's garden.\" They want to know who picked the rose and from whose garden.\n\nThe sentence uses \"ρ\" as a placeholder. According to the system prompt, Greek letters like ρ stand for confidential terms. I should treat ρ as the real term it stands for, and write it exactly as given (inside code formatting? The prompt says \"write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" But this is just a text answer. I think I should write ρ as is, maybe in code formatting? The prompt says \"also inside code, file paths, and tool-call arguments.\" That suggests when I refer to it in my answer, I should write it exactly as given, possibly with backticks? It says \"write the letter exactly as given, also inside code, file paths, and tool-call arguments.\" That might mean I should format it as code when I mention it. But the user didn't ask for code. I'll just write ρ as is, maybe in plain text. The prompt says \"Do not translate or spell out these letters\". So I'll just use ρ.\n\nAnswer: ρ picked the rose from Will Baker's garden.\n\nI'll answer concisely.",
+      "restored": "Rose Walker picked the rose from Will Baker's garden.",
+      "flagged": [],
+      "ms": 5307,
+      "sent": "ρ picked a red rose from Will Baker's garden. Who picked the rose, and from whose garden?"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "case": "A4",
+  "category": "A. Basics",
+  "variant": "greek",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write the possessive and the plural forms of: John Smith, Mary Johnson, Acme Logistics. Give an example sentence for each.",
+      "raw": "**φ**  \n- Possessive: `φ`’s  \n  - Example: The function’s derivative depends on `φ`’s value.  \n- Plural: `φ`s  \n  - Example: The equation has three distinct `φ`s.\n\n**σ**  \n- Possessive: `σ`’s  \n  - Example: The distribution’s width is determined by `σ`’s magnitude.  \n- Plural: `σ`s  \n  - Example: We compared the two `σ`s from different samples.\n\n**α**  \n- Possessive: `α`’s  \n  - Example: The model’s stability relies on `α`’s learning rate.  \n- Plural: `α`s  \n  - Example: The script iterates over several `α`s.",
+      "rawReasoning": "The user wants the possessive and plural forms of three Greek letters: φ, σ, α.\nThey also want an example sentence for each form.\nI need to treat these as the terms they stand for (likely variable names or specific terms).\nI must write the letters exactly as given (φ, σ, α) inside code formatting when referring to them.",
+      "restored": "**John Smith**  \n- Possessive: `John Smith`’s  \n  - Example: The function’s derivative depends on `John Smith`’s value.  \n- Plural: `John Smith`s  \n  - Example: The equation has three distinct `John Smith`s.\n\n**Mary Johnson**  \n- Possessive: `Mary Johnson`’s  \n  - Example: The distribution’s width is determined by `Mary Johnson`’s magnitude.  \n- Plural: `Mary Johnson`s  \n  - Example: We compared the two `Mary Johnson`s from different samples.\n\n**Acme Logistics**  \n- Possessive: `Acme Logistics`’s  \n  - Example: The model’s stability relies on `Acme Logistics`’s learning rate.  \n- Plural: `Acme Logistics`s  \n  - Example: The script iterates over several `Acme Logistics`s.",
+      "flagged": [],
+      "ms": 6284,
+      "sent": "Write the possessive and the plural forms of: φ, σ, α. Give an example sentence for each."
+    }
+  ]
+}

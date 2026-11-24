@@ -1,0 +1,19 @@
+{
+  "case": "A4",
+  "category": "A. Basics",
+  "variant": "typed",
+  "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "plugin": "lib/index.js",
+  "verifier": "all@0.2",
+  "turns": [
+    {
+      "user": "Write the possessive and the plural forms of: John Smith, Mary Johnson, Acme Logistics. Give an example sentence for each.",
+      "raw": "**⟦PERSON_1⟧**  \n- Possessive: **⟦PERSON_1⟧'s** – *⟦PERSON_1⟧'s report was thorough.*  \n- Plural: **⟦PERSON_1⟧s** – *Several ⟦PERSON_1⟧s attended the meeting.*\n\n**⟦PERSON_2⟧**  \n- Possessive: **⟦PERSON_2⟧'s** – *⟦PERSON_2⟧'s idea sparked the discussion.*  \n- Plural: **⟦PERSON_2⟧s** – *The team included two ⟦PERSON_2⟧s.*\n\n**⟦COMPANY_1⟧**  \n- Possessive: **⟦COMPANY_1⟧'s** – *⟦COMPANY_1⟧'s revenue grew 12 %.*  \n- Plural: **⟦COMPANY_1⟧s** – *Many ⟦COMPANY_1⟧s operate in this sector.*",
+      "rawReasoning": "The user wants possessive and plural forms for three placeholders: PERSON_1, PERSON_2, COMPANY_1. Need to give example sentence for each form. Should treat placeholders as actual names. Provide possessive (e.g., ⟦PERSON_1⟧'s) and plural (e.g., ⟦PERSON_1⟧s). Also example sentences for each. Probably list each placeholder with possessive and plural and example sentences. Ensure placeholders remain exactly with brackets. Provide concise answer.",
+      "restored": "**John Smith**  \n- Possessive: **John Smith's** – *John Smith's report was thorough.*  \n- Plural: **John Smiths** – *Several John Smiths attended the meeting.*\n\n**Mary Johnson**  \n- Possessive: **Mary Johnson's** – *Mary Johnson's idea sparked the discussion.*  \n- Plural: **Mary Johnsons** – *The team included two Mary Johnsons.*\n\n**Acme Logistics**  \n- Possessive: **Acme Logistics's** – *Acme Logistics's revenue grew 12 %.*  \n- Plural: **Acme Logisticss** – *Many Acme Logisticss operate in this sector.*",
+      "flagged": [],
+      "ms": 5595,
+      "sent": "Write the possessive and the plural forms of: ⟦PERSON_1⟧, ⟦PERSON_2⟧, ⟦COMPANY_1⟧. Give an example sentence for each."
+    }
+  ]
+}
